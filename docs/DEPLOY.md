@@ -1,6 +1,6 @@
 # Deploying
 
-**Last updated:** 2026-08-27 · Host: Vercel · Data: Supabase project `esl`
+**Last updated:** 2026-08-27 · Host: <https://esl-psi.vercel.app> · Data: Supabase project `esl`
 
 Read `STATE.md` first for where the project is. This file is only about getting
 it onto the internet, and about the three things that have already gone wrong
@@ -53,10 +53,11 @@ reloading the page is the obvious move and it does not work.
 
 This is PRD §8.1C, and it is also the cheapest option that exists.
 
-`public/audio/` **is committed** (it was gitignored until 2026-08-27, which
-meant a deploy shipped a language product with no sound). It cannot be
-generated during a Vercel build: the current provider is macOS `say`, and
-Vercel does not run macOS. Whatever is in the repo is what learners hear.
+`public/audio/` **must be committed.** It was gitignored until 2026-08-27,
+which meant a deploy shipped a language product with no sound. It cannot be
+generated during a Vercel build — the current provider is macOS `say`, and
+Vercel does not run macOS — so whatever is in the repo is exactly what learners
+hear, and nothing else is.
 
 Regenerate locally and commit the result:
 
@@ -123,49 +124,43 @@ curl -sI https://<host>/audio/chunk/<hash>.opus | grep -i 'cache-control\|conten
 
 ## Supabase auth URLs
 
-`supabase/config.toml` still carries the local values:
+**Done 2026-08-27** — pushed and verified in sync (`auth: up_to_date`).
+`supabase/config.toml` now reads:
 
 ```toml
-site_url = "http://127.0.0.1:3000"
+site_url = "https://esl-psi.vercel.app"
 additional_redirect_urls = [
+  "https://esl-psi.vercel.app/auth/callback",
+  "http://localhost:3000/auth/callback",      # dev still needs both
   "http://127.0.0.1:3000/auth/callback",
-  "http://localhost:3000/auth/callback",
 ]
 ```
 
 `site_url` is what Supabase uses to **build the links it puts in emails**, and
-it is the allow-list root for post-auth redirects. Pointed at a laptop, every
-password-reset link a learner receives from the live site opens nothing.
+it is the allow-list root for post-auth redirects. Pointed at a laptop — which
+it was until now — every password-reset link a learner receives from the live
+site opens nothing.
 
-**It is not yet breaking anything**, and it is worth knowing why: email
-confirmation is off (see STATE.md), and signup and login are email + password
-returning a session directly, so nothing currently round-trips through
-Supabase's redirect machinery. It becomes load-bearing the moment either of
-these lands — both of which are on the roadmap:
+It was not yet breaking anything, and it is worth knowing why, because the same
+reasoning says when it will: email confirmation is off (see STATE.md), and
+signup and login are email + password returning a session directly, so nothing
+currently round-trips through Supabase's redirect machinery. It becomes
+load-bearing the moment either of these lands:
 
 - password reset / email verification (STATE.md open item 8);
 - Google OAuth, which exchanges its code at `/auth/callback`.
 
-Fix it now anyway; it is two lines and a push, and the alternative is
-discovering it inside the first feature that depends on it.
-
-```toml
-site_url = "https://<production-host>"
-additional_redirect_urls = [
-  "https://<production-host>/auth/callback",
-  "http://localhost:3000/auth/callback",      # keep — dev still needs it
-  "http://127.0.0.1:3000/auth/callback",
-]
-```
+`config.toml` is the source of truth. Change it there and push — never edit the
+values in the dashboard, or the next push silently reverts them:
 
 ```bash
-npx supabase config push
+npx supabase config push          # prints a diff, then applies it
 ```
 
-Add a Vercel preview wildcard only if you actually use preview deployments for
-auth — Supabase accepts `https://*-<scope>.vercel.app/auth/callback`. Every
-extra entry is an extra place a redirect can be aimed, so do not add it
-speculatively.
+No Vercel preview wildcard is configured. Supabase accepts
+`https://*-<scope>.vercel.app/auth/callback` if you ever need previews to
+complete an OAuth round trip, but every extra entry is one more place a
+redirect can be aimed — do not add it speculatively.
 
 ---
 
@@ -173,7 +168,7 @@ speculatively.
 
 1. `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` set in Vercel → **redeploy**
 2. `public/audio/` committed and present in the deployed tree
-3. `site_url` and `additional_redirect_urls` point at the production host, `npx supabase config push`
+3. ~~`site_url` and `additional_redirect_urls`~~ — done; re-run `npx supabase config push` after any `config.toml` change
 4. `curl -sI https://<host>/audio/chunk/<hash>.opus` → 200, `immutable`, `audio/ogg`
 5. Landing page loads signed out; signup → onboarding → `/home` → session player walks
 6. Network tab shows **no third-party requests and no per-request API cost** — PRD's $0 runtime claim, checked rather than assumed

@@ -48,11 +48,10 @@ Linked. Five migrations applied. Content seeded. Auth config pushed.
 
 `.env.local` exists and works. It is gitignored; `.env.example` documents it.
 
-**Before deploying anywhere:** `site_url` on the hosted project is still
-`http://127.0.0.1:3000`. It breaks nothing *today* — email confirmation is off
-and signup returns a session directly, so nothing round-trips through
-Supabase's redirects — but it is a landmine under password reset (open item 8)
-and Google OAuth. `docs/DEPLOY.md` has the values and the push command.
+**Deployed at <https://esl-psi.vercel.app>.** `site_url` and the auth redirect
+allow-list point there as of 2026-08-27 (`npx supabase config push`, verified
+`auth: up_to_date`); `config.toml` is the source of truth, so never edit those
+values in the dashboard. `docs/DEPLOY.md` covers the rest.
 
 ---
 
