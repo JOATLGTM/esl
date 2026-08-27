@@ -157,9 +157,66 @@ export const es = {
     daysPracticed: "{count} días practicados",
     daysPracticedOne: "1 día practicado",
     firstSession: "Tu primera sesión te espera.",
-    comingSoon: "La sesión diaria se está construyendo. Vuelve pronto.",
+    resumeSession: "Seguir",
     signOut: "Cerrar sesión",
   },
+
+  session: {
+    // The five stages of a daily session (PRD 4.2). Each blurb answers the one
+    // question a beginner actually has -- "what are you about to ask me to
+    // do?" -- before anything starts playing.
+    stages: {
+      ear: {
+        title: "Afina el oído",
+        blurb: "Escuchas pares de palabras casi iguales, con voces distintas, hasta que la diferencia te salta sola.",
+      },
+      meet: {
+        title: "Conoce frases nuevas",
+        blurb: "Frases completas que puedes usar hoy mismo. Nada de listas de palabras sueltas.",
+      },
+      absorb: {
+        title: "Escucha la historia",
+        blurb: "Una conversación corta, hecha casi toda con lo que ya conoces.",
+      },
+      retrieve: {
+        title: "Recuerda",
+        blurb: "Las frases vuelven justo cuando estás a punto de olvidarlas. Así se quedan.",
+      },
+      speak: {
+        title: "Habla en voz alta",
+        blurb: "Dices las frases tú, con tu voz. Nadie te está calificando.",
+      },
+    },
+    progress: "Paso {position} de {total}",
+    resumed: "Seguimos donde lo dejaste.",
+    // Same promise /home made while it was empty: say plainly that a part is
+    // still being built rather than showing a screen that does nothing.
+    underConstruction: "Esta parte se está construyendo. Por ahora, sigue adelante.",
+    continue: "Continuar",
+    finish: "Terminar",
+    exit: "Salir",
+    exitNote: "Puedes salir cuando quieras. Volvemos a este mismo punto.",
+    // Reached when a unit has no stage it can serve -- no audio, no chunks.
+    // A beginner must never be shown a technical reason for this.
+    empty: {
+      title: "Todavía no",
+      body: "Esta lección aún no está lista. No es nada que hayas hecho tú.",
+      back: "Volver a Hoy",
+    },
+    done: {
+      title: "Listo por hoy",
+      body: "Terminaste la sesión. Nos vemos mañana.",
+    },
+  },
+
+  // A personal note from the author to one learner, shown once on their first
+  // visit and then never again. Verbatim, and NOT product copy: unlike
+  // everything else in this file, it is not for a reviewer to rephrase.
+  welcome:
+    "Hola, Alex: creé este sitio web para que aprendas inglés en línea. " +
+    "Llamé a la institución y no aceptan a personas que no sean ciudadanas " +
+    "de EE. UU. Usa esto mientras tanto, hasta que encuentre un lugar donde " +
+    "puedan enseñarte inglés.",
 
   common: {
     loading: "Cargando…",

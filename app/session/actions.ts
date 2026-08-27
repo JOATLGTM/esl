@@ -1,0 +1,140 @@
+"use server";
+
+import { refresh } from "next/cache";
+import { redirect } from "next/navigation";
+import { z } from "zod";
+import { localDate, practiceCounters } from "@/lib/session/day";
+import { STAGE_ORDER, availableStages, nextStage, resumeAt } from "@/lib/session/stages";
+import { loadStageInventory, loadUnit } from "@/lib/session/store";
+import { createClient, getUser } from "@/lib/supabase/server";
+
+/**
+ * Moving through a session (PRD 4.2).
+ *
+ * One action for all five stages. The client says which stage it thinks it is
+ * finishing; the server decides what comes next, from the same inventory the
+ * page used to decide what to render. The client never names its destination,
+ * so a tampered payload cannot skip a stage -- it can only claim to have
+ * finished one it is not on, which is checked below and ignored.
+ *
+ * Every advance is a write. That is the whole point: `stage_reached` is what a
+ * resumed session opens at, and a session that only saves at the end is not
+ * resumable, it is just short.
+ */
+
+/**
+ * An hour on one stage is already far past anything real, so beyond it the
+ * number is either a tab left open overnight or someone editing the payload.
+ * Clamped rather than rejected -- refusing the advance would strand a learner
+ * who genuinely walked away mid-stage.
+ */
+const MAX_STAGE_SECONDS = 3600;
+
+const advance = z.object({
+  sessionId: z.string().uuid(),
+  from: z.enum(STAGE_ORDER),
+  elapsedS: z.number().finite().nonnegative().catch(0),
+});
+
+export type AdvanceInput = z.input<typeof advance>;
+
+export async function advanceStage(input: AdvanceInput) {
+  const user = await getUser();
+  if (!user) redirect("/login");
+
+  const parsed = advance.safeParse(input);
+  if (!parsed.success) redirect("/home");
+
+  const supabase = await createClient();
+
+  // Row-level security already scopes this to the caller; the explicit
+  // `user_id` filter means a mismatched id reads as "no such session" here
+  // rather than as an empty result somewhere further down.
+  const { data: session } = await supabase
+    .from("sessions")
+    .select("*")
+    .eq("id", parsed.data.sessionId)
+    .eq("user_id", user.id)
+    .maybeSingle();
+
+  if (!session || session.completed_at) redirect("/home");
+
+  const unit = await loadUnit(session.unit_id);
+  if (!unit) redirect("/home");
+
+  const available = availableStages(await loadStageInventory(unit));
+  const current = resumeAt(session.stage_reached, available);
+
+  // A double-tap, a back button, or a stale tab: the session has already moved
+  // past the stage this request is finishing. Re-render and let the page show
+  // where the learner actually is. Not an error -- nothing was lost.
+  if (!current || current !== parsed.data.from) {
+    refresh();
+    return;
+  }
+
+  const elapsed = Math.min(Math.round(parsed.data.elapsedS), MAX_STAGE_SECONDS);
+  const duration_s = session.duration_s + elapsed;
+  const next = nextStage(current, available);
+
+  if (next) {
+    await supabase
+      .from("sessions")
+      .update({ stage_reached: next, duration_s })
+      .eq("id", session.id);
+    refresh();
+    return;
+  }
+
+  await supabase
+    .from("sessions")
+    .update({ duration_s, completed_at: new Date().toISOString() })
+    .eq("id", session.id);
+
+  await recordPractice(user.id);
+  redirect("/home");
+}
+
+/**
+ * Credit the day (PRD F8).
+ *
+ * Read-then-write rather than a SQL increment because the streak rule needs the
+ * previous date to decide whether the run continues. Two sessions finished the
+ * same day race here, and the loser writes the same values the winner did --
+ * `practiceCounters` returns null once the day is already credited, so a second
+ * session cannot inflate the count.
+ *
+ * XP and the three daily quests are deliberately not here. They arrive with F8
+ * proper; counting the day is what /home already promises to show.
+ */
+async function recordPractice(userId: string) {
+  const supabase = await createClient();
+
+  const { data: profile } = await supabase
+    .from("users")
+    .select("timezone, days_practiced, current_consecutive_days, last_practiced_on")
+    .eq("id", userId)
+    .maybeSingle();
+
+  if (!profile) return;
+
+  const counters = practiceCounters(
+    {
+      daysPracticed: profile.days_practiced,
+      consecutiveDays: profile.current_consecutive_days,
+      lastPracticedOn: profile.last_practiced_on,
+    },
+    localDate(profile.timezone),
+  );
+
+  if (!counters) return;
+
+  await supabase
+    .from("users")
+    .update({
+      days_practiced: counters.daysPracticed,
+      current_consecutive_days: counters.consecutiveDays,
+      last_practiced_on: counters.lastPracticedOn,
+    })
+    .eq("id", userId);
+}
