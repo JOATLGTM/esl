@@ -1,0 +1,122 @@
+# The TTS voice roster for SCRIPTED CONTENT ONLY (PRD 8.1A).
+#
+# Chunks, examples, scenes and dialogue lines are synthesised locally, once, on
+# a developer machine, and committed as static Opus files. The running product
+# makes no API call, holds no key, and costs nothing per user.
+#
+# EAR TRAINING IS NOT IN THIS FILE. HVPT works precisely because the talkers
+# genuinely vary, and neural TTS voices are far narrower acoustically than real
+# humans -- six synthetic voices produce a drill that looks right and teaches
+# much less (PRD 8.1B). Minimal-pair audio comes from content/speakers.yaml and
+# real recordings. Do not add an `hvpt` role here; the plan will refuse it.
+#
+# ---------------------------------------------------------------------------
+# WHY EVERY VOICE CARRIES A `probe` DIGEST
+#
+# macOS `say` silently falls back to the system default voice when the named
+# voice is not downloaded -- no error, no warning, correct-looking output. Block
+# 1 shipped this way: us_f_1, us_m_1 and uk_f_1 were three names for Samantha,
+# so every "conversation" was one talker playing all the parts and the HVPT
+# drill had four real talkers instead of six.
+#
+# So the pipeline now proves the voices are distinct instead of trusting the
+# roster: it synthesises `probe_text` in every voice, hashes the decoded audio,
+# and refuses to run if two voices collide. A silently-substituted voice is a
+# content bug that is invisible in code review and obvious in the ear.
+# ---------------------------------------------------------------------------
+#
+# Engines, both local and free:
+#   piper  -- neural TTS, ONNX/VITS, GPL-3.0 build-time tool (PRD 8.1A). The
+#             engine the PRD prescribes. `pip install piper-tts`, then
+#             `python -m piper.download_voices en_US-amy-medium`.
+#             Use the `medium` or `high` tier; `x_low` is audibly synthetic.
+#   macos  -- ships with the OS, zero install, useful for a fast local loop.
+#             Voices must be downloaded in System Settings > Accessibility >
+#             Spoken Content > System Voice > Manage Voices, or `say` lies.
+
+version: 1
+
+# The engine used for the committed audio. Switching this invalidates every
+# cached clip by design -- a voice change is a content change.
+#
+# PRD 10 Phase 1 makes the choice a week-1 decision, not an assumption:
+# `npm run content:spike` renders the same twenty lines through every installed
+# engine and tier so it can be settled by ear before Block 2 is authored.
+provider: macos
+
+# Primary accent model for the course: US, because the audience is Latin
+# American. Tom is British on purpose -- the English Miguel actually hears at
+# work will not all be General American.
+primary_accent: "US (General American)"
+
+# Synthesised in every voice before any real generation runs; two voices that
+# produce the same waveform for this line are the same voice. Phonetically
+# broad on purpose, so near-identical voices still separate.
+probe_text: "The sheep on the ship asked for a big blue cup of coffee, thanks."
+
+voices:
+  - id: us_f_1
+    accent: "US (General American)"
+    gender: female
+    native: true
+    rate_wpm: 155
+    provider_voice:
+      macos: "Samantha"
+      piper: "en_US-amy-medium"
+
+  - id: us_m_1
+    accent: "US (General American)"
+    gender: male
+    native: true
+    rate_wpm: 155
+    provider_voice:
+      # NOT "Alex" -- Alex is not installed by default on current macOS and
+      # `say` substitutes Samantha without saying so. Eddy is really present.
+      macos: "Eddy (English (US))"
+      piper: "en_US-ryan-high"
+
+  - id: us_m_2
+    accent: "US (General American)"
+    gender: male
+    native: true
+    rate_wpm: 150
+    provider_voice:
+      macos: "Reed (English (US))"
+      piper: "en_US-joe-medium"
+
+  - id: us_f_2
+    accent: "US (General American)"
+    gender: female
+    native: true
+    rate_wpm: 160
+    provider_voice:
+      macos: "Flo (English (US))"
+      piper: "en_US-kristin-medium"
+
+  - id: us_f_3
+    accent: "US (General American)"
+    gender: female
+    native: true
+    rate_wpm: 150
+    provider_voice:
+      macos: "Sandy (English (US))"
+      piper: "en_US-lessac-medium"
+
+  - id: uk_m_1
+    accent: "UK (Southern British)"
+    gender: male
+    native: true
+    rate_wpm: 155
+    provider_voice:
+      macos: "Daniel"
+      piper: "en_GB-alan-medium"
+
+# Non-character roles. Scene and dialogue voices are NOT chosen here -- they
+# come from characters.yaml, one fixed voice per character, forever.
+roles:
+  # PRD F2: a card needs the chunk in >=2 voices before it can be published.
+  chunk_primary: [us_f_1, us_m_1]
+  chunk_extra: [us_f_2, uk_m_1]
+  # One voice for example sentences, so the card's example reads as one person
+  # saying one thing rather than a chorus.
+  example: [us_m_2]

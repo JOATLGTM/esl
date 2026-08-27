@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/*
+ * Design tokens.
+ *
+ * The constraints (PRD 7) are not stylistic: mobile-first at a 360px baseline,
+ * body text at 16px or larger, WCAG AA contrast, primary actions inside thumb
+ * reach, usable one-handed at arm's length with audio playing.
+ *
+ * The palette is warm rather than the usual product blue, on purpose. This app
+ * asks someone who thinks he is bad at English to speak out loud on day one;
+ * it should feel like a kitchen table, not a testing centre. Every pair below
+ * was measured, not eyeballed -- the lowest ratio in use is 5.6:1.
+ */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-canvas: #fdfbf7;
+  --color-surface: #ffffff;
+  --color-ink: #1c1917;        /* 16.9:1 on canvas */
+  --color-muted: #57534e;      /*  7.4:1 on canvas */
+  --color-faint: #6b6560;      /*  5.6:1 on canvas — the floor */
+  --color-line: #e7e1d8;
+  --color-primary: #a6360f;    /*  6.7:1 with white text */
+  --color-primary-ink: #ffffff;
+  --color-primary-soft: #fdf0e9;
+  --color-focus: #a6360f;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @theme {
+    --color-canvas: #15120f;
+    --color-surface: #1e1a16;
+    --color-ink: #f5f0e8;      /* 16.5:1 on canvas */
+    --color-muted: #b8afa4;    /*  8.6:1 on canvas */
+    --color-faint: #a09689;
+    --color-line: #322c26;
+    --color-primary: #fb923c;  /*  8.3:1 with dark text */
+    --color-primary-ink: #15120f;
+    --color-primary-soft: #2a211a;
+    --color-focus: #fb923c;
   }
 }
 
+html {
+  background: var(--color-canvas);
+  /* Nothing in this product is worth a horizontal scrollbar at 360px. */
+  overflow-x: hidden;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  /* 17px base. The PRD's floor is 16; a phone at arm's length wants the extra. */
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: pretty;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+/*
+ * Visible focus, always. Someone navigating this by keyboard or switch control
+ * has to be able to see where they are, and the default ring disappears
+ * against a warm background.
+ */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

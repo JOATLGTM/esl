@@ -1,0 +1,56 @@
+# The A0 -> B1 spine (PRD 4.3).
+#
+# `units` lists only units that are authored and validated. Adding a unit id
+# here without a matching content/units/<id>.yaml is a hard validation failure,
+# so this file is always an honest picture of what exists.
+
+blocks:
+  - block: 1
+    title_es: "Primeros Sonidos"
+    cefr: A0
+    chunk_target_cumulative: 150
+    can_do_es: "Puedo presentarme y responder preguntas básicas"
+    l1_support_level: 1
+    units:
+      - b1_u1
+      # b1_u2 .. b1_u6 to come -- numbers, yes/no questions, family, places, time
+
+  - block: 2
+    title_es: "Mi Día"
+    cefr: A1
+    chunk_target_cumulative: 400
+    can_do_es: "Puedo describir mi día y mi familia"
+    l1_support_level: 1
+    units: []
+
+  - block: 3
+    title_es: "En la Calle"
+    cefr: A1+
+    chunk_target_cumulative: 700
+    can_do_es: "Puedo hacer una compra o pedir direcciones"
+    l1_support_level: 2
+    units: []
+
+  - block: 4
+    title_es: "Ayer y Mañana"
+    cefr: A2
+    chunk_target_cumulative: 1200
+    can_do_es: "Puedo contar qué pasó y qué voy a hacer"
+    l1_support_level: 3
+    units: []
+
+  - block: 5
+    title_es: "En el Trabajo"
+    cefr: A2+
+    chunk_target_cumulative: 1800
+    can_do_es: "Puedo manejar una conversación de trabajo y explicar un problema"
+    l1_support_level: 4
+    units: []
+
+  - block: 6
+    title_es: "Mi Opinión"
+    cefr: B1
+    chunk_target_cumulative: 2500
+    can_do_es: "Puedo dar y defender una opinión en una conversación"
+    l1_support_level: 5
+    units: []

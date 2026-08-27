@@ -1,0 +1,43 @@
+# Pronunciation overrides for the TTS pipeline (PRD 8.1A, PRD 12).
+#
+# Piper phonemises through espeak-ng, which guesses at names and unusual words
+# and is wrong often enough to matter in a listening product -- a learner who
+# hears "Miguel" mangled learns the mangled version. macOS `say` has the same
+# problem with a different set of words.
+#
+# An override replaces the text sent to the SYNTHESISER ONLY. The learner still
+# reads the real spelling everywhere: on the card, in the transcript, in the
+# diff on a near-miss. Nothing here changes what a word is, only how the
+# machine says it.
+#
+# The override participates in the clip hash, so editing one line regenerates
+# exactly the clips that contain that word.
+#
+# Prefer a respelling over IPA: it survives an engine change, and anyone can
+# read it in a diff. Use `providers:` only when engines genuinely disagree.
+
+version: 1
+
+overrides:
+  # Cast names. Ear-check these first -- they are in almost every scene.
+  - word: Miguel
+    say: "Mig-ELL"
+  - word: Maria
+    say: "Mah-REE-ah"
+  - word: Rosa
+    say: "ROH-sah"
+  - word: Ana
+    say: "AH-nah"
+    providers:
+      # macOS reads bare "Ana" as the English "Anna", which is a different name.
+      macos: "Ahna"
+
+  # Places that recur in Block 1 scenes.
+  - word: Colombia
+    say: "Ko-LOM-bee-ah"
+  - word: Peru
+    say: "Peh-ROO"
+  - word: Chile
+    say: "CHEE-lay"
+  - word: Mexico
+    say: "MEX-ih-koh"

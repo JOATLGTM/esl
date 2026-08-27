@@ -1,0 +1,2741 @@
+{
+  "version": 2,
+  "provider": "macos",
+  "format": {
+    "codec": "libopus",
+    "bitrate": "32k",
+    "channels": 1,
+    "ext": "opus"
+  },
+  "clips": {
+    "d5a0f63985a9e528": {
+      "url": "/audio/chunk/d5a0f63985a9e528.opus",
+      "kind": "chunk",
+      "text": "Hello",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0001",
+      "unitId": "b1_u1",
+      "durationMs": 604,
+      "bytes": 2507
+    },
+    "1ea2daa298601154": {
+      "url": "/audio/chunk/1ea2daa298601154.opus",
+      "kind": "chunk",
+      "text": "Hello",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1061,
+      "bytes": 3123
+    },
+    "062983f17006a99b": {
+      "url": "/audio/chunk/062983f17006a99b.opus",
+      "kind": "chunk",
+      "text": "Hello",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1029,
+      "bytes": 3133
+    },
+    "a783c45b1af3b7db": {
+      "url": "/audio/chunk/a783c45b1af3b7db.opus",
+      "kind": "chunk",
+      "text": "Hello",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0001",
+      "unitId": "b1_u1",
+      "durationMs": 614,
+      "bytes": 2553
+    },
+    "7c7fefbc2f44c6e3": {
+      "url": "/audio/example/7c7fefbc2f44c6e3.opus",
+      "kind": "example",
+      "text": "Hello, my name is Ana.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2501,
+      "bytes": 8091
+    },
+    "7afd51c6d669de05": {
+      "url": "/audio/chunk/7afd51c6d669de05.opus",
+      "kind": "chunk",
+      "text": "Hi",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0002",
+      "unitId": "b1_u1",
+      "durationMs": 474,
+      "bytes": 2092
+    },
+    "e1ac35ce9bd008d6": {
+      "url": "/audio/chunk/e1ac35ce9bd008d6.opus",
+      "kind": "chunk",
+      "text": "Hi",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0002",
+      "unitId": "b1_u1",
+      "durationMs": 917,
+      "bytes": 2561
+    },
+    "f328bab3e959b469": {
+      "url": "/audio/chunk/f328bab3e959b469.opus",
+      "kind": "chunk",
+      "text": "Hi",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0002",
+      "unitId": "b1_u1",
+      "durationMs": 885,
+      "bytes": 2549
+    },
+    "06de909f556acfbd": {
+      "url": "/audio/chunk/06de909f556acfbd.opus",
+      "kind": "chunk",
+      "text": "Hi",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0002",
+      "unitId": "b1_u1",
+      "durationMs": 547,
+      "bytes": 2450
+    },
+    "27dd1ca6d0d1dabd": {
+      "url": "/audio/example/27dd1ca6d0d1dabd.opus",
+      "kind": "example",
+      "text": "Hi, how are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0002",
+      "unitId": "b1_u1",
+      "durationMs": 1941,
+      "bytes": 5889
+    },
+    "52dcfd7fa7709a10": {
+      "url": "/audio/chunk/52dcfd7fa7709a10.opus",
+      "kind": "chunk",
+      "text": "Good morning",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0003",
+      "unitId": "b1_u1",
+      "durationMs": 727,
+      "bytes": 2979
+    },
+    "a6584cc64d276293": {
+      "url": "/audio/chunk/a6584cc64d276293.opus",
+      "kind": "chunk",
+      "text": "Good morning",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1364,
+      "bytes": 4187
+    },
+    "a4f8ca584e48fc6d": {
+      "url": "/audio/chunk/a4f8ca584e48fc6d.opus",
+      "kind": "chunk",
+      "text": "Good morning",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1316,
+      "bytes": 4295
+    },
+    "3e42c85f302ac424": {
+      "url": "/audio/chunk/3e42c85f302ac424.opus",
+      "kind": "chunk",
+      "text": "Good morning",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0003",
+      "unitId": "b1_u1",
+      "durationMs": 867,
+      "bytes": 3624
+    },
+    "4d89419ac2811d6a": {
+      "url": "/audio/example/4d89419ac2811d6a.opus",
+      "kind": "example",
+      "text": "Good morning, Miguel.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0003",
+      "unitId": "b1_u1",
+      "durationMs": 2292,
+      "bytes": 7189
+    },
+    "5dba61e93c9e668a": {
+      "url": "/audio/chunk/5dba61e93c9e668a.opus",
+      "kind": "chunk",
+      "text": "Good afternoon",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0004",
+      "unitId": "b1_u1",
+      "durationMs": 925,
+      "bytes": 3743
+    },
+    "5650afcd7c90a967": {
+      "url": "/audio/chunk/5650afcd7c90a967.opus",
+      "kind": "chunk",
+      "text": "Good afternoon",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0004",
+      "unitId": "b1_u1",
+      "durationMs": 1780,
+      "bytes": 5706
+    },
+    "d703566a93543483": {
+      "url": "/audio/chunk/d703566a93543483.opus",
+      "kind": "chunk",
+      "text": "Good afternoon",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0004",
+      "unitId": "b1_u1",
+      "durationMs": 1716,
+      "bytes": 5663
+    },
+    "307e96589cc7a6bf": {
+      "url": "/audio/chunk/307e96589cc7a6bf.opus",
+      "kind": "chunk",
+      "text": "Good afternoon",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0004",
+      "unitId": "b1_u1",
+      "durationMs": 1134,
+      "bytes": 4654
+    },
+    "a01973475beebf52": {
+      "url": "/audio/example/a01973475beebf52.opus",
+      "kind": "example",
+      "text": "Good afternoon. How are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3140,
+      "bytes": 9725
+    },
+    "a6af9eb0737fb5f7": {
+      "url": "/audio/chunk/a6af9eb0737fb5f7.opus",
+      "kind": "chunk",
+      "text": "Good night",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0005",
+      "unitId": "b1_u1",
+      "durationMs": 614,
+      "bytes": 2590
+    },
+    "9344506c35a2b655": {
+      "url": "/audio/chunk/9344506c35a2b655.opus",
+      "kind": "chunk",
+      "text": "Good night",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0005",
+      "unitId": "b1_u1",
+      "durationMs": 1268,
+      "bytes": 3933
+    },
+    "f7a5b35495a8f8fc": {
+      "url": "/audio/chunk/f7a5b35495a8f8fc.opus",
+      "kind": "chunk",
+      "text": "Good night",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0005",
+      "unitId": "b1_u1",
+      "durationMs": 1220,
+      "bytes": 3828
+    },
+    "e19e8d5070e5a9ef": {
+      "url": "/audio/chunk/e19e8d5070e5a9ef.opus",
+      "kind": "chunk",
+      "text": "Good night",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0005",
+      "unitId": "b1_u1",
+      "durationMs": 774,
+      "bytes": 3396
+    },
+    "d44103f879214446": {
+      "url": "/audio/example/d44103f879214446.opus",
+      "kind": "example",
+      "text": "Good night, Ana.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0005",
+      "unitId": "b1_u1",
+      "durationMs": 1940,
+      "bytes": 5981
+    },
+    "aa65cecf542bd9db": {
+      "url": "/audio/chunk/aa65cecf542bd9db.opus",
+      "kind": "chunk",
+      "text": "Goodbye",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0006",
+      "unitId": "b1_u1",
+      "durationMs": 625,
+      "bytes": 2705
+    },
+    "1cce146351c61ca4": {
+      "url": "/audio/chunk/1cce146351c61ca4.opus",
+      "kind": "chunk",
+      "text": "Goodbye",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0006",
+      "unitId": "b1_u1",
+      "durationMs": 1140,
+      "bytes": 3401
+    },
+    "fadd18631eafa2a9": {
+      "url": "/audio/chunk/fadd18631eafa2a9.opus",
+      "kind": "chunk",
+      "text": "Goodbye",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0006",
+      "unitId": "b1_u1",
+      "durationMs": 1108,
+      "bytes": 3359
+    },
+    "bcb912d27657932e": {
+      "url": "/audio/chunk/bcb912d27657932e.opus",
+      "kind": "chunk",
+      "text": "Goodbye",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0006",
+      "unitId": "b1_u1",
+      "durationMs": 763,
+      "bytes": 3401
+    },
+    "defd21aab335b7b3": {
+      "url": "/audio/example/defd21aab335b7b3.opus",
+      "kind": "example",
+      "text": "Goodbye, see you later.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0006",
+      "unitId": "b1_u1",
+      "durationMs": 2404,
+      "bytes": 7538
+    },
+    "cb5f4649988a8c26": {
+      "url": "/audio/chunk/cb5f4649988a8c26.opus",
+      "kind": "chunk",
+      "text": "See you later",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0007",
+      "unitId": "b1_u1",
+      "durationMs": 913,
+      "bytes": 3874
+    },
+    "2e84d6d653fb59c0": {
+      "url": "/audio/chunk/2e84d6d653fb59c0.opus",
+      "kind": "chunk",
+      "text": "See you later",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0007",
+      "unitId": "b1_u1",
+      "durationMs": 1461,
+      "bytes": 4598
+    },
+    "eb5d947e3b2f1a6b": {
+      "url": "/audio/chunk/eb5d947e3b2f1a6b.opus",
+      "kind": "chunk",
+      "text": "See you later",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0007",
+      "unitId": "b1_u1",
+      "durationMs": 1413,
+      "bytes": 4662
+    },
+    "cb7d91bb77d524f5": {
+      "url": "/audio/chunk/cb7d91bb77d524f5.opus",
+      "kind": "chunk",
+      "text": "See you later",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0007",
+      "unitId": "b1_u1",
+      "durationMs": 1030,
+      "bytes": 4435
+    },
+    "c483b537d6afc92e": {
+      "url": "/audio/example/c483b537d6afc92e.opus",
+      "kind": "example",
+      "text": "See you later, Carlos.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0007",
+      "unitId": "b1_u1",
+      "durationMs": 2597,
+      "bytes": 8131
+    },
+    "d6521f233459bd1d": {
+      "url": "/audio/chunk/d6521f233459bd1d.opus",
+      "kind": "chunk",
+      "text": "My name is",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0008",
+      "unitId": "b1_u1",
+      "durationMs": 868,
+      "bytes": 3612
+    },
+    "b9c2e3f9b167545a": {
+      "url": "/audio/chunk/b9c2e3f9b167545a.opus",
+      "kind": "chunk",
+      "text": "My name is",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0008",
+      "unitId": "b1_u1",
+      "durationMs": 1397,
+      "bytes": 4207
+    },
+    "ce5f110ea51d822d": {
+      "url": "/audio/chunk/ce5f110ea51d822d.opus",
+      "kind": "chunk",
+      "text": "My name is",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0008",
+      "unitId": "b1_u1",
+      "durationMs": 1349,
+      "bytes": 4420
+    },
+    "de0d4dc7fe6c7973": {
+      "url": "/audio/chunk/de0d4dc7fe6c7973.opus",
+      "kind": "chunk",
+      "text": "My name is",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0008",
+      "unitId": "b1_u1",
+      "durationMs": 914,
+      "bytes": 3903
+    },
+    "5cfc3ef693e9b4e3": {
+      "url": "/audio/example/5cfc3ef693e9b4e3.opus",
+      "kind": "example",
+      "text": "My name is Miguel.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0008",
+      "unitId": "b1_u1",
+      "durationMs": 1957,
+      "bytes": 6305
+    },
+    "380fac16250e604f": {
+      "url": "/audio/chunk/380fac16250e604f.opus",
+      "kind": "chunk",
+      "text": "What's your name?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0009",
+      "unitId": "b1_u1",
+      "durationMs": 901,
+      "bytes": 3737
+    },
+    "b58e678980d29401": {
+      "url": "/audio/chunk/b58e678980d29401.opus",
+      "kind": "chunk",
+      "text": "What's your name?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0009",
+      "unitId": "b1_u1",
+      "durationMs": 1541,
+      "bytes": 4950
+    },
+    "530dd109de091838": {
+      "url": "/audio/chunk/530dd109de091838.opus",
+      "kind": "chunk",
+      "text": "What's your name?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0009",
+      "unitId": "b1_u1",
+      "durationMs": 1493,
+      "bytes": 4928
+    },
+    "4a7f1c519232aa54": {
+      "url": "/audio/chunk/4a7f1c519232aa54.opus",
+      "kind": "chunk",
+      "text": "What's your name?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0009",
+      "unitId": "b1_u1",
+      "durationMs": 1076,
+      "bytes": 4462
+    },
+    "a9dcf3a602eb2f09": {
+      "url": "/audio/example/a9dcf3a602eb2f09.opus",
+      "kind": "example",
+      "text": "Hello. What's your name?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0009",
+      "unitId": "b1_u1",
+      "durationMs": 2709,
+      "bytes": 8194
+    },
+    "a7144f43381381a5": {
+      "url": "/audio/chunk/a7144f43381381a5.opus",
+      "kind": "chunk",
+      "text": "Nice to meet you",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0010",
+      "unitId": "b1_u1",
+      "durationMs": 1149,
+      "bytes": 5387
+    },
+    "6d5271068a6541d0": {
+      "url": "/audio/chunk/6d5271068a6541d0.opus",
+      "kind": "chunk",
+      "text": "Nice to meet you",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0010",
+      "unitId": "b1_u1",
+      "durationMs": 1637,
+      "bytes": 5117
+    },
+    "4327845420ac3219": {
+      "url": "/audio/chunk/4327845420ac3219.opus",
+      "kind": "chunk",
+      "text": "Nice to meet you",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0010",
+      "unitId": "b1_u1",
+      "durationMs": 1589,
+      "bytes": 5208
+    },
+    "eeb61203ba86100d": {
+      "url": "/audio/chunk/eeb61203ba86100d.opus",
+      "kind": "chunk",
+      "text": "Nice to meet you",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0010",
+      "unitId": "b1_u1",
+      "durationMs": 1274,
+      "bytes": 5347
+    },
+    "717277dddbfa067c": {
+      "url": "/audio/example/717277dddbfa067c.opus",
+      "kind": "example",
+      "text": "Nice to meet you, Ana.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0010",
+      "unitId": "b1_u1",
+      "durationMs": 2309,
+      "bytes": 7339
+    },
+    "e3ff9d19654c65be": {
+      "url": "/audio/chunk/e3ff9d19654c65be.opus",
+      "kind": "chunk",
+      "text": "How are you?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0011",
+      "unitId": "b1_u1",
+      "durationMs": 650,
+      "bytes": 2737
+    },
+    "03c5476a3caa505e": {
+      "url": "/audio/chunk/03c5476a3caa505e.opus",
+      "kind": "chunk",
+      "text": "How are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0011",
+      "unitId": "b1_u1",
+      "durationMs": 1253,
+      "bytes": 3724
+    },
+    "ad149b5c5893ef3e": {
+      "url": "/audio/chunk/ad149b5c5893ef3e.opus",
+      "kind": "chunk",
+      "text": "How are you?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0011",
+      "unitId": "b1_u1",
+      "durationMs": 1205,
+      "bytes": 3797
+    },
+    "c7d463e6f34b4d9e": {
+      "url": "/audio/chunk/c7d463e6f34b4d9e.opus",
+      "kind": "chunk",
+      "text": "How are you?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0011",
+      "unitId": "b1_u1",
+      "durationMs": 857,
+      "bytes": 3523
+    },
+    "f183982fa7e3b9ab": {
+      "url": "/audio/example/f183982fa7e3b9ab.opus",
+      "kind": "example",
+      "text": "Hi Ana. How are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0011",
+      "unitId": "b1_u1",
+      "durationMs": 2565,
+      "bytes": 7552
+    },
+    "399651c7a9653e81": {
+      "url": "/audio/chunk/399651c7a9653e81.opus",
+      "kind": "chunk",
+      "text": "I'm fine, thank you",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0012",
+      "unitId": "b1_u1",
+      "durationMs": 1696,
+      "bytes": 6800
+    },
+    "7a700baddd5e8906": {
+      "url": "/audio/chunk/7a700baddd5e8906.opus",
+      "kind": "chunk",
+      "text": "I'm fine, thank you",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0012",
+      "unitId": "b1_u1",
+      "durationMs": 2325,
+      "bytes": 8835
+    },
+    "8e4c9116ea82e21b": {
+      "url": "/audio/chunk/8e4c9116ea82e21b.opus",
+      "kind": "chunk",
+      "text": "I'm fine, thank you",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0012",
+      "unitId": "b1_u1",
+      "durationMs": 2245,
+      "bytes": 7464
+    },
+    "625215560a3e3942": {
+      "url": "/audio/chunk/625215560a3e3942.opus",
+      "kind": "chunk",
+      "text": "I'm fine, thank you",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0012",
+      "unitId": "b1_u1",
+      "durationMs": 1890,
+      "bytes": 7377
+    },
+    "fd71a2afda797cf1": {
+      "url": "/audio/example/fd71a2afda797cf1.opus",
+      "kind": "example",
+      "text": "I'm fine, thank you. And you?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0012",
+      "unitId": "b1_u1",
+      "durationMs": 3541,
+      "bytes": 12255
+    },
+    "f72beb7bfbfb096c": {
+      "url": "/audio/chunk/f72beb7bfbfb096c.opus",
+      "kind": "chunk",
+      "text": "And you?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0013",
+      "unitId": "b1_u1",
+      "durationMs": 512,
+      "bytes": 2341
+    },
+    "6a23dc4242391da0": {
+      "url": "/audio/chunk/6a23dc4242391da0.opus",
+      "kind": "chunk",
+      "text": "And you?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0013",
+      "unitId": "b1_u1",
+      "durationMs": 1077,
+      "bytes": 3178
+    },
+    "ac88893496d863be": {
+      "url": "/audio/chunk/ac88893496d863be.opus",
+      "kind": "chunk",
+      "text": "And you?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0013",
+      "unitId": "b1_u1",
+      "durationMs": 1045,
+      "bytes": 3225
+    },
+    "195e2b40ff59521c": {
+      "url": "/audio/chunk/195e2b40ff59521c.opus",
+      "kind": "chunk",
+      "text": "And you?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0013",
+      "unitId": "b1_u1",
+      "durationMs": 659,
+      "bytes": 2699
+    },
+    "35fcd9b44fc4b5af": {
+      "url": "/audio/example/35fcd9b44fc4b5af.opus",
+      "kind": "example",
+      "text": "I'm fine. And you?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0013",
+      "unitId": "b1_u1",
+      "durationMs": 2549,
+      "bytes": 8742
+    },
+    "b5a899ab02fad646": {
+      "url": "/audio/chunk/b5a899ab02fad646.opus",
+      "kind": "chunk",
+      "text": "Thank you",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0014",
+      "unitId": "b1_u1",
+      "durationMs": 714,
+      "bytes": 3041
+    },
+    "5bf48677b73a54c4": {
+      "url": "/audio/chunk/5bf48677b73a54c4.opus",
+      "kind": "chunk",
+      "text": "Thank you",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0014",
+      "unitId": "b1_u1",
+      "durationMs": 1237,
+      "bytes": 3739
+    },
+    "90ad5d76af83b791": {
+      "url": "/audio/chunk/90ad5d76af83b791.opus",
+      "kind": "chunk",
+      "text": "Thank you",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0014",
+      "unitId": "b1_u1",
+      "durationMs": 1205,
+      "bytes": 3822
+    },
+    "bf021cd2851fa209": {
+      "url": "/audio/chunk/bf021cd2851fa209.opus",
+      "kind": "chunk",
+      "text": "Thank you",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0014",
+      "unitId": "b1_u1",
+      "durationMs": 861,
+      "bytes": 3607
+    },
+    "d50e4ba32cc10e1f": {
+      "url": "/audio/example/d50e4ba32cc10e1f.opus",
+      "kind": "example",
+      "text": "Thank you, Miguel.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0014",
+      "unitId": "b1_u1",
+      "durationMs": 2133,
+      "bytes": 6571
+    },
+    "ac049b28eb22ffd5": {
+      "url": "/audio/chunk/ac049b28eb22ffd5.opus",
+      "kind": "chunk",
+      "text": "You're welcome",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0015",
+      "unitId": "b1_u1",
+      "durationMs": 763,
+      "bytes": 3248
+    },
+    "6991a5b2f6713d64": {
+      "url": "/audio/chunk/6991a5b2f6713d64.opus",
+      "kind": "chunk",
+      "text": "You're welcome",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0015",
+      "unitId": "b1_u1",
+      "durationMs": 1285,
+      "bytes": 4000
+    },
+    "19ea958ff3489fe2": {
+      "url": "/audio/chunk/19ea958ff3489fe2.opus",
+      "kind": "chunk",
+      "text": "You're welcome",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0015",
+      "unitId": "b1_u1",
+      "durationMs": 1237,
+      "bytes": 3862
+    },
+    "fd0191b7cde079cb": {
+      "url": "/audio/chunk/fd0191b7cde079cb.opus",
+      "kind": "chunk",
+      "text": "You're welcome",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0015",
+      "unitId": "b1_u1",
+      "durationMs": 948,
+      "bytes": 3956
+    },
+    "4a4731c0eeddc5a6": {
+      "url": "/audio/example/4a4731c0eeddc5a6.opus",
+      "kind": "example",
+      "text": "Thank you. You're welcome.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0015",
+      "unitId": "b1_u1",
+      "durationMs": 2613,
+      "bytes": 7655
+    },
+    "aee9f81331b85ab1": {
+      "url": "/audio/chunk/aee9f81331b85ab1.opus",
+      "kind": "chunk",
+      "text": "Please",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0016",
+      "unitId": "b1_u1",
+      "durationMs": 547,
+      "bytes": 2377
+    },
+    "c847ebd2e15db9ac": {
+      "url": "/audio/chunk/c847ebd2e15db9ac.opus",
+      "kind": "chunk",
+      "text": "Please",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0016",
+      "unitId": "b1_u1",
+      "durationMs": 1022,
+      "bytes": 2998
+    },
+    "30dae176a788c003": {
+      "url": "/audio/chunk/30dae176a788c003.opus",
+      "kind": "chunk",
+      "text": "Please",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0016",
+      "unitId": "b1_u1",
+      "durationMs": 990,
+      "bytes": 2902
+    },
+    "aadec300b5b471f2": {
+      "url": "/audio/chunk/aadec300b5b471f2.opus",
+      "kind": "chunk",
+      "text": "Please",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0016",
+      "unitId": "b1_u1",
+      "durationMs": 564,
+      "bytes": 2508
+    },
+    "45c30fc0d6f80015": {
+      "url": "/audio/example/45c30fc0d6f80015.opus",
+      "kind": "example",
+      "text": "Please repeat that.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0016",
+      "unitId": "b1_u1",
+      "durationMs": 1806,
+      "bytes": 5715
+    },
+    "9259bb95d439aa9f": {
+      "url": "/audio/chunk/9259bb95d439aa9f.opus",
+      "kind": "chunk",
+      "text": "Excuse me",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0017",
+      "unitId": "b1_u1",
+      "durationMs": 941,
+      "bytes": 3984
+    },
+    "79593370e3df19ae": {
+      "url": "/audio/chunk/79593370e3df19ae.opus",
+      "kind": "chunk",
+      "text": "Excuse me",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0017",
+      "unitId": "b1_u1",
+      "durationMs": 1525,
+      "bytes": 4921
+    },
+    "4361e07ff39bc2b6": {
+      "url": "/audio/chunk/4361e07ff39bc2b6.opus",
+      "kind": "chunk",
+      "text": "Excuse me",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0017",
+      "unitId": "b1_u1",
+      "durationMs": 1477,
+      "bytes": 4828
+    },
+    "bba875ef72ca87cc": {
+      "url": "/audio/chunk/bba875ef72ca87cc.opus",
+      "kind": "chunk",
+      "text": "Excuse me",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0017",
+      "unitId": "b1_u1",
+      "durationMs": 1065,
+      "bytes": 4498
+    },
+    "fe8f1b4a824a7fee": {
+      "url": "/audio/example/fe8f1b4a824a7fee.opus",
+      "kind": "example",
+      "text": "Excuse me. What's your name?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0017",
+      "unitId": "b1_u1",
+      "durationMs": 3189,
+      "bytes": 10034
+    },
+    "22194cc14276b55c": {
+      "url": "/audio/chunk/22194cc14276b55c.opus",
+      "kind": "chunk",
+      "text": "I'm sorry",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0018",
+      "unitId": "b1_u1",
+      "durationMs": 744,
+      "bytes": 3196
+    },
+    "0a6bb5b1d8d89599": {
+      "url": "/audio/chunk/0a6bb5b1d8d89599.opus",
+      "kind": "chunk",
+      "text": "I'm sorry",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0018",
+      "unitId": "b1_u1",
+      "durationMs": 1333,
+      "bytes": 4160
+    },
+    "1fcfafe1e0fe5191": {
+      "url": "/audio/chunk/1fcfafe1e0fe5191.opus",
+      "kind": "chunk",
+      "text": "I'm sorry",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0018",
+      "unitId": "b1_u1",
+      "durationMs": 1285,
+      "bytes": 4153
+    },
+    "011662fcd1a001e9": {
+      "url": "/audio/chunk/011662fcd1a001e9.opus",
+      "kind": "chunk",
+      "text": "I'm sorry",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0018",
+      "unitId": "b1_u1",
+      "durationMs": 798,
+      "bytes": 3449
+    },
+    "bada31b2064e1989": {
+      "url": "/audio/example/bada31b2064e1989.opus",
+      "kind": "example",
+      "text": "I'm sorry. I don't understand.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0018",
+      "unitId": "b1_u1",
+      "durationMs": 3605,
+      "bytes": 12226
+    },
+    "30293891c9b71021": {
+      "url": "/audio/chunk/30293891c9b71021.opus",
+      "kind": "chunk",
+      "text": "Yes, please",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0019",
+      "unitId": "b1_u1",
+      "durationMs": 1263,
+      "bytes": 5133
+    },
+    "951a7e9e3fe61ac0": {
+      "url": "/audio/chunk/951a7e9e3fe61ac0.opus",
+      "kind": "chunk",
+      "text": "Yes, please",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0019",
+      "unitId": "b1_u1",
+      "durationMs": 1653,
+      "bytes": 5016
+    },
+    "d11672e8c72eff11": {
+      "url": "/audio/chunk/d11672e8c72eff11.opus",
+      "kind": "chunk",
+      "text": "Yes, please",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0019",
+      "unitId": "b1_u1",
+      "durationMs": 1589,
+      "bytes": 4902
+    },
+    "9d894fca9f44538b": {
+      "url": "/audio/chunk/9d894fca9f44538b.opus",
+      "kind": "chunk",
+      "text": "Yes, please",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0019",
+      "unitId": "b1_u1",
+      "durationMs": 1459,
+      "bytes": 5805
+    },
+    "aca251a013afc8bf": {
+      "url": "/audio/example/aca251a013afc8bf.opus",
+      "kind": "example",
+      "text": "Yes, please. Thank you.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0019",
+      "unitId": "b1_u1",
+      "durationMs": 2997,
+      "bytes": 9022
+    },
+    "96b09a3335795af9": {
+      "url": "/audio/chunk/96b09a3335795af9.opus",
+      "kind": "chunk",
+      "text": "No, thank you",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0020",
+      "unitId": "b1_u1",
+      "durationMs": 1358,
+      "bytes": 5265
+    },
+    "eab8bdfbcfb2e5ee": {
+      "url": "/audio/chunk/eab8bdfbcfb2e5ee.opus",
+      "kind": "chunk",
+      "text": "No, thank you",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0020",
+      "unitId": "b1_u1",
+      "durationMs": 1813,
+      "bytes": 5612
+    },
+    "b7b1849f59dcb578": {
+      "url": "/audio/chunk/b7b1849f59dcb578.opus",
+      "kind": "chunk",
+      "text": "No, thank you",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0020",
+      "unitId": "b1_u1",
+      "durationMs": 1765,
+      "bytes": 5584
+    },
+    "212d099eea89a895": {
+      "url": "/audio/chunk/212d099eea89a895.opus",
+      "kind": "chunk",
+      "text": "No, thank you",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0020",
+      "unitId": "b1_u1",
+      "durationMs": 1534,
+      "bytes": 6036
+    },
+    "46b06eafe5d50198": {
+      "url": "/audio/example/46b06eafe5d50198.opus",
+      "kind": "example",
+      "text": "No, thank you.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0020",
+      "unitId": "b1_u1",
+      "durationMs": 1893,
+      "bytes": 5845
+    },
+    "6a1f20a926cd6359": {
+      "url": "/audio/chunk/6a1f20a926cd6359.opus",
+      "kind": "chunk",
+      "text": "I don't understand",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0021",
+      "unitId": "b1_u1",
+      "durationMs": 1290,
+      "bytes": 5285
+    },
+    "3821d84717a4cd17": {
+      "url": "/audio/chunk/3821d84717a4cd17.opus",
+      "kind": "chunk",
+      "text": "I don't understand",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0021",
+      "unitId": "b1_u1",
+      "durationMs": 2133,
+      "bytes": 7122
+    },
+    "c4f7eb68e7523b75": {
+      "url": "/audio/chunk/c4f7eb68e7523b75.opus",
+      "kind": "chunk",
+      "text": "I don't understand",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0021",
+      "unitId": "b1_u1",
+      "durationMs": 2069,
+      "bytes": 7125
+    },
+    "fc0a8fa028363886": {
+      "url": "/audio/chunk/fc0a8fa028363886.opus",
+      "kind": "chunk",
+      "text": "I don't understand",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0021",
+      "unitId": "b1_u1",
+      "durationMs": 1440,
+      "bytes": 6946
+    },
+    "d84fa9d9266caff3": {
+      "url": "/audio/example/d84fa9d9266caff3.opus",
+      "kind": "example",
+      "text": "I'm sorry, I don't understand.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0021",
+      "unitId": "b1_u1",
+      "durationMs": 3253,
+      "bytes": 11449
+    },
+    "8ae4d2fa1bb9ac07": {
+      "url": "/audio/chunk/8ae4d2fa1bb9ac07.opus",
+      "kind": "chunk",
+      "text": "Can you repeat that?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0022",
+      "unitId": "b1_u1",
+      "durationMs": 1256,
+      "bytes": 5255
+    },
+    "d96c658b123f8a72": {
+      "url": "/audio/chunk/d96c658b123f8a72.opus",
+      "kind": "chunk",
+      "text": "Can you repeat that?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0022",
+      "unitId": "b1_u1",
+      "durationMs": 1758,
+      "bytes": 5477
+    },
+    "1d9135dc2e7744d6": {
+      "url": "/audio/chunk/1d9135dc2e7744d6.opus",
+      "kind": "chunk",
+      "text": "Can you repeat that?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0022",
+      "unitId": "b1_u1",
+      "durationMs": 1694,
+      "bytes": 5441
+    },
+    "6daf35c26fc0a562": {
+      "url": "/audio/chunk/6daf35c26fc0a562.opus",
+      "kind": "chunk",
+      "text": "Can you repeat that?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0022",
+      "unitId": "b1_u1",
+      "durationMs": 1219,
+      "bytes": 5226
+    },
+    "79e3e40235c50ec5": {
+      "url": "/audio/example/79e3e40235c50ec5.opus",
+      "kind": "example",
+      "text": "Excuse me. Can you repeat that, please?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0022",
+      "unitId": "b1_u1",
+      "durationMs": 4101,
+      "bytes": 13100
+    },
+    "214eaf1ec975500b": {
+      "url": "/audio/chunk/214eaf1ec975500b.opus",
+      "kind": "chunk",
+      "text": "How do you say that?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0023",
+      "unitId": "b1_u1",
+      "durationMs": 1335,
+      "bytes": 5561
+    },
+    "be80b9b711159c29": {
+      "url": "/audio/chunk/be80b9b711159c29.opus",
+      "kind": "chunk",
+      "text": "How do you say that?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0023",
+      "unitId": "b1_u1",
+      "durationMs": 1861,
+      "bytes": 6000
+    },
+    "8a3e239c62c31d5d": {
+      "url": "/audio/chunk/8a3e239c62c31d5d.opus",
+      "kind": "chunk",
+      "text": "How do you say that?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0023",
+      "unitId": "b1_u1",
+      "durationMs": 1797,
+      "bytes": 5900
+    },
+    "b1d204910847a090": {
+      "url": "/audio/chunk/b1d204910847a090.opus",
+      "kind": "chunk",
+      "text": "How do you say that?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0023",
+      "unitId": "b1_u1",
+      "durationMs": 1356,
+      "bytes": 5753
+    },
+    "251ab0905e2ed87d": {
+      "url": "/audio/example/251ab0905e2ed87d.opus",
+      "kind": "example",
+      "text": "Excuse me. How do you say that?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0023",
+      "unitId": "b1_u1",
+      "durationMs": 3509,
+      "bytes": 11229
+    },
+    "7a5cccfd0095421b": {
+      "url": "/audio/chunk/7a5cccfd0095421b.opus",
+      "kind": "chunk",
+      "text": "I'm from",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0024",
+      "unitId": "b1_u1",
+      "durationMs": 767,
+      "bytes": 3242
+    },
+    "25d66f162c04f97f": {
+      "url": "/audio/chunk/25d66f162c04f97f.opus",
+      "kind": "chunk",
+      "text": "I'm from",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0024",
+      "unitId": "b1_u1",
+      "durationMs": 1301,
+      "bytes": 4036
+    },
+    "f77e37d5c0819f62": {
+      "url": "/audio/chunk/f77e37d5c0819f62.opus",
+      "kind": "chunk",
+      "text": "I'm from",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0024",
+      "unitId": "b1_u1",
+      "durationMs": 1253,
+      "bytes": 3898
+    },
+    "11767cc3e2ec5607": {
+      "url": "/audio/chunk/11767cc3e2ec5607.opus",
+      "kind": "chunk",
+      "text": "I'm from",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0024",
+      "unitId": "b1_u1",
+      "durationMs": 868,
+      "bytes": 3576
+    },
+    "37041bd51866a73b": {
+      "url": "/audio/example/37041bd51866a73b.opus",
+      "kind": "example",
+      "text": "Hello. I'm from Mexico.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0024",
+      "unitId": "b1_u1",
+      "durationMs": 3109,
+      "bytes": 9496
+    },
+    "43f6c8a57a250cb6": {
+      "url": "/audio/chunk/43f6c8a57a250cb6.opus",
+      "kind": "chunk",
+      "text": "This is",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0025",
+      "unitId": "b1_u1",
+      "durationMs": 645,
+      "bytes": 2816
+    },
+    "0fec15929d95d717": {
+      "url": "/audio/chunk/0fec15929d95d717.opus",
+      "kind": "chunk",
+      "text": "This is",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0025",
+      "unitId": "b1_u1",
+      "durationMs": 1077,
+      "bytes": 3180
+    },
+    "5d538cd52f1b36a3": {
+      "url": "/audio/chunk/5d538cd52f1b36a3.opus",
+      "kind": "chunk",
+      "text": "This is",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0025",
+      "unitId": "b1_u1",
+      "durationMs": 1029,
+      "bytes": 3123
+    },
+    "827860a77a593540": {
+      "url": "/audio/chunk/827860a77a593540.opus",
+      "kind": "chunk",
+      "text": "This is",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0025",
+      "unitId": "b1_u1",
+      "durationMs": 713,
+      "bytes": 3150
+    },
+    "b6e8da2bc8710e25": {
+      "url": "/audio/example/b6e8da2bc8710e25.opus",
+      "kind": "example",
+      "text": "Ana, this is Miguel.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0025",
+      "unitId": "b1_u1",
+      "durationMs": 2133,
+      "bytes": 6757
+    },
+    "3eccd69a187eeb08": {
+      "url": "/audio/scene_line/3eccd69a187eeb08.opus",
+      "kind": "scene_line",
+      "text": "Hello.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 604,
+      "bytes": 2507
+    },
+    "09970383e98ddd07": {
+      "url": "/audio/scene_line/09970383e98ddd07.opus",
+      "kind": "scene_line",
+      "text": "Hello.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1061,
+      "bytes": 3123
+    },
+    "0ab524fb127a5a14": {
+      "url": "/audio/scene_line/0ab524fb127a5a14.opus",
+      "kind": "scene_line",
+      "text": "My name is Ana. What's your name?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2168,
+      "bytes": 8667
+    },
+    "ed5326859e62f26a": {
+      "url": "/audio/scene_line/ed5326859e62f26a.opus",
+      "kind": "scene_line",
+      "text": "My name is Miguel.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1877,
+      "bytes": 5952
+    },
+    "a78aeb5efaf46512": {
+      "url": "/audio/scene_line/a78aeb5efaf46512.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Miguel.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1936,
+      "bytes": 8279
+    },
+    "9d24b619d7b30846": {
+      "url": "/audio/scene_line/9d24b619d7b30846.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Ana.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2213,
+      "bytes": 6882
+    },
+    "ad6a4e16cd486c37": {
+      "url": "/audio/scene_line/ad6a4e16cd486c37.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you. And you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3397,
+      "bytes": 11837
+    },
+    "18ef338897809bca": {
+      "url": "/audio/scene_line/18ef338897809bca.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1696,
+      "bytes": 6800
+    },
+    "1c18b650dd12ec75": {
+      "url": "/audio/scene_line/1c18b650dd12ec75.opus",
+      "kind": "scene_line",
+      "text": "Miguel, this is Carlos.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1854,
+      "bytes": 7472
+    },
+    "5267c22e66f69ff8": {
+      "url": "/audio/scene_line/5267c22e66f69ff8.opus",
+      "kind": "scene_line",
+      "text": "Hello, Carlos. Nice to meet you.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3685,
+      "bytes": 11216
+    },
+    "9e2f8b0879b79d7b": {
+      "url": "/audio/scene_line/9e2f8b0879b79d7b.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Miguel. How are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3829,
+      "bytes": 11856
+    },
+    "a4e252e6d767c687": {
+      "url": "/audio/scene_line/a4e252e6d767c687.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2325,
+      "bytes": 8835
+    },
+    "b0a45bf82d2fc3bb": {
+      "url": "/audio/scene_line/b0a45bf82d2fc3bb.opus",
+      "kind": "scene_line",
+      "text": "Goodbye, Miguel. See you later.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2553,
+      "bytes": 10048
+    },
+    "a9970211823461d7": {
+      "url": "/audio/scene_line/a9970211823461d7.opus",
+      "kind": "scene_line",
+      "text": "Goodbye, Ana. Goodbye, Carlos.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3924,
+      "bytes": 11857
+    },
+    "ba8dd535cacbbef6": {
+      "url": "/audio/scene_line/ba8dd535cacbbef6.opus",
+      "kind": "scene_line",
+      "text": "Goodbye.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0001",
+      "unitId": "b1_u1",
+      "durationMs": 1188,
+      "bytes": 3554
+    },
+    "4d9b581b4ee212a5": {
+      "url": "/audio/scene_line/4d9b581b4ee212a5.opus",
+      "kind": "scene_line",
+      "text": "Good morning.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 1316,
+      "bytes": 4295
+    },
+    "008b1f8dc17609fe": {
+      "url": "/audio/scene_line/008b1f8dc17609fe.opus",
+      "kind": "scene_line",
+      "text": "Good morning. How are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2596,
+      "bytes": 7786
+    },
+    "caec8dc6a3ffd06e": {
+      "url": "/audio/scene_line/caec8dc6a3ffd06e.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you. And you?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3269,
+      "bytes": 10514
+    },
+    "f764f11bae639dcb": {
+      "url": "/audio/scene_line/f764f11bae639dcb.opus",
+      "kind": "scene_line",
+      "text": "Excuse me. What's your name?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3061,
+      "bytes": 9655
+    },
+    "d5c5dfb2590a6c6f": {
+      "url": "/audio/scene_line/d5c5dfb2590a6c6f.opus",
+      "kind": "scene_line",
+      "text": "My name is Maria. And you?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3045,
+      "bytes": 10308
+    },
+    "8c9f6451d30ed850": {
+      "url": "/audio/scene_line/8c9f6451d30ed850.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Miguel.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2357,
+      "bytes": 7770
+    },
+    "fe477d415ad4a028": {
+      "url": "/audio/scene_line/fe477d415ad4a028.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Maria.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2645,
+      "bytes": 8569
+    },
+    "0c042d3ab741765e": {
+      "url": "/audio/scene_line/0c042d3ab741765e.opus",
+      "kind": "scene_line",
+      "text": "I'm from Mexico. And you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2981,
+      "bytes": 9234
+    },
+    "de1a6f59c0e529e9": {
+      "url": "/audio/scene_line/de1a6f59c0e529e9.opus",
+      "kind": "scene_line",
+      "text": "I'm from Texas.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 1765,
+      "bytes": 5960
+    },
+    "834315aaaa9ac6e8": {
+      "url": "/audio/scene_line/834315aaaa9ac6e8.opus",
+      "kind": "scene_line",
+      "text": "Miguel, this is Rosa.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2357,
+      "bytes": 7946
+    },
+    "a45c457faa2b6d32": {
+      "url": "/audio/scene_line/a45c457faa2b6d32.opus",
+      "kind": "scene_line",
+      "text": "Hello, Miguel. Nice to meet you.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3653,
+      "bytes": 12902
+    },
+    "322cc78e7d66b3eb": {
+      "url": "/audio/scene_line/322cc78e7d66b3eb.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2517,
+      "bytes": 8093
+    },
+    "620c65e23df52a8e": {
+      "url": "/audio/scene_line/620c65e23df52a8e.opus",
+      "kind": "scene_line",
+      "text": "Good morning, Maria.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2500,
+      "bytes": 9281
+    },
+    "04297a51c36fb95b": {
+      "url": "/audio/scene_line/04297a51c36fb95b.opus",
+      "kind": "scene_line",
+      "text": "Good morning, Rosa. Goodbye, Miguel. See you later.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 5508,
+      "bytes": 17826
+    },
+    "165d7397316b6f54": {
+      "url": "/audio/scene_line/165d7397316b6f54.opus",
+      "kind": "scene_line",
+      "text": "Goodbye.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0002",
+      "unitId": "b1_u1",
+      "durationMs": 1140,
+      "bytes": 3401
+    },
+    "5092d8245ccbb7ea": {
+      "url": "/audio/scene_line/5092d8245ccbb7ea.opus",
+      "kind": "scene_line",
+      "text": "Hello. What's your name?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1903,
+      "bytes": 7477
+    },
+    "ad4f0eadee076cdb": {
+      "url": "/audio/scene_line/ad4f0eadee076cdb.opus",
+      "kind": "scene_line",
+      "text": "I'm sorry. I don't understand.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 3445,
+      "bytes": 11332
+    },
+    "ba2a6ab5999f323c": {
+      "url": "/audio/scene_line/ba2a6ab5999f323c.opus",
+      "kind": "scene_line",
+      "text": "Can you repeat that, please?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 2414,
+      "bytes": 7678
+    },
+    "16b9cf2437066838": {
+      "url": "/audio/scene_line/16b9cf2437066838.opus",
+      "kind": "scene_line",
+      "text": "What is your name?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1134,
+      "bytes": 4697
+    },
+    "e6d6e2b87d76bc69": {
+      "url": "/audio/scene_line/e6d6e2b87d76bc69.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Miguel. My name is Tom.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 3619,
+      "bytes": 14297
+    },
+    "a15e3e2660706d3c": {
+      "url": "/audio/scene_line/a15e3e2660706d3c.opus",
+      "kind": "scene_line",
+      "text": "I'm sorry. Can you repeat that, please?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 3733,
+      "bytes": 11751
+    },
+    "69ff911bcc135a5b": {
+      "url": "/audio/scene_line/69ff911bcc135a5b.opus",
+      "kind": "scene_line",
+      "text": "Tom. My name is Tom.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1973,
+      "bytes": 7654
+    },
+    "eb9571a7925eb9bd": {
+      "url": "/audio/scene_line/eb9571a7925eb9bd.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Tom.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 2405,
+      "bytes": 7638
+    },
+    "ceffe75e69b840bd": {
+      "url": "/audio/scene_line/ceffe75e69b840bd.opus",
+      "kind": "scene_line",
+      "text": "How are you, Miguel?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1763,
+      "bytes": 6855
+    },
+    "747f9d5fa3fdbb89": {
+      "url": "/audio/scene_line/747f9d5fa3fdbb89.opus",
+      "kind": "scene_line",
+      "text": "I'm sorry, I don't understand. How do you say that?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 4965,
+      "bytes": 16462
+    },
+    "2444ce11b7c23af2": {
+      "url": "/audio/scene_line/2444ce11b7c23af2.opus",
+      "kind": "scene_line",
+      "text": "I'm fine. Thank you, Miguel.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 2818,
+      "bytes": 10786
+    },
+    "ec1c292ff4620a28": {
+      "url": "/audio/scene_line/ec1c292ff4620a28.opus",
+      "kind": "scene_line",
+      "text": "You're welcome. Goodbye, Tom.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 3205,
+      "bytes": 9628
+    },
+    "85580d3509654587": {
+      "url": "/audio/scene_line/85580d3509654587.opus",
+      "kind": "scene_line",
+      "text": "Goodbye. See you later.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0003",
+      "unitId": "b1_u1",
+      "durationMs": 1993,
+      "bytes": 8125
+    },
+    "6d43c910e723a940": {
+      "url": "/audio/scene_line/6d43c910e723a940.opus",
+      "kind": "scene_line",
+      "text": "Hi. My name is Carlos.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3109,
+      "bytes": 9828
+    },
+    "09b7cfc093bde377": {
+      "url": "/audio/scene_line/09b7cfc093bde377.opus",
+      "kind": "scene_line",
+      "text": "Hi Carlos. My name is Rosa.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3829,
+      "bytes": 13888
+    },
+    "8c792152b5b9e733": {
+      "url": "/audio/scene_line/8c792152b5b9e733.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Rosa. How are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3925,
+      "bytes": 12353
+    },
+    "00b239b513d5b1df": {
+      "url": "/audio/scene_line/00b239b513d5b1df.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you. And you?",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3541,
+      "bytes": 12526
+    },
+    "ae52bbbf9c32c143": {
+      "url": "/audio/scene_line/ae52bbbf9c32c143.opus",
+      "kind": "scene_line",
+      "text": "I'm fine.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 1445,
+      "bytes": 4881
+    },
+    "c1a8cbc8aaa2abb1": {
+      "url": "/audio/scene_line/c1a8cbc8aaa2abb1.opus",
+      "kind": "scene_line",
+      "text": "Carlos, I'm from Peru. And you?",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3774,
+      "bytes": 13310
+    },
+    "4e62ff1724cb89fe": {
+      "url": "/audio/scene_line/4e62ff1724cb89fe.opus",
+      "kind": "scene_line",
+      "text": "I'm from Colombia.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 2485,
+      "bytes": 8156
+    },
+    "3c3b1ee505efd4c7": {
+      "url": "/audio/scene_line/3c3b1ee505efd4c7.opus",
+      "kind": "scene_line",
+      "text": "Nice.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 1093,
+      "bytes": 3404
+    },
+    "ef3f9d1d038a8534": {
+      "url": "/audio/scene_line/ef3f9d1d038a8534.opus",
+      "kind": "scene_line",
+      "text": "Rosa, this is Ana. Ana is from Mexico.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 4453,
+      "bytes": 15042
+    },
+    "3893316f1611fcd9": {
+      "url": "/audio/scene_line/3893316f1611fcd9.opus",
+      "kind": "scene_line",
+      "text": "Hello, Rosa. Nice to meet you.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 2868,
+      "bytes": 11284
+    },
+    "ba094ff5b6f797ae": {
+      "url": "/audio/scene_line/ba094ff5b6f797ae.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Ana.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 2309,
+      "bytes": 8224
+    },
+    "66ef5d12f8e9264e": {
+      "url": "/audio/scene_line/66ef5d12f8e9264e.opus",
+      "kind": "scene_line",
+      "text": "Good night, Rosa. Good night, Ana.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 4228,
+      "bytes": 13222
+    },
+    "6879e47e2820f365": {
+      "url": "/audio/scene_line/6879e47e2820f365.opus",
+      "kind": "scene_line",
+      "text": "Good night, Carlos. See you later.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 3908,
+      "bytes": 13647
+    },
+    "20a503e1bcf559dd": {
+      "url": "/audio/scene_line/20a503e1bcf559dd.opus",
+      "kind": "scene_line",
+      "text": "Goodbye.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0004",
+      "unitId": "b1_u1",
+      "durationMs": 625,
+      "bytes": 2705
+    },
+    "56bb428f3be13146": {
+      "url": "/audio/scene_line/56bb428f3be13146.opus",
+      "kind": "scene_line",
+      "text": "Excuse me.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 1525,
+      "bytes": 4921
+    },
+    "56257bef570363a0": {
+      "url": "/audio/scene_line/56257bef570363a0.opus",
+      "kind": "scene_line",
+      "text": "Yes?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 933,
+      "bytes": 2697
+    },
+    "ad59999bb83617c7": {
+      "url": "/audio/scene_line/ad59999bb83617c7.opus",
+      "kind": "scene_line",
+      "text": "My name is Maria.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 2021,
+      "bytes": 7275
+    },
+    "f28c2159c4cae62b": {
+      "url": "/audio/scene_line/f28c2159c4cae62b.opus",
+      "kind": "scene_line",
+      "text": "Maria. My name is Maria.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 3317,
+      "bytes": 11481
+    },
+    "caba9331e6da2a4f": {
+      "url": "/audio/scene_line/caba9331e6da2a4f.opus",
+      "kind": "scene_line",
+      "text": "Thank you, Maria. My name is Miguel.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 4117,
+      "bytes": 13138
+    },
+    "d82b438274310bf6": {
+      "url": "/audio/scene_line/d82b438274310bf6.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 1637,
+      "bytes": 5117
+    },
+    "5ef75e196cb62d7c": {
+      "url": "/audio/scene_line/5ef75e196cb62d7c.opus",
+      "kind": "scene_line",
+      "text": "How are you, Miguel?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 2005,
+      "bytes": 6499
+    },
+    "c5d66bb6f3e3acdf": {
+      "url": "/audio/scene_line/c5d66bb6f3e3acdf.opus",
+      "kind": "scene_line",
+      "text": "I'm fine, thank you.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 2245,
+      "bytes": 7464
+    },
+    "91b5d11a447b35da": {
+      "url": "/audio/scene_line/91b5d11a447b35da.opus",
+      "kind": "scene_line",
+      "text": "Maria, I'm from Mexico. And you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 4005,
+      "bytes": 13521
+    },
+    "af6375d719d1dc97": {
+      "url": "/audio/scene_line/af6375d719d1dc97.opus",
+      "kind": "scene_line",
+      "text": "Thank you, Maria.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 2245,
+      "bytes": 7203
+    },
+    "6b9b1e1e7f0532ec": {
+      "url": "/audio/scene_line/6b9b1e1e7f0532ec.opus",
+      "kind": "scene_line",
+      "text": "You're welcome. Goodbye, Miguel. See you later.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 4549,
+      "bytes": 14366
+    },
+    "816b1db71532e747": {
+      "url": "/audio/scene_line/816b1db71532e747.opus",
+      "kind": "scene_line",
+      "text": "Goodbye, Maria.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0005",
+      "unitId": "b1_u1",
+      "durationMs": 2196,
+      "bytes": 6909
+    },
+    "73011f57896fa043": {
+      "url": "/audio/scene_line/73011f57896fa043.opus",
+      "kind": "scene_line",
+      "text": "Good afternoon, Miguel.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 2740,
+      "bytes": 9994
+    },
+    "05c94abb9d6274cc": {
+      "url": "/audio/scene_line/05c94abb9d6274cc.opus",
+      "kind": "scene_line",
+      "text": "Good afternoon, Rosa. How are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3956,
+      "bytes": 12556
+    },
+    "ba6a98de2f4b85e8": {
+      "url": "/audio/scene_line/ba6a98de2f4b85e8.opus",
+      "kind": "scene_line",
+      "text": "Miguel, this is Tom. Tom is from England.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 4533,
+      "bytes": 16517
+    },
+    "a567068073194958": {
+      "url": "/audio/scene_line/a567068073194958.opus",
+      "kind": "scene_line",
+      "text": "Hello, Tom. Nice to meet you.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3461,
+      "bytes": 10495
+    },
+    "ecaa136f35f15676": {
+      "url": "/audio/scene_line/ecaa136f35f15676.opus",
+      "kind": "scene_line",
+      "text": "Nice to meet you, Miguel. How are you?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3248,
+      "bytes": 12789
+    },
+    "4817399c8ed1c833": {
+      "url": "/audio/scene_line/4817399c8ed1c833.opus",
+      "kind": "scene_line",
+      "text": "I'm fine.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 845,
+      "bytes": 3466
+    },
+    "0ddb3e140d42964f": {
+      "url": "/audio/scene_line/0ddb3e140d42964f.opus",
+      "kind": "scene_line",
+      "text": "Tom, I'm from Mexico.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 2654,
+      "bytes": 8712
+    },
+    "6471321a63461cac": {
+      "url": "/audio/scene_line/6471321a63461cac.opus",
+      "kind": "scene_line",
+      "text": "I'm sorry. Can you repeat that, please?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3120,
+      "bytes": 12177
+    },
+    "881b76969ae14224": {
+      "url": "/audio/scene_line/881b76969ae14224.opus",
+      "kind": "scene_line",
+      "text": "Mexico. I'm from Mexico.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3381,
+      "bytes": 10647
+    },
+    "47067b9c38903b46": {
+      "url": "/audio/scene_line/47067b9c38903b46.opus",
+      "kind": "scene_line",
+      "text": "Nice. Thank you.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 1784,
+      "bytes": 7048
+    },
+    "bf9e6ce78b04e71c": {
+      "url": "/audio/scene_line/bf9e6ce78b04e71c.opus",
+      "kind": "scene_line",
+      "text": "Good night, Miguel. Good night, Tom.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 4340,
+      "bytes": 15204
+    },
+    "66cb869d614926cb": {
+      "url": "/audio/scene_line/66cb869d614926cb.opus",
+      "kind": "scene_line",
+      "text": "Good night, Rosa. See you later.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 3652,
+      "bytes": 11558
+    },
+    "417d45589fcbe92f": {
+      "url": "/audio/scene_line/417d45589fcbe92f.opus",
+      "kind": "scene_line",
+      "text": "Good night. Goodbye.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0006",
+      "unitId": "b1_u1",
+      "durationMs": 1738,
+      "bytes": 7018
+    }
+  },
+  "scenes": {
+    "s_0001": {
+      "url": "/audio/scene/5a9faf2ed52edec7.opus",
+      "unitId": "b1_u1",
+      "durationMs": 41364,
+      "bytes": 136354,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 604,
+          "character": "ana",
+          "en": "Hello."
+        },
+        {
+          "start_ms": 1024,
+          "end_ms": 2085,
+          "character": "miguel",
+          "en": "Hello."
+        },
+        {
+          "start_ms": 2505,
+          "end_ms": 4673,
+          "character": "ana",
+          "en": "My name is Ana. What's your name?"
+        },
+        {
+          "start_ms": 5093,
+          "end_ms": 6970,
+          "character": "miguel",
+          "en": "My name is Miguel."
+        },
+        {
+          "start_ms": 7390,
+          "end_ms": 9326,
+          "character": "ana",
+          "en": "Nice to meet you, Miguel."
+        },
+        {
+          "start_ms": 9746,
+          "end_ms": 11959,
+          "character": "miguel",
+          "en": "Nice to meet you, Ana."
+        },
+        {
+          "start_ms": 12379,
+          "end_ms": 13029,
+          "character": "ana",
+          "en": "How are you?"
+        },
+        {
+          "start_ms": 13449,
+          "end_ms": 16846,
+          "character": "miguel",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 17266,
+          "end_ms": 18962,
+          "character": "ana",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 19382,
+          "end_ms": 21236,
+          "character": "ana",
+          "en": "Miguel, this is Carlos."
+        },
+        {
+          "start_ms": 21656,
+          "end_ms": 25341,
+          "character": "miguel",
+          "en": "Hello, Carlos. Nice to meet you."
+        },
+        {
+          "start_ms": 25761,
+          "end_ms": 29590,
+          "character": "carlos",
+          "en": "Nice to meet you, Miguel. How are you?"
+        },
+        {
+          "start_ms": 30010,
+          "end_ms": 32335,
+          "character": "miguel",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 32755,
+          "end_ms": 35308,
+          "character": "ana",
+          "en": "Goodbye, Miguel. See you later."
+        },
+        {
+          "start_ms": 35728,
+          "end_ms": 39652,
+          "character": "miguel",
+          "en": "Goodbye, Ana. Goodbye, Carlos."
+        },
+        {
+          "start_ms": 40072,
+          "end_ms": 41260,
+          "character": "carlos",
+          "en": "Goodbye."
+        }
+      ]
+    },
+    "s_0002": {
+      "url": "/audio/scene/fd540321904ce9fc.opus",
+      "unitId": "b1_u1",
+      "durationMs": 51743,
+      "bytes": 167310,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1316,
+          "character": "maria",
+          "en": "Good morning."
+        },
+        {
+          "start_ms": 1736,
+          "end_ms": 4332,
+          "character": "miguel",
+          "en": "Good morning. How are you?"
+        },
+        {
+          "start_ms": 4752,
+          "end_ms": 8021,
+          "character": "maria",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 8441,
+          "end_ms": 10766,
+          "character": "miguel",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 11186,
+          "end_ms": 14247,
+          "character": "miguel",
+          "en": "Excuse me. What's your name?"
+        },
+        {
+          "start_ms": 14667,
+          "end_ms": 17712,
+          "character": "maria",
+          "en": "My name is Maria. And you?"
+        },
+        {
+          "start_ms": 18132,
+          "end_ms": 20009,
+          "character": "miguel",
+          "en": "My name is Miguel."
+        },
+        {
+          "start_ms": 20429,
+          "end_ms": 22786,
+          "character": "maria",
+          "en": "Nice to meet you, Miguel."
+        },
+        {
+          "start_ms": 23206,
+          "end_ms": 25851,
+          "character": "miguel",
+          "en": "Nice to meet you, Maria."
+        },
+        {
+          "start_ms": 26271,
+          "end_ms": 29252,
+          "character": "miguel",
+          "en": "I'm from Mexico. And you?"
+        },
+        {
+          "start_ms": 29672,
+          "end_ms": 31437,
+          "character": "maria",
+          "en": "I'm from Texas."
+        },
+        {
+          "start_ms": 31857,
+          "end_ms": 34214,
+          "character": "maria",
+          "en": "Miguel, this is Rosa."
+        },
+        {
+          "start_ms": 34634,
+          "end_ms": 38287,
+          "character": "rosa",
+          "en": "Hello, Miguel. Nice to meet you."
+        },
+        {
+          "start_ms": 38707,
+          "end_ms": 41224,
+          "character": "miguel",
+          "en": "Nice to meet you, Rosa."
+        },
+        {
+          "start_ms": 41644,
+          "end_ms": 44144,
+          "character": "rosa",
+          "en": "Good morning, Maria."
+        },
+        {
+          "start_ms": 44564,
+          "end_ms": 50072,
+          "character": "maria",
+          "en": "Good morning, Rosa. Goodbye, Miguel. See you later."
+        },
+        {
+          "start_ms": 50492,
+          "end_ms": 51632,
+          "character": "miguel",
+          "en": "Goodbye."
+        }
+      ]
+    },
+    "s_0003": {
+      "url": "/audio/scene/0eda759950faef0e.opus",
+      "unitId": "b1_u1",
+      "durationMs": 49409,
+      "bytes": 166729,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1903,
+          "character": "tom",
+          "en": "Hello. What's your name?"
+        },
+        {
+          "start_ms": 2323,
+          "end_ms": 5768,
+          "character": "miguel",
+          "en": "I'm sorry. I don't understand."
+        },
+        {
+          "start_ms": 6188,
+          "end_ms": 7264,
+          "character": "tom",
+          "en": "What's your name?"
+        },
+        {
+          "start_ms": 7684,
+          "end_ms": 10098,
+          "character": "miguel",
+          "en": "Can you repeat that, please?"
+        },
+        {
+          "start_ms": 10518,
+          "end_ms": 11652,
+          "character": "tom",
+          "en": "What is your name?"
+        },
+        {
+          "start_ms": 12072,
+          "end_ms": 13949,
+          "character": "miguel",
+          "en": "My name is Miguel."
+        },
+        {
+          "start_ms": 14369,
+          "end_ms": 17988,
+          "character": "tom",
+          "en": "Nice to meet you, Miguel. My name is Tom."
+        },
+        {
+          "start_ms": 18408,
+          "end_ms": 22141,
+          "character": "miguel",
+          "en": "I'm sorry. Can you repeat that, please?"
+        },
+        {
+          "start_ms": 22561,
+          "end_ms": 24534,
+          "character": "tom",
+          "en": "Tom. My name is Tom."
+        },
+        {
+          "start_ms": 24954,
+          "end_ms": 27359,
+          "character": "miguel",
+          "en": "Nice to meet you, Tom."
+        },
+        {
+          "start_ms": 27779,
+          "end_ms": 29542,
+          "character": "tom",
+          "en": "How are you, Miguel?"
+        },
+        {
+          "start_ms": 29962,
+          "end_ms": 34927,
+          "character": "miguel",
+          "en": "I'm sorry, I don't understand. How do you say that?"
+        },
+        {
+          "start_ms": 35347,
+          "end_ms": 36204,
+          "character": "tom",
+          "en": "How are you?"
+        },
+        {
+          "start_ms": 36624,
+          "end_ms": 40021,
+          "character": "miguel",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 40441,
+          "end_ms": 43259,
+          "character": "tom",
+          "en": "I'm fine. Thank you, Miguel."
+        },
+        {
+          "start_ms": 43679,
+          "end_ms": 46884,
+          "character": "miguel",
+          "en": "You're welcome. Goodbye, Tom."
+        },
+        {
+          "start_ms": 47304,
+          "end_ms": 49297,
+          "character": "tom",
+          "en": "Goodbye. See you later."
+        }
+      ]
+    },
+    "s_0004": {
+      "url": "/audio/scene/bbadd7fd5efbaf66.opus",
+      "unitId": "b1_u1",
+      "durationMs": 54310,
+      "bytes": 182781,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3109,
+          "character": "carlos",
+          "en": "Hi. My name is Carlos."
+        },
+        {
+          "start_ms": 3529,
+          "end_ms": 7358,
+          "character": "rosa",
+          "en": "Hi Carlos. My name is Rosa."
+        },
+        {
+          "start_ms": 7778,
+          "end_ms": 11703,
+          "character": "carlos",
+          "en": "Nice to meet you, Rosa. How are you?"
+        },
+        {
+          "start_ms": 12123,
+          "end_ms": 15664,
+          "character": "rosa",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 16084,
+          "end_ms": 17529,
+          "character": "carlos",
+          "en": "I'm fine."
+        },
+        {
+          "start_ms": 17949,
+          "end_ms": 21723,
+          "character": "rosa",
+          "en": "Carlos, I'm from Peru. And you?"
+        },
+        {
+          "start_ms": 22143,
+          "end_ms": 24628,
+          "character": "carlos",
+          "en": "I'm from Colombia."
+        },
+        {
+          "start_ms": 25048,
+          "end_ms": 26141,
+          "character": "rosa",
+          "en": "Nice."
+        },
+        {
+          "start_ms": 26561,
+          "end_ms": 31014,
+          "character": "carlos",
+          "en": "Rosa, this is Ana. Ana is from Mexico."
+        },
+        {
+          "start_ms": 31434,
+          "end_ms": 34302,
+          "character": "ana",
+          "en": "Hello, Rosa. Nice to meet you."
+        },
+        {
+          "start_ms": 34722,
+          "end_ms": 37031,
+          "character": "rosa",
+          "en": "Nice to meet you, Ana."
+        },
+        {
+          "start_ms": 37451,
+          "end_ms": 38101,
+          "character": "ana",
+          "en": "How are you?"
+        },
+        {
+          "start_ms": 38521,
+          "end_ms": 42062,
+          "character": "rosa",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 42482,
+          "end_ms": 44178,
+          "character": "ana",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 44598,
+          "end_ms": 48826,
+          "character": "carlos",
+          "en": "Good night, Rosa. Good night, Ana."
+        },
+        {
+          "start_ms": 49246,
+          "end_ms": 53154,
+          "character": "rosa",
+          "en": "Good night, Carlos. See you later."
+        },
+        {
+          "start_ms": 53574,
+          "end_ms": 54199,
+          "character": "ana",
+          "en": "Goodbye."
+        }
+      ]
+    },
+    "s_0005": {
+      "url": "/audio/scene/8a782907fc1b9c06.opus",
+      "unitId": "b1_u1",
+      "durationMs": 50418,
+      "bytes": 161272,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1525,
+          "character": "miguel",
+          "en": "Excuse me."
+        },
+        {
+          "start_ms": 1945,
+          "end_ms": 2878,
+          "character": "maria",
+          "en": "Yes?"
+        },
+        {
+          "start_ms": 3298,
+          "end_ms": 4839,
+          "character": "miguel",
+          "en": "What's your name?"
+        },
+        {
+          "start_ms": 5259,
+          "end_ms": 7280,
+          "character": "maria",
+          "en": "My name is Maria."
+        },
+        {
+          "start_ms": 7700,
+          "end_ms": 11433,
+          "character": "miguel",
+          "en": "I'm sorry. Can you repeat that, please?"
+        },
+        {
+          "start_ms": 11853,
+          "end_ms": 15170,
+          "character": "maria",
+          "en": "Maria. My name is Maria."
+        },
+        {
+          "start_ms": 15590,
+          "end_ms": 19707,
+          "character": "miguel",
+          "en": "Thank you, Maria. My name is Miguel."
+        },
+        {
+          "start_ms": 20127,
+          "end_ms": 22484,
+          "character": "maria",
+          "en": "Nice to meet you, Miguel."
+        },
+        {
+          "start_ms": 22904,
+          "end_ms": 24541,
+          "character": "miguel",
+          "en": "Nice to meet you."
+        },
+        {
+          "start_ms": 24961,
+          "end_ms": 26966,
+          "character": "maria",
+          "en": "How are you, Miguel?"
+        },
+        {
+          "start_ms": 27386,
+          "end_ms": 30783,
+          "character": "miguel",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 31203,
+          "end_ms": 33448,
+          "character": "maria",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 33868,
+          "end_ms": 37873,
+          "character": "miguel",
+          "en": "Maria, I'm from Mexico. And you?"
+        },
+        {
+          "start_ms": 38293,
+          "end_ms": 40058,
+          "character": "maria",
+          "en": "I'm from Texas."
+        },
+        {
+          "start_ms": 40478,
+          "end_ms": 42723,
+          "character": "miguel",
+          "en": "Thank you, Maria."
+        },
+        {
+          "start_ms": 43143,
+          "end_ms": 47692,
+          "character": "maria",
+          "en": "You're welcome. Goodbye, Miguel. See you later."
+        },
+        {
+          "start_ms": 48112,
+          "end_ms": 50308,
+          "character": "miguel",
+          "en": "Goodbye, Maria."
+        }
+      ]
+    },
+    "s_0006": {
+      "url": "/audio/scene/55c11ccaea3ff21f.opus",
+      "unitId": "b1_u1",
+      "durationMs": 55120,
+      "bytes": 187064,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 2740,
+          "character": "rosa",
+          "en": "Good afternoon, Miguel."
+        },
+        {
+          "start_ms": 3160,
+          "end_ms": 7116,
+          "character": "miguel",
+          "en": "Good afternoon, Rosa. How are you?"
+        },
+        {
+          "start_ms": 7536,
+          "end_ms": 11077,
+          "character": "rosa",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 11497,
+          "end_ms": 13822,
+          "character": "miguel",
+          "en": "I'm fine, thank you."
+        },
+        {
+          "start_ms": 14242,
+          "end_ms": 18775,
+          "character": "rosa",
+          "en": "Miguel, this is Tom. Tom is from England."
+        },
+        {
+          "start_ms": 19195,
+          "end_ms": 22656,
+          "character": "miguel",
+          "en": "Hello, Tom. Nice to meet you."
+        },
+        {
+          "start_ms": 23076,
+          "end_ms": 26324,
+          "character": "tom",
+          "en": "Nice to meet you, Miguel. How are you?"
+        },
+        {
+          "start_ms": 26744,
+          "end_ms": 30141,
+          "character": "miguel",
+          "en": "I'm fine, thank you. And you?"
+        },
+        {
+          "start_ms": 30561,
+          "end_ms": 31406,
+          "character": "tom",
+          "en": "I'm fine."
+        },
+        {
+          "start_ms": 31826,
+          "end_ms": 34480,
+          "character": "miguel",
+          "en": "Tom, I'm from Mexico."
+        },
+        {
+          "start_ms": 34900,
+          "end_ms": 38020,
+          "character": "tom",
+          "en": "I'm sorry. Can you repeat that, please?"
+        },
+        {
+          "start_ms": 38440,
+          "end_ms": 41821,
+          "character": "miguel",
+          "en": "Mexico. I'm from Mexico."
+        },
+        {
+          "start_ms": 42241,
+          "end_ms": 44025,
+          "character": "tom",
+          "en": "Nice. Thank you."
+        },
+        {
+          "start_ms": 44445,
+          "end_ms": 48785,
+          "character": "rosa",
+          "en": "Good night, Miguel. Good night, Tom."
+        },
+        {
+          "start_ms": 49205,
+          "end_ms": 52857,
+          "character": "miguel",
+          "en": "Good night, Rosa. See you later."
+        },
+        {
+          "start_ms": 53277,
+          "end_ms": 55015,
+          "character": "tom",
+          "en": "Good night. Goodbye."
+        }
+      ]
+    }
+  },
+  "recordings": {},
+  "voiceProbes": {
+    "us_f_1": "728ac77d690b9003",
+    "us_m_1": "ae84ca6730e227c1",
+    "us_m_2": "7e922a45da64c9f7",
+    "us_f_2": "f11071eb87e15b4f",
+    "us_f_3": "0ad7bd3322c1ca97",
+    "uk_m_1": "52b624c8065bd553"
+  }
+}

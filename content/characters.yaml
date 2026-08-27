@@ -1,0 +1,67 @@
+# The cast (PRD 4.3, D23).
+#
+# All six blocks are one continuous story: Miguel arrives in a new city, finds
+# work, makes friends, and runs into problems. Every scene, dialogue and mission
+# sits inside that world, and the same six people recur throughout it.
+#
+# The rule that makes it work: ONE VOICE PER CHARACTER, ALWAYS. A learner who
+# hears Ana in unit 3 and again in unit 22 has to recognise her before she says
+# her name. That recognition is free immersion, and it is destroyed the moment a
+# character's voice drifts -- so `voice` here is the single source of truth and
+# the audio pipeline never picks a voice by any other means.
+#
+# Scene transcripts address characters by these ids, capitalised:
+#
+#   ANA: Good morning, Miguel.
+#   MIGUEL: Good morning.
+#
+# A speaker tag that is not a character id is a hard validation failure. That is
+# deliberate: it is how anonymous `A:` / `B:` walk-ons stay out of the story.
+
+version: 1
+
+characters:
+  - id: miguel
+    name: Miguel
+    voice: us_m_1
+    role_es: "El protagonista. Acaba de llegar a la ciudad y está aprendiendo inglés, igual que tú."
+    role_en: "The protagonist. Newly arrived, learning English — the learner's counterpart in the story."
+    # Miguel is the one character the learner is invited to identify with, so he
+    # is allowed to struggle, ask for repetition, and get things wrong on the
+    # audio. PRD 4.4 framing: being understood, never sounding native.
+    speaks_english: learner
+
+  - id: ana
+    name: Ana
+    voice: us_f_1
+    role_es: "La vecina de Miguel. Paciente, repite las cosas sin que se lo pidas."
+    role_en: "Miguel's neighbour. Patient; repeats things unasked."
+    speaks_english: native
+
+  - id: carlos
+    name: Carlos
+    voice: us_m_2
+    role_es: "Compañero de trabajo. Lleva diez años aquí y cambia entre los dos idiomas."
+    role_en: "Coworker. Ten years in the country, switches between both languages."
+    speaks_english: native
+
+  - id: maria
+    name: Maria
+    voice: us_f_2
+    role_es: "Lleva el café de la esquina. Habla rápido y con cariño."
+    role_en: "Runs the café on the corner. Fast, warm."
+    speaks_english: native
+
+  - id: rosa
+    name: Rosa
+    voice: us_f_3
+    role_es: "La supervisora en el trabajo. Directa, clara, nunca cruel."
+    role_en: "Supervisor at work. Direct, clear, never unkind."
+    speaks_english: native
+
+  - id: tom
+    name: Tom
+    voice: uk_m_1
+    role_es: "Amigo inglés. Su acento es distinto, y eso es parte de la lección."
+    role_en: "English friend. His accent differs on purpose — that is part of the lesson."
+    speaks_english: native

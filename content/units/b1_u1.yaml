@@ -1,0 +1,483 @@
+# Block 1, Unit 1 -- the very first thing a learner at zero ever sees.
+#
+# Design notes for whoever edits this next:
+#   * Every chunk is something Miguel could say out loud today and be understood.
+#     No isolated vocabulary, no "the cat is on the table".
+#   * Four chunks are repair strategies (I'm sorry / I don't understand / can you
+#     repeat that / how do you say that). They are here in unit ONE on purpose:
+#     PRD 3 defines fluency as including the ability to repair, and a learner who
+#     can stall a conversation instead of freezing will not quit in week two.
+#   * The scenes reuse the same 40-odd words relentlessly. That is the 95% rule
+#     doing its job, not a lack of imagination.
+
+unit_id: b1_u1
+block: 1
+order: 1
+title_es: "Hola"
+title_en: "Hello"
+cefr: A0
+can_do_es: "Puedo saludar, decir mi nombre y pedir ayuda cuando no entiendo"
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0001
+    en: "Hello"
+    es: "Hola"
+    cefr: A0
+    example_en: "Hello, my name is Ana."
+    example_es: "Hola, me llamo Ana."
+    tags: [greeting, formal]
+    audio: [auto]
+
+  - id: c_0002
+    en: "Hi"
+    es: "Hola (informal)"
+    cefr: A0
+    example_en: "Hi, how are you?"
+    example_es: "Hola, ¿cómo estás?"
+    tags: [greeting, informal]
+    audio: [auto]
+
+  - id: c_0003
+    en: "Good morning"
+    es: "Buenos días"
+    cefr: A0
+    example_en: "Good morning, Miguel."
+    example_es: "Buenos días, Miguel."
+    tags: [greeting, time_of_day]
+    audio: [auto]
+
+  - id: c_0004
+    en: "Good afternoon"
+    es: "Buenas tardes"
+    cefr: A0
+    example_en: "Good afternoon. How are you?"
+    example_es: "Buenas tardes. ¿Cómo está?"
+    tags: [greeting, time_of_day]
+    audio: [auto]
+
+  - id: c_0005
+    en: "Good night"
+    es: "Buenas noches (al despedirse)"
+    cefr: A0
+    example_en: "Good night, Ana."
+    example_es: "Buenas noches, Ana."
+    tags: [farewell, time_of_day]
+    audio: [auto]
+
+  - id: c_0006
+    en: "Goodbye"
+    es: "Adiós"
+    cefr: A0
+    example_en: "Goodbye, see you later."
+    example_es: "Adiós, hasta luego."
+    tags: [farewell]
+    audio: [auto]
+
+  - id: c_0007
+    en: "See you later"
+    es: "Hasta luego"
+    cefr: A0
+    example_en: "See you later, Carlos."
+    example_es: "Hasta luego, Carlos."
+    tags: [farewell, informal]
+    audio: [auto]
+
+  - id: c_0008
+    en: "My name is"
+    es: "Me llamo"
+    cefr: A0
+    example_en: "My name is Miguel."
+    example_es: "Me llamo Miguel."
+    tags: [introduction, core]
+    audio: [auto]
+
+  - id: c_0009
+    en: "What's your name?"
+    es: "¿Cómo te llamas?"
+    cefr: A0
+    example_en: "Hello. What's your name?"
+    example_es: "Hola. ¿Cómo te llamas?"
+    tags: [introduction, question, core]
+    audio: [auto]
+
+  - id: c_0010
+    en: "Nice to meet you"
+    es: "Mucho gusto"
+    cefr: A0
+    example_en: "Nice to meet you, Ana."
+    example_es: "Mucho gusto, Ana."
+    tags: [introduction, polite]
+    audio: [auto]
+
+  - id: c_0011
+    en: "How are you?"
+    es: "¿Cómo estás?"
+    cefr: A0
+    example_en: "Hi Ana. How are you?"
+    example_es: "Hola Ana. ¿Cómo estás?"
+    tags: [greeting, question, core]
+    audio: [auto]
+
+  - id: c_0012
+    en: "I'm fine, thank you"
+    es: "Estoy bien, gracias"
+    cefr: A0
+    example_en: "I'm fine, thank you. And you?"
+    example_es: "Estoy bien, gracias. ¿Y tú?"
+    tags: [greeting, response, core]
+    audio: [auto]
+
+  - id: c_0013
+    en: "And you?"
+    es: "¿Y tú?"
+    cefr: A0
+    example_en: "I'm fine. And you?"
+    example_es: "Estoy bien. ¿Y tú?"
+    tags: [question, turn_taking]
+    audio: [auto]
+
+  - id: c_0014
+    en: "Thank you"
+    es: "Gracias"
+    cefr: A0
+    example_en: "Thank you, Miguel."
+    example_es: "Gracias, Miguel."
+    tags: [polite, core]
+    audio: [auto]
+
+  - id: c_0015
+    en: "You're welcome"
+    es: "De nada"
+    cefr: A0
+    example_en: "Thank you. You're welcome."
+    example_es: "Gracias. De nada."
+    tags: [polite, response]
+    audio: [auto]
+
+  - id: c_0016
+    en: "Please"
+    es: "Por favor"
+    cefr: A0
+    example_en: "Please repeat that."
+    example_es: "Repítalo, por favor."
+    tags: [polite, core]
+    audio: [auto]
+
+  - id: c_0017
+    en: "Excuse me"
+    es: "Disculpe"
+    cefr: A0
+    example_en: "Excuse me. What's your name?"
+    example_es: "Disculpe. ¿Cómo se llama?"
+    tags: [polite, attention]
+    audio: [auto]
+
+  - id: c_0018
+    en: "I'm sorry"
+    es: "Lo siento"
+    cefr: A0
+    example_en: "I'm sorry. I don't understand."
+    example_es: "Lo siento. No entiendo."
+    tags: [polite, repair]
+    audio: [auto]
+
+  - id: c_0019
+    en: "Yes, please"
+    es: "Sí, por favor"
+    cefr: A0
+    example_en: "Yes, please. Thank you."
+    example_es: "Sí, por favor. Gracias."
+    tags: [polite, response]
+    audio: [auto]
+
+  - id: c_0020
+    en: "No, thank you"
+    es: "No, gracias"
+    cefr: A0
+    example_en: "No, thank you."
+    example_es: "No, gracias."
+    tags: [polite, response]
+    audio: [auto]
+
+  - id: c_0021
+    en: "I don't understand"
+    es: "No entiendo"
+    cefr: A0
+    example_en: "I'm sorry, I don't understand."
+    example_es: "Lo siento, no entiendo."
+    tags: [repair, core]
+    audio: [auto]
+
+  - id: c_0022
+    en: "Can you repeat that?"
+    es: "¿Puede repetirlo?"
+    cefr: A0
+    example_en: "Excuse me. Can you repeat that, please?"
+    example_es: "Disculpe. ¿Puede repetirlo, por favor?"
+    tags: [repair, question, core]
+    audio: [auto]
+
+  - id: c_0023
+    en: "How do you say that?"
+    es: "¿Cómo se dice eso?"
+    cefr: A0
+    example_en: "Excuse me. How do you say that?"
+    example_es: "Disculpe. ¿Cómo se dice eso?"
+    tags: [repair, question, core]
+    audio: [auto]
+
+  - id: c_0024
+    en: "I'm from"
+    es: "Soy de"
+    cefr: A0
+    example_en: "Hello. I'm from Mexico."
+    example_es: "Hola. Soy de México."
+    tags: [introduction, origin]
+    audio: [auto]
+
+  - id: c_0025
+    en: "This is"
+    es: "Este es / Esta es"
+    cefr: A0
+    example_en: "Ana, this is Miguel."
+    example_es: "Ana, este es Miguel."
+    tags: [introduction, presenting]
+    audio: [auto]
+
+scenes:
+  # Scenes are long on repetition by design. At A0 the same six chunks recurring
+  # in shifting combinations is the lesson; novelty would just break the 95% rule.
+  #
+  # Every speaker tag is a cast member from content/characters.yaml, and the six
+  # scenes are one continuous afternoon rather than six unrelated encounters
+  # (PRD 4.3). Miguel is new here, so he is the one who does not understand --
+  # which is what puts the repair chunks in a real mouth instead of a drill.
+
+  - id: s_0001
+    title_es: "Miguel conoce a su vecina"
+    character: ana
+    duration_target_s: 40
+    transcript: |
+      ANA: Hello.
+      MIGUEL: Hello.
+      ANA: My name is Ana. What's your name?
+      MIGUEL: My name is Miguel.
+      ANA: Nice to meet you, Miguel.
+      MIGUEL: Nice to meet you, Ana.
+      ANA: How are you?
+      MIGUEL: I'm fine, thank you. And you?
+      ANA: I'm fine, thank you.
+      ANA: Miguel, this is Carlos.
+      MIGUEL: Hello, Carlos. Nice to meet you.
+      CARLOS: Nice to meet you, Miguel. How are you?
+      MIGUEL: I'm fine, thank you.
+      ANA: Goodbye, Miguel. See you later.
+      MIGUEL: Goodbye, Ana. Goodbye, Carlos.
+      CARLOS: Goodbye.
+    questions:
+      - q_es: "¿Cómo se llama la vecina?"
+        options_es: ["Ana", "Rosa", "María"]
+        answer: 0
+      - q_es: "¿Cómo están las personas?"
+        options_es: ["Bien", "Mal", "No lo dicen"]
+        answer: 0
+      - q_es: "¿Cuántas personas hablan?"
+        options_es: ["Tres", "Dos", "Cuatro"]
+        answer: 0
+
+  - id: s_0002
+    title_es: "Buenos días en el café"
+    character: maria
+    duration_target_s: 45
+    transcript: |
+      MARIA: Good morning.
+      MIGUEL: Good morning. How are you?
+      MARIA: I'm fine, thank you. And you?
+      MIGUEL: I'm fine, thank you.
+      MIGUEL: Excuse me. What's your name?
+      MARIA: My name is Maria. And you?
+      MIGUEL: My name is Miguel.
+      MARIA: Nice to meet you, Miguel.
+      MIGUEL: Nice to meet you, Maria.
+      MIGUEL: I'm from Mexico. And you?
+      MARIA: I'm from Texas.
+      MARIA: Miguel, this is Rosa.
+      ROSA: Hello, Miguel. Nice to meet you.
+      MIGUEL: Nice to meet you, Rosa.
+      ROSA: Good morning, Maria.
+      MARIA: Good morning, Rosa. Goodbye, Miguel. See you later.
+      MIGUEL: Goodbye.
+    questions:
+      - q_es: "¿En qué momento del día hablan?"
+        options_es: ["En la mañana", "En la tarde", "En la noche"]
+        answer: 0
+      - q_es: "¿De dónde es María?"
+        options_es: ["De Texas", "De México", "De España"]
+        answer: 0
+      - q_es: "¿Qué palabra usa Miguel para llamar la atención?"
+        options_es: ["Excuse me", "Thank you", "Good night"]
+        answer: 0
+
+  - id: s_0003
+    title_es: "No entiendo"
+    character: miguel
+    duration_target_s: 50
+    # Tom is British, and this is the first scene where that matters: Miguel
+    # misses the line twice before he gets it. Asking for a repeat is the win
+    # condition here, not a failure state (PRD X15).
+    transcript: |
+      TOM: Hello. What's your name?
+      MIGUEL: I'm sorry. I don't understand.
+      TOM: What's your name?
+      MIGUEL: Can you repeat that, please?
+      TOM: What is your name?
+      MIGUEL: My name is Miguel.
+      TOM: Nice to meet you, Miguel. My name is Tom.
+      MIGUEL: I'm sorry. Can you repeat that, please?
+      TOM: Tom. My name is Tom.
+      MIGUEL: Nice to meet you, Tom.
+      TOM: How are you, Miguel?
+      MIGUEL: I'm sorry, I don't understand. How do you say that?
+      TOM: How are you?
+      MIGUEL: I'm fine, thank you. And you?
+      TOM: I'm fine. Thank you, Miguel.
+      MIGUEL: You're welcome. Goodbye, Tom.
+      TOM: Goodbye. See you later.
+    questions:
+      - q_es: "¿Qué problema tiene Miguel al principio?"
+        options_es: ["No entiende", "No quiere hablar", "No tiene nombre"]
+        answer: 0
+      - q_es: "¿Qué pide Miguel para entender?"
+        options_es: ["Que repita", "Que hable en español", "Que escriba"]
+        answer: 0
+      - q_es: "¿Cómo responde Miguel a 'thank you'?"
+        options_es: ["You're welcome", "I'm sorry", "Goodbye"]
+        answer: 0
+
+  - id: s_0004
+    title_es: "Carlos presenta a Ana"
+    character: carlos
+    duration_target_s: 50
+    transcript: |
+      CARLOS: Hi. My name is Carlos.
+      ROSA: Hi Carlos. My name is Rosa.
+      CARLOS: Nice to meet you, Rosa. How are you?
+      ROSA: I'm fine, thank you. And you?
+      CARLOS: I'm fine.
+      ROSA: Carlos, I'm from Peru. And you?
+      CARLOS: I'm from Colombia.
+      ROSA: Nice.
+      CARLOS: Rosa, this is Ana. Ana is from Mexico.
+      ANA: Hello, Rosa. Nice to meet you.
+      ROSA: Nice to meet you, Ana.
+      ANA: How are you?
+      ROSA: I'm fine, thank you. And you?
+      ANA: I'm fine, thank you.
+      CARLOS: Good night, Rosa. Good night, Ana.
+      ROSA: Good night, Carlos. See you later.
+      ANA: Goodbye.
+    questions:
+      - q_es: "¿Cuántas personas hablan?"
+        options_es: ["Tres", "Dos", "Cuatro"]
+        answer: 0
+      - q_es: "¿De dónde es Ana?"
+        options_es: ["De México", "De Perú", "De Colombia"]
+        answer: 0
+      - q_es: "¿Qué frase usa Carlos para presentar a Ana?"
+        options_es: ["This is Ana", "I'm from Ana", "How are you Ana"]
+        answer: 0
+
+  - id: s_0005
+    title_es: "Gracias y de nada"
+    character: maria
+    duration_target_s: 45
+    transcript: |
+      MIGUEL: Excuse me.
+      MARIA: Yes?
+      MIGUEL: What's your name?
+      MARIA: My name is Maria.
+      MIGUEL: I'm sorry. Can you repeat that, please?
+      MARIA: Maria. My name is Maria.
+      MIGUEL: Thank you, Maria. My name is Miguel.
+      MARIA: Nice to meet you, Miguel.
+      MIGUEL: Nice to meet you.
+      MARIA: How are you, Miguel?
+      MIGUEL: I'm fine, thank you. And you?
+      MARIA: I'm fine, thank you.
+      MIGUEL: Maria, I'm from Mexico. And you?
+      MARIA: I'm from Texas.
+      MIGUEL: Thank you, Maria.
+      MARIA: You're welcome. Goodbye, Miguel. See you later.
+      MIGUEL: Goodbye, Maria.
+    questions:
+      - q_es: "¿Qué pide Miguel cuando no entiende?"
+        options_es: ["Que repita", "Un café", "Su teléfono"]
+        answer: 0
+      - q_es: "¿De dónde es María?"
+        options_es: ["De Texas", "De México", "De Inglaterra"]
+        answer: 0
+      - q_es: "¿Cómo responde María a 'thank you'?"
+        options_es: ["You're welcome", "Excuse me", "Good night"]
+        answer: 0
+
+  - id: s_0006
+    title_es: "Buenas tardes, buenas noches"
+    character: rosa
+    duration_target_s: 50
+    # The repair goes the other way round here: Tom is the native speaker and he
+    # is the one who asks Miguel to repeat. Nobody in this world is bad at this.
+    transcript: |
+      ROSA: Good afternoon, Miguel.
+      MIGUEL: Good afternoon, Rosa. How are you?
+      ROSA: I'm fine, thank you. And you?
+      MIGUEL: I'm fine, thank you.
+      ROSA: Miguel, this is Tom. Tom is from England.
+      MIGUEL: Hello, Tom. Nice to meet you.
+      TOM: Nice to meet you, Miguel. How are you?
+      MIGUEL: I'm fine, thank you. And you?
+      TOM: I'm fine.
+      MIGUEL: Tom, I'm from Mexico.
+      TOM: I'm sorry. Can you repeat that, please?
+      MIGUEL: Mexico. I'm from Mexico.
+      TOM: Nice. Thank you.
+      ROSA: Good night, Miguel. Good night, Tom.
+      MIGUEL: Good night, Rosa. See you later.
+      TOM: Good night. Goodbye.
+    questions:
+      - q_es: "¿En qué momento del día empieza la conversación?"
+        options_es: ["En la tarde", "En la mañana", "En la noche"]
+        answer: 0
+      - q_es: "¿De dónde es Tom?"
+        options_es: ["De Inglaterra", "De México", "De Perú"]
+        answer: 0
+      - q_es: "¿Qué pide Tom cuando no entiende a Miguel?"
+        options_es: ["Que repita", "Que hable español", "Su nombre"]
+        answer: 0
+
+speaking_task:
+  mode: scripted
+  scenario_es: "Conoces a alguien nuevo. Salúdala, di tu nombre y pregunta el suyo."
+  scenario_en: "You meet someone new. Greet them, say your name, and ask theirs."
+  target_chunks: [c_0001, c_0008, c_0009, c_0010, c_0011, c_0012]
+  # Scripted mode (PRD 4.5): the exact line is on screen. Success is saying it
+  # out loud, nothing more. `{name}` is substituted with the learner's name.
+  script:
+    - speaker: ai
+      en: "Hello! My name is Ana. What's your name?"
+      es: "¡Hola! Me llamo Ana. ¿Cómo te llamas?"
+    - speaker: user
+      en: "Hello. My name is {name}."
+      es: "Hola. Me llamo {name}."
+    - speaker: ai
+      en: "Nice to meet you, {name}. How are you?"
+      es: "Mucho gusto, {name}. ¿Cómo estás?"
+    - speaker: user
+      en: "I'm fine, thank you. And you?"
+      es: "Estoy bien, gracias. ¿Y tú?"
+    - speaker: ai
+      en: "I'm fine, thank you. Goodbye, {name}!"
+      es: "Estoy bien, gracias. ¡Adiós, {name}!"
+    - speaker: user
+      en: "Goodbye. See you later."
+      es: "Adiós. Hasta luego."

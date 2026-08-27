@@ -1,0 +1,366 @@
+# Spanish-English cognates (PRD F4).
+#
+# A cognate counts as a KNOWN token for A0-A2 readability gating. This is the
+# structural advantage a Spanish L1 gives us and the PRD says to exploit it
+# deliberately -- but only where recognition is genuinely free. Two guards:
+#
+#   1. `false_friends` overrides everything, including the suffix rules. These
+#      are the words a Spanish speaker will confidently get WRONG, which is
+#      worse than not knowing them.
+#   2. Suffix rules only fire on words >= 5 letters, to avoid junk matches.
+#
+# Coverage note: ~290 curated entries here plus the suffix rules resolve most
+# of the Oxford 3000 Latinate vocabulary. The PRD's ~1,500 figure counts the
+# rule-derived words, not hand-authored rows.
+
+version: 1
+
+# --------------------------------------------------------------------------
+# Productive suffix correspondences. English form on the left; if the English
+# word ends this way and is long enough, a Spanish speaker reads through it.
+# --------------------------------------------------------------------------
+suffix_rules:
+  - { en: "tion",  es: "ción",   note: "information / información" }
+  - { en: "sion",  es: "sión",   note: "decision / decisión" }
+  - { en: "ity",   es: "idad",   note: "university / universidad" }
+  - { en: "ty",    es: "dad",    note: "difficulty / dificultad" }
+  - { en: "ous",   es: "oso",    note: "famous / famoso" }
+  - { en: "ment",  es: "mento",  note: "moment / momento" }
+  - { en: "able",  es: "able",   note: "probable / probable" }
+  - { en: "ible",  es: "ible",   note: "possible / posible" }
+  - { en: "ance",  es: "ancia",  note: "importance / importancia" }
+  - { en: "ence",  es: "encia",  note: "difference / diferencia" }
+  - { en: "ist",   es: "ista",   note: "artist / artista" }
+  - { en: "ism",   es: "ismo",   note: "tourism / turismo" }
+  - { en: "ive",   es: "ivo",    note: "active / activo" }
+  - { en: "ary",   es: "ario",   note: "necessary / necesario" }
+  - { en: "ic",    es: "ico",    note: "public / público" }
+  - { en: "al",    es: "al",     note: "natural / natural" }
+
+# --------------------------------------------------------------------------
+# False friends. NEVER counted as known. Each one is a documented trap; the
+# `error_type: false_friend` deck in PRD F6 seeds from this list.
+# --------------------------------------------------------------------------
+false_friends:
+  - { en: actually,     looks_like: actualmente,  really_means_es: "en realidad" }
+  - { en: actual,       looks_like: actual,       really_means_es: "real, verdadero" }
+  - { en: assist,       looks_like: asistir,      really_means_es: "ayudar" }
+  - { en: attend,       looks_like: atender,      really_means_es: "asistir a" }
+  - { en: advertisement, looks_like: advertencia, really_means_es: "anuncio" }
+  - { en: apology,      looks_like: apología,     really_means_es: "disculpa" }
+  - { en: application,  looks_like: aplicación,   really_means_es: "solicitud" }
+  - { en: argument,     looks_like: argumento,    really_means_es: "discusión, pelea" }
+  - { en: assume,       looks_like: asumir,       really_means_es: "suponer" }
+  - { en: carpet,       looks_like: carpeta,      really_means_es: "alfombra" }
+  - { en: casual,       looks_like: casual,       really_means_es: "informal" }
+  - { en: college,      looks_like: colegio,      really_means_es: "universidad" }
+  - { en: compromise,   looks_like: compromiso,   really_means_es: "acuerdo mutuo" }
+  - { en: conductor,    looks_like: conductor,    really_means_es: "director de orquesta" }
+  - { en: constipated,  looks_like: constipado,   really_means_es: "estreñido" }
+  - { en: contest,      looks_like: contestar,    really_means_es: "concurso" }
+  - { en: deception,    looks_like: decepción,    really_means_es: "engaño" }
+  - { en: delight,      looks_like: delito,       really_means_es: "placer" }
+  - { en: disgust,      looks_like: disgusto,     really_means_es: "asco" }
+  - { en: embarrassed,  looks_like: embarazada,   really_means_es: "avergonzado" }
+  - { en: eventually,   looks_like: eventualmente, really_means_es: "finalmente" }
+  - { en: exit,         looks_like: éxito,        really_means_es: "salida" }
+  - { en: fabric,       looks_like: fábrica,      really_means_es: "tela" }
+  - { en: familiar,     looks_like: familiar,     really_means_es: "conocido" }
+  - { en: grocery,      looks_like: grosería,     really_means_es: "comestibles" }
+  - { en: idiom,        looks_like: idioma,       really_means_es: "modismo" }
+  - { en: injury,       looks_like: injuria,      really_means_es: "herida, lesión" }
+  - { en: introduce,    looks_like: introducir,   really_means_es: "presentar" }
+  - { en: large,        looks_like: largo,        really_means_es: "grande" }
+  - { en: lecture,      looks_like: lectura,      really_means_es: "conferencia" }
+  - { en: library,      looks_like: librería,     really_means_es: "biblioteca" }
+  - { en: molest,       looks_like: molestar,     really_means_es: "abusar" }
+  - { en: notice,       looks_like: noticia,      really_means_es: "aviso, darse cuenta" }
+  - { en: once,         looks_like: once,         really_means_es: "una vez" }
+  - { en: parents,      looks_like: parientes,    really_means_es: "padres" }
+  - { en: policy,       looks_like: policía,      really_means_es: "política, póliza" }
+  - { en: preservative, looks_like: preservativo, really_means_es: "conservante" }
+  - { en: pretend,      looks_like: pretender,    really_means_es: "fingir" }
+  - { en: quiet,        looks_like: quieto,       really_means_es: "callado" }
+  - { en: realize,      looks_like: realizar,     really_means_es: "darse cuenta" }
+  - { en: record,       looks_like: recordar,     really_means_es: "grabar, registro" }
+  - { en: remove,       looks_like: remover,      really_means_es: "quitar" }
+  - { en: rope,         looks_like: ropa,         really_means_es: "cuerda" }
+  - { en: sensible,     looks_like: sensible,     really_means_es: "sensato" }
+  - { en: soap,         looks_like: sopa,         really_means_es: "jabón" }
+  - { en: success,      looks_like: suceso,       really_means_es: "éxito" }
+  - { en: support,      looks_like: soportar,     really_means_es: "apoyar" }
+  - { en: sympathetic,  looks_like: simpático,    really_means_es: "compasivo" }
+  - { en: target,       looks_like: tarjeta,      really_means_es: "objetivo" }
+  - { en: ultimately,   looks_like: últimamente,  really_means_es: "en definitiva" }
+
+# --------------------------------------------------------------------------
+# Curated transparent cognates. English word -> the Spanish word it rides on.
+# --------------------------------------------------------------------------
+curated:
+  # people, places, everyday nouns
+  - { en: hospital,   es: hospital }
+  - { en: hotel,      es: hotel }
+  - { en: restaurant, es: restaurante }
+  - { en: cafe,       es: café }
+  - { en: bar,        es: bar }
+  - { en: menu,       es: menú }
+  - { en: taxi,       es: taxi }
+  - { en: bus,        es: bus }
+  - { en: train,      es: tren }
+  - { en: airport,    es: aeropuerto }
+  - { en: metro,      es: metro }
+  - { en: plaza,      es: plaza }
+  - { en: park,       es: parque }
+  - { en: bank,       es: banco }
+  - { en: supermarket, es: supermercado }
+  - { en: market,     es: mercado }
+  - { en: pharmacy,   es: farmacia }
+  - { en: doctor,     es: doctor }
+  - { en: dentist,    es: dentista }
+  - { en: professor,  es: profesor }
+  - { en: student,    es: estudiante }
+  - { en: family,     es: familia }
+  - { en: person,     es: persona }
+  - { en: group,      es: grupo }
+  - { en: class,      es: clase }
+  - { en: office,     es: oficina }
+  - { en: factory,    es: fábrica }
+  - { en: company,    es: compañía }
+  - { en: client,     es: cliente }
+  - { en: manager,    es: gerente }
+  - { en: contract,   es: contrato }
+  - { en: salary,     es: salario }
+  - { en: minute,     es: minuto }
+  - { en: hour,       es: hora }
+  - { en: moment,     es: momento }
+  - { en: date,       es: fecha }
+  - { en: calendar,   es: calendario }
+  - { en: number,     es: número }
+  - { en: address,    es: dirección }
+  - { en: telephone,  es: teléfono }
+  - { en: mobile,     es: móvil }
+  - { en: computer,   es: computadora }
+  - { en: internet,   es: internet }
+  - { en: email,      es: email }
+  - { en: message,    es: mensaje }
+  - { en: photo,      es: foto }
+  - { en: video,      es: video }
+  - { en: music,      es: música }
+  - { en: radio,      es: radio }
+  - { en: television, es: televisión }
+  - { en: film,       es: filme }
+  - { en: guitar,     es: guitarra }
+  - { en: piano,      es: piano }
+  - { en: concert,    es: concierto }
+  - { en: festival,   es: festival }
+
+  # food and drink
+  - { en: coffee,     es: café }
+  - { en: chocolate,  es: chocolate }
+  - { en: banana,     es: banana }
+  - { en: tomato,     es: tomate }
+  - { en: potato,     es: patata }
+  - { en: salad,      es: ensalada }
+  - { en: sauce,      es: salsa }
+  - { en: soup,       es: sopa }
+  - { en: pasta,      es: pasta }
+  - { en: pizza,      es: pizza }
+  - { en: sandwich,   es: sándwich }
+  - { en: cereal,     es: cereal }
+  - { en: fruit,      es: fruta }
+  - { en: melon,      es: melón }
+  - { en: lemon,      es: limón }
+  - { en: olive,      es: oliva }
+  - { en: vinegar,    es: vinagre }
+  - { en: alcohol,    es: alcohol }
+
+  # body, health, feelings
+  - { en: medicine,   es: medicina }
+  - { en: fever,      es: fiebre }
+  - { en: allergy,    es: alergia }
+  - { en: infection,  es: infección }
+  - { en: ambulance,  es: ambulancia }
+  - { en: emergency,  es: emergencia }
+  - { en: accident,   es: accidente }
+  - { en: nervous,    es: nervioso }
+  - { en: calm,       es: calma }
+  - { en: energy,     es: energía }
+  - { en: emotion,    es: emoción }
+
+  # travel and place
+  - { en: passport,   es: pasaporte }
+  - { en: visa,       es: visa }
+  - { en: reservation, es: reservación }
+  - { en: tourist,    es: turista }
+  - { en: map,        es: mapa }
+  - { en: route,      es: ruta }
+  - { en: direction,  es: dirección }
+  - { en: distance,   es: distancia }
+  - { en: kilometer,  es: kilómetro }
+  - { en: center,     es: centro }
+  - { en: zone,       es: zona }
+  - { en: region,     es: región }
+  - { en: city,       es: ciudad }
+  - { en: capital,    es: capital }
+  - { en: continent,  es: continente }
+  - { en: island,     es: isla }
+  - { en: coast,      es: costa }
+  - { en: mountain,   es: montaña }
+  - { en: desert,     es: desierto }
+  - { en: climate,    es: clima }
+  - { en: temperature, es: temperatura }
+
+  # abstract / high-frequency Latinate
+  - { en: problem,    es: problema }
+  - { en: solution,   es: solución }
+  - { en: idea,       es: idea }
+  - { en: plan,       es: plan }
+  - { en: project,    es: proyecto }
+  - { en: program,    es: programa }
+  - { en: system,     es: sistema }
+  - { en: process,    es: proceso }
+  - { en: result,     es: resultado }
+  - { en: example,    es: ejemplo }
+  - { en: reason,     es: razón }
+  - { en: cause,      es: causa }
+  - { en: effect,     es: efecto }
+  - { en: form,       es: forma }
+  - { en: part,       es: parte }
+  - { en: type,       es: tipo }
+  - { en: order,      es: orden }
+  - { en: list,       es: lista }
+  - { en: note,       es: nota }
+  - { en: detail,     es: detalle }
+  - { en: option,     es: opción }
+  - { en: opinion,    es: opinión }
+  - { en: question,   es: cuestión }
+  - { en: response,   es: respuesta }
+  - { en: comment,    es: comentario }
+  - { en: conversation, es: conversación }
+  - { en: language,   es: lenguaje }
+  - { en: dictionary, es: diccionario }
+  - { en: page,       es: página }
+  - { en: paper,      es: papel }
+  - { en: document,   es: documento }
+  - { en: text,       es: texto }
+  - { en: title,      es: título }
+  - { en: history,    es: historia }
+  - { en: culture,    es: cultura }
+  - { en: art,        es: arte }
+  - { en: science,    es: ciencia }
+  - { en: nature,     es: naturaleza }
+  - { en: animal,     es: animal }
+  - { en: color,      es: color }
+  - { en: line,       es: línea }
+  - { en: circle,     es: círculo }
+  - { en: base,       es: base }
+  - { en: object,     es: objeto }
+  - { en: material,   es: material }
+  - { en: metal,      es: metal }
+  - { en: plastic,    es: plástico }
+  - { en: gas,        es: gas }
+  - { en: electricity, es: electricidad }
+  - { en: machine,    es: máquina }
+  - { en: motor,      es: motor }
+  - { en: instrument, es: instrumento }
+  - { en: uniform,    es: uniforme }
+  - { en: cost,       es: costo }
+  - { en: price,      es: precio }
+  - { en: dollar,     es: dólar }
+  - { en: euro,       es: euro }
+  - { en: credit,     es: crédito }
+  - { en: total,      es: total }
+  - { en: percent,    es: por ciento }
+
+  # adjectives
+  - { en: important,  es: importante }
+  - { en: different,  es: diferente }
+  - { en: difficult,  es: difícil }
+  - { en: excellent,  es: excelente }
+  - { en: perfect,    es: perfecto }
+  - { en: terrible,   es: terrible }
+  - { en: horrible,   es: horrible }
+  - { en: fantastic,  es: fantástico }
+  - { en: magnificent, es: magnífico }
+  - { en: elegant,    es: elegante }
+  - { en: modern,     es: moderno }
+  - { en: normal,     es: normal }
+  - { en: special,    es: especial }
+  - { en: general,    es: general }
+  - { en: local,      es: local }
+  - { en: national,   es: nacional }
+  - { en: international, es: internacional }
+  - { en: personal,   es: personal }
+  - { en: private,    es: privado }
+  - { en: public,     es: público }
+  - { en: social,     es: social }
+  - { en: popular,    es: popular }
+  - { en: interesting, es: interesante }
+  - { en: necessary,  es: necesario }
+  - { en: possible,   es: posible }
+  - { en: impossible, es: imposible }
+  - { en: probable,   es: probable }
+  - { en: correct,    es: correcto }
+  - { en: incorrect,  es: incorrecto }
+  - { en: exact,      es: exacto }
+  - { en: complete,   es: completo }
+  - { en: simple,     es: simple }
+  - { en: rapid,      es: rápido }
+  - { en: enormous,   es: enorme }
+  - { en: delicious,  es: delicioso }
+  - { en: famous,     es: famoso }
+  - { en: favorite,   es: favorito }
+  - { en: fabulous,   es: fabuloso }
+  - { en: curious,    es: curioso }
+  - { en: serious,    es: serio }
+  - { en: violent,    es: violento }
+  - { en: urgent,     es: urgente }
+  - { en: recent,     es: reciente }
+  - { en: mutual,     es: mutuo }
+  - { en: legal,      es: legal }
+  - { en: medical,    es: médico }
+  - { en: musical,    es: musical }
+  - { en: natural,    es: natural }
+  - { en: original,   es: original }
+  - { en: principal,  es: principal }
+  - { en: professional, es: profesional }
+  - { en: responsible, es: responsable }
+  - { en: sufficient, es: suficiente }
+  - { en: superior,   es: superior }
+  - { en: inferior,   es: inferior }
+
+  # verbs
+  - { en: use,        es: usar }
+  - { en: prepare,    es: preparar }
+  - { en: decide,     es: decidir }
+  - { en: permit,     es: permitir }
+  - { en: admit,      es: admitir }
+  - { en: accept,     es: aceptar }
+  - { en: adapt,      es: adaptar }
+  - { en: consult,    es: consultar }
+  - { en: control,    es: controlar }
+  - { en: confirm,    es: confirmar }
+  - { en: continue,   es: continuar }
+  - { en: consider,   es: considerar }
+  - { en: compare,    es: comparar }
+  - { en: describe,   es: describir }
+  - { en: divide,     es: dividir }
+  - { en: examine,    es: examinar }
+  - { en: exist,      es: existir }
+  - { en: explore,    es: explorar }
+  - { en: imagine,    es: imaginar }
+  - { en: insist,     es: insistir }
+  - { en: invite,     es: invitar }
+  - { en: observe,    es: observar }
+  - { en: occupy,     es: ocupar }
+  - { en: offend,     es: ofender }
+  - { en: organize,   es: organizar }
+  - { en: participate, es: participar }
+  - { en: present,    es: presentar }
+  - { en: reserve,    es: reservar }
+  - { en: resist,     es: resistir }
+  - { en: respect,    es: respetar }
+  - { en: repeat,     es: repetir }
+  - { en: study,      es: estudiar }
+  - { en: transport,  es: transportar }
+  - { en: visit,      es: visitar }

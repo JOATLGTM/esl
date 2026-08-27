@@ -32,6 +32,9 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# ...but the template has to be committed, or a fresh clone has no idea which
+# variables exist.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +42,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Generated audio (regenerate with `npm run content:audio`; the manifest is committed, the blobs are not)
+/public/audio/

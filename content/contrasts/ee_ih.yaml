@@ -1,0 +1,62 @@
+# HVPT contrast #1 (PRD 4.4, priority 1): /iː/ vs /ɪ/.
+#
+# Spanish has five vowels; English has about twelve. This is the single
+# highest-frequency confusion for a Spanish L1, and it is a *perception*
+# problem before it is a production problem -- which is why this drill runs in
+# Stage 1, before the learner is ever asked to say anything.
+#
+# High-variability phonetic training only works if the voice changes between
+# items. The learner has to generalize across talkers instead of memorizing one
+# talker; the drill scheduler enforces "no two consecutive items share a
+# speaker" (PRD F3) and this file has to supply enough voices for that.
+#
+# THOSE VOICES ARE HUMAN (PRD 8.1B). Not TTS -- not even good TTS. The whole
+# mechanism is acoustic variability between talkers, and neural voices have far
+# less of it than real people do, so a synthetic set produces a drill that looks
+# right in the UI and teaches much less than it appears to. `speakers` lists ids
+# from content/speakers.yaml; the recordings live at
+#   content/recordings/ee_ih/<speaker_id>/<word>.wav
+# and until they exist this set is authored, not publishable, and the validator
+# will keep saying so.
+#
+# Framing (brand-critical, PRD 4.4): the goal is being understood, never losing
+# an accent. Nothing in `explain_es` may suggest an accent is a defect.
+
+contrast: ee_ih
+title_es: "Vocales largas y cortas"
+explain_es: >-
+  En español hay una sola "i". En inglés hay dos: una larga y tensa (sheep) y
+  una corta y relajada (ship). Cambiar una por la otra cambia la palabra, así
+  que vale la pena aprender a oír la diferencia. Primero el oído, después la
+  boca.
+
+# Six talkers, not the four PRD F3 requires. The recordings are free and talker
+# variety IS the training mechanism, so there is no reason to be stingy.
+speakers: [hs_01, hs_02, hs_03, hs_04, hs_05, hs_06]
+
+pairs:
+  - { id: mp_0001, word_a: sheep, word_b: ship,  ipa_a: "ʃiːp",  ipa_b: "ʃɪp" }
+  - { id: mp_0002, word_a: seat,  word_b: sit,   ipa_a: "siːt",  ipa_b: "sɪt" }
+  - { id: mp_0003, word_a: feel,  word_b: fill,  ipa_a: "fiːl",  ipa_b: "fɪl" }
+  - { id: mp_0004, word_a: heat,  word_b: hit,   ipa_a: "hiːt",  ipa_b: "hɪt" }
+  - { id: mp_0005, word_a: leave, word_b: live,  ipa_a: "liːv",  ipa_b: "lɪv" }
+  - { id: mp_0006, word_a: beat,  word_b: bit,   ipa_a: "biːt",  ipa_b: "bɪt" }
+  - { id: mp_0007, word_a: peak,  word_b: pick,  ipa_a: "piːk",  ipa_b: "pɪk" }
+  - { id: mp_0008, word_a: green, word_b: grin,  ipa_a: "ɡriːn", ipa_b: "ɡrɪn" }
+  - { id: mp_0009, word_a: cheap, word_b: chip,  ipa_a: "tʃiːp", ipa_b: "tʃɪp" }
+  - { id: mp_0010, word_a: deed,  word_b: did,   ipa_a: "diːd",  ipa_b: "dɪd" }
+  - { id: mp_0011, word_a: eat,   word_b: it,    ipa_a: "iːt",   ipa_b: "ɪt" }
+  - { id: mp_0012, word_a: each,  word_b: itch,  ipa_a: "iːtʃ",  ipa_b: "ɪtʃ" }
+  - { id: mp_0013, word_a: feet,  word_b: fit,   ipa_a: "fiːt",  ipa_b: "fɪt" }
+  - { id: mp_0014, word_a: least, word_b: list,  ipa_a: "liːst", ipa_b: "lɪst" }
+  - { id: mp_0015, word_a: meal,  word_b: mill,  ipa_a: "miːl",  ipa_b: "mɪl" }
+  - { id: mp_0016, word_a: neat,  word_b: knit,  ipa_a: "niːt",  ipa_b: "nɪt" }
+  - { id: mp_0017, word_a: reach, word_b: rich,  ipa_a: "riːtʃ", ipa_b: "rɪtʃ" }
+  - { id: mp_0018, word_a: seek,  word_b: sick,  ipa_a: "siːk",  ipa_b: "sɪk" }
+  - { id: mp_0019, word_a: sleep, word_b: slip,  ipa_a: "sliːp", ipa_b: "slɪp" }
+  - { id: mp_0020, word_a: steal, word_b: still, ipa_a: "stiːl", ipa_b: "stɪl" }
+  - { id: mp_0021, word_a: wheel, word_b: will,  ipa_a: "wiːl",  ipa_b: "wɪl" }
+  - { id: mp_0022, word_a: bean,  word_b: bin,   ipa_a: "biːn",  ipa_b: "bɪn" }
+  - { id: mp_0023, word_a: cheek, word_b: chick, ipa_a: "tʃiːk", ipa_b: "tʃɪk" }
+  - { id: mp_0024, word_a: heel,  word_b: hill,  ipa_a: "hiːl",  ipa_b: "hɪl" }
+  - { id: mp_0025, word_a: bead,  word_b: bid,   ipa_a: "biːd",  ipa_b: "bɪd" }

@@ -1,0 +1,50 @@
+# Proper nouns that cost a Spanish speaker nothing to read, so they count as
+# known tokens for readability gating (PRD F4) without ever becoming SRS cards.
+#
+# Keep this list tight. It exists so a scene can name its characters without
+# blowing the 95% budget -- not as an escape hatch for hard vocabulary.
+
+version: 1
+
+# Names used by scene characters. Deliberately common in Latin America so the
+# learner reads them without a beat.
+names:
+  - ana
+  - miguel
+  - carlos
+  - sofia
+  - lucia
+  - diego
+  - maria
+  - jose
+  - elena
+  - pablo
+  - rosa
+  - juan
+  - laura
+  - daniel
+  - sam
+  - tom
+  - kate
+  - ben
+  - emma
+  - david
+
+places:
+  - mexico
+  - colombia
+  - peru
+  - chile
+  - argentina
+  - guatemala
+  - honduras
+  - ecuador
+  - venezuela
+  - bolivia
+  - spain
+  - england
+  - london
+  - texas
+  - chicago
+  - miami
+  - york

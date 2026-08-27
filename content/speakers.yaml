@@ -1,0 +1,115 @@
+# Human speakers for ear training (PRD F3, 8.1B).
+#
+# High-variability phonetic training works BECAUSE the talkers genuinely vary.
+# That is the whole mechanism: the learner cannot memorise one voice, so they
+# are forced to build a category, and the category generalises to voices they
+# have never heard. Neural TTS voices are far narrower acoustically than real
+# people, so a synthetic minimal-pair set produces a drill that looks correct in
+# the UI and teaches much less than it appears to. That is why this roster is
+# separate from voices.yaml and why nothing here is generated.
+#
+# HOW A SPEAKER GETS RECORDED
+#
+#   1. `npm run content:recording-kit -- --contrast=ee_ih --speaker=<id>`
+#      writes content/recordings/<contrast>/<id>/SCRIPT.md -- a numbered word
+#      list to read, with the carrier phrase and the recording instructions.
+#   2. The speaker reads it in one take, phone mic, quiet room, ~15 minutes.
+#      One word per line, a clear pause between words.
+#   3. Split the take one word per file (Audacity: Analyze > Label Sounds, then
+#      File > Export > Export Multiple). Name each file after the word.
+#   4. Drop them in content/recordings/<contrast>/<id>/<word>.wav and set
+#      `status: recorded` below.
+#   5. `npm run content:audio` encodes them to Opus and registers them in the
+#      manifest. Nothing is re-synthesised; the recording IS the asset.
+#
+# LICENSING: whoever reads has to know what they are agreeing to. `consent`
+# records that they did. A speaker without consent on file is not publishable,
+# and the validator says so.
+
+version: 1
+
+# PRD F3 requires >=4 distinct speakers per contrast, varied in gender and
+# accent, with at least one non-native-but-intelligible speaker (PRD 4.4) --
+# because the English Miguel has to understand at work is not all native.
+min_speakers_per_contrast: 4
+
+speakers:
+  - id: hs_01
+    accent: "US (General American)"
+    gender: female
+    native: true
+    l1: en
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+  - id: hs_02
+    accent: "US (General American)"
+    gender: male
+    native: true
+    l1: en
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+  - id: hs_03
+    accent: "UK (Southern British)"
+    gender: female
+    native: true
+    l1: en
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+  - id: hs_04
+    accent: "US (Southern)"
+    gender: male
+    native: true
+    l1: en
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+  - id: hs_05
+    accent: "Indian English"
+    gender: male
+    # Non-native but fully intelligible. PRD 4.4 requires at least one, and it
+    # is not a diversity gesture: it is the accent most likely to be on the
+    # other end of a work phone call.
+    native: false
+    l1: hi
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+  - id: hs_06
+    accent: "Filipino English"
+    gender: female
+    native: false
+    l1: tl
+    source: volunteer
+    consent: pending
+    license: "recorded for this project, all rights assigned"
+    status: planned
+
+# ---------------------------------------------------------------------------
+# If volunteers do not materialise (PRD 12, a named risk), the fallback is to
+# mine an open corpus with the Montreal Forced Aligner rather than to give up
+# and synthesise:
+#
+#   VCTK        109 speakers, 11 labelled accents, CC BY 4.0  -- attribution
+#   LibriTTS    2,456 speakers, CC BY 4.0                     -- attribution
+#   Common Voice ~89k speakers, CC0 on the main corpus        -- CHECK the
+#               datasheet for the exact version; some subsets carry explicit
+#               no-re-hosting terms and shipping those clips is a licence
+#               breach, not a grey area.
+#
+# A corpus-sourced speaker uses `source: corpus` and must carry `corpus`,
+# `corpus_speaker` and the attribution string the licence requires. The
+# validator refuses a corpus speaker with no attribution.
+# ---------------------------------------------------------------------------
