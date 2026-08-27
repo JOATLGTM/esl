@@ -43,5 +43,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Generated audio (regenerate with `npm run content:audio`; the manifest is committed, the blobs are not)
-/public/audio/
+# Generated audio IS committed (PRD 8.1C). It cannot be built on Vercel -- the
+# macOS `say` provider is macOS-only -- so a deploy that does not carry the
+# files ships a product with no sound. See docs/DEPLOY.md.

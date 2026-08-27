@@ -11,6 +11,7 @@ Read it alongside, not instead of:
 | File | What it covers |
 |---|---|
 | `AGENTS.md` | this is Next 16 — read `node_modules/next/dist/docs/` before writing app code |
+| `docs/DEPLOY.md` | env vars, audio hosting, auth URLs — read before any deploy |
 | `content/README.md` | the authoring pipeline, the 95% rule, the two kinds of audio |
 | `supabase/README.md` | schema, RLS, the connection layer |
 | `lib/copy/es.ts` | every Spanish string, with the house style at the top |
@@ -28,8 +29,9 @@ npm test               # 66 tests, ~4s (hits the live database — see below)
 npm run content:validate
 ```
 
-Note `public/audio/` is **not** tracked (214 files, 2.7 MB) — see open item 6,
-because it means a deploy currently ships with no audio.
+`public/audio/` **is** tracked as of 2026-08-27 (214 files, 2.7 MB). It cannot
+be built on Vercel — `say` is macOS-only — so the repo is the only thing that
+carries sound to production. See `docs/DEPLOY.md`.
 
 ---
 
@@ -46,9 +48,11 @@ Linked. Five migrations applied. Content seeded. Auth config pushed.
 
 `.env.local` exists and works. It is gitignored; `.env.example` documents it.
 
-**Before deploying anywhere:** `site_url` on the hosted project is
-`http://127.0.0.1:3000`. Password-reset and OAuth links are built from it, so
-they currently point at a laptop.
+**Before deploying anywhere:** `site_url` on the hosted project is still
+`http://127.0.0.1:3000`. It breaks nothing *today* — email confirmation is off
+and signup returns a session directly, so nothing round-trips through
+Supabase's redirects — but it is a landmine under password reset (open item 8)
+and Google OAuth. `docs/DEPLOY.md` has the values and the push command.
 
 ---
 
@@ -228,7 +232,7 @@ from a cookie is client-supplied data.
 
 ## Open, roughly in order
 
-1. **Commit everything.** See the top of this file.
+1. ~~Commit everything.~~ Done — `b267c88`.
 2. **Look at F1 in a browser.** Verified: routing, data, markup. Not verified:
    whether it *feels* right. Walk `/` → `/signup` → onboarding in a narrow
    window. The test is the PRD's: would a nervous 19-year-old quit at this
@@ -246,10 +250,11 @@ from a cookie is client-supplied data.
    daily loop has nothing to play and `npm run content:publish-check` fails —
    correctly. The session player already skips the stage cleanly, so this
    blocks nothing except the stage itself.
-6. **`public/audio/` is gitignored, so a deploy ships with no audio.** §8.1C
-   says commit it and serve from the CDN. Held off while the engine is
-   undecided; the build cannot generate it on Vercel (`say` is macOS-only).
-   **Resolve before any deploy.**
+6. ~~`public/audio/` is gitignored.~~ Resolved 2026-08-27: committed and served
+   from Vercel's CDN with immutable cache headers, per §8.1C. Full curriculum
+   projects to ~110 MB against 100 GB/month of Hobby bandwidth — roughly 900
+   learners downloading everything, once, per month. Rationale, the rejected
+   alternatives and the headroom maths are in `docs/DEPLOY.md`.
 7. **Content: 1 unit of 36.** Block 1 needs 6. The PRD is blunt that authoring
    is ~70% of total effort — budget it honestly.
 8. **Email verification flow** — see the confirm-later decision above.
