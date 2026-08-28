@@ -21,7 +21,9 @@ describe("normalising an answer", () => {
   test("ignores case, punctuation and spacing", () => {
     assert.equal(normalise("I'm fine, thank you."), normalise("im fine thank you"));
     assert.equal(normalise("  Hello!  "), "hello");
-    assert.equal(normalise("What's your name?"), "whats your name");
+    // Contractions expand, so this is "what is your name" rather than
+    // "whats your name" — see the contraction suite below for why.
+    assert.equal(normalise("What's your name?"), "what is your name");
   });
 
   test("ignores accents a Spanish keyboard adds by habit", () => {
@@ -118,5 +120,69 @@ describe("a transfer error is not a typo", () => {
 
   test("a correct answer is still correct", () => {
     assert.equal(gradeTypedAnswer("I'm fine, thank you", "im fine thank you"), "correct");
+  });
+});
+
+describe("contractions are not mistakes", () => {
+  // Seven of the twenty-five chunks in b1_u1 contain a contraction, and every
+  // one of them used to reject the expanded form — including one the content
+  // itself teaches: scene s_0003 has Tom saying "What is your name?".
+  const pairs: [string, string][] = [
+    ["I'm fine, thank you", "I am fine, thank you"],
+    ["What's your name?", "What is your name?"],
+    ["I don't understand", "I do not understand"],
+    ["I'm sorry", "I am sorry"],
+    ["You're welcome", "You are welcome"],
+  ];
+
+  for (const [expected, typed] of pairs) {
+    test(`"${typed}" is correct for "${expected}"`, () => {
+      assert.equal(gradeTypedAnswer(expected, typed), "correct");
+    });
+  }
+
+  test("works in the other direction too", () => {
+    assert.equal(gradeTypedAnswer("I do not understand", "I don't understand"), "correct");
+  });
+
+  test("a missing apostrophe is not a mistake either", () => {
+    // A learner typing "dont" on a phone means "do not".
+    assert.equal(gradeTypedAnswer("I don't understand", "I dont understand"), "correct");
+  });
+
+  test("does not expand a possessive into a verb", () => {
+    // A bare `'s` rule would turn "Ana's book" into "ana is book".
+    assert.equal(normalise("Ana's book"), "anas book");
+  });
+
+  test("still rejects the dropped-subject transfer error", () => {
+    // "Am fine" is one character from "I'm fine" and now also survives
+    // contraction expansion — it must still be caught as an L1 transfer.
+    assert.equal(gradeTypedAnswer("I'm fine, thank you", "Am fine, thank you"), "wrong");
+  });
+
+  test("still rejects a different phrase", () => {
+    assert.equal(gradeTypedAnswer("Good morning", "Good night"), "wrong");
+  });
+});
+
+describe("author-declared alternatives", () => {
+  test("an alternative is exactly as correct as the primary", () => {
+    assert.equal(gradeTypedAnswer("Thank you", "Thanks", ["Thanks"]), "correct");
+    assert.equal(gradeTypedAnswer("Thank you", "Thank you", ["Thanks"]), "correct");
+  });
+
+  test("without the declaration it stays wrong", () => {
+    // The grader forgives form, never meaning. Deciding that "Thanks" is fine
+    // is the author's judgement, not a distance metric's.
+    assert.equal(gradeTypedAnswer("Thank you", "Thanks"), "wrong");
+  });
+
+  test("an alternative gets the same typo forgiveness as the primary", () => {
+    assert.equal(gradeTypedAnswer("Thank you", "Thanls", ["Thanks"]), "close");
+  });
+
+  test("declaring alternatives does not let a different phrase through", () => {
+    assert.equal(gradeTypedAnswer("Thank you", "Good night", ["Thanks"]), "wrong");
   });
 });

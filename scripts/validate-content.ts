@@ -248,6 +248,43 @@ function checkUnitStructure(unit: Unit, bundle: ContentBundle) {
     }
   }
 
+  // A question asked twice in one unit is a question the learner answers from
+  // memory the second time. `¿Cuántas personas hablan?` and `¿De dónde es
+  // María?` were each authored into two scenes before anyone noticed.
+  const askedIn = new Map<string, string>();
+  for (const scene of unit.scenes) {
+    for (const q of scene.questions) {
+      const prompt = (q.q_es ?? q.q_en ?? "").trim().toLowerCase();
+      if (!prompt) continue;
+      const first = askedIn.get(prompt);
+      if (first) {
+        err(where, `${scene.id} repeats a question already asked in ${first}`, q.q_es ?? q.q_en);
+      } else {
+        askedIn.set(prompt, scene.id);
+      }
+    }
+  }
+
+  // A question whose options are the cast list is answerable by reading the
+  // speaker labels, which are on screen throughout Absorb by design. It looks
+  // like comprehension and measures nothing.
+  for (const scene of unit.scenes) {
+    const speakers = new Set(
+      parseTranscriptLines(scene.transcript).map((l) => l.speaker.toLowerCase()),
+    );
+    for (const [i, q] of scene.questions.entries()) {
+      const options = q.options_es ?? q.options_en ?? [];
+      const namesOnly = options.filter((o) => speakers.has(o.trim().toLowerCase()));
+      if (options.length > 0 && namesOnly.length === options.length) {
+        warn(
+          where,
+          `${scene.id} question ${i + 1} offers only speaker names`,
+          "answerable from the transcript on screen without understanding the English",
+        );
+      }
+    }
+  }
+
   // Every correct answer sitting in the same slot makes the comprehension check
   // measure nothing: tapping the first option every time scores full marks
   // without listening. Authoring naturally drifts this way -- the true answer is

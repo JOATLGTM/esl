@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.17"
+    PostgrestVersion: "14.5"
   }
   graphql_public: {
     Tables: {
@@ -124,6 +124,7 @@ export type Database = {
       }
       chunks: {
         Row: {
+          accepts: Json
           audio_urls: Json
           cefr: Database["public"]["Enums"]["cefr_level"]
           created_at: string
@@ -137,6 +138,7 @@ export type Database = {
           unit_id: string
         }
         Insert: {
+          accepts?: Json
           audio_urls?: Json
           cefr: Database["public"]["Enums"]["cefr_level"]
           created_at?: string
@@ -150,6 +152,7 @@ export type Database = {
           unit_id: string
         }
         Update: {
+          accepts?: Json
           audio_urls?: Json
           cefr?: Database["public"]["Enums"]["cefr_level"]
           created_at?: string

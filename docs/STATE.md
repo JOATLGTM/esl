@@ -38,7 +38,7 @@ carries sound to production. See `docs/DEPLOY.md`.
 ## Live infrastructure
 
 Supabase project **`esl`** — ref `sqjjikmwxnfeuzzxqnmk`, us-east-2, Postgres 17.6.
-Linked. Six migrations applied. Content seeded. Auth config pushed.
+Linked. Eight migrations applied. Content seeded. Auth config pushed.
 
 | Table | Rows |
 |---|---|
@@ -157,6 +157,36 @@ one thing a nervous beginner will not do.
 English speakers near them is exactly who this course is for, and the UI offers
 the alternative as an equal option rather than a consolation.
 
+**Four learner-facing defects fixed 2026-08-28**, all found by an
+adversarial review that re-ran the code rather than reading it. Every one was
+invisible to the test suite because the tests checked that each part was
+*correct*, never that the learner-facing whole was *fair*.
+
+1. **The first question of the first session was unfair.** Recognition
+   distractors were drawn from the cards due *today*, which on day one is the
+   six greetings Meet had just introduced in curriculum order. "Hello" is
+   glossed `Hola`; "Hi" is glossed `Hola (informal)`. Measured: they were
+   offered as competing answers on **34.5%** of first "Hello" cards. Fixed by
+   widening the pool to every gloss the learner has met and by refusing
+   confusable options (`lib/session/distractors.ts`). Re-measured across 1,800
+   simulated day-one cards: **zero**.
+2. **`buildOptions` duplicated a distractor** when only two glosses were
+   available — same wrong answer twice, plus a duplicate React key. It now
+   shows fewer options rather than a bad one, and `canBuildRecognition` refuses
+   to build a "multiple choice" with a single button.
+3. **The grader marked correct English wrong.** Seven of the twenty-five
+   chunks contain a contraction, and every one rejected the expanded form:
+   `What is your name?` failed against `What's your name?` because expanding
+   costs two edits against a typo budget of one — while scene `s_0003` has Tom
+   saying *"What is your name?"* aloud. `normalise` now expands contractions
+   (never a bare `'s` rule, which would turn "Ana's book" into "ana is book"),
+   and chunks gained an `accepts: []` for author-declared alternatives.
+4. **The comprehension questions mostly did not require English.** Two were
+   duplicated verbatim across scenes, and several were answerable by counting
+   speaker labels that Absorb keeps on screen throughout. All eighteen
+   rewritten to need inference from meaning. Two validator rules added, both
+   proved to fire by reintroducing the defects.
+
 **F6 is now a whole feature.** `error_events` was write-only; `/patterns` reads
 it. Two occurrences before anything is said (one slip is a bad morning, not a
 pattern), at most three at a time (someone shown eight things to fix fixes
@@ -175,7 +205,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 222, all passing.**
+**Tests — 249, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -190,7 +220,8 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `error-patterns.test.ts` | 15 | no |
 | `shadowing.test.ts` | 8 | no |
 | `patterns.test.ts` | 9 | no |
-| `grade.test.ts` | 16 | no |
+| `distractors.test.ts` | 13 | no |
+| `grade.test.ts` | 30 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
@@ -245,6 +276,18 @@ new" answerable without any state that can drift from what the learner actually
 saw. It is also why `StageInventory` carries one per-learner number: a unit
 whose chunks have all been met has no Meet left in it, and the stage is skipped
 rather than shown empty.
+
+**The grader forgives form, never meaning.** Case, punctuation, accents,
+contraction and a length-scaled typo budget are all *form* — a beginner who
+typed the right English should never be told otherwise. Whether "Thanks" is an
+acceptable answer for "Thank you" is a judgement about the language, and it
+belongs to whoever wrote the content: that is `chunks.accepts`, deliberately
+empty for almost every chunk rather than a synonym dictionary.
+
+**A distractor is only a distractor if choosing it is a real mistake.** Wrong
+answers are drawn from everything the learner has met, not from the handful due
+today — a same-session pool is semantically clustered by construction, because
+a unit introduces greetings together and farewells together.
 
 **A known transfer error is never forgiven as a typo.** `gradeTypedAnswer` has
 a generous typo budget, and "Am fine, thank you" is one character from "I'm
@@ -420,6 +463,14 @@ broken player. Check the server instead (`curl -I` for a 200, the right
 `Content-Type`, and a 206 on a `Range` request) and cover the timing logic with
 pure tests (`tests/transcript.test.ts`); then listen to it in a normal browser
 by hand. **Nothing in Meet or Absorb has had its audio heard.**
+
+**A green test suite says nothing about whether the product is fair.** All
+four defects above sat under 222 passing tests. The tests verified that
+`gradeTypedAnswer` was *lenient*, that `buildOptions` returned three options,
+that questions shuffled — each part correct, none of them asking whether a
+beginner meeting the whole thing gets a fair first session. Both of the
+pedagogical defects found before these were also found by a human in a browser.
+**Assume the remaining ones are there too, and that only use will find them.**
 
 **`onClick={handler}` passes the click event as the first argument.** Wire a
 Server Action's wrapper straight to `onClick` and React hands it a

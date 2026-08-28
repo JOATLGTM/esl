@@ -131,6 +131,7 @@ async function main() {
         example_en: c.example_en,
         example_es: c.example_es,
         tags: c.tags,
+      accepts: c.accepts,
         slots: [],
         audio_urls: audio,
       };

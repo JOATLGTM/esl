@@ -70,6 +70,16 @@ export const ChunkSchema = z.object({
   example_en: z.string().min(1, "every chunk needs an English example (PRD F9)"),
   example_es: z.string().min(1, "every chunk needs a Spanish example (PRD F9)"),
   tags: z.array(z.string()).default([]),
+  /**
+   * Other answers that are also correct (PRD F2).
+   *
+   * The grader forgives *form* -- case, punctuation, accents, contraction, a
+   * length-scaled typo budget. It cannot know that "Thanks" is a fine answer
+   * for "Thank you" while "Good night" is not a fine answer for "Good morning";
+   * that is a judgement about the language and it belongs to whoever writes the
+   * content. Empty for almost every chunk.
+   */
+  accepts: z.array(z.string()).default([]),
   audio: AudioSpec,
 });
 export type Chunk = z.infer<typeof ChunkSchema>;

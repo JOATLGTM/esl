@@ -146,7 +146,7 @@ export function RetrieveStage({
               onChange={(e) => setTyped(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" && !answered && typed.trim()) {
-                  settle(gradeTypedAnswer(card.en, typed));
+                  settle(gradeTypedAnswer(card.en, typed, card.accepts));
                 }
               }}
               aria-label={es.session.retrieve.inputLabel}
@@ -193,7 +193,7 @@ export function RetrieveStage({
           <Button
             type="button"
             disabled={!typed.trim()}
-            onClick={() => settle(gradeTypedAnswer(card.en, typed))}
+            onClick={() => settle(gradeTypedAnswer(card.en, typed, card.accepts))}
           >
             {es.session.retrieve.check}
           </Button>

@@ -14,19 +14,56 @@ import { classifyError } from "@/lib/content/error-patterns";
 export type TypedOutcome = "correct" | "close" | "wrong";
 
 /**
+ * Contractions, expanded so both sides of a comparison agree.
+ *
+ * Seven of the twenty-five chunks in the only authored unit contain a
+ * contraction, and before this every one of them rejected the expanded form:
+ * `What is your name?` was marked **wrong** against `What's your name?`,
+ * because expanding costs two edits against a typo budget of one. The content
+ * itself teaches the expanded form -- scene `s_0003` has Tom saying "What is
+ * your name?" -- so the product was marking wrong a sentence it had taught two
+ * stages earlier.
+ *
+ * Only pronoun and wh-word contractions are listed, never a bare `'s` rule:
+ * that would turn the possessive in "Ana's book" into "ana is book".
+ */
+const CONTRACTIONS: [RegExp, string][] = [
+  [/\bi'?m\b/g, "i am"],
+  [/\b(you|we|they)'?re\b/g, "$1 are"],
+  [/\b(he|she|it|that|there|here|what|where|who|how)'?s\b/g, "$1 is"],
+  [/\b(i|you|we|they)'?ve\b/g, "$1 have"],
+  [/\b(i|you|he|she|we|they)'?ll\b/g, "$1 will"],
+  [/\blet'?s\b/g, "let us"],
+  [/\bcan'?t\b/g, "can not"],
+  [/\bcannot\b/g, "can not"],
+  [/\bwon'?t\b/g, "will not"],
+  [/\b(do|does|did|is|are|was|were|has|have|had|would|could|should|must)n'?t\b/g, "$1 not"],
+];
+
+/**
  * What two answers have to share to count as the same.
  *
- * Case, punctuation and spacing all go. `I'm fine, thank you.` and
- * `im fine thank you` are the same act of production, and the difference is not
- * something this stage is trying to teach.
+ * Case, punctuation, spacing, accents and contraction all go. `I'm fine, thank
+ * you.`, `im fine thank you` and `I am fine thank you` are the same act of
+ * production, and none of those differences is something this stage teaches.
  */
 export function normalise(text: string): string {
-  return text
+  let out = text
     .toLowerCase()
     .normalize("NFD")
     // Strip combining accents, so `cafe` matches `café`. English answers rarely
     // need them and a Spanish keyboard makes them easy to add by accident.
     .replace(/[̀-ͯ]/g, "")
+    ;
+
+  // Applied while the apostrophes are still there. The patterns also accept the
+  // apostrophe-less spelling, because a learner typing "dont" on a phone means
+  // "do not".
+  for (const [pattern, replacement] of CONTRACTIONS) {
+    out = out.replace(pattern, replacement);
+  }
+
+  return out
     .replace(/[^\p{L}\p{N}\s]/gu, "")
     .replace(/\s+/g, " ")
     .trim();
@@ -76,15 +113,32 @@ function typoBudget(length: number): number {
  * same structural mistake every time. Observed in a browser on 2026-08-28,
  * which is the only way this was ever going to be noticed.
  */
-export function gradeTypedAnswer(expected: string, actual: string): TypedOutcome {
-  const want = normalise(expected);
+export function gradeTypedAnswer(
+  expected: string,
+  actual: string,
+  accepts: readonly string[] = [],
+): TypedOutcome {
   const got = normalise(actual);
-
   if (got.length === 0) return "wrong";
-  if (want === got) return "correct";
+
+  // The authored answer first, then anything the author also declared correct.
+  // An exact match against an alternative is exactly as correct as the primary:
+  // a learner who answered "Thanks" for "Thank you" produced real English and
+  // should not be told otherwise.
+  const candidates = [expected, ...accepts];
+  if (candidates.some((candidate) => normalise(candidate) === got)) return "correct";
+
   if (classifyError(expected, actual)) return "wrong";
-  if (editDistance(want, got) <= typoBudget(want.length)) return "close";
-  return "wrong";
+
+  // The typo budget is measured against whichever candidate the learner came
+  // closest to, so an alternative gets the same forgiveness the primary does.
+  const best = Math.min(
+    ...candidates.map((candidate) => {
+      const want = normalise(candidate);
+      return editDistance(want, got) - typoBudget(want.length);
+    }),
+  );
+  return best <= 0 ? "close" : "wrong";
 }
 
 /* -------------------------------------------------------------------------- */

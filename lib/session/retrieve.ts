@@ -1,5 +1,6 @@
 import "server-only";
 import { createEmptyCard, fsrs, type Card, type Grade } from "ts-fsrs";
+import { buildOptions, canBuildRecognition } from "./distractors";
 import { cardStateFor, countsAsProduction, ratingFor, type TypedOutcome } from "./grade";
 import { createClient } from "@/lib/supabase/server";
 import type { ChunkAudio, ReviewMode, Tables } from "@/lib/supabase/types";
@@ -27,6 +28,8 @@ export type ReviewCard = {
   es: string;
   exampleEn: string;
   audioUrl: string | null;
+  /** Other answers the author declared correct. Usually empty. */
+  accepts: string[];
   mode: ReviewMode;
   /** Recognition only: the correct gloss plus distractors, already shuffled. */
   options: string[];
@@ -105,7 +108,7 @@ export async function loadDueCards(
 
   const { data: chunks } = await supabase
     .from("chunks")
-    .select("id, en_text, es_gloss, example_en, audio_urls")
+    .select("id, en_text, es_gloss, example_en, audio_urls, accepts")
     .in(
       "id",
       due.map((card) => card.chunk_id),
@@ -113,16 +116,40 @@ export async function loadDueCards(
 
   const byId = new Map((chunks ?? []).map((chunk) => [chunk.id, chunk]));
 
-  // Distractors for recognition come from the learner's own cards, so the wrong
-  // answers are phrases they have actually met. Options drawn from unseen
-  // vocabulary are eliminable on sight and test nothing.
-  const glossPool = (chunks ?? []).map((chunk) => chunk.es_gloss);
+  /*
+   * Distractors come from every gloss the learner has *met*, not from the
+   * handful due today.
+   *
+   * Drawing from the due set was the original design and it is
+   * semantically clustered by construction: a unit introduces greetings
+   * together, then farewells together, so day one's pool was six greetings and
+   * the first card of the first session offered "Hola" and "Hola (informal)" as
+   * competing answers for *Hello* in a third of seeds. Widening the pool costs
+   * one query and removes the clustering; `buildOptions` removes the rest.
+   */
+  const { data: metCards } = await supabase
+    .from("user_cards")
+    .select("chunk_id")
+    .eq("user_id", userId);
+
+  const { data: metChunks } = await supabase
+    .from("chunks")
+    .select("es_gloss")
+    .in("id", (metCards ?? []).map((card) => card.chunk_id));
+
+  const glossPool = (metChunks ?? []).map((chunk) => chunk.es_gloss);
 
   return due.flatMap((card, i) => {
     const chunk = byId.get(card.chunk_id);
     if (!chunk) return [];
 
-    const mode = modeFor(card);
+    // A card with no gloss that can be told apart from its own is not a
+    // multiple choice; ask it as production instead of offering one button.
+    const mode =
+      modeFor(card) === "recognize" && canBuildRecognition(chunk.es_gloss, glossPool)
+        ? "recognize"
+        : "produce_typed";
+
     const options =
       mode === "recognize"
         ? buildOptions(`${seed}:${card.chunk_id}`, chunk.es_gloss, glossPool)
@@ -137,37 +164,13 @@ export async function loadDueCards(
         // Alternating voices across the queue, so a review session is not one
         // talker for twelve cards.
         audioUrl: ((chunk.audio_urls as ChunkAudio[] | null) ?? [])[i % 2]?.url ?? null,
+        accepts: (chunk.accepts as string[] | null) ?? [],
         mode,
         options: options.values,
         answer: options.answer,
       },
     ];
   });
-}
-
-/** The correct gloss and up to two distractors, in a seeded order. */
-function buildOptions(
-  seed: string,
-  correct: string,
-  pool: string[],
-): { values: string[]; answer: number } {
-  const others = [...new Set(pool)].filter((gloss) => gloss !== correct);
-
-  // Seeded pick, so a refresh does not reshuffle the answers mid-question.
-  let h = 0x811c9dc5;
-  for (let i = 0; i < seed.length; i++) {
-    h ^= seed.charCodeAt(i);
-    h = Math.imul(h, 0x01000193);
-  }
-  const start = others.length > 0 ? (h >>> 0) % others.length : 0;
-  const picked = [others[start], others[(start + 1) % others.length]].filter(Boolean);
-
-  const values = [correct, ...picked];
-  // Rotate rather than shuffle: enough to move the answer off slot one, which
-  // is the whole failure mode, and cheap to reason about.
-  const offset = (h >>> 8) % values.length;
-  const rotated = [...values.slice(offset), ...values.slice(0, offset)];
-  return { values: rotated, answer: rotated.indexOf(correct) };
 }
 
 /**
