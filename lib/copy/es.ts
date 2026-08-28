@@ -174,6 +174,7 @@ export const es = {
     consecutiveDaysOne: "1 día seguido",
     questsTitle: "Hoy puedes",
     missionCta: "Tienes una misión: {title}",
+    patternsCta: "Algo que se te repite",
     questDone: "Listo",
     quests: {
       speak: "Habla en voz alta una vez",
@@ -363,6 +364,24 @@ export const es = {
     thanksBody: "No importa cómo salió. Abriste la boca en inglés con una persona real.",
     none: "No tienes misión pendiente ahora.",
     noneBody: "Aparecen cuando ya conoces las frases que necesitas.",
+    back: "Volver a Hoy",
+  },
+
+  // The payoff of error detection (PRD F6): naming a rule, once, with the
+  // learner's own words as the example. Everything here is written to read as
+  // a lesson rather than a report card -- no counts of mistakes, no "errores",
+  // and nothing that suggests they are behind.
+  patterns: {
+    label: "Un detalle",
+    title: "Algo que se te repite",
+    // Softens the whole page: this is a category of thing, not a personal flaw,
+    // and it is the single most common one among Spanish speakers.
+    intro: "Le pasa a casi todos los que hablan español. Una vez que lo ves, ya no se te olvida.",
+    youWrote: "Escribiste",
+    itIs: "Se dice",
+    times: "Ha pasado {count} veces",
+    none: "Nada que señalar por ahora.",
+    noneBody: "Cuando algo se repita, te lo decimos aquí. Una cosa a la vez.",
     back: "Volver a Hoy",
   },
 

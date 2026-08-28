@@ -3,6 +3,7 @@ import { Button, ButtonLink } from "@/components/ui/button";
 import { requireOnboardedProfile } from "@/lib/auth/session";
 import { QuestList, type QuestView } from "@/components/ui/quest-list";
 import { loadCurrentMission } from "@/lib/session/missions";
+import { hasPatternsToShow } from "@/lib/session/patterns-server";
 import { ensureDailyQuests } from "@/lib/session/rewards";
 import { curriculumStatus } from "@/lib/session/store";
 import { signOutAction } from "@/app/auth/actions";
@@ -39,6 +40,11 @@ export default async function HomePage() {
   // Offered only once its preparation chunks have been met, so it is never a
   // request to improvise (PRD F12).
   const mission = await loadCurrentMission(profile.id, profile.current_unit);
+
+  // Checked rather than always linked: offering "algo que se te repite" and
+  // then showing an empty page is a small cruelty -- the learner clicks
+  // expecting to be told something and is told nothing.
+  const showPatterns = await hasPatternsToShow(profile.id);
 
   const quests: QuestView[] = (
     await ensureDailyQuests(profile.id, profile.timezone, profile.daily_goal_minutes)
@@ -106,6 +112,12 @@ export default async function HomePage() {
       {mission && (
         <ButtonLink href="/mission" variant="secondary">
           {fill(es.home.missionCta, { title: mission.titleEs })}
+        </ButtonLink>
+      )}
+
+      {showPatterns && (
+        <ButtonLink href="/patterns" variant="quiet">
+          {es.home.patternsCta}
         </ButtonLink>
       )}
 

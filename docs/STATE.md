@@ -157,6 +157,14 @@ one thing a nervous beginner will not do.
 English speakers near them is exactly who this course is for, and the UI offers
 the alternative as an equal option rather than a consolation.
 
+**F6 is now a whole feature.** `error_events` was write-only; `/patterns` reads
+it. Two occurrences before anything is said (one slip is a bad morning, not a
+pattern), at most three at a time (someone shown eight things to fix fixes
+none), the rule named before the mistake, and the learner's own most recent
+words as the evidence. `/home` links it only when there is something to show —
+offering "algo que se te repite" and then showing an empty page is a small
+cruelty.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -167,7 +175,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 213, all passing.**
+**Tests — 222, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -181,6 +189,7 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `achievements.test.ts` | 7 | no |
 | `error-patterns.test.ts` | 15 | no |
 | `shadowing.test.ts` | 8 | no |
+| `patterns.test.ts` | 9 | no |
 | `grade.test.ts` | 16 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
@@ -512,9 +521,12 @@ features remain designed-but-unbuilt, both blocked on authoring:
 | **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
 | **The visible L1 taper** | The mechanism is wired (`l1SupportForBlock`, `shouldOfferMoreSupport`, written on unit advance) but its effect needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
 
-`error_events` is written but never *read* — the "these are your patterns"
-screen is not built, and it is the natural next thing once there is enough data
-to be worth showing.
+Branching dialogue is the last one, and it is blocked in a way missions were
+not: a `guided` dialogue asks the learner to choose what to say, and the
+validator enforces `scripted` for A0 precisely so a beginner never has to invent
+a sentence. Authoring one for `b1_u1` would contradict the taper. It belongs in
+a unit that does not exist yet — so the walker is worth building only alongside
+the first A1 unit.
 
 ### Next feature
 
