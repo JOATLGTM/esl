@@ -217,8 +217,29 @@ export function unitExampleWords(unit: Unit): Set<string> {
   return words;
 }
 
+/**
+ * The literal words of a unit's frame patterns.
+ *
+ * `I'd like {NP}, please.` teaches "I'd like" and "please" as surely as a chunk
+ * does -- the learner reads the pattern, fills it, and says the result. The
+ * slot itself is stripped before tokenizing, or `{NP}` would enter the known
+ * set as the word "np" and quietly license it in every later scene.
+ *
+ * Fillers are deliberately *not* counted here. A filler is a chunk id, and that
+ * chunk contributes its own words wherever the curriculum actually teaches it;
+ * counting it again at the frame would credit the learner for vocabulary on the
+ * strength of a cross-reference.
+ */
+export function unitFrameWords(unit: Unit): Set<string> {
+  const words = new Set<string>();
+  for (const frame of unit.frames) {
+    for (const t of tokenize(frame.pattern.replace(`{${frame.slot}}`, " "))) words.add(t);
+  }
+  return words;
+}
+
 export function unitTaughtWords(unit: Unit): Set<string> {
-  return new Set([...unitChunkWords(unit), ...unitExampleWords(unit)]);
+  return new Set([...unitChunkWords(unit), ...unitExampleWords(unit), ...unitFrameWords(unit)]);
 }
 
 export type KnownWordTimeline = {

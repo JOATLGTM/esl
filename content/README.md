@@ -6,7 +6,7 @@ something here, the schema is wrong — change the schema, don't work around it.
 
 ```
 content/
-  curriculum.yaml            the A0→B1 spine; lists only units that exist
+  curriculum.yaml            the A0→A2 spine; lists only units that exist
   characters.yaml            the recurring cast, one fixed voice each
   units/<unit_id>.yaml       chunks + scenes + speaking task
   contrasts/<contrast>.yaml  HVPT minimal-pair drill sets

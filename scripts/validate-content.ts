@@ -11,7 +11,7 @@
  * Exit code 1 on any error. Warnings never fail the build -- they are the
  * "authored but not publishable yet" signals, mostly missing generated audio.
  */
-import { CONTRASTS, type Unit } from "../lib/content/types";
+import { CONTRASTS, MIN_FRAME_FILLERS, expandFrame, type Unit } from "../lib/content/types";
 import {
   buildKnownWordTimeline,
   loadContent,
@@ -46,6 +46,16 @@ const EXAMPLE_UNKNOWN_FLOOR = 2;
 
 /** PRD F2: a chunk needs >=2 speaker audio files before it can be published. */
 const MIN_SPEAKERS_PER_CHUNK = 2;
+
+/**
+ * Where a frame starts paying for itself.
+ *
+ * `MIN_FRAME_FILLERS` is the schema floor -- below it the thing is not a frame.
+ * This is the higher bar the design actually rests on: one pattern and a dozen
+ * fillers is a dozen sentences for the price of one authored item, and that
+ * ratio is the reason the type exists.
+ */
+const RECOMMENDED_FRAME_FILLERS = 8;
 
 /**
  * `--publish` turns every "authored but not shippable yet" warning into an
@@ -94,6 +104,7 @@ function loadManifestVoices(): Map<string, Set<string>> {
 function checkGlobalIdUniqueness(bundle: ContentBundle) {
   const chunkIds = new Map<string, string>();
   const sceneIds = new Map<string, string>();
+  const frameIds = new Map<string, string>();
 
   for (const unit of bundle.units) {
     for (const chunk of unit.chunks) {
@@ -105,6 +116,11 @@ function checkGlobalIdUniqueness(bundle: ContentBundle) {
       const prev = sceneIds.get(scene.id);
       if (prev) err(unit.unit_id, `scene id ${scene.id} is already used in ${prev}`);
       else sceneIds.set(scene.id, unit.unit_id);
+    }
+    for (const frame of unit.frames) {
+      const prev = frameIds.get(frame.id);
+      if (prev) err(unit.unit_id, `frame id ${frame.id} is already used in ${prev}`);
+      else frameIds.set(frame.id, unit.unit_id);
     }
   }
 }
@@ -329,6 +345,90 @@ function checkUnitStructure(unit: Unit, bundle: ContentBundle) {
   }
 }
 
+/**
+ * Frames (see `FrameSchema`) — the generative layer.
+ *
+ * A frame is only worth anything if the learner can actually fill it, so the
+ * one rule that matters is ordering: every filler must be a chunk the
+ * curriculum has already taught, in this unit or an earlier one. A filler
+ * pointing forward is the frame equivalent of a scene that fails the 95% rule,
+ * except it fails silently -- the card renders, the learner reads an option
+ * they have never met, and concludes they forgot it.
+ */
+function checkFrames(bundle: ContentBundle) {
+  // Where each chunk is taught, as a position in curriculum order.
+  const taughtAt = new Map<string, number>();
+  bundle.units.forEach((unit, i) => {
+    for (const chunk of unit.chunks) if (!taughtAt.has(chunk.id)) taughtAt.set(chunk.id, i);
+  });
+  const chunkText = new Map(bundle.units.flatMap((u) => u.chunks.map((c) => [c.id, c.en] as const)));
+  const timeline = buildKnownWordTimeline(bundle.units);
+
+  bundle.units.forEach((unit, index) => {
+    const where = unit.unit_id;
+    const countCognates = cognateCreditAllowed(unit.cefr);
+    const known = timeline.during.get(unit.unit_id)!;
+
+    for (const frame of unit.frames) {
+      const usable: string[] = [];
+
+      for (const ref of frame.fillers) {
+        const at = taughtAt.get(ref);
+        if (at === undefined) {
+          err(where, `${frame.id} is filled by ${ref}, which no unit teaches`);
+          continue;
+        }
+        if (at > index) {
+          err(
+            where,
+            `${frame.id} is filled by ${ref}, taught later in ${bundle.units[at].unit_id}`,
+            "a frame may only be filled with chunks the learner has already met",
+          );
+          continue;
+        }
+        usable.push(ref);
+      }
+
+      // Every sentence the frame can produce has to read. For chunk fillers
+      // this holds by construction -- pattern words are taught by this unit,
+      // filler words by an earlier one -- and is asserted rather than assumed,
+      // because this is the sentence the learner is graded on and a
+      // disagreement between the timeline and a frame should surface here.
+      //
+      // For literal fillers it is the actual gate: `My name is {NAME}` is only
+      // honest if the learner has met whatever goes in NAME, and proper nouns
+      // and cognates are exactly what the readability scorer already credits.
+      const expansions: [label: string, text: string][] = [
+        ...usable.map((ref) => [ref, chunkText.get(ref)!] as [string, string]),
+        ...frame.literal_fillers.map((lit) => [`"${lit}"`, lit] as [string, string]),
+      ];
+      for (const [label, filler] of expansions) {
+        const sentence = expandFrame(frame.pattern, frame.slot, filler);
+        const report = scoreText(sentence, known, { countCognates });
+        if (!report.passes) {
+          err(
+            where,
+            `${frame.id} + ${label} produces unknown words`,
+            `"${sentence}" -> ${report.unknown.join(", ")}`,
+          );
+        }
+      }
+
+      // The whole argument for frames is that authoring cost stops scaling with
+      // what is taught. Three fillers clears the schema and does not deliver it.
+      const usableTotal = usable.length + frame.literal_fillers.length;
+      if (usableTotal < RECOMMENDED_FRAME_FILLERS) {
+        warn(
+          where,
+          `${frame.id} has ${usableTotal} usable filler(s)`,
+          `>=${RECOMMENDED_FRAME_FILLERS} is where a frame starts out-earning the chunks it costs ` +
+            `(the schema floor is ${MIN_FRAME_FILLERS})`,
+        );
+      }
+    }
+  });
+}
+
 function checkReadability(bundle: ContentBundle) {
   const timeline = buildKnownWordTimeline(bundle.units);
 
@@ -449,15 +549,23 @@ function checkGeneratedDurations(bundle: ContentBundle) {
 }
 
 function checkCurriculumTargets(bundle: ContentBundle) {
-  let cumulative = 0;
+  let chunks = 0;
+  let frames = 0;
   for (const block of bundle.curriculum.blocks) {
     const units = block.units.map((id) => bundle.unitsById.get(id)!).filter(Boolean);
-    cumulative += units.reduce((n, u) => n + u.chunks.length, 0);
+    chunks += units.reduce((n, u) => n + u.chunks.length, 0);
+    frames += units.reduce((n, u) => n + u.frames.length, 0);
     if (units.length === 0) continue;
-    if (cumulative > block.chunk_target_cumulative) {
+    if (chunks > block.chunk_target_cumulative) {
       warn(
         `block ${block.block}`,
-        `cumulative chunk count ${cumulative} exceeds the target ${block.chunk_target_cumulative}`
+        `cumulative chunk count ${chunks} exceeds the target ${block.chunk_target_cumulative}`
+      );
+    }
+    if (frames > block.frame_target_cumulative) {
+      warn(
+        `block ${block.block}`,
+        `cumulative frame count ${frames} exceeds the target ${block.frame_target_cumulative}`
       );
     }
   }
@@ -567,6 +675,7 @@ function main() {
   checkGlobalIdUniqueness(bundle);
   checkCast(bundle);
   for (const unit of bundle.units) checkUnitStructure(unit, bundle);
+  checkFrames(bundle);
   checkReadability(bundle);
   console.log("\n  HVPT drill sets (PRD F3)");
   checkContrasts(bundle, plan);

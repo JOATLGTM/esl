@@ -12,6 +12,7 @@ Read it alongside, not instead of:
 |---|---|
 | `AGENTS.md` | this is Next 16 — read `node_modules/next/dist/docs/` before writing app code |
 | `docs/DEPLOY.md` | env vars, audio hosting, auth URLs — read before any deploy |
+| `docs/CONTENT-BRIEF.md` | the brief for sourcing and authoring the other 35 units — the actual bottleneck |
 | `content/README.md` | the authoring pipeline, the 95% rule, the two kinds of audio |
 | `supabase/README.md` | schema, RLS, the connection layer |
 | `lib/copy/es.ts` | every Spanish string, with the house style at the top |
@@ -257,7 +258,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 274, all passing.**
+**Tests — 292, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -292,6 +293,46 @@ point them at production.**
 
 Each of these looks like a bug if you only read the PRD. They are not. If one
 turns out to be wrong, change it deliberately — do not "fix" it back.
+
+**The course ends at A2, in 24 units — not B1 in 36** (§4.3). Changed
+2026-08-28 after the content brief came back; the reasoning is in
+`docs/CONTENT-BRIEF.md` and the short version is arithmetic. 36 units is
+~120–150 learner-hours; A0→B1 is conventionally 350–400. No sourcing strategy
+closes a 200-hour gap, so the old spine promised an endpoint it could not
+reach. The cognate discount does not rescue it either — Blocks 1–3 live in
+Germanic core vocabulary, and the Latinate windfall arrives at B1+, which is
+exactly where this course would have stopped.
+
+A2 is not a consolation prize for this learner: understanding a supervisor,
+handling a transaction, making a phone call, talking to a neighbour. That is
+the delta that changes a life, and shipping it honestly beats shipping half a
+B1 promise. Blocks 5–6 are deferred, not cancelled — `CEFR_LEVELS` still
+carries `A2+` and `B1`, and `CurriculumSchema` still allows six blocks, so
+they drop back in without a migration.
+
+**Chunks are not the only content type any more: there are frames** (added
+2026-08-28). A frame is a pattern with one slot and a list of licensed fillers
+— `I'd like {NP}, please.` The reason is that a course built only from fixed
+strings tops out as an excellent phrasebook: it can say 2,500 things and cannot
+say the 2,501st. The formulaic-sequence research this pedagogy rests on treats
+chunks as raw material the learner *unpacks* into patterns, and until this type
+existed nothing in the content model could represent that unpacking.
+
+It is also the only item whose authoring cost does not scale with what it
+teaches: one pattern and a dozen fillers is a dozen sentences. That ratio is
+why 24 units can reach a real A2 on ~850 chunks where the old spine implied
+~1,600.
+
+Two things about the schema that look like oversights and are not. **Both
+patterns use the same slot name** — writing `{SN}` in the Spanish for
+*sintagma nominal* reads better and buys nothing, because no UI renders the raw
+marker; a second name can only fail to match the first. And **fillers come in
+two kinds**: chunk ids, and `literal_fillers` for names, places and numbers.
+Unit 1 forced the second — `My name is`, `I'm from` and `This is` are all
+frames wearing a chunk's clothes, and their fillers ("Alex", "Mexico") are
+things the curriculum will never teach as chunks. Literal fillers are gated by
+the same readability scorer as everything else, so they are a licence to use a
+word the learner already has, not a hole in the 95% rule.
 
 **Ear training is human-recorded, never TTS** (§8.1B). The voice roster schema
 *refuses* an `hvpt` role. High-variability training works because talkers vary;
@@ -454,6 +495,15 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**Frames are authored-for but not yet playable.** The schema, the validator and
+the known-word timeline all handle frames; the session player does not read
+them. So `content/units/*.yaml` deliberately contains **zero** frames right
+now — authoring 200 of them before Retrieve or Speak can display one would
+repeat the `l1_support_level` mistake at 200× the scale (written, read by
+nothing). Wire a stage to frames *first*, then author. The type is proven end
+to end by `tests/frames.test.ts` and by the validator's own guards, not by
+shipped content.
 
 **macOS `say` silently substitutes the default voice** when a named voice is not
 downloaded. No error, plausible output. Block 1 shipped with `us_f_1`, `us_m_1`
@@ -631,13 +681,56 @@ from a cookie is client-supplied data.
    daily loop has nothing to play and `npm run content:publish-check` fails —
    correctly. The session player already skips the stage cleanly, so this
    blocks nothing except the stage itself.
+
+   **Recruit for variety, not convenience.** Six talkers from one town gives
+   you the drill without the mechanism — high-variability training works
+   *because* the talkers genuinely vary. With a scripted recorder, ~150–250
+   words/hour is realistic, so all nine contrasts is ~2–3 hours per speaker.
+
+   **The priority order is probably wrong, and `th` is the reason.** It is the
+   most famous marker of a Spanish accent and one of the lowest-payoff
+   contrasts in English: `think`/`sink` confusions almost never survive
+   context, and Jenkins' Lingua Franca Core excludes the dental fricatives from
+   what is needed for intelligibility. Meanwhile `/æ/–/ɛ/` (`bad`/`bed`,
+   `man`/`men`) is high functional load for a five-vowel L1 and **is not in our
+   nine at all**. Changing the roster is a Postgres enum migration on the type
+   behind `target_contrast`, not a re-sort of a list — real, but cheap, and far
+   cheaper before 2,700 clips exist than after. Note also that
+   `final_clusters` is not a minimal-pair contrast (`walked`/`walk` is
+   presence-vs-absence) and needs a categorical *"past or present?"* exercise,
+   which is a second UI shape nobody has budgeted for.
 6. ~~`public/audio/` is gitignored.~~ Resolved 2026-08-27: committed and served
    from Vercel's CDN with immutable cache headers, per §8.1C. Full curriculum
-   projects to ~110 MB against 100 GB/month of Hobby bandwidth — roughly 900
-   learners downloading everything, once, per month. Rationale, the rejected
-   alternatives and the headroom maths are in `docs/DEPLOY.md`.
-7. **Content: 1 unit of 36.** Block 1 needs 6. The PRD is blunt that authoring
-   is ~70% of total effort — budget it honestly.
+   projects to ~78 MB at 24 units. **Do not plan against the bandwidth number**
+   — the curriculum is ~5,100 files and each is an edge request, so requests
+   bind roughly 6× sooner than megabytes do. `docs/DEPLOY.md` has the corrected
+   maths.
+7. **Content: 1 unit of 24.** Block 1 needs 6. Authoring is ~70% of total
+   effort and it is now the only thing between this and a finished course.
+   `docs/CONTENT-BRIEF.md` has the sourcing research, the licences, and the
+   sequenced estimate: **~220–310 person-hours to a finished A2**, of which the
+   first 40–55 are foundations that make everything after them 2–3× faster.
+
+   Do the foundations first, in this order, or the rest costs more:
+
+   a. **Wire a stage to frames.** Retrieve or Speak. Until something displays a
+      frame, authoring them is writing into a void (see the trap above).
+   b. **Freeze a vocabulary release schedule** — `content/vocab-schedule.yaml`,
+      naming exactly which word types become legal in which unit. Today the 95%
+      rule is *discovered* at validation time, so authoring means writing a
+      scene and then fighting the validator. It should be a design input: with
+      the schedule in place an author writes inside a known word list and
+      validation becomes a formality. This is the single highest-leverage
+      unbuilt thing in the project.
+   c. **A story bible** — six characters, four blocks, an arc per block with
+      actual stakes. Without it, generated scenes become a sequence of errands
+      and nobody cares whether Ana gets the job.
+
+   Then author. LLM-assisted drafting at *build* time is consistent with the
+   $0 rule ($0 is about runtime) and is realistically the only way one person
+   ships 24 units — but the human passes are not optional: naturalness, Spanish
+   register, story stakes, distractor quality, and a cultural read on anything
+   touching immigration, police, employers or clinics.
 8. **Email verification flow** — see the confirm-later decision above.
 9. **Confirm Supabase's inactivity policy in the dashboard.** The keepalive
    (`.github/workflows/keepalive.yml`, daily) assumes a read counts as

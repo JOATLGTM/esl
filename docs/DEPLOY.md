@@ -80,17 +80,29 @@ git add public/audio
 | | |
 |---|---|
 | Block 1 Unit 1 today | 2.7 MB, 214 files |
-| Scripted audio at 36 units | ~97 MB, ~7,700 files |
+| Scripted audio at 24 units | ~65 MB, ~5,100 files |
 | Ear training, all 9 contrasts | ~13 MB, 2,700 files (9 × 25 pairs × 2 words × 6 speakers) |
-| **Full curriculum** | **~110 MB** |
-| Vercel Hobby bandwidth | 100 GB/month |
-| Learners that fits | **~900/month**, each downloading the entire curriculum once |
+| **Full curriculum** | **~78 MB** |
 
-At one learner this is not a rounding error, it is free. Revisit only if this
-ever carries hundreds of daily learners, and the answer then is R2 — zero
-egress fees — with `audio-manifest.json` rewritten to absolute URLs. Nothing in
-the app reads audio paths directly; they all come from the manifest, which is
-what makes that a one-file change.
+**Bandwidth is not the meter that binds.** ~78 MB against Vercel Hobby's
+100 GB/month is ~1,300 learners each pulling the whole curriculum once — which
+looks like enormous headroom and is the wrong number to plan against. The
+curriculum is ~5,100 *files*, and each one is an edge request. Against Hobby's
+request allowance, the ceiling is on the order of **a couple of hundred
+learners**, not thirteen hundred — roughly 6× lower, and it is the limit that
+trips first.
+
+Check the current Hobby quotas before relying on either figure; both have moved
+before. The direction is what matters: **count requests, not megabytes.** A
+learner who works through one unit pulls ~200 files, so a real month of real
+use is far below a full-curriculum download either way.
+
+At one learner this is not a rounding error, it is free. Revisit when this
+carries tens of daily learners, and the answer then is R2 — zero egress fees
+and request limits that are not the binding constraint — with
+`audio-manifest.json` rewritten to absolute URLs. Nothing in the app reads
+audio paths directly; they all come from the manifest, which is what makes that
+a one-file change.
 
 ### Cache headers are not optional here
 

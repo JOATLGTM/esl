@@ -44,6 +44,7 @@ export const SPEAKING_MODES = ["scripted", "guided", "free"] as const;
 const chunkId = z.string().regex(/^c_\d{4}$/, "chunk id must look like c_0412");
 const sceneId = z.string().regex(/^s_\d{4}$/, "scene id must look like s_0088");
 const unitId = z.string().regex(/^b\d_u\d$/, "unit id must look like b2_u3");
+const frameId = z.string().regex(/^f_\d{4}$/, "frame id must look like f_0031");
 const characterId = z.string().regex(/^[a-z][a-z0-9_]*$/, "character id must be lowercase, like maria");
 
 /**
@@ -161,6 +162,144 @@ export const MissionSchema = z.object({
 });
 export type Mission = z.infer<typeof MissionSchema>;
 
+/* -------------------------------------------------------------------------- */
+/* Frames: the generative layer                                               */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Fewest fillers a frame needs before it is a frame.
+ *
+ * Two fillers is a pair of chunks with extra ceremony. The whole argument for
+ * this type is that authoring cost stops scaling with what is taught, and that
+ * only starts being true somewhere above a handful; ten to fifteen is where it
+ * gets good.
+ */
+export const MIN_FRAME_FILLERS = 3;
+
+/** Where the placeholder sits in a pattern: `I'd like {NP}, please.` */
+const SLOT_RE = /\{([A-Za-z0-9_]+)\}/g;
+
+export function slotsIn(text: string): string[] {
+  return [...text.matchAll(SLOT_RE)].map((m) => m[1]);
+}
+
+/**
+ * A pattern with one slot, plus the chunks licensed to fill it.
+ *
+ * The course teaches chunks -- whole phrases a beginner can deploy without
+ * assembling anything. That is the right on-ramp and the wrong destination.
+ * The formulaic-sequence research this pedagogy rests on treats chunks as raw
+ * material for grammar: the learner gradually *unpacks* `I'd like a coffee`
+ * into `[I'd like + NP]` and starts producing sentences nobody taught them.
+ * That unpacking is the entire mechanism by which chunks eventually pay off,
+ * and until this type existed nothing in the content model could represent it
+ * -- a chunk was a fixed string and there was no way to author a pattern. A
+ * course built only from fixed strings tops out as an excellent phrasebook: it
+ * can say 2,500 things and cannot say the 2,501st.
+ *
+ * A frame is also the only item in `content/` whose authoring cost does not
+ * scale with what it teaches. One pattern and fifteen already-taught fillers is
+ * fifteen sentences, and because the fillers are chunks the learner has already
+ * met, the 95% rule holds by construction rather than by luck.
+ *
+ * No `audio` field, deliberately. A frame is a *production* exercise -- the
+ * learner builds the sentence and says it -- and generating a clip per
+ * combination would be 200 frames x 15 fillers of synthesis to support an
+ * exercise where the learner is the one talking.
+ */
+export const FrameSchema = z.object({
+  id: frameId,
+  /** The pattern, containing exactly one `{SLOT}`: `I'd like {NP}, please.` */
+  pattern: z.string().min(1),
+  /**
+   * The same pattern in Spanish, slot included: `Me gustaría {NP}, por favor.`
+   *
+   * A translation of one *example* would teach the example. The learner needs
+   * to see the shape with the hole still in it, which is the thing being
+   * learned.
+   *
+   * The slot keeps its English name in both patterns, deliberately. Writing
+   * `{SN}` here for *sintagma nominal* reads better to a Spanish speaker and
+   * buys nothing: no UI ever renders the raw marker -- it becomes a blank or a
+   * chooser -- so the only thing a second name can do is fail to match the
+   * first.
+   */
+  es_pattern: z.string().min(1),
+  /** The placeholder name, upper case, used in both patterns. */
+  slot: z.string().regex(/^[A-Z][A-Z0-9_]*$/, "slot names are upper case, like NP or TIME"),
+  /**
+   * Chunks allowed in the slot, by id.
+   *
+   * Ids rather than free text, so a filler cannot be a phrase the learner has
+   * never met: the validator resolves each one against what the curriculum has
+   * actually taught by this point. This is the check that keeps a frame from
+   * quietly becoming a way to smuggle in new vocabulary.
+   */
+  fillers: z.array(chunkId).default([]),
+  /**
+   * Fillers that are not chunks: names, places, numbers.
+   *
+   * Unit 1 is why this exists. Three of its "chunks" -- `My name is`, `I'm
+   * from`, `This is` -- are frames wearing a chunk's clothes: none of them is a
+   * sentence, each has a hole, and the hole is filled by something the
+   * curriculum will never teach as a chunk because "Alex" and "Mexico" are not
+   * vocabulary. Modelling only chunk-id fillers would have left the single most
+   * obvious frame in the course inexpressible.
+   *
+   * The guarantee survives because these are gated the same way everything else
+   * is: the validator scores each one against the known-word set at that point
+   * in the curriculum, with the usual cognate and proper-noun credit. A literal
+   * filler is not a licence to smuggle in vocabulary -- it is a licence to use
+   * a word the learner already, demonstrably, has.
+   */
+  literal_fillers: z.array(z.string().min(1)).default([]),
+  cefr: z.enum(CEFR_LEVELS),
+  tags: z.array(z.string()).default([]),
+}).superRefine((frame, ctx) => {
+  const bad = (message: string) => ctx.addIssue({ code: z.ZodIssueCode.custom, message });
+
+  for (const [field, text] of [["pattern", frame.pattern], ["es_pattern", frame.es_pattern]] as const) {
+    const found = slotsIn(text);
+    const mine = found.filter((s) => s === frame.slot);
+    if (mine.length === 0) {
+      bad(`${field} "${text}" has no {${frame.slot}} placeholder`);
+    } else if (mine.length > 1) {
+      bad(`${field} repeats {${frame.slot}}; a frame has exactly one slot`);
+    }
+    for (const other of new Set(found.filter((s) => s !== frame.slot))) {
+      bad(`${field} contains {${other}}, but the declared slot is {${frame.slot}}`);
+    }
+  }
+
+  if (new Set(frame.fillers).size !== frame.fillers.length) {
+    bad("duplicate filler ids");
+  }
+  if (new Set(frame.literal_fillers).size !== frame.literal_fillers.length) {
+    bad("duplicate literal fillers");
+  }
+
+  const total = frame.fillers.length + frame.literal_fillers.length;
+  if (total < MIN_FRAME_FILLERS) {
+    bad(
+      `a frame needs >=${MIN_FRAME_FILLERS} fillers (chunk or literal); ` +
+        `${total} is just chunks with extra steps`,
+    );
+  }
+});
+export type Frame = z.infer<typeof FrameSchema>;
+
+/**
+ * The sentence a learner actually produces, for one filler.
+ *
+ * Capitalisation matters here because a slot can open the pattern -- `{NP} is
+ * closed today` with the filler `the bank` has to come out as "The bank", not
+ * "the bank". The learner is being graded on this sentence.
+ */
+export function expandFrame(pattern: string, slot: string, filler: string): string {
+  const out = pattern.replace(`{${slot}}`, filler);
+  return pattern.startsWith(`{${slot}}`) ? out.charAt(0).toUpperCase() + out.slice(1) : out;
+}
+
 export const UnitSchema = z.object({
   unit_id: unitId,
   block: z.number().int().min(1).max(6),
@@ -171,6 +310,14 @@ export const UnitSchema = z.object({
   can_do_es: z.string().min(1),
   target_contrast: z.enum(CONTRASTS),
   chunks: z.array(ChunkSchema).min(1),
+  /**
+   * Patterns built from chunks the learner already has (see `FrameSchema`).
+   *
+   * Optional, and defaulted, because every unit authored before frames existed
+   * is still valid content -- a unit with no frames teaches fixed chunks, which
+   * is what the course did for its whole first block.
+   */
+  frames: z.array(FrameSchema).default([]),
   scenes: z.array(SceneSchema).min(1),
   speaking_task: SpeakingTaskSchema,
   /** Optional: a unit may ship before its missions are written. */
@@ -213,8 +360,26 @@ export const CurriculumSchema = z.object({
     block: z.number().int().min(1).max(6),
     title_es: z.string().min(1),
     cefr: z.enum(CEFR_LEVELS),
-    /** Cumulative chunk target from PRD 4.3. */
+    /**
+     * Cumulative *fixed chunk* target by the end of this block.
+     *
+     * The PRD's original numbers (150/400/700/1200/1800/2500 across six blocks)
+     * were borrowed from vocabulary-size research, where B1 is ~2,500 word
+     * *families* -- and then applied to chunks, which are a different unit
+     * entirely. 1,600 chunks contain far fewer than 1,600 distinct words,
+     * because function words repeat across every phrase. The targets here are
+     * chunks, and only chunks; see `docs/CONTENT-BRIEF.md`.
+     */
     chunk_target_cumulative: z.number().int().positive(),
+    /**
+     * Cumulative frame target by the end of this block.
+     *
+     * Tracked separately because a frame is not a chunk and the two do not
+     * trade off one-for-one: one frame with a dozen fillers is a dozen
+     * producible sentences, which is why the course can reach a real A2 on
+     * ~850 chunks rather than the ~1,600 the old spine implied.
+     */
+    frame_target_cumulative: z.number().int().nonnegative().default(0),
     can_do_es: z.string().min(1),
     /** Spanish taper level for this block (PRD 4.6), 1 = most support. */
     l1_support_level: z.number().int().min(1).max(5),
