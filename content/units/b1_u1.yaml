@@ -248,6 +248,41 @@ chunks:
     tags: [introduction, presenting]
     audio: [auto]
 
+# Three patterns that were already here, wearing a chunk's clothes.
+#
+# `My name is`, `I'm from` and `This is` are not sentences -- each has a hole,
+# and until frames existed the hole was left implicit and the learner was shown
+# a fragment. The chunks stay (they carry the audio, and the card that
+# introduces the phrase is still the right card); these say what goes after.
+#
+# All fillers are literal, because names and countries are things the
+# curriculum will never teach as chunks. They pass the 95% rule as proper
+# nouns, which is exactly what that credit is for.
+frames:
+  - id: f_0001
+    pattern: "My name is {NAME}."
+    es_pattern: "Me llamo {NAME}."
+    slot: NAME
+    literal_fillers: ["Ana", "Miguel", "Maria", "Carlos", "Rosa", "Tom", "Sofia", "Elena"]
+    cefr: A0
+    tags: [introductions]
+
+  - id: f_0002
+    pattern: "I'm from {PLACE}."
+    es_pattern: "Soy de {PLACE}."
+    slot: PLACE
+    literal_fillers: ["Mexico", "Guatemala", "Honduras", "Colombia", "Peru", "Ecuador", "Venezuela", "Bolivia"]
+    cefr: A0
+    tags: [introductions]
+
+  - id: f_0003
+    pattern: "This is {NAME}."
+    es_pattern: "Este es {NAME}."
+    slot: NAME
+    literal_fillers: ["Ana", "Miguel", "Maria", "Carlos", "Rosa", "Tom", "Sofia", "Elena"]
+    cefr: A0
+    tags: [introductions]
+
 scenes:
   # Scenes are long on repetition by design. At A0 the same six chunks recurring
   # in shifting combinations is the lesson; novelty would just break the 95% rule.

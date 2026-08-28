@@ -138,6 +138,23 @@ async function main() {
     })
   );
 
+  // Frames carry no audio: a frame is a production exercise -- the learner
+  // builds the sentence and says it -- so generating a clip per combination
+  // would be synthesis for an exercise where the learner is the one talking.
+  const frames = bundle.units.flatMap((u) =>
+    u.frames.map((f) => ({
+      id: f.id,
+      unit_id: u.unit_id,
+      pattern: f.pattern,
+      es_pattern: f.es_pattern,
+      slot: f.slot,
+      cefr: f.cefr,
+      tags: f.tags,
+      fillers: f.fillers,
+      literal_fillers: f.literal_fillers,
+    }))
+  );
+
   const scenes = bundle.units.flatMap((u) =>
     u.scenes.map((s) => {
       const track = manifest.scenes[s.id];
@@ -256,6 +273,10 @@ async function main() {
     ["speakers", speakers, "id"],
     ["units", units, "id"],
     ["chunks", chunks, "id"],
+    // Frames reference units, and their fillers reference chunks by id -- the
+    // validator has already proved every one resolves, so this only needs to
+    // follow chunks for the ids to mean anything.
+    ["frames", frames, "id"],
     ["scenes", scenes, "id"],
     // Dialogues reference units and characters, so they follow both.
     ["dialogues", dialogues, "id"],

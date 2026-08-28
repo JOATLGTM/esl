@@ -232,6 +232,13 @@ export const es = {
     // microphone -- denying it must cost nothing at all (PRD F1).
     speak: {
       scenarioLabel: "La situación",
+      // The frame step: the first time the learner builds a sentence nobody
+      // wrote for them. The copy has to make that feel like a small freedom
+      // rather than a test, because it is the moment the course stops being a
+      // phrasebook -- so: "armá la tuya", never "completá el espacio".
+      frameIntro: "Ahora arma una tuya. Elige lo que quieras decir:",
+      frameSay: "Dilo en voz alta:",
+      frameAnother: "Probar otra",
       yourTurn: "Te toca. Dilo en voz alta:",
       theirTurn: "{name} dice:",
       said: "Ya lo dije",

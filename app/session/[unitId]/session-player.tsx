@@ -14,6 +14,7 @@ import type { MeetChunk } from "@/lib/session/meet";
 import type { EarDrill } from "@/lib/session/ear";
 import type { ReviewCard } from "@/lib/session/retrieve";
 import type { SpeakTask } from "@/lib/session/speak";
+import type { SessionFrame } from "@/lib/session/frame-drill";
 import { createClient } from "@/lib/supabase/client";
 import type { Stage } from "@/lib/session/stages";
 
@@ -47,6 +48,7 @@ export function SessionPlayer({
   absorbScene,
   reviewCards,
   speakTask,
+  speakFrame,
   earDrill,
 }: {
   sessionId: string;
@@ -60,6 +62,7 @@ export function SessionPlayer({
   absorbScene: AbsorbScene | null;
   reviewCards: ReviewCard[];
   speakTask: SpeakTask | null;
+  speakFrame: SessionFrame | null;
   earDrill: EarDrill | null;
 }) {
   const [pending, startTransition] = useTransition();
@@ -165,6 +168,8 @@ export function SessionPlayer({
       ) : stage === "speak" ? (
         <SpeakStage
           task={speakTask}
+          frame={speakFrame}
+          frameSeed={sessionId}
           pending={pending}
           isFinal={isFinal}
           onAdvance={() => advance()}

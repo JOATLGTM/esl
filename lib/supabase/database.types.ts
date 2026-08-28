@@ -368,6 +368,53 @@ export type Database = {
           },
         ]
       }
+      frames: {
+        Row: {
+          cefr: Database["public"]["Enums"]["cefr_level"]
+          created_at: string
+          es_pattern: string
+          fillers: Json
+          id: string
+          literal_fillers: Json
+          pattern: string
+          slot: string
+          tags: Json
+          unit_id: string
+        }
+        Insert: {
+          cefr: Database["public"]["Enums"]["cefr_level"]
+          created_at?: string
+          es_pattern: string
+          fillers?: Json
+          id: string
+          literal_fillers?: Json
+          pattern: string
+          slot: string
+          tags?: Json
+          unit_id: string
+        }
+        Update: {
+          cefr?: Database["public"]["Enums"]["cefr_level"]
+          created_at?: string
+          es_pattern?: string
+          fillers?: Json
+          id?: string
+          literal_fillers?: Json
+          pattern?: string
+          slot?: string
+          tags?: Json
+          unit_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "frames_unit_id_fkey"
+            columns: ["unit_id"]
+            isOneToOne: false
+            referencedRelation: "units"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       known_words: {
         Row: {
           added_at: string

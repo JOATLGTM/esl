@@ -1,6 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { SpeakingMode } from "@/lib/supabase/types";
+import { pickFrameIndex, type FrameFiller, type SessionFrame } from "./frame-drill";
 
 /**
  * Stage 5, Speak (PRD 4.2 / 4.5 / F5): the learner says the phrases out loud.
@@ -116,4 +117,73 @@ export function weekNumber(createdAt: string, now: Date = new Date()): number {
   if (Number.isNaN(started)) return 1;
   const weeks = Math.floor((now.getTime() - started) / (7 * 86_400_000));
   return Math.max(1, weeks + 1);
+}
+
+/**
+ * The frame this session offers, with its fillers resolved to real text.
+ *
+ * Fillers are stored as chunk ids, so the text has to be fetched -- and a
+ * filler whose chunk has gone missing is dropped rather than rendered as an
+ * id. The validator has already proved every id resolves, so a gap here means
+ * content was seeded from a different curriculum than the one that validated,
+ * and showing the learner `c_0412` would be the worst possible way to say so.
+ *
+ * Returns null when the unit has no frames, which is every unit today: the
+ * type exists and nothing has been authored against it yet, and the stage is
+ * written so that costs nothing.
+ */
+export async function loadSessionFrame(
+  userId: string,
+  unitId: string,
+): Promise<SessionFrame | null> {
+  const supabase = await createClient();
+
+  const [{ data: frames }, { count }] = await Promise.all([
+    supabase
+      .from("frames")
+      .select("id, pattern, es_pattern, slot, fillers, literal_fillers")
+      .eq("unit_id", unitId)
+      .order("id"),
+    // Sessions already finished in this unit, exactly as Absorb counts scenes:
+    // the current one is still open, so the number is stable for its whole
+    // duration and a reload picks the same frame.
+    supabase
+      .from("sessions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .eq("unit_id", unitId)
+      .not("completed_at", "is", null),
+  ]);
+
+  if (!frames?.length) return null;
+  const frame = frames[pickFrameIndex(count ?? 0, frames.length)];
+
+  const chunkIds = (frame.fillers as string[] | null) ?? [];
+  const { data: chunks } = chunkIds.length
+    ? await supabase.from("chunks").select("id, en_text").in("id", chunkIds)
+    : { data: [] };
+
+  const byId = new Map((chunks ?? []).map((c) => [c.id, c.en_text]));
+  const fillers: FrameFiller[] = [
+    ...chunkIds.flatMap((id) => {
+      const text = byId.get(id);
+      return text ? [{ key: id, text }] : [];
+    }),
+    // Literals are prefixed so a chunk id and a literal can never collide as
+    // keys, and so a logged choice says which kind it was.
+    ...(((frame.literal_fillers as string[] | null) ?? []).map((text) => ({
+      key: `lit:${text}`,
+      text,
+    }))),
+  ];
+
+  if (fillers.length === 0) return null;
+
+  return {
+    id: frame.id,
+    pattern: frame.pattern,
+    esPattern: frame.es_pattern,
+    slot: frame.slot,
+    fillers,
+  };
 }
