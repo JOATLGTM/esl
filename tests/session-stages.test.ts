@@ -7,6 +7,7 @@ import {
   availableStages,
   firstStage,
   isFinalStage,
+  newChunkBudget,
   nextStage,
   resumeAt,
   stageProgress,
@@ -22,11 +23,23 @@ import type { StageInventory } from "../lib/session/stages";
  * a network to check.
  */
 
-/** A fully authored unit with its ear-training recordings done. */
-const complete: StageInventory = { earClips: 300, chunks: 25, scenes: 6, speakingTasks: 1 };
+/** A fully authored unit with its ear-training recordings done, first visit. */
+const complete: StageInventory = {
+  earClips: 300,
+  chunks: 25,
+  newChunks: 25,
+  scenes: 6,
+  speakingTasks: 1,
+};
 
 /** Where b1_u1 actually stands today: no human recordings, no seeded dialogue. */
-const asAuthoredToday: StageInventory = { earClips: 0, chunks: 25, scenes: 6, speakingTasks: 0 };
+const asAuthoredToday: StageInventory = {
+  earClips: 0,
+  chunks: 25,
+  newChunks: 25,
+  scenes: 6,
+  speakingTasks: 0,
+};
 
 describe("stage availability", () => {
   test("a fully authored unit serves all five stages in order", () => {
@@ -43,12 +56,28 @@ describe("stage availability", () => {
     assert.ok(availableStages({ ...complete, earClips: 0 }).includes("retrieve"));
   });
 
+  test("meet drops out once every chunk in the unit has been met", () => {
+    // The learner keeps the unit's scenes and its review queue; there is simply
+    // nothing left to introduce, and an empty Meet is the dead end this avoids.
+    const allMet = availableStages({ ...complete, newChunks: 0 });
+    assert.ok(!allMet.includes("meet"));
+    assert.deepEqual(allMet, ["ear", "absorb", "retrieve", "speak"]);
+  });
+
+  test("retrieve survives even when nothing is new, because the cards remain", () => {
+    assert.ok(availableStages({ ...complete, newChunks: 0 }).includes("retrieve"));
+  });
+
   test("no chunks takes out both meet and retrieve", () => {
-    assert.deepEqual(availableStages({ ...complete, chunks: 0 }), ["ear", "absorb", "speak"]);
+    assert.deepEqual(availableStages({ ...complete, chunks: 0, newChunks: 0 }), [
+      "ear",
+      "absorb",
+      "speak",
+    ]);
   });
 
   test("a unit that can serve nothing yields no stages at all", () => {
-    const empty = { earClips: 0, chunks: 0, scenes: 0, speakingTasks: 0 };
+    const empty = { earClips: 0, chunks: 0, newChunks: 0, scenes: 0, speakingTasks: 0 };
     assert.deepEqual(availableStages(empty), []);
     assert.equal(firstStage(availableStages(empty)), null);
   });
@@ -109,6 +138,27 @@ describe("progress", () => {
       position: 0,
       total: 3,
     });
+  });
+});
+
+describe("new chunks per session", () => {
+  test("scales with the daily goal", () => {
+    assert.equal(newChunkBudget(10), 4);
+    assert.equal(newChunkBudget(20), 6);
+    assert.equal(newChunkBudget(30), 8);
+  });
+
+  test("a 20-minute goal spreads a 25-chunk unit over several sessions", () => {
+    // If this ever divides into one or two sessions, Meet has become a
+    // firehose and the next day's review queue is unfinishable.
+    assert.ok(Math.ceil(25 / newChunkBudget(20)) >= 4);
+  });
+
+  test("an unsupported goal falls back to the middle rather than throwing", () => {
+    // `daily_goal_minutes` is CHECK-constrained to (10, 20, 30); a fourth value
+    // means the constraint moved, and the session should still work.
+    assert.equal(newChunkBudget(45), 6);
+    assert.equal(newChunkBudget(0), 6);
   });
 });
 

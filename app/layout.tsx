@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
-import { WelcomeNote } from "./welcome-note";
 import { es } from "@/lib/copy/es";
 import "./globals.css";
 
@@ -34,17 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   // page in Spanish. The whole interface is Spanish until the Block 6 taper.
   return (
     <html lang="es" className={`${inter.variable} h-full`}>
-      <body className="flex min-h-full flex-col">
-        {/*
-          In the layout rather than on the landing page: a signed-in visitor is
-          redirected off `/` before it renders, so mounting it there means the
-          one person it is addressed to never sees it. Here it appears on
-          whichever page he opens first -- landing, onboarding or Hoy -- and the
-          `localStorage` flag makes it once-only regardless of which that was.
-        */}
-        <WelcomeNote />
-        {children}
-      </body>
+      <body className="flex min-h-full flex-col">{children}</body>
     </html>
   );
 }

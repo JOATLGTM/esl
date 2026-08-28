@@ -48,12 +48,19 @@ async function inventoryFor(db: SupabaseClient, unitId: string): Promise<StageIn
     db.from("minimal_pairs").select("audio").eq("contrast", unit!.target_contrast),
   ]);
 
+  // Meet is exhaustible, so the inventory is per-learner: `db` here is the
+  // learner's own client, and row-level security scopes `user_cards` to them.
+  const { data: unitChunks } = await db.from("chunks").select("id").eq("unit_id", unitId);
+  const { data: cards } = await db.from("user_cards").select("chunk_id");
+  const met = new Set((cards ?? []).map((card) => card.chunk_id));
+
   return {
     earClips: (pairs.data ?? []).reduce(
       (total, pair) => total + ((pair.audio as unknown[] | null)?.length ?? 0),
       0,
     ),
     chunks: chunks.count ?? 0,
+    newChunks: (unitChunks ?? []).filter((chunk) => !met.has(chunk.id)).length,
     scenes: scenes.count ?? 0,
     speakingTasks: dialogues.count ?? 0,
   };
@@ -181,6 +188,101 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
     const tomorrow = await openSession(db, userId, UNIT, firstStage(available)!);
     assert.notEqual(tomorrow.id, session.id);
     assert.equal(tomorrow.stage_reached, "meet");
+  });
+
+  test("meeting chunks creates cards, and re-running it does not rewrite them", async () => {
+    const { db, userId } = await signUpFresh();
+
+    const { data: chunkRows } = await db
+      .from("chunks")
+      .select("id")
+      .eq("unit_id", UNIT)
+      .order("id", { ascending: true });
+    const budget = 6; // newChunkBudget(20), the default daily goal
+    const shown = (chunkRows ?? []).slice(0, budget).map((chunk) => chunk.id);
+    assert.equal(shown.length, budget);
+
+    // What `recordMeetChunks` writes: one card per chunk, one gloss revealed.
+    const revealed = shown[0];
+    const write = async () =>
+      db.from("user_cards").upsert(
+        shown.map((chunk_id) => ({
+          user_id: userId,
+          chunk_id,
+          state: "learning" as const,
+          gloss_reveals: chunk_id === revealed ? 1 : 0,
+        })),
+        { onConflict: "user_id,chunk_id", ignoreDuplicates: true },
+      );
+
+    const first = await write();
+    assert.equal(first.error, null, first.error?.message);
+
+    const { data: cards } = await db.from("user_cards").select("*").eq("user_id", userId);
+    assert.equal(cards!.length, budget);
+    assert.ok(cards!.every((card) => card.state === "learning"));
+    assert.equal(cards!.find((card) => card.chunk_id === revealed)!.gloss_reveals, 1);
+    // Nothing may arrive already mastered -- production passes are the only way.
+    assert.ok(cards!.every((card) => card.produce_passes === 0));
+
+    // Simulate a double advance. `ignoreDuplicates` must leave review history
+    // alone; a plain upsert here would silently reset gloss_reveals to 0.
+    await db.from("user_cards").update({ gloss_reveals: 5, produce_passes: 2 }).eq("chunk_id", revealed).eq("user_id", userId);
+    const second = await write();
+    assert.equal(second.error, null, second.error?.message);
+
+    const { data: after } = await db
+      .from("user_cards")
+      .select("gloss_reveals, produce_passes")
+      .eq("user_id", userId)
+      .eq("chunk_id", revealed)
+      .single();
+    assert.equal(after!.gloss_reveals, 5, "a second advance rewrote review history");
+    assert.equal(after!.produce_passes, 2);
+  });
+
+  test("meet drops out of the session once every chunk has been met", async () => {
+    const { db, userId } = await signUpFresh();
+
+    const before = await inventoryFor(db, UNIT);
+    assert.equal(before.newChunks, 25);
+    assert.ok(availableStages(before).includes("meet"));
+
+    const { data: chunkRows } = await db.from("chunks").select("id").eq("unit_id", UNIT);
+    await db.from("user_cards").upsert(
+      (chunkRows ?? []).map((chunk) => ({ user_id: userId, chunk_id: chunk.id })),
+      { onConflict: "user_id,chunk_id", ignoreDuplicates: true },
+    );
+
+    const after = await inventoryFor(db, UNIT);
+    assert.equal(after.newChunks, 0);
+    assert.deepEqual(availableStages(after), ["absorb", "retrieve"]);
+  });
+
+  test("a learner cannot end up with two open sessions in the same unit", async () => {
+    const { db, userId } = await signUpFresh();
+    const available = availableStages(await inventoryFor(db, UNIT));
+    const first = await openSession(db, userId, UNIT, firstStage(available)!);
+
+    // The race `openSession` used to lose: a prefetch and a navigation both
+    // read no open session and both insert. The database now refuses the
+    // second, which is what makes the find-then-insert safe.
+    const duplicate = await db
+      .from("sessions")
+      .insert({ user_id: userId, unit_id: UNIT, stage_reached: "meet" });
+    assert.ok(duplicate.error, "a second open session was allowed");
+    assert.equal(duplicate.error!.code, "23505");
+
+    // Finishing one frees the slot -- a learner practises the same unit on
+    // many days, and every completed session must be allowed to stay.
+    await db.from("sessions").update({ completed_at: new Date().toISOString() }).eq("id", first.id);
+    const tomorrow = await db
+      .from("sessions")
+      .insert({ user_id: userId, unit_id: UNIT, stage_reached: "meet" })
+      .select("id")
+      .single();
+    assert.equal(tomorrow.error, null, tomorrow.error?.message);
+    assert.notEqual(tomorrow.data!.id, first.id);
   });
 
   test("one learner's session is invisible and unwritable to another", async () => {

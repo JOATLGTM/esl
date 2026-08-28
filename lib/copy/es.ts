@@ -188,6 +188,24 @@ export const es = {
       },
     },
     progress: "Paso {position} de {total}",
+
+    // Stage 2 (Meet). Nothing here may read as a test -- this is the first time
+    // the learner sees these words, and there is nothing yet to get wrong.
+    meet: {
+      counter: "Frase {position} de {total}",
+      listen: "Escuchar",
+      otherVoice: "Otra voz",
+      // Which voice, because three of the four are the same accent -- a label
+      // that reads "US (General American)" three taps running looks like a
+      // button that does nothing.
+      voiceCount: "Voz {position} de {total}",
+      reveal: "¿Qué significa?",
+      example: "Así se usa:",
+      next: "Siguiente",
+      // Shown when a chunk has no audio at all. Rare, and never the learner's
+      // problem, so it says what they can still do rather than what is missing.
+      noAudio: "Esta frase todavía no tiene audio. Puedes leerla.",
+    },
     resumed: "Seguimos donde lo dejaste.",
     // Same promise /home made while it was empty: say plainly that a part is
     // still being built rather than showing a screen that does nothing.
@@ -208,15 +226,6 @@ export const es = {
       body: "Terminaste la sesión. Nos vemos mañana.",
     },
   },
-
-  // A personal note from the author to one learner, shown once on their first
-  // visit and then never again. Verbatim, and NOT product copy: unlike
-  // everything else in this file, it is not for a reviewer to rephrase.
-  welcome:
-    "Hola, Alex: creé este sitio web para que aprendas inglés en línea. " +
-    "Llamé a la institución y no aceptan a personas que no sean ciudadanas " +
-    "de EE. UU. Usa esto mientras tanto, hasta que encuentre un lugar donde " +
-    "puedan enseñarte inglés.",
 
   common: {
     loading: "Cargando…",

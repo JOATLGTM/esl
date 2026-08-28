@@ -1,9 +1,9 @@
 # Where the project is
 
-**Last updated:** 2026-08-27 · **Read this before touching anything.**
+**Last updated:** 2026-08-28 · **Read this before touching anything.**
 
 Hablar — self-paced English for Spanish-speaking beginners, per the PRD (v2.1).
-Three build sessions done. This file exists so the next one does not have to
+Four build sessions done. This file exists so the next one does not have to
 re-derive what was decided or rediscover what bit us.
 
 Read it alongside, not instead of:
@@ -38,7 +38,7 @@ carries sound to production. See `docs/DEPLOY.md`.
 ## Live infrastructure
 
 Supabase project **`esl`** — ref `sqjjikmwxnfeuzzxqnmk`, us-east-2, Postgres 17.6.
-Linked. Five migrations applied. Content seeded. Auth config pushed.
+Linked. Six migrations applied. Content seeded. Auth config pushed.
 
 | Table | Rows |
 |---|---|
@@ -76,28 +76,34 @@ promise, and an honest "still being built" note — the same thing `/home` did
 while this was the gap. `/home`'s "Empezar" is now live and points at
 `current_unit`.
 
-The stage bodies are the next five pieces of work; see **Next feature**.
+**Meet (§4.2 stage 2)** — built. One phrase per screen, English large, audio on
+arrival, and the Spanish behind a tap. Six new chunks against a 20-minute goal
+(`newChunkBudget`), taken in curriculum order from whatever the learner has no
+card for yet. Leaving the stage writes one `user_cards` row per chunk shown,
+`state = 'learning'`, with `gloss_reveals` set for the ones whose gloss was
+revealed — which is the number F2 later reads to offer stepping the Spanish
+taper back a level.
 
-**Welcome note** — a one-off personal message to the learner, in the root
-layout (`app/welcome-note.tsx`), dismissed once and remembered in
-`localStorage` under `hablar:welcome-seen`. In the *layout* and not on the
-landing page for a reason worth not rediscovering: `app/page.tsx` redirects a
-signed-in visitor to `/home` before `/` renders, so mounting it there means the
-one person it is addressed to never sees it. The copy is `es.welcome` and is
-marked in `lib/copy/es.ts` as not-for-review — it is the author's own words, not
-product copy.
+Absorb, Retrieve, Speak and Ear are still placeholders; see **Next feature**.
 
-**Tests — 92, all passing.**
+A one-off welcome modal lived in the root layout for a day and was removed on
+2026-08-28, having served its purpose. One thing it taught is worth keeping:
+**anything meant for a signed-in learner cannot be mounted on `/`**, because
+`app/page.tsx` redirects a session-holder to `/home` before that page renders.
+The root layout is the only place that reaches every entry state. Some browsers
+still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
+
+**Tests — 100, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
 | `content.test.ts` | 23 | no |
 | `audio-plan.test.ts` | 24 | no |
-| `session-stages.test.ts` | 21 | no |
+| `session-stages.test.ts` | 25 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 5 | **yes** |
+| `session.test.ts` | 9 | **yes** |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -139,6 +145,20 @@ gap they cannot explain. This is Phase 1's exit criterion ("no dead end") as
 code: a stage that plays silence *is* the dead end. Both stages light up on
 their own the moment their content exists; nothing needs changing to enable
 them.
+
+**A chunk is "met" exactly when it has a `user_cards` row.** Not a cursor on
+the session or a counter on the profile. That is what makes an abandoned Meet
+introduce nothing, a resumed one show the same phrases, and "which chunks are
+new" answerable without any state that can drift from what the learner actually
+saw. It is also why `StageInventory` carries one per-learner number: a unit
+whose chunks have all been met has no Meet left in it, and the stage is skipped
+rather than shown empty.
+
+**Meet writes cards on the way out, with `ignoreDuplicates`.** On the way out so
+that abandoning the stage costs nothing; `ignoreDuplicates` rather than a plain
+upsert because an upsert would rewrite `gloss_reveals` and `produce_passes` on a
+card that already exists, silently erasing review history if the advance ever
+runs twice. `tests/session.test.ts` asserts exactly that.
 
 **The current stage is server state, never a URL segment.** It lives in
 `sessions.stage_reached`. A stage in the URL is a stage a learner can type, and
@@ -206,6 +226,22 @@ either name.
 **`lib/supabase/database.types.ts` is generated — never edit it.** Hand-written
 schema types go in `lib/supabase/types.ts`, which derives from it.
 
+**`onClick={handler}` passes the click event as the first argument.** Wire a
+Server Action's wrapper straight to `onClick` and React hands it a
+SyntheticEvent, which crosses the boundary as an opaque client reference and
+kills the whole action with *"Cannot access length on the server. You cannot dot
+into a temporary client reference from a server component."* — an error naming
+neither the button nor the argument. TypeScript cannot catch it: a mouse-event
+handler is a legal `(x?: string[]) => void`. Wrap it (`onClick={() => f()}`) and
+guard the argument at the top of the handler. Cost an hour on 2026-08-28.
+
+**Find-then-insert needs a unique index, not care.** `openSession` looked for an
+open session and created one if absent, and a prefetch racing the navigation
+behind it produced two. `sessions_one_open_per_unit` (partial, `where
+completed_at is null`) now makes the second insert fail with 23505, which
+`openSession` catches and re-reads. Any other find-then-insert added later needs
+the same treatment.
+
 **Server Actions need `refresh()` from `next/cache` in Next 16.** An action
 that mutates the database and returns leaves the client router holding the old
 RSC payload — the stage advances in Postgres and the screen does not move.
@@ -271,8 +307,7 @@ from a cookie is client-supplied data.
 The shell walks; the stages are empty. Fill them in this order — each is a
 self-contained slice that leaves the loop working:
 
-1. **Meet** — new chunks with audio from `audio-manifest.json`; gloss reveals
-   increment `user_cards.gloss_reveals`.
+1. ~~**Meet**~~ — done 2026-08-28.
 2. **Absorb** — scene playback plus the three authored multiple-choice
    questions; tapping a transcript line replays that line (§F4 needs the
    sentence timings already in `scenes.transcript`).

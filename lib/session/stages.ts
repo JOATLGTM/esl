@@ -33,6 +33,14 @@ export type StageInventory = {
   /** Human minimal-pair recordings for the unit's target contrast. Never TTS (PRD 8.1B). */
   earClips: number;
   chunks: number;
+  /**
+   * Chunks in this unit the learner has no card for yet.
+   *
+   * The one per-learner number in here, and it has to be: once every chunk in
+   * a unit has been met, Meet has nothing left to introduce, and showing it
+   * anyway is the empty stage this whole type exists to prevent.
+   */
+  newChunks: number;
   scenes: number;
   /** Authored speaking tasks for the unit -- `dialogues` rows. */
   speakingTasks: number;
@@ -45,7 +53,7 @@ export type StageInventory = {
  */
 const SERVED_BY: Record<Stage, (inv: StageInventory) => boolean> = {
   ear: (inv) => inv.earClips > 0,
-  meet: (inv) => inv.chunks > 0,
+  meet: (inv) => inv.newChunks > 0,
   absorb: (inv) => inv.scenes > 0,
   retrieve: (inv) => inv.chunks > 0,
   speak: (inv) => inv.speakingTasks > 0,
@@ -91,6 +99,36 @@ export function resumeAt(stageReached: Stage, available: readonly Stage[]): Stag
 
 export function isFinalStage(current: Stage, available: readonly Stage[]): boolean {
   return nextStage(current, available) === null;
+}
+
+/* -------------------------------------------------------------------------- */
+/* How much of a unit one session takes on                                    */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * New chunks to introduce in one session, from the learner's daily goal.
+ *
+ * The numbers are deliberately low. A unit is 25 chunks and the temptation is
+ * to front-load them, but Meet is only the introduction -- every chunk it shows
+ * comes back in Retrieve on a schedule, and a session that introduces twenty
+ * phrases produces a review queue the next day that no beginner finishes. Six
+ * new phrases against a 20-minute goal spreads a unit across four or five
+ * sessions, which is also roughly the pace the scenes are written for.
+ *
+ * Anything outside the three supported goals falls back to the middle rather
+ * than throwing: `daily_goal_minutes` is CHECK-constrained to (10, 20, 30) in
+ * the database, so a fourth value means the constraint changed and the
+ * scheduler should keep working while someone decides what it means.
+ */
+export function newChunkBudget(dailyGoalMinutes: number): number {
+  switch (dailyGoalMinutes) {
+    case 10:
+      return 4;
+    case 30:
+      return 8;
+    default:
+      return 6;
+  }
 }
 
 /**

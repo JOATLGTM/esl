@@ -4,10 +4,12 @@ import { SessionPlayer } from "./session-player";
 import { ButtonLink } from "@/components/ui/button";
 import { requireOnboardedProfile } from "@/lib/auth/session";
 import { es } from "@/lib/copy/es";
+import { loadMeetChunks } from "@/lib/session/meet";
 import {
   availableStages,
   firstStage,
   isFinalStage,
+  newChunkBudget,
   resumeAt,
   stageProgress,
 } from "@/lib/session/stages";
@@ -35,7 +37,7 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
   const unit = await loadUnit(unitId);
   if (!unit) notFound();
 
-  const available = availableStages(await loadStageInventory(unit));
+  const available = availableStages(await loadStageInventory(profile.id, unit));
   const start = firstStage(available);
 
   // Nothing to serve. Today this is what an ear-training-only unit looks like
@@ -54,8 +56,17 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
 
   const { position, total } = stageProgress(stage, available);
 
+  // Loaded only for the stage that needs it. `advanceStage` recomputes the same
+  // list with the same budget when the learner leaves Meet, which is how the
+  // server records what was shown without trusting the client to say.
+  const meetChunks =
+    stage === "meet"
+      ? await loadMeetChunks(profile.id, unit.id, newChunkBudget(profile.daily_goal_minutes))
+      : [];
+
   return (
     <SessionPlayer
+      meetChunks={meetChunks}
       sessionId={session.id}
       unitTitle={unit.title_es}
       stage={stage}

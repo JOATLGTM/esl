@@ -4,7 +4,14 @@ import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { localDate, practiceCounters } from "@/lib/session/day";
-import { STAGE_ORDER, availableStages, nextStage, resumeAt } from "@/lib/session/stages";
+import { loadMeetChunks, recordMeetChunks } from "@/lib/session/meet";
+import {
+  STAGE_ORDER,
+  availableStages,
+  newChunkBudget,
+  nextStage,
+  resumeAt,
+} from "@/lib/session/stages";
 import { loadStageInventory, loadUnit } from "@/lib/session/store";
 import { createClient, getUser } from "@/lib/supabase/server";
 
@@ -34,6 +41,15 @@ const advance = z.object({
   sessionId: z.string().uuid(),
   from: z.enum(STAGE_ORDER),
   elapsedS: z.number().finite().nonnegative().catch(0),
+  /**
+   * Meet only: the chunks whose Spanish gloss the learner tapped to reveal.
+   *
+   * The one thing the client is trusted for, because it is the only party that
+   * knows. It is still not trusted blindly -- `recordMeetChunks` discards any
+   * id that is not in the list of chunks the stage actually served, so the
+   * worst a tampered payload can do is mark the learner's own cards revealed.
+   */
+  revealedChunkIds: z.array(z.string()).max(64).optional(),
 });
 
 export type AdvanceInput = z.input<typeof advance>;
@@ -62,7 +78,7 @@ export async function advanceStage(input: AdvanceInput) {
   const unit = await loadUnit(session.unit_id);
   if (!unit) redirect("/home");
 
-  const available = availableStages(await loadStageInventory(unit));
+  const available = availableStages(await loadStageInventory(user.id, unit));
   const current = resumeAt(session.stage_reached, available);
 
   // A double-tap, a back button, or a stale tab: the session has already moved
@@ -71,6 +87,24 @@ export async function advanceStage(input: AdvanceInput) {
   if (!current || current !== parsed.data.from) {
     refresh();
     return;
+  }
+
+  // Whatever the stage produced, written before the session moves past it. A
+  // crash between here and the update below costs the learner one stage's
+  // progress marker, not the work they did in it.
+  if (current === "meet") {
+    const { data: profile } = await supabase
+      .from("users")
+      .select("daily_goal_minutes")
+      .eq("id", user.id)
+      .maybeSingle();
+
+    const shown = await loadMeetChunks(
+      user.id,
+      unit.id,
+      newChunkBudget(profile?.daily_goal_minutes ?? 20),
+    );
+    await recordMeetChunks(user.id, shown, parsed.data.revealedChunkIds ?? []);
   }
 
   const elapsed = Math.min(Math.round(parsed.data.elapsedS), MAX_STAGE_SECONDS);
