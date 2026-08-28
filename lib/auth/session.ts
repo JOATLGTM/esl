@@ -1,5 +1,6 @@
 import "server-only";
 import { redirect } from "next/navigation";
+import { backendReachability } from "@/lib/supabase/health";
 import { createClient, getUser } from "@/lib/supabase/server";
 import type { Tables } from "@/lib/supabase/types";
 
@@ -22,7 +23,19 @@ export type Profile = Tables<"users">;
 /** The signed-in learner's profile, or a redirect to login. */
 export async function requireProfile(): Promise<Profile> {
   const user = await getUser();
-  if (!user) redirect("/login");
+
+  if (!user) {
+    // "No user" has two very different causes and they used to be treated as
+    // one. Genuinely signed out -> login. Backend unreachable -> the learner is
+    // *not* signed out, and sending him to a login that cannot succeed is how
+    // this failure used to present: silently forgotten, with no explanation.
+    //
+    // Checked only here, on a path that is already failing. Asking on every
+    // request would add a round trip to every page to answer a question that is
+    // almost always "yes".
+    if ((await backendReachability()) === "unreachable") redirect("/pausa");
+    redirect("/login");
+  }
 
   const supabase = await createClient();
   const { data } = await supabase.from("users").select("*").eq("id", user.id).single();

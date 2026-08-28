@@ -157,6 +157,44 @@ one thing a nervous beginner will not do.
 English speakers near them is exactly who this course is for, and the UI offers
 the alternative as an equal option rather than a consolation.
 
+**Error boundaries, an offline page and a keepalive**, added 2026-08-28 after a
+review asked what "free forever" actually costs. The answer was that money is
+not the risk: the free Supabase project pausing on inactivity is, and nothing
+handled it.
+
+The predicted symptom was an English stack trace. **It was measured instead, and
+the truth was different and worse.** Pointed at an unreachable project, nothing
+throws — `getUser()` returns null on any failure, every guard reads that as
+"signed out", so `/home`, `/session` and `/mission` all 307 to
+`/login?next=...`. The learner is *silently forgotten*, sent to a login that
+cannot succeed, and told nothing; the landing page meanwhile says the sample
+lesson "se está preparando", which is untrue. For a beginner who already
+suspects he is the problem, that is worse than an error page.
+
+Now: `app/error.tsx` and `app/global-error.tsx` (Spanish, no stack trace — the
+global one carries its own `<html>`, `<body>` and inline styles, because it
+replaces the root layout and **gets no `globals.css`**), plus `/pausa`, which
+says the true thing: your progress is safe, this is ours not yours, try later.
+`proxy.ts` tells the two causes apart by asking a public-read content table —
+only on a request already being turned away, so the happy path costs nothing.
+
+**A speech-rate gate on the audio pipeline** (`lib/content/speech-rate.ts`),
+added 2026-08-28. The pipeline already proved the voices were *distinct* — that
+guard exists because Block 1 once shipped with three names for Samantha. This
+is the missing half: **distinct is not the same as appropriate.**
+
+macOS `say` accepts `-r 155` and ignores it. Measured from the committed
+manifest: the six voices run 90–136 wpm against a declared 150–160, and in
+`s_0001` Ana speaks 1.40× faster than Miguel — the learner's own in-story
+counterpart, explicitly "igual que tú", is the one who sounds slow. Nobody had
+looked, because nothing checked.
+
+The gate warns while authoring and **fails `content:publish-check`** (17 errors
+today). It is deliberately not a hard error: the audio really is wrong, and the
+fix is the TTS engine decision (open item 4), which is a listening test nobody
+can run in CI. Blocking authoring on a decision that needs ears would just get
+the check deleted.
+
 **Four learner-facing defects fixed 2026-08-28**, all found by an
 adversarial review that re-ran the code rather than reading it. Every one was
 invisible to the test suite because the tests checked that each part was
@@ -205,7 +243,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 249, all passing.**
+**Tests — 271, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -221,6 +259,8 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `shadowing.test.ts` | 8 | no |
 | `patterns.test.ts` | 9 | no |
 | `distractors.test.ts` | 13 | no |
+| `speech-rate.test.ts` | 11 | no |
+| `resilience.test.ts` | 11 | no |
 | `grade.test.ts` | 30 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
@@ -464,6 +504,20 @@ broken player. Check the server instead (`curl -I` for a 200, the right
 pure tests (`tests/transcript.test.ts`); then listen to it in a normal browser
 by hand. **Nothing in Meet or Absorb has had its audio heard.**
 
+**`getUser()` returning null does not mean "signed out".** It returns null when
+it cannot reach the auth server too, and with no session cookie the client
+short-circuits before touching the network — so a dead backend and an ordinary
+signed-out visitor produce a *byte-identical* `AuthSessionMissingError`. The
+only reliable liveness signal is a query against a public-read table: a
+reachable project answers even when the answer is a permission error, while a
+dead host gives an empty `error.code` and `fetch failed`.
+
+**A redirect is not an HTTP failure.** The keepalive workflow originally pinged
+`/api/health` while that path was not in `PUBLIC_PATHS`, so it 307'd to `/login`
+and `curl --fail-with-body` exited 0. It would have reported green forever while
+checking nothing. Any external monitor must assert on the body or be pointed at
+a public path — preferably both.
+
 **A green test suite says nothing about whether the product is fair.** All
 four defects above sat under 222 passing tests. The tests verified that
 `gradeTypedAnswer` was *lenient*, that `buildOptions` returned three options,
@@ -520,11 +574,18 @@ from a cookie is client-supplied data.
    screen?
 3. **Native-speaker review of `lib/copy/es.ts`** — ~120 lines, an explicit F1
    acceptance criterion, and not something to sign off alone.
-4. **The TTS engine is undecided.** `provider: macos` is what the committed
-   audio used; the PRD prescribes Piper (§8.1A) and makes it a week-1 listening
-   test. `npm run content:spike` renders the same 20 lines through every
-   installed engine. Piper needs `pip install piper-tts`. **Decide before
-   authoring Block 2** — the answer changes 214 files, and later, thousands.
+4. **The TTS engine is undecided, and it is now the most expensive open item.**
+   The committed macOS audio is measurably wrong — see the speech-rate gate
+   above; `npm run content:publish-check` lists all 17 failures. Piper is what
+   the PRD prescribes (§8.1A) and it honours the rate parameter, but **nobody
+   has heard either engine**: `pip install piper-tts` is not installed, so
+   `npm run content:spike` can currently only compare macOS against itself.
+   Install it, run the spike, and listen for the three things its header names —
+   are the cast actually different people, does it say *Miguel* and *Colombia*
+   right, and does a 45-second scene get tiring. **Decide before authoring
+   Block 2**; every scene is written, timed and validated against a named voice
+   roster, so deciding after Block 1 is six units of rework instead of one.
+
 5. **No ear-training audio exists.** 0 of 300 recordings for `ee_ih`. Six people
    × 50 words ≈ a weekend of favours. `npm run content:recording-kit --
    --contrast=ee_ih` writes each of them a script. Until then Stage 1 of the
@@ -539,7 +600,15 @@ from a cookie is client-supplied data.
 7. **Content: 1 unit of 36.** Block 1 needs 6. The PRD is blunt that authoring
    is ~70% of total effort — budget it honestly.
 8. **Email verification flow** — see the confirm-later decision above.
-9. **Listen to the audio — partly done.** Confirmed by ear on 2026-08-28:
+9. **Confirm Supabase's inactivity policy in the dashboard.** The keepalive
+   (`.github/workflows/keepalive.yml`, daily) assumes a read counts as
+   "activity". That is a **bet, not a guarantee** — the vendor's definition is
+   not documented precisely enough to rely on, and it was never verified. Check
+   that the project has not paused before trusting it. Note also that GitHub
+   disables scheduled workflows after 60 days of repo inactivity, so a quiet
+   summer stops the heartbeat.
+
+10. **Listen to the audio — partly done.** Confirmed by ear on 2026-08-28:
    **Meet plays, and its four voices are audibly distinct.** That is worth more
    than it looks — it is live confirmation that the macOS `say` voice-collision
    trap (see traps) is not recurring, i.e. the pipeline's probe-hash guard holds
@@ -550,13 +619,13 @@ from a cookie is client-supplied data.
    tapping a line seek to the right sentence) and **Retrieve** (does the card
    clip play when the answer is revealed). Both are a couple of minutes in a
    real browser.
-10. ~~`speaking_task` is authored but never seeded.~~ Resolved 2026-08-28: the
+11. ~~`speaking_task` is authored but never seeded.~~ Resolved 2026-08-28: the
     unit's speaking task now seeds into `dialogues` and the stage is live. The
     task gained a `character` field, because `dialogues.character_id` is a
     not-null foreign key and an anonymous partner would be the one voice in the
     product belonging to nobody.
-11. ~~`ts-fsrs` is in `devDependencies`.~~ Moved to `dependencies` 2026-08-28.
-12. **Speaking-task lines have no audio.** The audio pipeline covers chunks,
+12. ~~`ts-fsrs` is in `devDependencies`.~~ Moved to `dependencies` 2026-08-28.
+13. **Speaking-task lines have no audio.** The audio pipeline covers chunks,
     examples and scene lines, but not the `speaking_task` script, so the AI half
     of a conversation is read rather than heard. Adding it means extending
     `buildAudioPlan` and regenerating — worth doing with the TTS engine decision
@@ -570,7 +639,7 @@ features remain designed-but-unbuilt, both blocked on authoring:
 | Feature | Blocked on |
 |---|---|
 | **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
-| **The visible L1 taper** | The mechanism is wired (`l1SupportForBlock`, `shouldOfferMoreSupport`, written on unit advance) but its effect needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
+| **The visible L1 taper** | Half-built, and this line previously overstated it. `l1SupportForBlock` is called on unit advance and writes `users.l1_support_level` — **which nothing reads**. `shouldOfferMoreSupport` has zero callers outside its own test. So the taper is a column and two tested functions, not a behaviour. Finishing it also needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
 
 Branching dialogue is the last one, and it is blocked in a way missions were
 not: a `guided` dialogue asks the learner to choose what to say, and the

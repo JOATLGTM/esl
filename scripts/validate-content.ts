@@ -29,6 +29,7 @@ import {
   scoreTranscript,
   unknownBudget,
 } from "../lib/content/readability";
+import { rateProblems, type RateClip } from "../lib/content/speech-rate";
 import { tokenizeTranscript } from "../lib/content/tokenize";
 import fs from "node:fs";
 import path from "node:path";
@@ -388,6 +389,37 @@ function checkReadability(bundle: ContentBundle) {
  * actually produced. Only meaningful for real voices -- the `silent` provider
  * fakes its pacing, so comparing against it would just cry wolf.
  */
+/**
+ * [PRD 8.1A] The generated voices have to speak at the rate the roster asks for.
+ *
+ * The pipeline already proves the voices are *distinct* -- that guard exists
+ * because Block 1 once shipped with three names for Samantha. This is the
+ * missing half: distinct is not the same as appropriate. macOS `say` accepts
+ * `-r 155` and ignores it, so the committed audio runs 90-136 wpm while every
+ * voice declares 150-160, and in one scene the learner's own counterpart speaks
+ * a third slower than the person answering him.
+ *
+ * A gate rather than an error: the audio is genuinely wrong today and the fix
+ * is the engine decision (open item 4), which is a listening test nobody can
+ * run in CI. It must not block authoring, and it must block publishing.
+ */
+function checkSpeechRate() {
+  const file = path.join(process.cwd(), "content", "audio-manifest.json");
+  if (!fs.existsSync(file)) return;
+
+  const manifest = JSON.parse(fs.readFileSync(file, "utf8")) as {
+    clips: Record<string, RateClip & { url: string }>;
+  };
+  const clips = Object.values(manifest.clips);
+  if (clips.length === 0) return;
+
+  const declared = new Map(loadVoiceRoster().voices.map((v) => [v.id, v.rate_wpm]));
+
+  for (const problem of rateProblems(clips, declared)) {
+    gate(problem.where, problem.message, problem.detail);
+  }
+}
+
 function checkGeneratedDurations(bundle: ContentBundle) {
   const manifestPath = path.join(process.cwd(), "content", "audio-manifest.json");
   if (!fs.existsSync(manifestPath)) return;
@@ -539,6 +571,7 @@ function main() {
   console.log("\n  HVPT drill sets (PRD F3)");
   checkContrasts(bundle, plan);
   checkGeneratedDurations(bundle);
+  checkSpeechRate();
   checkCurriculumTargets(bundle);
 
   const errors = problems.filter((p) => p.level === "error");

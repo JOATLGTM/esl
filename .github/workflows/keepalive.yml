@@ -1,0 +1,35 @@
+# Keeps the free Supabase project awake, and tells us when it is not.
+#
+# On GitHub Actions rather than Vercel cron, deliberately: if Vercel ever
+# throttles the project for exceeding a Hobby limit, a Vercel-hosted cron would
+# be throttled with it -- the thing keeping the database alive would die of the
+# same cause it is meant to survive. Separate failure domains.
+#
+# Two things to know about this workflow:
+#   * GitHub disables scheduled workflows after 60 days with no repo activity.
+#     A quiet summer stops the heartbeat, so re-enable it in the Actions tab if
+#     the project has been idle.
+#   * Scheduled runs are best-effort and can be delayed by tens of minutes.
+#     Nothing here is time-sensitive.
+name: keepalive
+
+on:
+  schedule:
+    # Once a day. The database only needs touching, not polling.
+    - cron: "17 9 * * *"
+  # So it can be run by hand after a deploy, or to check the site is up.
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /api/health
+        run: |
+          URL="${SITE_URL:-https://esl-psi.vercel.app}/api/health"
+          echo "GET $URL"
+          # --fail-with-body so a 503 exits non-zero *and* prints why.
+          curl --fail-with-body --silent --show-error --max-time 30 "$URL"
+        env:
+          # Set a repository variable named SITE_URL if the domain changes.
+          SITE_URL: ${{ vars.SITE_URL }}

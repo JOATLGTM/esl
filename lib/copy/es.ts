@@ -385,6 +385,27 @@ export const es = {
     back: "Volver a Hoy",
   },
 
+  // What the learner sees when something on our side is broken.
+  //
+  // The rule for every string here is the one the whole product is written to:
+  // it must be impossible to read any of it as "you did something wrong". A
+  // beginner who already suspects he is bad at this will take an unexplained
+  // failure personally, so every message says plainly whose fault it is.
+  trouble: {
+    // Generic: an unexpected exception anywhere in the app.
+    title: "Algo se rompió de este lado",
+    body: "No es nada que hayas hecho tú. Vuelve a intentarlo en un momento.",
+    retry: "Intentar otra vez",
+    home: "Volver al inicio",
+
+    // Specific: the backend is unreachable. Distinguished because the honest
+    // message is different -- nothing is broken, it is asleep, and his progress
+    // is not lost.
+    offlineTitle: "No podemos conectar ahora mismo",
+    offlineBody: "Tu progreso está guardado y no se ha perdido nada. Esto es un problema nuestro, no tuyo.",
+    offlineHint: "Inténtalo de nuevo en unos minutos.",
+  },
+
   common: {
     loading: "Cargando…",
     retry: "Intentar otra vez",
