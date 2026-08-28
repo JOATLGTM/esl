@@ -46,3 +46,8 @@ next-env.d.ts
 # Generated audio IS committed (PRD 8.1C). It cannot be built on Vercel -- the
 # macOS `say` provider is macOS-only -- so a deploy that does not carry the
 # files ships a product with no sound. See docs/DEPLOY.md.
+
+# Local Python venv for the Piper TTS engine (build-time only, never shipped).
+# See docs/DEPLOY.md — Homebrew's Python refuses system installs (PEP 668), so
+# the engine lives here rather than in the system interpreter.
+/.venv/

@@ -3,6 +3,7 @@ import { test, describe } from "node:test";
 
 import {
   MAX_SCENE_SPREAD,
+  MIN_SCENE_SAMPLES,
   MAX_WPM,
   MIN_WORDS,
   MIN_WPM,
@@ -112,5 +113,41 @@ describe("the gate", () => {
 
   test("does not accuse a voice on one or two samples", () => {
     assert.deepEqual(rateProblems([clip("a", 60), clip("a", 60)], declared), []);
+  });
+});
+
+describe("not accusing anyone on thin evidence", () => {
+  test("a scene needs enough clips per voice before comparing them", () => {
+    // `s_0006` was flagged at 1.33x on two short Miguel lines, from a voice
+    // whose overall rate was within 5% of target. The voice-level check already
+    // refused to accuse on fewer than three samples; the scene-level one did not.
+    // Both rates sit inside the band, so the only check that could fire is the
+    // scene spread — 175/130 is 1.35x, well over the 1.25x limit.
+    const clips: RateClip[] = [
+      clip("fast", 175, 8), clip("fast", 175, 8), clip("fast", 175, 8),
+      // Only two samples: not enough to say anything about this voice here.
+      clip("slow", 130, 8), clip("slow", 130, 8),
+    ];
+    assert.ok(MIN_SCENE_SAMPLES > 2);
+    assert.deepEqual(measureSceneSpreads(clips), []);
+    assert.deepEqual(rateProblems(clips, new Map()), []);
+  });
+
+  test("but does compare once the evidence is there", () => {
+    const clips: RateClip[] = [
+      clip("fast", 175, 8), clip("fast", 175, 8), clip("fast", 175, 8),
+      clip("slow", 130, 8), clip("slow", 130, 8), clip("slow", 130, 8),
+    ];
+    const [spread] = measureSceneSpreads(clips);
+    assert.ok(spread && spread.ratio > MAX_SCENE_SPREAD);
+    assert.ok(rateProblems(clips, new Map()).some((p) => p.where.startsWith("scene:")));
+  });
+
+  test("short clips are excluded because packaging dominates them", () => {
+    // At 150 wpm a four-word line lasts 1.6s, and ~0.3s of head/tail silence and
+    // comma pause is 19% of that. Six words puts it at 12%.
+    assert.equal(MIN_WORDS, 6);
+    assert.deepEqual(measureVoiceRates([clip("a", 150, 4), clip("a", 150, 5)]), []);
+    assert.equal(measureVoiceRates([clip("a", 150, 6)]).length, 1);
   });
 });

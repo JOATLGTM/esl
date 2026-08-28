@@ -178,6 +178,20 @@ says the true thing: your progress is safe, this is ours not yours, try later.
 `proxy.ts` tells the two causes apart by asking a public-read content table —
 only on a request already being turned away, so the happy path costs nothing.
 
+**Piper replaced macOS `say`** on 2026-08-28, and the deciding argument was not
+that it sounds better. `say` accepts `-r 155` and **ignores it** — four of six
+voices ran at 101–109 wpm against a declared 150–160, so the roster was fiction
+and no amount of editing it would have helped. Piper has `length_scale`, so
+`rate_wpm` became a thing the pipeline can enforce. It also runs on Linux, so
+the curriculum is no longer buildable on exactly one laptop.
+
+Piper has no words-per-minute setting, so `voices.yaml` now carries
+`natural_wpm` per voice — the model's measured pace at `length_scale 1.0` — and
+the provider derives the scale from `natural_wpm / rate_wpm`. Those constants
+were calibrated empirically, twice: the first pass (from the spike) left
+`uk_m_1` 17% fast, so the true values were back-computed from the rendered
+manifest and it was regenerated. **Re-measure whenever a Piper model changes.**
+
 **A speech-rate gate on the audio pipeline** (`lib/content/speech-rate.ts`),
 added 2026-08-28. The pipeline already proved the voices were *distinct* — that
 guard exists because Block 1 once shipped with three names for Samantha. This
@@ -243,7 +257,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 271, all passing.**
+**Tests — 274, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -259,7 +273,7 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `shadowing.test.ts` | 8 | no |
 | `patterns.test.ts` | 9 | no |
 | `distractors.test.ts` | 13 | no |
-| `speech-rate.test.ts` | 11 | no |
+| `speech-rate.test.ts` | 14 | no |
 | `resilience.test.ts` | 11 | no |
 | `grade.test.ts` | 30 | no |
 | `transcript.test.ts` | 5 | no |
@@ -504,6 +518,24 @@ broken player. Check the server instead (`curl -I` for a 200, the right
 pure tests (`tests/transcript.test.ts`); then listen to it in a normal browser
 by hand. **Nothing in Meet or Absorb has had its audio heard.**
 
+**An unknown Piper flag is not an error — it is content.** The provider passed
+`--download-dir`, which Piper 1.7 does not have; instead of failing, argparse
+handed the value to stdin and **the voice read the filesystem path aloud**. It
+exits 0 and writes a well-formed Opus file, so the pipeline reported success.
+The first engine spike was 120 clips of a voice reciting a path, and listening
+to it would have ruled Piper out. Caught only by measuring: clip length tracked
+the length of the *path* (9.5s long, 3.2s for `/tmp/vv`, 2.1s with the flag
+removed), not the sentence. **Check any new flag against `piper --help` for the
+installed version.**
+
+**Measure speech rate on clips long enough to be speech.** Fixed overhead —
+head/tail silence, a comma, ~0.2s at a sentence boundary — is ~19% of a
+four-word clip and 12% of a six-word one. At four words, `"Tom, I'm from
+Mexico."` reported 104 wpm for a voice averaging 162, and that artefact was
+enough to fail a whole scene. `MIN_WORDS` is 6, and the per-scene check now
+needs 3 samples per voice before it will accuse anyone — the voice-level check
+always had that guard and the scene-level one did not.
+
 **`getUser()` returning null does not mean "signed out".** It returns null when
 it cannot reach the auth server too, and with no session cookie the client
 short-circuits before touching the network — so a dead backend and an ordinary
@@ -574,17 +606,24 @@ from a cookie is client-supplied data.
    screen?
 3. **Native-speaker review of `lib/copy/es.ts`** — ~120 lines, an explicit F1
    acceptance criterion, and not something to sign off alone.
-4. **The TTS engine is undecided, and it is now the most expensive open item.**
-   The committed macOS audio is measurably wrong — see the speech-rate gate
-   above; `npm run content:publish-check` lists all 17 failures. Piper is what
-   the PRD prescribes (§8.1A) and it honours the rate parameter, but **nobody
-   has heard either engine**: `pip install piper-tts` is not installed, so
-   `npm run content:spike` can currently only compare macOS against itself.
-   Install it, run the spike, and listen for the three things its header names —
-   are the cast actually different people, does it say *Miguel* and *Colombia*
-   right, and does a 45-second scene get tiring. **Decide before authoring
-   Block 2**; every scene is written, timed and validated against a named voice
-   roster, so deciding after Block 1 is six units of rework instead of one.
+4. ~~**The TTS engine is undecided.**~~ **Decided 2026-08-28: Piper**, by ear,
+   before Block 2 was authored — which is what PRD 10 asks for. All 214 clips
+   regenerated. The speech-rate gate now passes: every voice is within 6% of its
+   declared rate and the spread across the cast is **1.10x** (was 90–136 wpm,
+   spread 1.69x, on macOS). `npm run content:publish-check` went from 17
+   blocking errors to 7, and all 7 are the ear-training gap in item 5.
+
+   **Local setup is required and is not in the repo** (`.venv/` is gitignored,
+   ~1.1 GB):
+   ```bash
+   python3 -m venv .venv                       # Homebrew python refuses system
+   .venv/bin/pip install piper-tts             # installs (PEP 668)
+   .venv/bin/python -m piper.download_voices \
+     en_US-amy-medium en_US-ryan-high en_US-joe-medium \
+     en_US-kristin-medium en_US-lessac-medium en_GB-alan-medium \
+     --data-dir .venv/piper-voices
+   export PIPER_BIN=$PWD/.venv/bin/piper PIPER_DATA_DIR=$PWD/.venv/piper-voices
+   ```
 
 5. **No ear-training audio exists.** 0 of 300 recordings for `ee_ih`. Six people
    × 50 words ≈ a weekend of favours. `npm run content:recording-kit --

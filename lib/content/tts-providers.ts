@@ -101,7 +101,30 @@ export const piperProvider: TtsProvider = {
     try {
       const bin = process.env.PIPER_BIN ?? "piper";
       const args = ["--model", model, "--output_file", out];
-      if (process.env.PIPER_DATA_DIR) args.push("--data-dir", process.env.PIPER_DATA_DIR, "--download-dir", process.env.PIPER_DATA_DIR);
+      // `--data-dir` only. `--download-dir` was here and Piper 1.7 does not
+      // have it -- and rather than failing, argparse hands the value through to
+      // stdin, so the voice reads the *filesystem path* aloud instead of the
+      // line. It exits 0 and writes a plausible-looking file, so the pipeline
+      // reports success. Caught by measuring: clip length tracked the length of
+      // the path (9.5s for a long one, 3.2s for /tmp/vv, 2.1s with the flag
+      // removed) rather than the length of the sentence.
+      //
+      // If a flag is ever added back here, check it against `piper --help` for
+      // the installed version: an unknown flag is not an error, it is content.
+      if (process.env.PIPER_DATA_DIR) args.push("--data-dir", process.env.PIPER_DATA_DIR);
+
+      // Piper has no words-per-minute flag; it has `length_scale`, where higher
+      // is slower. `natural_wpm` is the model's measured pace at scale 1.0, so
+      // the scale that lands on the roster's target is simply their ratio.
+      //
+      // This is what `say` could not do: it accepts `-r 155` and ignores it,
+      // which is why four of six committed voices ran a third slower than
+      // declared. Here the declared rate is actually enforceable.
+      if (voice.natural_wpm && voice.rate_wpm) {
+        const scale = voice.natural_wpm / voice.rate_wpm;
+        args.push("--length-scale", scale.toFixed(3));
+      }
+
       run(bin, args, Buffer.from(text, "utf8"));
       return { bytes: fs.readFileSync(out), sourceFormat: "wav" };
     } finally {

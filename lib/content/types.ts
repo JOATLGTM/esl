@@ -260,6 +260,18 @@ export const VoiceSchema = z.object({
   native: z.boolean(),
   /** A0 listening wants slightly-slowed-but-natural, never robot narration (PRD F4). */
   rate_wpm: z.number().int().min(90).max(220).optional(),
+  /**
+   * How fast this Piper model speaks at `--length-scale 1.0`, measured.
+   *
+   * Piper has no words-per-minute setting -- it has `length_scale`, a
+   * multiplier where higher is slower. Turning `rate_wpm` into a scale
+   * therefore needs to know the model's own natural pace, and that is a
+   * property of the trained voice which can only be measured, not declared.
+   *
+   * Re-measure whenever a `piper` model changes: `npm run content:spike`, then
+   * words / (seconds / 60) over that voice's clips.
+   */
+  natural_wpm: z.number().int().min(60).max(260).optional(),
   provider_voice: z.record(z.string(), z.string()),
 });
 export type Voice = z.infer<typeof VoiceSchema>;

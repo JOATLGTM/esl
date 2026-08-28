@@ -3,10 +3,17 @@
  *
  * `content/voices.yaml` declares `rate_wpm` per voice and
  * `lib/content/tts-providers.ts` passes it to the engine. Nothing checked that
- * the engine listened — and macOS `say` does not. Measured from the committed
- * manifest, the six voices run 90–136 wpm against a declared 150–160, and in
- * one scene Ana (132) alternates with Miguel (98), so the learner's in-story
- * counterpart sounds like a different species of English.
+ * the engine listened — and macOS `say` did not: it accepts `-r 155` and
+ * ignores it, so the committed audio ran 90–136 wpm against a declared 150–160,
+ * and in one scene Ana (132) alternated with Miguel (98), leaving the learner's
+ * own in-story counterpart sounding like a different species of English.
+ *
+ * That is what moved the project to Piper on 2026-08-28. Piper has no
+ * words-per-minute setting either, but it has `length_scale`, so the rate is at
+ * least *controllable*; `natural_wpm` in the roster is the per-model
+ * calibration that turns a target into a scale. After the switch every voice
+ * lands within 6% of its declared rate and the spread across the cast is 1.10x.
+ * This check is what keeps that true.
  *
  * The pipeline already proves the voices are *distinct* — that guard exists
  * because Block 1 once shipped with three names for Samantha. Distinctness is
@@ -29,12 +36,18 @@ export type RateClip = {
 /**
  * Shortest clip worth measuring, in words.
  *
- * Encoders pad the head and tail of a file with a little silence, which is a
- * rounding error across a sentence and most of the duration of "Hi". Measuring
- * one-word chunks would report every voice as absurdly slow and the check would
- * be ignored within a week.
+ * A clip carries fixed overhead that is not speech: head and tail silence from
+ * the encoder, a pause at a comma, ~0.2s at a sentence boundary. At 150 wpm an
+ * utterance lasts words/2.5 seconds, so that ~0.3s of overhead is **19% of a
+ * four-word clip and 12% of a six-word one** — measured against the real
+ * manifest, four-word lines like "Tom, I'm from Mexico." report 104 wpm for a
+ * voice averaging 162.
+ *
+ * Six is where the measurement starts describing speech rather than packaging,
+ * while still leaving ~29 clips across five voices to measure. Eight would be
+ * cleaner and leaves eight clips total, which is not a measurement.
  */
-export const MIN_WORDS = 4;
+export const MIN_WORDS = 6;
 
 /**
  * The band a teaching voice should sit in.
@@ -115,6 +128,17 @@ export type SceneSpread = {
 };
 
 /**
+ * Fewest measurable clips a voice needs *within one scene* before its rate
+ * there is worth comparing to anyone else's.
+ *
+ * The voice-level check already refuses to accuse on fewer than three samples;
+ * the scene-level one used to have no such guard, which is how `s_0006` was
+ * flagged at 1.33x on the strength of two short Miguel lines from a voice whose
+ * overall rate was within 5% of target. Thin evidence is not evidence.
+ */
+export const MIN_SCENE_SAMPLES = 3;
+
+/**
  * The widest gap between two speakers inside a single conversation.
  *
  * Scoped per scene rather than globally because this is about what the learner
@@ -131,7 +155,9 @@ export function measureSceneSpreads(clips: readonly RateClip[]): SceneSpread[] {
 
   return [...byScene.entries()]
     .flatMap(([sceneId, sceneClips]) => {
-      const rates = measureVoiceRates(sceneClips);
+      const rates = measureVoiceRates(sceneClips).filter(
+        (rate) => rate.samples >= MIN_SCENE_SAMPLES,
+      );
       if (rates.length < 2) return [];
       const slowest = rates[0];
       const fastest = rates[rates.length - 1];

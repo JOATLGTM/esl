@@ -39,10 +39,22 @@ version: 1
 # The engine used for the committed audio. Switching this invalidates every
 # cached clip by design -- a voice change is a content change.
 #
-# PRD 10 Phase 1 makes the choice a week-1 decision, not an assumption:
-# `npm run content:spike` renders the same twenty lines through every installed
-# engine and tier so it can be settled by ear before Block 2 is authored.
-provider: macos
+# DECIDED 2026-08-28, by ear, via `npm run content:spike`, before Block 2 was
+# authored -- which is what PRD 10 asks for.
+#
+# The deciding argument was not that Piper sounds better. It is that `say`
+# accepts `-r 155` and *ignores* it: four of the six committed macOS voices ran
+# at 101-109 wpm against a declared 150-160, so the roster was fiction and the
+# rate was not fixable. Piper has `length_scale`, so `rate_wpm` becomes a thing
+# the pipeline can actually enforce -- see `natural_wpm` on each voice.
+#
+# Piper also runs on Linux, so the curriculum is no longer buildable on exactly
+# one laptop.
+#
+# Requires: python3 -m venv .venv && .venv/bin/pip install piper-tts
+#           .venv/bin/python -m piper.download_voices <each piper voice below>
+#           PIPER_BIN=.venv/bin/piper PIPER_DATA_DIR=.venv/piper-voices
+provider: piper
 
 # Primary accent model for the course: US, because the audience is Latin
 # American. Tom is British on purpose -- the English Miguel actually hears at
@@ -60,6 +72,8 @@ voices:
     gender: female
     native: true
     rate_wpm: 155
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 119
     provider_voice:
       macos: "Samantha"
       piper: "en_US-amy-medium"
@@ -69,6 +83,8 @@ voices:
     gender: male
     native: true
     rate_wpm: 155
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 205
     provider_voice:
       # NOT "Alex" -- Alex is not installed by default on current macOS and
       # `say` substitutes Samantha without saying so. Eddy is really present.
@@ -80,6 +96,8 @@ voices:
     gender: male
     native: true
     rate_wpm: 150
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 163
     provider_voice:
       macos: "Reed (English (US))"
       piper: "en_US-joe-medium"
@@ -89,6 +107,8 @@ voices:
     gender: female
     native: true
     rate_wpm: 160
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 150
     provider_voice:
       macos: "Flo (English (US))"
       piper: "en_US-kristin-medium"
@@ -98,6 +118,8 @@ voices:
     gender: female
     native: true
     rate_wpm: 150
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 160
     provider_voice:
       macos: "Sandy (English (US))"
       piper: "en_US-lessac-medium"
@@ -107,6 +129,8 @@ voices:
     gender: male
     native: true
     rate_wpm: 155
+    # Measured at length_scale 1.0 via `npm run content:spike`.
+    natural_wpm: 156
     provider_voice:
       macos: "Daniel"
       piper: "en_GB-alan-medium"
