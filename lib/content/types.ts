@@ -389,6 +389,49 @@ export const CurriculumSchema = z.object({
 export type Curriculum = z.infer<typeof CurriculumSchema>;
 
 /* -------------------------------------------------------------------------- */
+/* The vocabulary release schedule                                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Which English words become legal in which unit.
+ *
+ * This exists to turn the 95% rule from something an author *discovers* into
+ * something they *design against*. Today the rule is enforced at validation
+ * time, so authoring a scene means writing it, running the validator, and
+ * fighting whatever comes back -- which is exactly backwards, and it is the
+ * main reason a unit costs 15 hours instead of 5.
+ *
+ * With a schedule, the author opens unit 7, reads the list of words that are
+ * legal by then, writes inside it, and validation becomes a formality. The
+ * constraint stops being an adversary and becomes the brief.
+ *
+ * A word is released **once**, in the earliest unit that may use it, and stays
+ * legal forever after. Releasing it twice is an error rather than a no-op: the
+ * duplicate always means one of the two units was planned without looking at
+ * the other, and silently ignoring it would hide the thing worth knowing.
+ *
+ * The schedule may name units that do not exist yet -- that is the whole point
+ * of planning ahead -- so nothing here requires a matching content file.
+ */
+export const VocabScheduleSchema = z.object({
+  version: z.number().int().positive(),
+  units: z.array(z.object({
+    unit: unitId,
+    /**
+     * Word types first legal in this unit, lower case, one per entry.
+     *
+     * Inflections do not need their own entry: the check matches through the
+     * same morphological variants the readability scorer uses, so releasing
+     * `name` licenses `names`.
+     */
+    releases: z.array(z.string().min(1)).default([]),
+    /** Free text for the author: what this unit is for, why these words. */
+    note: z.string().optional(),
+  })).min(1),
+});
+export type VocabSchedule = z.infer<typeof VocabScheduleSchema>;
+
+/* -------------------------------------------------------------------------- */
 /* Voices, cast, and the people who read the ear-training words                */
 /* -------------------------------------------------------------------------- */
 

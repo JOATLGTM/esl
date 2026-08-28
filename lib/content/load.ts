@@ -8,6 +8,7 @@ import {
   PronunciationOverridesSchema,
   SpeakerRosterSchema,
   UnitSchema,
+  VocabScheduleSchema,
   VoiceRosterSchema,
   type Cast,
   type Character,
@@ -17,6 +18,7 @@ import {
   type PronunciationOverride,
   type SpeakerRoster,
   type Unit,
+  type VocabSchedule,
   type VoiceRoster,
 } from "./types";
 import { tokenize } from "./tokenize";
@@ -269,4 +271,59 @@ export function buildKnownWordTimeline(units: Unit[]): KnownWordTimeline {
   }
 
   return { before, during };
+}
+
+/* -------------------------------------------------------------------------- */
+/* The vocabulary release schedule                                            */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The release schedule, or null when none has been written.
+ *
+ * Optional on purpose: the pipeline worked without one for its whole first
+ * block, and a missing file should mean "not planned yet", not "broken".
+ */
+export function loadVocabSchedule(contentDir = CONTENT_DIR): VocabSchedule | null {
+  const file = path.join(contentDir, "vocab-schedule.yaml");
+  if (!fs.existsSync(file)) return null;
+  return parseOrThrow<VocabSchedule>(VocabScheduleSchema, readYaml(file), file);
+}
+
+export type ReleaseTimeline = {
+  /** Every word legal by the end of each unit, keyed by unit id. */
+  legalBy: Map<string, Set<string>>;
+  /** Where each word is released, for reporting a duplicate or a late word. */
+  releasedIn: Map<string, string>;
+  /** Words released more than once, with the units that claim them. */
+  duplicates: { word: string; units: string[] }[];
+};
+
+/**
+ * Accumulate the schedule into "what is legal by unit N".
+ *
+ * Walks the schedule's own order rather than the curriculum's, so a schedule
+ * can be written for units that do not exist yet.
+ */
+export function buildReleaseTimeline(schedule: VocabSchedule): ReleaseTimeline {
+  const legalBy = new Map<string, Set<string>>();
+  const releasedIn = new Map<string, string>();
+  const claims = new Map<string, string[]>();
+  const cumulative = new Set<string>();
+
+  for (const entry of schedule.units) {
+    for (const raw of entry.releases) {
+      const word = raw.trim().toLowerCase();
+      if (!word) continue;
+      cumulative.add(word);
+      if (!releasedIn.has(word)) releasedIn.set(word, entry.unit);
+      claims.set(word, [...(claims.get(word) ?? []), entry.unit]);
+    }
+    legalBy.set(entry.unit, new Set(cumulative));
+  }
+
+  const duplicates = [...claims.entries()]
+    .filter(([, units]) => units.length > 1)
+    .map(([word, units]) => ({ word, units }));
+
+  return { legalBy, releasedIn, duplicates };
 }

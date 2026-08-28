@@ -1,0 +1,107 @@
+# The vocabulary release schedule.
+#
+# Which English words become legal in which unit. This is the file that turns
+# the 95% rule from something an author *discovers* into something they
+# *design against*.
+#
+# Without it, authoring a scene means writing it, running the validator, and
+# fighting whatever comes back -- the constraint arrives after the work, as an
+# adversary. With it, you open the unit you are writing, read the words that
+# are legal by then, and write inside them. Validation becomes a formality.
+#
+# Rules:
+#   - A word is released ONCE, in the earliest unit allowed to use it, and is
+#     legal forever after. Releasing it twice is an error, because a duplicate
+#     always means one of the two units was planned without reading the other.
+#   - Inflections need no entry of their own: releasing `name` licenses
+#     `names`, through the same morphological matching readability uses.
+#   - Proper nouns are NOT here. `content/wordlists/proper-nouns.yaml` already
+#     credits them and the course never teaches them as vocabulary.
+#   - Cognates are NOT here either, for the same reason -- see
+#     `content/wordlists/cognates.yaml`. A Spanish speaker reads `hospital` for
+#     free, and paying authoring tax for it was never the plan.
+#   - A unit may appear here before its content file exists. That is the point:
+#     the schedule is a plan, and `npm run content:validate` checks the units
+#     that do exist against it.
+#
+# Block 1's remaining units are listed with empty releases and a note. That is
+# deliberate: filling them is a curriculum decision that wants the sourcing
+# research in `docs/CONTENT-BRIEF.md`, and inventing a word list here to look
+# finished would be the worst kind of content -- authoritative and unfounded.
+
+version: 1
+
+units:
+  - unit: b1_u1
+    note: >-
+      Greetings, names, courtesy, and the two repair phrases a beginner needs
+      before anything else ("I don't understand", "Can you repeat that?").
+      Measured from the authored unit rather than planned in advance -- this is
+      the one unit that predates the schedule, so it defines the baseline the
+      rest is planned against.
+    releases:
+      - afternoon
+      - am
+      - and
+      - are
+      - can
+      - do
+      - excuse
+      - fine
+      - from
+      - good
+      - goodbye
+      - hello
+      - hi
+      - how
+      - i
+      - is
+      - later
+      - me
+      - meet
+      - morning
+      - my
+      - name
+      - nice
+      - night
+      - no
+      - not
+      - please
+      - repeat
+      - say
+      - see
+      - sorry
+      - thank
+      - that
+      - this
+      - to
+      - understand
+      - welcome
+      - what
+      - yes
+      - you
+      - your
+
+  # ---------------------------------------------------------------------------
+  # Planned, not yet written. See docs/CONTENT-BRIEF.md item 1.
+  # ---------------------------------------------------------------------------
+
+  - unit: b1_u2
+    note: Numbers, age, and yes/no questions.
+    releases: []
+
+  - unit: b1_u3
+    note: Family and people.
+    releases: []
+
+  - unit: b1_u4
+    note: Places, and where things are.
+    releases: []
+
+  - unit: b1_u5
+    note: Time, days, and routine.
+    releases: []
+
+  - unit: b1_u6
+    note: Wants and needs -- the first frames with an open filler class.
+    releases: []

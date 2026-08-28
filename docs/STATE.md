@@ -248,6 +248,36 @@ words as the evidence. `/home` links it only when there is something to show —
 offering "algo que se te repite" and then showing an empty page is a small
 cruelty.
 
+**Frames (the generative layer)** — built 2026-08-28, end to end. A pattern with
+one slot and licensed fillers: `I'd like {NP}, please.` Table, seeder, schema,
+validator, and a second phase in Speak where the learner builds a sentence
+nobody wrote for them. Everything before it is recall; this is the first
+production of something new in the whole product, which is why it comes *after*
+the script rather than instead of it.
+
+`b1_u1` gained three, and they were already there in disguise: `My name is`,
+`I'm from` and `This is` are not sentences — each has a hole, and the hole was
+implicit because nothing could express it. The chunks stay (they carry the
+audio and the introducing card); the frames say what follows.
+
+**The vocabulary release schedule** (`content/vocab-schedule.yaml`) — built
+2026-08-28. Names which English words become legal in which unit, and the
+validator refuses a unit that teaches a word the schedule has not released.
+
+This is the file that turns the 95% rule from something an author *discovers*
+into something they *design against*. Before it, authoring meant writing a
+scene, running the validator, and fighting what came back — the constraint
+arrived after the work. Unit 1's 41 word types were *measured* from the
+authored unit rather than invented, so it defines the baseline the rest is
+planned against; units 2–6 are listed with notes and empty release lists,
+because filling them is a curriculum decision that wants the sourcing research
+in `docs/CONTENT-BRIEF.md`. An unfounded word list that looked finished would
+be worse than an empty one.
+
+Stepping outside the schedule is an **error**, not a warning, and deliberately:
+adding a word is one line, and having to write that line on purpose is the
+whole mechanism. As a warning the file would be decoration.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -258,7 +288,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 292, all passing.**
+**Tests — 315, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -496,14 +526,11 @@ content under generated noise.
 
 ## Traps — things that cost time once already
 
-**Frames are authored-for but not yet playable.** The schema, the validator and
-the known-word timeline all handle frames; the session player does not read
-them. So `content/units/*.yaml` deliberately contains **zero** frames right
-now — authoring 200 of them before Retrieve or Speak can display one would
-repeat the `l1_support_level` mistake at 200× the scale (written, read by
-nothing). Wire a stage to frames *first*, then author. The type is proven end
-to end by `tests/frames.test.ts` and by the validator's own guards, not by
-shipped content.
+**Frames are live end to end as of 2026-08-28** — schema, `frames` table,
+seeder, and a second phase in Speak. `b1_u1` has three. The trap this closes is
+worth remembering: for one commit the type existed and nothing could display
+it, which is exactly the `l1_support_level` mistake (written on every unit
+advance, read by nothing, still). **Wire a stage before authoring at scale.**
 
 **macOS `say` silently substitutes the default voice** when a named voice is not
 downloaded. No error, plausible output. Block 1 shipped with `us_f_1`, `us_m_1`
@@ -711,20 +738,17 @@ from a cookie is client-supplied data.
    sequenced estimate: **~220–310 person-hours to a finished A2**, of which the
    first 40–55 are foundations that make everything after them 2–3× faster.
 
-   Do the foundations first, in this order, or the rest costs more:
+   Two of the three foundations are done:
 
-   a. **Wire a stage to frames.** Retrieve or Speak. Until something displays a
-      frame, authoring them is writing into a void (see the trap above).
-   b. **Freeze a vocabulary release schedule** — `content/vocab-schedule.yaml`,
-      naming exactly which word types become legal in which unit. Today the 95%
-      rule is *discovered* at validation time, so authoring means writing a
-      scene and then fighting the validator. It should be a design input: with
-      the schedule in place an author writes inside a known word list and
-      validation becomes a formality. This is the single highest-leverage
-      unbuilt thing in the project.
+   a. ~~**Wire a stage to frames.**~~ Done 2026-08-28 — Speak displays them and
+      `b1_u1` has three.
+   b. ~~**Freeze a vocabulary release schedule.**~~ The *mechanism* is done —
+      `content/vocab-schedule.yaml`, enforced. **Units 2–6 are still empty**,
+      and filling them is the next real piece of work. Unit 1's 41 words are
+      the measured baseline to plan against.
    c. **A story bible** — six characters, four blocks, an arc per block with
-      actual stakes. Without it, generated scenes become a sequence of errands
-      and nobody cares whether Ana gets the job.
+      actual stakes. Not started. Without it, generated scenes become a
+      sequence of errands and nobody cares whether Ana gets the job.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person

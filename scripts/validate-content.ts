@@ -14,10 +14,13 @@
 import { CONTRASTS, MIN_FRAME_FILLERS, expandFrame, type Unit } from "../lib/content/types";
 import {
   buildKnownWordTimeline,
+  buildReleaseTimeline,
   loadContent,
+  loadVocabSchedule,
   loadSpeakerRoster,
   loadVoiceRoster,
   unitChunkWords,
+  unitTaughtWords,
   ContentError,
   type ContentBundle,
 } from "../lib/content/load";
@@ -30,7 +33,8 @@ import {
   unknownBudget,
 } from "../lib/content/readability";
 import { rateProblems, type RateClip } from "../lib/content/speech-rate";
-import { tokenizeTranscript } from "../lib/content/tokenize";
+import { classifyCognate, loadCognateData } from "../lib/content/cognates";
+import { morphologicalVariants, tokenizeTranscript } from "../lib/content/tokenize";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -548,6 +552,66 @@ function checkGeneratedDurations(bundle: ContentBundle) {
   }
 }
 
+/**
+ * The vocabulary release schedule (`content/vocab-schedule.yaml`).
+ *
+ * The 95% rule already catches a scene that runs ahead of the learner. This
+ * catches a *unit* that runs ahead of the plan, which is a different and
+ * earlier failure: by the time a scene fails readability, the chunks it was
+ * written around have already been chosen.
+ *
+ * Deliberately an error and not a warning. The schedule is only useful if
+ * stepping outside it is a decision someone makes on purpose -- adding the word
+ * to the schedule is one line, and having to write that line is the entire
+ * mechanism. Downgrade this to a warning and the file becomes decoration.
+ *
+ * Skipped entirely when no schedule exists, and per unit when that unit has no
+ * entry: a plan that has not been written yet must not block the content that
+ * has.
+ */
+function checkVocabSchedule(bundle: ContentBundle) {
+  const schedule = loadVocabSchedule();
+  if (!schedule) return;
+
+  const timeline = buildReleaseTimeline(schedule);
+  const cognates = loadCognateData(path.join(process.cwd(), "content"));
+
+  for (const dupe of timeline.duplicates) {
+    err(
+      "vocab-schedule.yaml",
+      `"${dupe.word}" is released more than once`,
+      `claimed by ${dupe.units.join(", ")} -- release it in the earliest one only`,
+    );
+  }
+
+  const scheduled = new Set(schedule.units.map((u) => u.unit));
+  for (const unit of bundle.units) {
+    if (!scheduled.has(unit.unit_id)) continue;
+    const legal = timeline.legalBy.get(unit.unit_id)!;
+
+    const late: string[] = [];
+    for (const word of unitTaughtWords(unit)) {
+      if (legal.has(word)) continue;
+      // Released as an inflection of something legal ("names" for "name").
+      if (morphologicalVariants(word).some((v) => legal.has(v))) continue;
+      // Proper nouns and transparent cognates are credited by the readability
+      // scorer and never taught, so the schedule does not carry them.
+      const verdict = classifyCognate(word, cognates);
+      if (verdict.cognate) continue;
+      late.push(word);
+    }
+
+    if (late.length) {
+      err(
+        unit.unit_id,
+        `teaches ${late.length} word(s) the schedule has not released`,
+        `${late.sort().join(", ")} -- add them to ${unit.unit_id} in ` +
+          "content/vocab-schedule.yaml, or rewrite to stay inside the plan",
+      );
+    }
+  }
+}
+
 function checkCurriculumTargets(bundle: ContentBundle) {
   let chunks = 0;
   let frames = 0;
@@ -681,6 +745,7 @@ function main() {
   checkContrasts(bundle, plan);
   checkGeneratedDurations(bundle);
   checkSpeechRate();
+  checkVocabSchedule(bundle);
   checkCurriculumTargets(bundle);
 
   const errors = problems.filter((p) => p.level === "error");
