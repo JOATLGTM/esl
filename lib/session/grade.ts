@@ -169,6 +169,16 @@ export function ratingFor(outcome: TypedOutcome): Rating {
  *
  * A near-miss counts. The learner produced the phrase; the missing letter is a
  * spelling slip, and this is a course about speaking.
+ *
+ * `produce_spoken` is accepted here and **nothing emits it**, which is
+ * deliberate rather than unfinished. Speaking in this product is self-reported
+ * -- no pronunciation score, no pass mark (PRD 4.5) -- so a learner tapping
+ * "Ya lo dije" twice would mature a card to `learned` and turn the most
+ * load-bearing rule in the product into a button. The mode stays because a
+ * *verified* spoken pass genuinely belongs here; a self-report wearing its
+ * clothes does not. Speaking is counted in `sessions.speaking_tasks_completed`,
+ * where it cannot inflate mastery. `tests/spoken-production.test.ts` holds the
+ * line.
  */
 export function countsAsProduction(mode: string, outcome: TypedOutcome): boolean {
   if (mode !== "produce_typed" && mode !== "produce_spoken") return false;

@@ -288,7 +288,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 315, all passing.**
+**Tests — 317, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -525,6 +525,19 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**`produce_spoken` has no emitter, and that is the feature.** It is a legal
+review mode, `countsAsProduction` returns true for it, and `learned` needs two
+production passes — guarded by a CHECK because it is the most load-bearing
+pedagogical rule here. Wiring the Speak stage to emit one looks like closing an
+obvious gap. It would instead let a learner tap *Ya lo dije* twice and reach
+`learned`, because speaking is **self-reported**: no pronunciation score, no
+pass mark, by design (PRD 4.5). The mode is right and should stay — a
+*verified* spoken pass belongs in `countsAsProduction`, and on-device
+recognition could yet make one possible at $0. What must never happen is a tap
+wearing its clothes. Speaking is counted in `sessions.speaking_tasks_completed`,
+server-side, where it cannot inflate mastery.
+`tests/spoken-production.test.ts` fails the build if a new file references it.
 
 **Frames are live end to end as of 2026-08-28** — schema, `frames` table,
 seeder, and a second phase in Speak. `b1_u1` has three. The trap this closes is
