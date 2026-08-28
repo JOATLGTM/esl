@@ -1,9 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
+import { recordShadowing } from "../actions";
 import { Button } from "@/components/ui/button";
 import { es, fill } from "@/lib/copy/es";
 import type { AbsorbScene } from "@/lib/session/absorb";
+import {
+  SHADOW_STAGES,
+  nextShadowStage,
+  pickShadowSegment,
+  type ShadowStage,
+} from "@/lib/session/shadowing";
 import { activeLineAt } from "@/lib/session/transcript";
 
 /**
@@ -17,7 +24,10 @@ import { activeLineAt } from "@/lib/session/transcript";
  * `scenes.transcript`, so replaying a line is a seek, not a second file.
  *
  * Questions come after listening, one at a time, and are never scored. A wrong
- * answer shows the right one and moves on.
+ * answer shows the right one and moves on. Shadowing (PRD F11) follows, on
+ * material the learner has just proved they understood -- and is skippable,
+ * because speaking out loud in a room where someone might hear is not always
+ * possible.
  */
 export function AbsorbStage({
   scene,
@@ -38,6 +48,10 @@ export function AbsorbStage({
   const [quiz, setQuiz] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [choice, setChoice] = useState<number | null>(null);
+  // Shadowing (PRD F11) runs after the questions, on material the learner has
+  // just proved they understood.
+  const [shadowStage, setShadowStage] = useState<ShadowStage | null>(null);
+  const [, startTransition] = useTransition();
 
   // One element for the whole scene, created once. Recreating it per play would
   // refetch a 50-second file on every line tap.
@@ -103,6 +117,75 @@ export function AbsorbStage({
   // as though it were already playing.
   const activeLine = activeLineAt(scene.lines, playing ? elapsedMs : null);
 
+  const shadowSegment = pickShadowSegment(scene.lines, scene.id);
+
+  /* ----------------------------------------------------------- shadowing -- */
+
+  if (shadowStage && shadowSegment) {
+    const instruction =
+      shadowStage === "listen"
+        ? es.session.absorb.shadowListen
+        : shadowStage === "repeat"
+          ? es.session.absorb.shadowRepeat
+          : es.session.absorb.shadowShadow;
+
+    const finishStage = () => {
+      startTransition(async () => {
+        await recordShadowing({
+          sceneId: scene.id,
+          segmentIndex: shadowSegment.index,
+          stage: shadowStage,
+        });
+      });
+      const next = nextShadowStage(shadowStage);
+      if (next) {
+        setShadowStage(next);
+        return;
+      }
+      onAdvance();
+    };
+
+    return (
+      <div className="flex flex-1 flex-col gap-6">
+        <p className="text-base text-faint">
+          {fill(es.session.absorb.shadowCounter, {
+            position: SHADOW_STAGES.indexOf(shadowStage) + 1,
+            total: SHADOW_STAGES.length,
+          })}
+        </p>
+
+        <div className="flex flex-1 flex-col justify-center gap-5">
+          <h1 className="text-2xl font-bold text-ink">{es.session.absorb.shadowTitle}</h1>
+          <p className="text-lg text-muted">{instruction}</p>
+          <p className="text-3xl font-bold text-balance text-ink">{shadowSegment.en}</p>
+
+          <Button
+            type="button"
+            variant="secondary"
+            onClick={() => playFrom(shadowSegment.startMs, shadowSegment.endMs)}
+          >
+            {es.session.absorb.shadowPlay}
+          </Button>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <Button type="button" onClick={finishStage} disabled={pending}>
+            {pending ? es.common.loading : es.session.absorb.shadowDone}
+          </Button>
+          {/* Skippable at any point. The microphone is optional forever, and so
+              is speaking out loud in a room where someone might hear. */}
+          <button
+            type="button"
+            onClick={onAdvance}
+            className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
+          >
+            {es.session.absorb.shadowSkip}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   /* ---------------------------------------------------------------- quiz -- */
 
   if (quiz && scene.questions.length > 0) {
@@ -160,6 +243,12 @@ export function AbsorbStage({
           disabled={!answered || pending}
           onClick={() => {
             if (isLastQuestion) {
+              // Shadowing only when the scene has a line worth shadowing and
+              // audio to shadow along with; otherwise the stage is done.
+              if (shadowSegment && scene.audioUrl) {
+                setShadowStage("listen");
+                return;
+              }
               onAdvance();
               return;
             }
@@ -232,8 +321,11 @@ export function AbsorbStage({
         disabled={pending}
         onClick={() => {
           audioRef.current?.pause();
-          // A scene with no questions has nothing more to do here.
           if (scene.questions.length === 0) {
+            if (shadowSegment && scene.audioUrl) {
+              setShadowStage("listen");
+              return;
+            }
             onAdvance();
             return;
           }

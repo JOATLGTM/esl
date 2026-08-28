@@ -95,3 +95,28 @@ describe("card maturity", () => {
     assert.equal(cardStateFor(5, LEARNING), "learning");
   });
 });
+
+describe("a transfer error is not a typo", () => {
+  test("dropping the subject pronoun is wrong, not close", () => {
+    // One character from the right answer, and well inside the typo budget --
+    // but Spanish omits the subject and English cannot, so this is the thing
+    // the course exists to correct, not a slip of the thumb.
+    assert.equal(gradeTypedAnswer("I'm fine, thank you", "Am fine, thank you"), "wrong");
+  });
+
+  test("so it cannot count toward mastery", () => {
+    // The whole reason this matters: `close` counts as production, so a
+    // learner could reach `learned` while making the same structural error
+    // every single time.
+    const outcome = gradeTypedAnswer("I'm fine, thank you", "Am fine, thank you");
+    assert.equal(countsAsProduction("produce_typed", outcome), false);
+  });
+
+  test("an ordinary typo is still forgiven", () => {
+    assert.equal(gradeTypedAnswer("Nice to meet you, Miguel", "Nice to meet yu, Miguel"), "close");
+  });
+
+  test("a correct answer is still correct", () => {
+    assert.equal(gradeTypedAnswer("I'm fine, thank you", "im fine thank you"), "correct");
+  });
+});

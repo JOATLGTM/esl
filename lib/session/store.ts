@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { Contrast, PairAudio, Tables } from "@/lib/supabase/types";
-import { isUnitComplete, nextUnit } from "./progress";
+import { isUnitComplete, l1SupportForBlock, nextUnit } from "./progress";
 import type { Stage, StageInventory } from "./stages";
 
 /**
@@ -196,7 +196,15 @@ export async function advanceUnitIfComplete(
 
   await supabase
     .from("users")
-    .update({ current_unit: next.id, current_block: next.block })
+    .update({
+      current_unit: next.id,
+      current_block: next.block,
+      // The Spanish taper follows the block (PRD 4.5). Written on advance
+      // rather than read from the block at render time, because the column is
+      // overridable -- a learner who chose more or less support keeps it until
+      // they move up again.
+      l1_support_level: l1SupportForBlock(next.block),
+    })
     .eq("id", userId);
 
   return { unitId: next.id, advanced: true, atEndOfCurriculum: false };

@@ -1,4 +1,5 @@
 import "server-only";
+import { newlyEarned, type AchievementKey } from "./achievements";
 import { localDate } from "./day";
 import { dailyQuestPlan, questProgress, xpForSession, type QuestType } from "./quests";
 import { createClient } from "@/lib/supabase/server";
@@ -133,4 +134,84 @@ export async function awardSessionXp(
   }
 
   return xp;
+}
+
+/**
+ * Record the words a chunk taught (PRD F9's 95% rule, at runtime).
+ *
+ * `known_words` is what lets a later unit be checked against what this learner
+ * actually knows rather than against the curriculum's idea of it. The content
+ * pipeline computes the same thing statically at authoring time; this is the
+ * per-learner counterpart.
+ *
+ * `ignoreDuplicates` because a word is known once — the first chunk that taught
+ * it owns the row, and re-meeting it must not move the date.
+ */
+export async function recordKnownWords(userId: string, texts: string[]): Promise<void> {
+  const words = new Set(
+    texts
+      .flatMap((text) => text.toLowerCase().match(/[\p{L}']+/gu) ?? [])
+      // Leading/trailing apostrophes come from possessives and quotes; the
+      // internal ones in "what's" are part of the word.
+      .map((word) => word.replace(/^'+|'+$/g, ""))
+      .filter(Boolean),
+  );
+  if (words.size === 0) return;
+
+  const supabase = await createClient();
+  await supabase.from("known_words").upsert(
+    [...words].map((word) => ({ user_id: userId, word, source: "card" })),
+    { onConflict: "user_id,word", ignoreDuplicates: true },
+  );
+}
+
+/**
+ * Award any achievements the learner now qualifies for.
+ *
+ * Recomputed in full rather than driven by events: it is cheap, idempotent, and
+ * a learner who qualified while a bug was swallowing the event still gets the
+ * row the next time they finish a session. Returns the newly earned keys so the
+ * caller can decide whether to say anything.
+ */
+export async function awardAchievements(userId: string): Promise<AchievementKey[]> {
+  const supabase = await createClient();
+
+  const [profile, held, cards, speaking, sessions] = await Promise.all([
+    supabase.from("users").select("days_practiced, current_unit").eq("id", userId).maybeSingle(),
+    supabase.from("achievements").select("achievement_key").eq("user_id", userId),
+    supabase.from("user_cards").select("state").eq("user_id", userId),
+    supabase.from("sessions").select("speaking_tasks_completed").eq("user_id", userId),
+    supabase
+      .from("sessions")
+      .select("unit_id")
+      .eq("user_id", userId)
+      .not("completed_at", "is", null),
+  ]);
+
+  const completedUnits = new Set((sessions.data ?? []).map((s) => s.unit_id));
+  // Units the learner has moved *past*, which is one fewer than the units they
+  // have practised in -- the current one is not finished by being started.
+  const unitsFinished = Math.max(0, completedUnits.size - 1);
+
+  const fresh = newlyEarned(
+    {
+      daysPracticed: profile.data?.days_practiced ?? 0,
+      speakingTasksTotal: (speaking.data ?? []).reduce((n, s) => n + s.speaking_tasks_completed, 0),
+      // One completed session is one scene heard, which is what Absorb serves.
+      scenesHeard: (sessions.data ?? []).length,
+      chunksMet: (cards.data ?? []).length,
+      cardsLearned: (cards.data ?? []).filter((c) => c.state === "learned").length,
+      unitsFinished,
+    },
+    (held.data ?? []).map((row) => row.achievement_key),
+  );
+
+  if (fresh.length === 0) return [];
+
+  await supabase.from("achievements").upsert(
+    fresh.map((key) => ({ user_id: userId, achievement_key: key })),
+    { onConflict: "user_id,achievement_key", ignoreDuplicates: true },
+  );
+
+  return fresh;
 }

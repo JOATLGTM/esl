@@ -1,7 +1,13 @@
 import assert from "node:assert/strict";
 import { test, describe } from "node:test";
 
-import { isUnitComplete, nextUnit, type CurriculumUnit } from "../lib/session/progress";
+import {
+  isUnitComplete,
+  l1SupportForBlock,
+  nextUnit,
+  shouldOfferMoreSupport,
+  type CurriculumUnit,
+} from "../lib/session/progress";
 
 /**
  * The rule that decides whether the product has an end.
@@ -77,5 +83,41 @@ describe("where the learner goes next", () => {
   test("an empty curriculum yields nowhere to go", () => {
     assert.equal(nextUnit([], "b1_u1"), null);
     assert.equal(nextUnit([], null), null);
+  });
+});
+
+describe("the Spanish taper", () => {
+  test("follows the curriculum's own levels", () => {
+    // content/curriculum.yaml: blocks 1 and 2 are level 1, then one per block.
+    assert.equal(l1SupportForBlock(1), 1);
+    assert.equal(l1SupportForBlock(2), 1);
+    assert.equal(l1SupportForBlock(3), 2);
+    assert.equal(l1SupportForBlock(6), 5);
+  });
+
+  test("stays inside the column's CHECK whatever it is handed", () => {
+    // `l1_support_level between 1 and 5`; a bad block must not produce a write
+    // the database rejects.
+    for (const block of [-3, 0, 1, 6, 9, 99]) {
+      const level = l1SupportForBlock(block);
+      assert.ok(level >= 1 && level <= 5, `block ${block} gave ${level}`);
+    }
+  });
+
+  test("offers more Spanish to someone revealing most glosses", () => {
+    assert.equal(shouldOfferMoreSupport(20, 14, 3), true);
+  });
+
+  test("does not offer on thin evidence", () => {
+    // Being wrong here means telling someone who is fine that they look lost.
+    assert.equal(shouldOfferMoreSupport(4, 4, 3), false);
+  });
+
+  test("does not offer to someone who is coping", () => {
+    assert.equal(shouldOfferMoreSupport(20, 3, 3), false);
+  });
+
+  test("has nothing to offer at the most supported level", () => {
+    assert.equal(shouldOfferMoreSupport(50, 50, 1), false);
   });
 });

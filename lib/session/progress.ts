@@ -71,3 +71,43 @@ export function nextUnit(
 
   return ordered[at + 1] ?? null;
 }
+
+/* -------------------------------------------------------------------------- */
+/* The Spanish taper (PRD 4.5)                                                */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * How much Spanish support a block carries: 1 is the most, 5 the least.
+ *
+ * Derived from the block rather than stored per learner, but *overridable* —
+ * `users.l1_support_level` is what the app reads, and this only sets it when
+ * the learner moves up. A learner who wants English chrome at A1 is allowed to
+ * have it, and a learner who is quietly struggling gets offered a step back.
+ *
+ * The signal for that offer is `user_cards.gloss_reveals`: someone revealing
+ * the Spanish on most cards is not ready for less of it, and reveal taps are
+ * the only way to notice, because nobody reports being lost.
+ */
+export function l1SupportForBlock(block: number): number {
+  // Blocks 1-2 share the most supported level; after that it steps once per
+  // block, matching `content/curriculum.yaml`.
+  return Math.min(5, Math.max(1, block <= 2 ? 1 : block - 1));
+}
+
+/**
+ * Whether to offer the learner more Spanish.
+ *
+ * Offered, never imposed: the threshold is high because being wrong here means
+ * telling someone who is doing fine that they look like they are struggling.
+ * At level 1 there is nothing to offer -- they already have all of it.
+ */
+export function shouldOfferMoreSupport(
+  cardsSeen: number,
+  cardsRevealed: number,
+  currentLevel: number,
+): boolean {
+  if (currentLevel <= 1) return false;
+  // Too few cards to read anything into.
+  if (cardsSeen < 10) return false;
+  return cardsRevealed / cardsSeen >= 0.6;
+}

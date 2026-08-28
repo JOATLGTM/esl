@@ -43,6 +43,9 @@ const LEARNER_TABLES = [
   "speaking_samples",
   "daily_quests",
   "achievements",
+  "known_words",
+  "error_events",
+  "shadowing_attempts",
 ] as const;
 
 async function wipe(learner: Learner) {
@@ -584,6 +587,71 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
     assert.ok(zero.error, "a quest with no target was accepted");
 
     await admin.from("users").update({ total_xp: 0 }).eq("id", userId);
+  });
+
+  test("known words, achievements, errors and shadowing are all owner-only", async () => {
+    const [alice, bob] = await freshPair();
+    const { data: scene } = await alice.db.from("scenes").select("id").eq("unit_id", UNIT).limit(1).single();
+
+    const writes = await Promise.all([
+      alice.db.from("known_words").insert({ user_id: alice.userId, word: "hello" }),
+      alice.db.from("achievements").insert({ user_id: alice.userId, achievement_key: "first_session" }),
+      alice.db.from("error_events").insert({
+        user_id: alice.userId,
+        error_type: "have_years_for_age",
+        user_text: "I have 20 years",
+        corrected_text: "I am 20 years old",
+        source: "typed",
+      }),
+      alice.db.from("shadowing_attempts").insert({
+        user_id: alice.userId,
+        scene_id: scene!.id,
+        segment_index: 2,
+        stage: "repeat",
+      }),
+    ]);
+    for (const w of writes) assert.equal(w.error, null, w.error?.message);
+
+    for (const table of ["known_words", "achievements", "error_events", "shadowing_attempts"] as const) {
+      const { data: seen } = await bob.db.from(table).select("*");
+      assert.deepEqual(seen, [], `${table} leaked to another learner`);
+    }
+  });
+
+  test("an achievement is earned once and a known word is known once", async () => {
+    const { db, userId } = await fresh();
+
+    // Both are recomputed and re-upserted on every session, so the write path
+    // depends on the primary key absorbing the repeat rather than on the app
+    // remembering what it already wrote.
+    for (let i = 0; i < 3; i++) {
+      await db.from("achievements").upsert(
+        { user_id: userId, achievement_key: "first_session" },
+        { onConflict: "user_id,achievement_key", ignoreDuplicates: true },
+      );
+      await db.from("known_words").upsert(
+        { user_id: userId, word: "hello" },
+        { onConflict: "user_id,word", ignoreDuplicates: true },
+      );
+    }
+
+    const { count: badges } = await db
+      .from("achievements")
+      .select("achievement_key", { count: "exact", head: true });
+    const { count: words } = await db.from("known_words").select("word", { count: "exact", head: true });
+    assert.equal(badges, 1, "an achievement was awarded twice");
+    assert.equal(words, 1, "a word was learned twice");
+  });
+
+  test("an error event has to name a source the schema knows", async () => {
+    const { db, userId } = await fresh();
+    const bad = await db.from("error_events").insert({
+      user_id: userId,
+      error_type: "have_years_for_age",
+      user_text: "x",
+      source: "telepathy",
+    });
+    assert.ok(bad.error, "an unknown error source was accepted");
   });
 
   test("one learner's session is invisible and unwritable to another", async () => {

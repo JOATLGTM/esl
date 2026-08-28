@@ -126,8 +126,27 @@ lazily on first sight of the day (no cron, and a skipped Tuesday leaves nothing
 waiting on Wednesday), one is always speaking, and the other two are drawn from
 a pool seeded on the date.
 
-**All five stages, progression and F8 are done.** The daily loop is complete, it
-no longer dead-ends, and it has a reason to come back tomorrow.
+**Achievements, known words, F6 and F11** — built 2026-08-28.
+
+- **Achievements** complete F8. Eight keys, all awarded for something the
+  learner *did*; the first three are reachable in one session, because the
+  moment a beginner quits is before they have any evidence this works.
+  Recomputed in full on every session close rather than event-driven, so a
+  learner who qualified while a bug swallowed the event still gets the row.
+- **`known_words`** fills as chunks are met — the per-learner counterpart to
+  the 95% rule the content pipeline enforces statically.
+- **F6 error patterns.** `lib/content/error-patterns.ts` holds eight documented
+  Spanish→English transfers as *data*, matching the schema's own reasoning for
+  making `error_type` text rather than an enum. A pattern only fires when the
+  learner's answer matches it and the expected answer does not, so it cannot
+  flag a correct answer.
+- **F11 shadowing** lives inside Absorb, not as a sixth stage: shadowing works
+  on material just understood, and adding to `session_stage` would be a schema
+  change to accommodate a UI decision. One line per scene, walked through
+  listen → repeat → shadow, skippable throughout.
+
+**All five stages, progression, F8, F6 and F11 are done.** The daily loop is
+complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
 A one-off welcome modal lived in the root layout for a day and was removed on
 2026-08-28, having served its purpose. One thing it taught is worth keeping:
@@ -136,7 +155,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 168, all passing.**
+**Tests — 214, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -147,12 +166,15 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `drill.test.ts` | 12 | no |
 | `progress.test.ts` | 11 | no |
 | `quests.test.ts` | 12 | no |
+| `achievements.test.ts` | 7 | no |
+| `error-patterns.test.ts` | 15 | no |
+| `shadowing.test.ts` | 8 | no |
 | `grade.test.ts` | 12 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 15 | **yes** |
+| `session.test.ts` | 18 | **yes** |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -202,6 +224,15 @@ new" answerable without any state that can drift from what the learner actually
 saw. It is also why `StageInventory` carries one per-learner number: a unit
 whose chunks have all been met has no Meet left in it, and the stage is skipped
 rather than shown empty.
+
+**A known transfer error is never forgiven as a typo.** `gradeTypedAnswer` has
+a generous typo budget, and "Am fine, thank you" is one character from "I'm
+fine, thank you" — so it sailed through as a near-miss *and counted toward
+mastery*, which would have let a learner reach `learned` while dropping the
+subject pronoun every single time. Now a match against `ERROR_PATTERNS` forces
+`wrong` before the edit-distance check runs. Found by typing it into a browser
+on 2026-08-28; no test would have caught it, because the rule it broke had not
+been thought of yet.
 
 **Nothing in F8 can go down.** No path lowers `total_xp`, resets
 `days_practiced`, or marks a quest failed; an unfinished quest simply ends the
@@ -452,6 +483,21 @@ from a cookie is client-supplied data.
     of a conversation is read rather than heard. Adding it means extending
     `buildAudioPlan` and regenerating — worth doing with the TTS engine decision
     (item 4), not before.
+
+### What is left, and why
+
+Everything buildable without new content or new decisions is built. The three
+features still designed-but-unbuilt are all blocked on authoring, not on code:
+
+| Feature | Blocked on |
+|---|---|
+| **F12 missions** (`missions`, `mission_reports`) | No missions authored, and no YAML schema for them. The tables and the "a failed mission awards full XP" rule are ready. |
+| **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
+| **The visible L1 taper** | The mechanism is wired (`l1SupportForBlock`, `shouldOfferMoreSupport`, written on unit advance) but its effect needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
+
+`error_events` is written but never *read* — the "these are your patterns"
+screen is not built, and it is the natural next thing once there is enough data
+to be worth showing.
 
 ### Next feature
 

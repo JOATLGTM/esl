@@ -78,7 +78,14 @@ export function RetrieveStage({
     // Fire-and-continue: the learner is already reading the feedback, and the
     // write must not make them wait for a round trip.
     startTransition(async () => {
-      await reviewCard({ chunkId: card.chunkId, mode: card.mode, outcome: result });
+      await reviewCard({
+        chunkId: card.chunkId,
+        mode: card.mode,
+        outcome: result,
+        // Sent whenever the answer was not exact, not only when it was marked
+        // wrong. Nothing is stored unless it fits a known transfer pattern.
+        typed: card.mode === "produce_typed" && result !== "correct" ? typed : undefined,
+      });
     });
   }
 

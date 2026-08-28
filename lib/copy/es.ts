@@ -283,6 +283,18 @@ export const es = {
       wrong: "Casi. La correcta está marcada.",
       nextQuestion: "Siguiente",
       noAudio: "Esta escena todavía no tiene audio. Puedes leerla.",
+      // PRD F11. Three steps on one line, in the order the technique needs.
+      // Nothing is scored and the microphone is never required.
+      // Its own counter: reusing the question one made the shadowing steps read
+      // "Pregunta 1 de 3", which is three questions the learner is not being asked.
+      shadowCounter: "Parte {position} de {total}",
+      shadowTitle: "Ahora dilo tú",
+      shadowListen: "Escucha la frase.",
+      shadowRepeat: "Ahora repítela en el silencio, después del audio.",
+      shadowShadow: "Ahora dila al mismo tiempo que la voz. Vas a tropezar; eso es normal.",
+      shadowPlay: "Escuchar",
+      shadowDone: "Listo",
+      shadowSkip: "Saltar esta parte",
     },
 
     // Stage 2 (Meet). Nothing here may read as a test -- this is the first time

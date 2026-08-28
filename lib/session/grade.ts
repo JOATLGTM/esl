@@ -9,6 +9,8 @@
  * because of a missing apostrophe does not blame the apostrophe.
  */
 
+import { classifyError } from "@/lib/content/error-patterns";
+
 export type TypedOutcome = "correct" | "close" | "wrong";
 
 /**
@@ -63,13 +65,24 @@ function typoBudget(length: number): number {
   return Math.max(1, Math.floor(length / 10));
 }
 
-/** Mark a typed production attempt against the phrase it should have been. */
+/**
+ * Mark a typed production attempt against the phrase it should have been.
+ *
+ * The typo budget is generous, and there is one thing it must not forgive: a
+ * known Spanish-to-English transfer. "Am fine, thank you" is one character from
+ * "I'm fine, thank you" and would sail through as a typo -- but dropping the
+ * subject pronoun is a *category* error, not a slip of the thumb, and letting
+ * it count as a near-miss would let a learner reach `learned` while making the
+ * same structural mistake every time. Observed in a browser on 2026-08-28,
+ * which is the only way this was ever going to be noticed.
+ */
 export function gradeTypedAnswer(expected: string, actual: string): TypedOutcome {
   const want = normalise(expected);
   const got = normalise(actual);
 
   if (got.length === 0) return "wrong";
   if (want === got) return "correct";
+  if (classifyError(expected, actual)) return "wrong";
   if (editDistance(want, got) <= typoBudget(want.length)) return "close";
   return "wrong";
 }

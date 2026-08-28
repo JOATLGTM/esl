@@ -3,11 +3,17 @@
 import { refresh } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { classifyError } from "@/lib/content/error-patterns";
 import { localDate, practiceCounters } from "@/lib/session/day";
 import { loadMeetChunks, recordMeetChunks } from "@/lib/session/meet";
 import { recordDrillResults } from "@/lib/session/ear";
 import { applyReview } from "@/lib/session/retrieve";
-import { awardSessionXp, bumpQuest } from "@/lib/session/rewards";
+import {
+  awardAchievements,
+  awardSessionXp,
+  bumpQuest,
+  recordKnownWords,
+} from "@/lib/session/rewards";
 import { recordSpeakingTask, weekNumber } from "@/lib/session/speak";
 import {
   STAGE_ORDER,
@@ -76,6 +82,15 @@ const review = z.object({
   chunkId: z.string().min(1).max(64),
   mode: z.enum(["recognize", "produce_typed", "produce_spoken"]),
   outcome: z.enum(["correct", "close", "wrong"]),
+  /**
+   * What the learner actually typed, for error-pattern detection (PRD F6).
+   *
+   * Sent only for a wrong production attempt, and stored only when it fits a
+   * known Spanish-to-English transfer. A learner who keeps writing "I have 20
+   * years" is making one mistake many times, and that is a thing a course can
+   * address; a learner who typed a different phrase entirely is not.
+   */
+  typed: z.string().max(500).optional(),
 });
 
 export async function reviewCard(input: z.input<typeof review>) {
@@ -94,6 +109,28 @@ export async function reviewCard(input: z.input<typeof review>) {
     .eq("id", user.id)
     .maybeSingle();
   await bumpQuest(user.id, profile?.timezone ?? "UTC", "review");
+
+  // Only wrong production attempts, and only when they fit a known pattern.
+  // A near-miss is a typo, not a transfer error, and recording every wrong
+  // answer would bury the signal this table exists to carry.
+  if (parsed.data.outcome !== "correct" && parsed.data.typed) {
+    const { data: chunk } = await supabase
+      .from("chunks")
+      .select("en_text")
+      .eq("id", parsed.data.chunkId)
+      .maybeSingle();
+
+    const errorType = chunk ? classifyError(chunk.en_text, parsed.data.typed) : null;
+    if (errorType && chunk) {
+      await supabase.from("error_events").insert({
+        user_id: user.id,
+        error_type: errorType,
+        user_text: parsed.data.typed,
+        corrected_text: chunk.en_text,
+        source: "typed",
+      });
+    }
+  }
 }
 
 /**
@@ -174,6 +211,35 @@ export async function recordDrill(input: z.input<typeof drill>) {
   await recordDrillResults(user.id, parsed.data.contrast, parsed.data.results);
 }
 
+/**
+ * One shadowing attempt (PRD F11).
+ *
+ * `recording_path` is left null: recording works locally and only an explicit
+ * save sends anything anywhere. What is worth storing is that the learner did
+ * it, which is the behaviour the product is trying to produce.
+ */
+const shadow = z.object({
+  sceneId: z.string().min(1).max(64),
+  segmentIndex: z.number().int().nonnegative().max(500),
+  stage: z.enum(["listen", "repeat", "shadow"]),
+});
+
+export async function recordShadowing(input: z.input<typeof shadow>) {
+  const user = await getUser();
+  if (!user) redirect("/login");
+
+  const parsed = shadow.safeParse(input);
+  if (!parsed.success) return;
+
+  const supabase = await createClient();
+  await supabase.from("shadowing_attempts").insert({
+    user_id: user.id,
+    scene_id: parsed.data.sceneId,
+    segment_index: parsed.data.segmentIndex,
+    stage: parsed.data.stage,
+  });
+}
+
 export async function advanceStage(input: AdvanceInput) {
   const user = await getUser();
   if (!user) redirect("/login");
@@ -229,6 +295,9 @@ export async function advanceStage(input: AdvanceInput) {
   if (current === "meet") {
     const shown = await loadMeetChunks(user.id, unit.id, newChunkBudget(goal));
     await recordMeetChunks(user.id, shown, parsed.data.revealedChunkIds ?? []);
+    // The words those phrases taught, so a later unit can be checked against
+    // what this learner actually knows rather than what the curriculum assumes.
+    await recordKnownWords(user.id, shown.map((chunk) => chunk.en));
     // Counted in phrases, because that is what the quest asks for.
     await bumpQuest(user.id, zone, "meet", shown.length);
   }
@@ -276,6 +345,10 @@ export async function advanceStage(input: AdvanceInput) {
   await bumpQuest(user.id, zone, "session");
 
   await recordPractice(user.id);
+
+  // After the day is credited, so `days_practiced` is current when the
+  // thresholds are read.
+  await awardAchievements(user.id);
 
   // Only when a session closes can the answer change, and the completed session
   // has to be counted before it is asked -- the rule reads how many sessions
