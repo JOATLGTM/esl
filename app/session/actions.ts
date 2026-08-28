@@ -7,6 +7,7 @@ import { localDate, practiceCounters } from "@/lib/session/day";
 import { loadMeetChunks, recordMeetChunks } from "@/lib/session/meet";
 import { recordDrillResults } from "@/lib/session/ear";
 import { applyReview } from "@/lib/session/retrieve";
+import { awardSessionXp, bumpQuest } from "@/lib/session/rewards";
 import { recordSpeakingTask, weekNumber } from "@/lib/session/speak";
 import {
   STAGE_ORDER,
@@ -15,7 +16,7 @@ import {
   nextStage,
   resumeAt,
 } from "@/lib/session/stages";
-import { loadStageInventory, loadUnit } from "@/lib/session/store";
+import { advanceUnitIfComplete, loadStageInventory, loadUnit } from "@/lib/session/store";
 import { createClient, getUser } from "@/lib/supabase/server";
 
 /**
@@ -85,6 +86,14 @@ export async function reviewCard(input: z.input<typeof review>) {
   if (!parsed.success) return;
 
   await applyReview(user.id, parsed.data.chunkId, parsed.data.mode, parsed.data.outcome);
+
+  const supabase = await createClient();
+  const { data: profile } = await supabase
+    .from("users")
+    .select("timezone")
+    .eq("id", user.id)
+    .maybeSingle();
+  await bumpQuest(user.id, profile?.timezone ?? "UTC", "review");
 }
 
 /**
@@ -200,22 +209,32 @@ export async function advanceStage(input: AdvanceInput) {
     return;
   }
 
+  // Read once: both the Meet budget and every quest bump below need it, and
+  // two round trips for one row is two chances for them to disagree.
+  const { data: profile } = await supabase
+    .from("users")
+    .select("timezone, daily_goal_minutes")
+    .eq("id", user.id)
+    .maybeSingle();
+  const zone = profile?.timezone ?? "UTC";
+  const goal = profile?.daily_goal_minutes ?? 20;
+
   // Whatever the stage produced, written before the session moves past it. A
   // crash between here and the update below costs the learner one stage's
   // progress marker, not the work they did in it.
+  //
+  // Each stage also credits the quest it corresponds to, if the learner drew
+  // that quest today; `bumpQuest` shrugs when they did not, so a stage never
+  // has to know which three were drawn this morning.
   if (current === "meet") {
-    const { data: profile } = await supabase
-      .from("users")
-      .select("daily_goal_minutes")
-      .eq("id", user.id)
-      .maybeSingle();
-
-    const shown = await loadMeetChunks(
-      user.id,
-      unit.id,
-      newChunkBudget(profile?.daily_goal_minutes ?? 20),
-    );
+    const shown = await loadMeetChunks(user.id, unit.id, newChunkBudget(goal));
     await recordMeetChunks(user.id, shown, parsed.data.revealedChunkIds ?? []);
+    // Counted in phrases, because that is what the quest asks for.
+    await bumpQuest(user.id, zone, "meet", shown.length);
+  }
+
+  if (current === "absorb") {
+    await bumpQuest(user.id, zone, "listen");
   }
 
   // PRD 3's counter-metric, incremented from the server on the strength of
@@ -223,6 +242,7 @@ export async function advanceStage(input: AdvanceInput) {
   // the microphone, which is optional forever.
   if (current === "speak") {
     await recordSpeakingTask(session.id, user.id);
+    await bumpQuest(user.id, zone, "speak");
   }
 
   const elapsed = Math.min(Math.round(parsed.data.elapsedS), MAX_STAGE_SECONDS);
@@ -243,7 +263,25 @@ export async function advanceStage(input: AdvanceInput) {
     .update({ duration_s, completed_at: new Date().toISOString() })
     .eq("id", session.id);
 
+  // XP for the session that just closed. Paid on stages finished and speaking
+  // done -- never on accuracy, because attempting is the behaviour being
+  // rewarded (PRD F8). `available.length` rather than five: a session that
+  // skipped ear training was still a whole session.
+  const { data: closed } = await supabase
+    .from("sessions")
+    .select("speaking_tasks_completed")
+    .eq("id", session.id)
+    .maybeSingle();
+  await awardSessionXp(user.id, session.id, available.length, closed?.speaking_tasks_completed ?? 0);
+  await bumpQuest(user.id, zone, "session");
+
   await recordPractice(user.id);
+
+  // Only when a session closes can the answer change, and the completed session
+  // has to be counted before it is asked -- the rule reads how many sessions
+  // are finished in the unit, and this one just became one of them.
+  await advanceUnitIfComplete(user.id, session.unit_id);
+
   redirect("/home");
 }
 

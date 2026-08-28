@@ -158,6 +158,29 @@ export const es = {
     daysPracticedOne: "1 día practicado",
     firstSession: "Tu primera sesión te espera.",
     resumeSession: "Seguir",
+    reviewSession: "Repasar",
+    // Reached when the authored curriculum runs out, which today is after one
+    // unit. Says plainly that the limit is ours, not theirs -- a learner who
+    // has finished everything that exists has not done anything wrong.
+    caughtUp: "Ya viste todo lo que hay por ahora. Estamos escribiendo más.",
+    caughtUpBody: "Mientras tanto, tus repasos siguen. Son los que hacen que se quede.",
+
+    // PRD F8. Nothing here may read as a warning, a countdown, or something the
+    // learner is about to lose. "Días seguidos" can quietly go back to 1; it is
+    // never announced, and there is no copy for breaking it because the product
+    // does not have that idea.
+    xp: "{count} XP",
+    consecutiveDays: "{count} días seguidos",
+    consecutiveDaysOne: "1 día seguido",
+    questsTitle: "Hoy puedes",
+    questDone: "Listo",
+    quests: {
+      speak: "Habla en voz alta una vez",
+      session: "Termina una sesión",
+      review: "Repasa {target} frases",
+      meet: "Aprende {target} frases nuevas",
+      listen: "Escucha una escena",
+    },
     signOut: "Cerrar sesión",
   },
 

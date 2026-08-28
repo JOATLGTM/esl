@@ -1,6 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { Contrast, PairAudio, Tables } from "@/lib/supabase/types";
+import { isUnitComplete, nextUnit } from "./progress";
 import type { Stage, StageInventory } from "./stages";
 
 /**
@@ -144,4 +145,87 @@ export async function openSession(
   // surface: silently rendering a session that was never recorded would lose
   // the learner's progress at the first advance.
   throw new Error(`Could not start a session for ${unitId}: ${error?.message ?? "no row returned"}`);
+}
+
+/**
+ * Move the learner on if they have finished the unit.
+ *
+ * Called when a session closes, which is the only moment the answer can change.
+ * Returns the unit they are on afterwards, which is the same one if they are
+ * not done or if there is nothing after it.
+ *
+ * `current_block` is kept in step because it is what the curriculum screen and
+ * the L1 taper read; leaving it at 1 while `current_unit` moved into block 3
+ * would be a slow, quiet inconsistency.
+ */
+export async function advanceUnitIfComplete(
+  userId: string,
+  unitId: string,
+): Promise<{ unitId: string; advanced: boolean; atEndOfCurriculum: boolean }> {
+  const supabase = await createClient();
+
+  const [chunkIds, cards, sceneCount, completed, curriculum] = await Promise.all([
+    loadUnitChunkIds(unitId),
+    supabase.from("user_cards").select("chunk_id").eq("user_id", userId),
+    supabase.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unitId),
+    supabase
+      .from("sessions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .eq("unit_id", unitId)
+      .not("completed_at", "is", null),
+    supabase.from("units").select("id, block, order"),
+  ]);
+
+  const met = new Set((cards.data ?? []).map((card) => card.chunk_id));
+  const done = isUnitComplete({
+    newChunks: chunkIds.filter((id) => !met.has(id)).length,
+    completedSessions: completed.count ?? 0,
+    sceneCount: sceneCount.count ?? 0,
+  });
+
+  if (!done) return { unitId, advanced: false, atEndOfCurriculum: false };
+
+  const next = nextUnit(curriculum.data ?? [], unitId);
+
+  // The end of the authored curriculum, which today is after one unit. Leave
+  // them where they are: the session still runs -- the story, the review queue
+  // and the speaking task are all still there -- and `/home` says so plainly
+  // rather than advancing into nothing.
+  if (!next) return { unitId, advanced: false, atEndOfCurriculum: true };
+
+  await supabase
+    .from("users")
+    .update({ current_unit: next.id, current_block: next.block })
+    .eq("id", userId);
+
+  return { unitId: next.id, advanced: true, atEndOfCurriculum: false };
+}
+
+/**
+ * Whether the learner has run out of new material.
+ *
+ * Read-only, for `/home`. With one authored unit this is reachable in about six
+ * sessions, so it is not a hypothetical end state -- it is the one every
+ * learner currently arrives at, and the page has to say so rather than offering
+ * a button that silently repeats yesterday.
+ */
+export async function curriculumStatus(
+  userId: string,
+  unitId: string | null,
+): Promise<{ hasNewChunks: boolean; hasNextUnit: boolean }> {
+  if (!unitId) return { hasNewChunks: false, hasNextUnit: false };
+
+  const supabase = await createClient();
+  const [chunkIds, cards, curriculum] = await Promise.all([
+    loadUnitChunkIds(unitId),
+    supabase.from("user_cards").select("chunk_id").eq("user_id", userId),
+    supabase.from("units").select("id, block, order"),
+  ]);
+
+  const met = new Set((cards.data ?? []).map((card) => card.chunk_id));
+  return {
+    hasNewChunks: chunkIds.some((id) => !met.has(id)),
+    hasNextUnit: nextUnit(curriculum.data ?? [], unitId) !== null,
+  };
 }

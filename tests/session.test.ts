@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import { test, describe, before, after } from "node:test";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { PUBLISHABLE, SECRET, SUPABASE_URL, skipReason } from "./helpers/supabase-env";
+import { isUnitComplete, nextUnit } from "../lib/session/progress";
+import { dailyQuestPlan, xpForSession } from "../lib/session/quests";
 import { availableStages, firstStage, nextStage, resumeAt } from "../lib/session/stages";
 import type { StageInventory } from "../lib/session/stages";
 
@@ -39,6 +41,8 @@ const LEARNER_TABLES = [
   "user_cards",
   "user_contrast_stats",
   "speaking_samples",
+  "daily_quests",
+  "achievements",
 ] as const;
 
 async function wipe(learner: Learner) {
@@ -406,6 +410,180 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       week_number: 1,
     });
     assert.ok(forged.error, "a learner could file a recording against another account");
+  });
+
+  test("a learner who finishes a unit is moved to the next one", async () => {
+    const { db, userId } = await fresh();
+
+    // Progression needs somewhere to go, and only one unit is authored. A
+    // throwaway second unit is the only way to prove the learner actually
+    // moves rather than that the query happens to return null.
+    const TEMP = "zz_test_u2";
+    await admin.from("units").upsert({
+      id: TEMP,
+      block: 1,
+      order: 99,
+      title_es: "Prueba",
+      title_en: "Test",
+      cefr: "A0",
+      can_do_es: "Prueba",
+      target_contrast: "ee_ih",
+    });
+
+    try {
+      const { data: chunkRows } = await db.from("chunks").select("id").eq("unit_id", UNIT);
+      const { count: sceneCount } = await db
+        .from("scenes")
+        .select("id", { count: "exact", head: true })
+        .eq("unit_id", UNIT);
+
+      // Not finished: nothing met, no sessions.
+      const { data: curriculum } = await db.from("units").select("id, block, order");
+      assert.equal(
+        isUnitComplete({ newChunks: chunkRows!.length, completedSessions: 0, sceneCount: sceneCount! }),
+        false,
+      );
+
+      // Meet everything and finish as many sessions as there are scenes.
+      await db.from("user_cards").upsert(
+        chunkRows!.map((chunk) => ({ user_id: userId, chunk_id: chunk.id })),
+        { onConflict: "user_id,chunk_id", ignoreDuplicates: true },
+      );
+      for (let i = 0; i < sceneCount!; i++) {
+        await db.from("sessions").insert({
+          user_id: userId,
+          unit_id: UNIT,
+          stage_reached: "speak",
+          completed_at: new Date().toISOString(),
+        });
+      }
+
+      const { data: cards } = await db.from("user_cards").select("chunk_id").eq("user_id", userId);
+      const met = new Set(cards!.map((c) => c.chunk_id));
+      const { count: completed } = await db
+        .from("sessions")
+        .select("id", { count: "exact", head: true })
+        .eq("user_id", userId)
+        .eq("unit_id", UNIT)
+        .not("completed_at", "is", null);
+
+      assert.equal(
+        isUnitComplete({
+          newChunks: chunkRows!.filter((c) => !met.has(c.id)).length,
+          completedSessions: completed!,
+          sceneCount: sceneCount!,
+        }),
+        true,
+        "the unit did not register as finished",
+      );
+
+      // And there is somewhere to go.
+      const target = nextUnit(curriculum!, UNIT);
+      assert.equal(target?.id, TEMP);
+
+      // The learner may move themselves on; row-level security scopes it.
+      const moved = await db
+        .from("users")
+        .update({ current_unit: target!.id, current_block: target!.block })
+        .eq("id", userId);
+      assert.equal(moved.error, null, moved.error?.message);
+
+      const { data: profile } = await db.from("users").select("current_unit, current_block").single();
+      assert.equal(profile!.current_unit, TEMP);
+      assert.equal(profile!.current_block, 1);
+    } finally {
+      // Order matters, and the error is checked rather than assumed.
+      // `users.current_unit` is a plain foreign key with no cascade, and the
+      // learner is now pointing at this unit -- deleting it under them fails,
+      // silently, and the leftover row then breaks the *next* test that counts
+      // units. Which is exactly what happened before this line existed.
+      await admin.from("users").update({ current_unit: UNIT, current_block: 1 }).eq("id", userId);
+      const cleanup = await admin.from("units").delete().eq("id", TEMP);
+      assert.equal(cleanup.error, null, `left ${TEMP} behind: ${cleanup.error?.message}`);
+    }
+  });
+
+  test("the end of the authored curriculum is a state, not an error", async () => {
+    const { db } = await fresh();
+    const { data: curriculum } = await db.from("units").select("id, block, order");
+
+    // Asserted through the last unit rather than through a unit count: the
+    // whole point of progression is that more units get authored, and a test
+    // that breaks when they do is a test that will be deleted rather than read.
+    const last = [...curriculum!].sort((a, b) => a.block - b.block || a.order - b.order).at(-1)!;
+    assert.equal(nextUnit(curriculum!, last.id), null);
+
+    // Whatever else exists, the first unit must lead somewhere or nowhere
+    // deliberately -- never to itself.
+    assert.notEqual(nextUnit(curriculum!, UNIT)?.id, UNIT);
+  });
+
+  test("a day's quests fit the schema and stay the learner's own", async () => {
+    const [alice, bob] = await freshPair();
+    const today = "2026-08-28";
+    const plan = dailyQuestPlan(`${alice.userId}:${today}`, 20);
+
+    const written = await alice.db.from("daily_quests").insert(
+      plan.map((q) => ({
+        user_id: alice.userId,
+        quest_date: today,
+        quest_type: q.type,
+        is_speaking: q.isSpeaking,
+        target: q.target,
+      })),
+    );
+    assert.equal(written.error, null, written.error?.message);
+
+    const { data: mine } = await alice.db.from("daily_quests").select("*").eq("quest_date", today);
+    assert.equal(mine!.length, 3);
+    assert.equal(mine!.filter((q) => q.is_speaking).length, 1, "PRD F8: one of the three always speaks");
+
+    // Re-running the day must not duplicate them; the unique key settles it.
+    const again = await alice.db.from("daily_quests").upsert(
+      plan.map((q) => ({
+        user_id: alice.userId,
+        quest_date: today,
+        quest_type: q.type,
+        is_speaking: q.isSpeaking,
+        target: q.target,
+      })),
+      { onConflict: "user_id,quest_date,quest_type", ignoreDuplicates: true },
+    );
+    assert.equal(again.error, null, again.error?.message);
+    const { count } = await alice.db
+      .from("daily_quests")
+      .select("id", { count: "exact", head: true })
+      .eq("quest_date", today);
+    assert.equal(count, 3, "a second visit duplicated the day's quests");
+
+    const { data: seen } = await bob.db.from("daily_quests").select("*");
+    assert.deepEqual(seen, [], "another learner could read the quests");
+  });
+
+  test("XP only ever goes up, and the database refuses a negative total", async () => {
+    const { db, userId } = await fresh();
+
+    const earned = xpForSession({ stagesCompleted: 4, speakingTasks: 1 });
+    assert.ok(earned > 0);
+
+    const up = await db.from("users").update({ total_xp: earned }).eq("id", userId);
+    assert.equal(up.error, null, up.error?.message);
+
+    // There is no code path that lowers XP, and the schema is the backstop:
+    // `total_xp >= 0` is a CHECK, so a bug that subtracts cannot land.
+    const down = await db.from("users").update({ total_xp: -1 }).eq("id", userId);
+    assert.ok(down.error, "a negative XP total was accepted");
+
+    // A quest with a target of zero would be permanently complete on creation.
+    const zero = await db.from("daily_quests").insert({
+      user_id: userId,
+      quest_date: "2026-08-28",
+      quest_type: "broken",
+      target: 0,
+    });
+    assert.ok(zero.error, "a quest with no target was accepted");
+
+    await admin.from("users").update({ total_xp: 0 }).eq("id", userId);
   });
 
   test("one learner's session is invisible and unwritable to another", async () => {

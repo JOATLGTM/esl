@@ -111,7 +111,23 @@ zero human recordings, so `availableStages` skips it; it lights up on its own
 when the clips land, with no code change. The drill logic is fully tested
 without them.
 
-**All five stages are done.** The daily loop is complete.
+**Unit progression** — built. A unit is finished when the learner has met every
+phrase in it **and** heard the whole story (`isUnitComplete`); on the session
+that closes it, `current_unit` and `current_block` advance to the next unit in
+curriculum order. Checked when a session completes, which is the only moment the
+answer can change.
+
+Mastery is deliberately not part of the rule — see the decisions below.
+
+**F8 — XP, quests, streak** — built. `/home` is now what PRD 7 asks for: one
+button, the counts, three daily quests, nothing else. XP is paid on stages
+finished and speaking done, never on accuracy. The three quests are generated
+lazily on first sight of the day (no cron, and a skipped Tuesday leaves nothing
+waiting on Wednesday), one is always speaking, and the other two are drawn from
+a pool seeded on the date.
+
+**All five stages, progression and F8 are done.** The daily loop is complete, it
+no longer dead-ends, and it has a reason to come back tomorrow.
 
 A one-off welcome modal lived in the root layout for a day and was removed on
 2026-08-28, having served its purpose. One thing it taught is worth keeping:
@@ -120,7 +136,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 141, all passing.**
+**Tests — 168, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -129,12 +145,14 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `session-stages.test.ts` | 25 | no |
 | `quiz.test.ts` | 9 | no |
 | `drill.test.ts` | 12 | no |
+| `progress.test.ts` | 11 | no |
+| `quests.test.ts` | 12 | no |
 | `grade.test.ts` | 12 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 11 | **yes** |
+| `session.test.ts` | 15 | **yes** |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -184,6 +202,36 @@ new" answerable without any state that can drift from what the learner actually
 saw. It is also why `StageInventory` carries one per-learner number: a unit
 whose chunks have all been met has no Meet left in it, and the stage is skipped
 rather than shown empty.
+
+**Nothing in F8 can go down.** No path lowers `total_xp`, resets
+`days_practiced`, or marks a quest failed; an unfinished quest simply ends the
+day and is replaced. `/home` carries no countdown, no "your streak is at risk",
+nothing red. The soft consecutive counter may quietly reset to 1 and is never
+announced — there is no copy for breaking a streak because the product does not
+have that idea. `total_xp >= 0` is a CHECK, so a bug that subtracts cannot land.
+
+**XP rewards the behaviour, not the result.** `xpForSession` takes no accuracy
+argument and should never gain one — a learner who stumbled through a speaking
+task did the thing the product exists to make them do. Speaking is worth more
+than any other single act, because it is PRD 3's headline metric and the one
+thing a beginner is most likely to avoid.
+
+**A unit is finished on coverage, not on mastery.** `isUnitComplete` asks only
+that every chunk has been met and every scene heard. Requiring each chunk to
+reach `learned` would stall a learner behind fifty production passes, and it is
+unnecessary: the review queue is not unit-scoped, so unmastered chunks keep
+coming back long after the unit is behind them. Both halves of the rule are
+load-bearing — chunks alone would move a learner past the last scene, and scenes
+alone would move them on with phrases they had never been shown, because
+`pickSceneIndex` wraps.
+
+**Running out of curriculum is a state, not an error.** With one authored unit
+every learner reaches the end in about six sessions. `nextUnit` returns null,
+the learner stays put, and `/home` says so plainly ("Ya viste todo lo que hay por
+ahora") with the button relabelled *Repasar*. The session still runs — Meet is
+skipped, the story wraps, the review queue and speaking task are untouched —
+which is the no-dead-end rule holding at the one place it is actually reachable
+today.
 
 **Marking is biased toward the learner, deliberately.** `gradeTypedAnswer`
 ignores case, punctuation, spacing and accents, and forgives an edit-distance
@@ -287,6 +335,13 @@ either name.
 
 **`lib/supabase/database.types.ts` is generated — never edit it.** Hand-written
 schema types go in `lib/supabase/types.ts`, which derives from it.
+
+**`users.current_unit` is a foreign key with no cascade.** A test that creates
+a throwaway unit, points a learner at it, and then deletes it will fail the
+delete — silently, if the error is not checked — and leave the row behind to
+break the *next* test that counts units. Move the learner off first. The general
+lesson: check `error` on cleanup writes, or cleanup that never worked looks
+exactly like cleanup that did.
 
 **Build test fixtures with the admin API, never public `signUp`.** Hosted
 Supabase rate-limits signups per project per hour, so a suite that creates each
@@ -413,13 +468,14 @@ What Phase 1 still needs, roughly in order of what blocks the exit criterion:
    changes every file authored after it.
 3. **Ear-training recordings** (open item 5). Six people, fifty words each. The
    stage is already written and will turn itself on.
-4. **F8** — XP, the three daily quests, the streak strip on `/home`. Completing
-   a session already credits `days_practiced` and the soft consecutive counter,
-   because `/home` displays them; nothing else is wired.
-5. **Unit progression.** `users.current_unit` is set once at onboarding and
-   never advances, so a learner finishing b1_u1 has no way into b1_u2. Nothing
-   to fix until a second unit exists — but it is the first thing that will be
-   missing when one does.
+4. ~~**F8**~~ — done 2026-08-28. Verified end to end in a browser: a full
+   session moved XP 210 → 265 (4 stages × 10 + speaking × 15) and turned all
+   three quests to *Listo*. **Achievements are still unbuilt** — the
+   `achievements` table has no writer, and no achievement keys are defined.
+5. ~~**Unit progression.**~~ Done 2026-08-28. Verified end to end against a
+   throwaway second unit, and the end-of-curriculum state verified in a browser
+   with a learner who had finished everything: Meet drops out, the session runs
+   three stages, and `/home` explains itself.
 
 The seam for a new stage body is `SessionPlayer` in
 `app/session/[unitId]/session-player.tsx`.
