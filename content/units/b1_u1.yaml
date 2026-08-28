@@ -457,6 +457,7 @@ scenes:
 
 speaking_task:
   mode: scripted
+  character: ana
   scenario_es: "Conoces a alguien nuevo. Salúdala, di tu nombre y pregunta el suyo."
   scenario_en: "You meet someone new. Greet them, say your name, and ask theirs."
   target_chunks: [c_0001, c_0008, c_0009, c_0010, c_0011, c_0012]

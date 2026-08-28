@@ -189,6 +189,59 @@ export const es = {
     },
     progress: "Paso {position} de {total}",
 
+    // Stage 1 (Ear). Two words that sound the same to a Spanish ear until they
+    // do not. Never framed as a test -- it is a warm-up, and being wrong here
+    // is the normal state for weeks.
+    ear: {
+      counter: "Sonido {position} de {total}",
+      prompt: "¿Cuál escuchaste?",
+      replay: "Escuchar otra vez",
+      right: "¡Eso es!",
+      wrong: "Era esta:",
+      next: "Siguiente",
+      notReady: "Todavía estamos grabando las voces para esta parte.",
+    },
+
+    // Stage 5 (Speak). The whole product's thesis: the learner talks out loud
+    // from day one. Nothing here scores pronunciation, and nothing waits on a
+    // microphone -- denying it must cost nothing at all (PRD F1).
+    speak: {
+      scenarioLabel: "La situación",
+      yourTurn: "Te toca. Dilo en voz alta:",
+      theirTurn: "{name} dice:",
+      said: "Ya lo dije",
+      recordHint: "Nadie te está calificando. Nadie más lo escucha.",
+      recording: "Grabando…",
+      recordStart: "Grabar mi voz",
+      recordStop: "Listo",
+      recordOptional: "Grabar es opcional.",
+      // The mic can be denied, unsupported, or simply fail. All the same here.
+      recordFailed: "No pudimos grabar, pero eso no importa. Sigue en voz alta.",
+      done: "Lo hiciste. Hablaste en inglés.",
+      notReady: "Esta unidad todavía no tiene práctica de conversación.",
+    },
+
+    // Stage 4 (Retrieve). The one stage where the learner can be wrong, so the
+    // wording carries the most weight: no scores, no streak-at-risk, no red.
+    retrieve: {
+      counter: "Tarjeta {position} de {total}",
+      recognizePrompt: "¿Qué significa?",
+      producePrompt: "¿Cómo se dice en inglés?",
+      inputLabel: "Escríbelo en inglés",
+      check: "Revisar",
+      skip: "No me acuerdo",
+      right: "¡Eso es!",
+      // Not "incorrecto", and never the learner's answer echoed back at them
+      // next to a cross. Say the phrase; that is the useful part.
+      almost: "Casi. Se escribe así:",
+      wrong: "Se dice así:",
+      next: "Siguiente",
+      // The queue can legitimately be empty -- everything is scheduled for
+      // later, which is the system working, not a gap.
+      nothingDue: "No tienes nada que repasar ahora.",
+      nothingDueBody: "Vuelve mañana y estas frases te estarán esperando.",
+    },
+
     // Stage 3 (Absorb). The scene is meant to be almost followable already, so
     // the transcript is never hidden -- this is comprehension, not a memory test.
     absorb: {

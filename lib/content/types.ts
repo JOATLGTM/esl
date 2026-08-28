@@ -108,6 +108,13 @@ export type Scene = z.infer<typeof SceneSchema>;
 
 export const SpeakingTaskSchema = z.object({
   mode: z.enum(SPEAKING_MODES),
+  /**
+   * Who the learner is talking to. A cast id from characters.yaml, validated
+   * like every other speaker tag -- `dialogues.character_id` is a not-null
+   * foreign key, and an anonymous partner would be the one voice in the product
+   * that belongs to nobody.
+   */
+  character: z.string().min(1),
   scenario_es: z.string().min(1),
   scenario_en: z.string().min(1),
   target_chunks: z.array(chunkId).min(1),

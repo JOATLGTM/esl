@@ -2,12 +2,19 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { AbsorbStage } from "./absorb-stage";
+import { EarStage } from "./ear-stage";
 import { MeetStage } from "./meet-stage";
-import { advanceStage } from "../actions";
+import { RetrieveStage } from "./retrieve-stage";
+import { SpeakStage } from "./speak-stage";
+import { advanceStage, recordSpeakingSample } from "../actions";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { es, fill } from "@/lib/copy/es";
 import type { AbsorbScene } from "@/lib/session/absorb";
 import type { MeetChunk } from "@/lib/session/meet";
+import type { EarDrill } from "@/lib/session/ear";
+import type { ReviewCard } from "@/lib/session/retrieve";
+import type { SpeakTask } from "@/lib/session/speak";
+import { createClient } from "@/lib/supabase/client";
 import type { Stage } from "@/lib/session/stages";
 
 /**
@@ -19,8 +26,9 @@ import type { Stage } from "@/lib/session/stages";
  * the fourth of six phrases and "Continuar" on the last are the same button
  * doing different jobs, and only the stage knows which.
  *
- * Retrieve, Speak and Ear are still placeholders and say so, rather than
- * showing a screen that does nothing.
+ * All five stages are built. Ear has no recordings yet, so `availableStages`
+ * skips it and the learner never sees it -- it lights up on its own when the
+ * clips land.
  *
  * Time on a stage is measured here and sent with the advance, not inferred
  * server-side from `started_at`. A session resumed the next morning would
@@ -37,6 +45,9 @@ export function SessionPlayer({
   resumed,
   meetChunks,
   absorbScene,
+  reviewCards,
+  speakTask,
+  earDrill,
 }: {
   sessionId: string;
   unitTitle: string;
@@ -47,6 +58,9 @@ export function SessionPlayer({
   resumed: boolean;
   meetChunks: MeetChunk[];
   absorbScene: AbsorbScene | null;
+  reviewCards: ReviewCard[];
+  speakTask: SpeakTask | null;
+  earDrill: EarDrill | null;
 }) {
   const [pending, startTransition] = useTransition();
 
@@ -68,6 +82,41 @@ export function SessionPlayer({
   useEffect(() => {
     enteredAt.current = Date.now();
   }, [stage]);
+
+  /**
+   * Keep a recording, if the learner made one.
+   *
+   * Straight from the browser to Storage rather than through a Server Action:
+   * an action body is capped at 1 MB and a minute of webm can exceed it. The
+   * whole path is wrapped in a catch because a recording is a bonus -- losing
+   * one must never cost the learner the session they just finished.
+   */
+  async function keepRecording(blob: Blob | null, durationS: number) {
+    if (!blob || !speakTask) return;
+    try {
+      const supabase = createClient();
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      if (!user) return;
+
+      // Storage policies key on the first path segment being the owner's uuid.
+      const path = `${user.id}/speaking/${crypto.randomUUID()}.webm`;
+      const { error } = await supabase.storage
+        .from("user-recordings")
+        .upload(path, blob, { contentType: blob.type || "audio/webm" });
+      if (error) return;
+
+      await recordSpeakingSample({
+        path,
+        durationS,
+        promptId: speakTask.id,
+        promptEs: speakTask.scenarioEs,
+      });
+    } catch {
+      // See above: a lost recording is not worth an error screen.
+    }
+  }
 
   function advance(revealedChunkIds?: string[]) {
     const elapsedS = enteredAt.current ? (Date.now() - enteredAt.current) / 1000 : 0;
@@ -107,10 +156,27 @@ export function SessionPlayer({
         {showResumed && <p className="text-base text-faint">{es.session.resumed}</p>}
       </header>
 
-      {stage === "meet" ? (
+      {stage === "ear" ? (
+        <EarStage drill={earDrill} pending={pending} onAdvance={() => advance()} />
+      ) : stage === "meet" ? (
         <MeetStage chunks={meetChunks} pending={pending} onAdvance={advance} />
       ) : stage === "absorb" && absorbScene ? (
         <AbsorbStage scene={absorbScene} pending={pending} onAdvance={() => advance()} />
+      ) : stage === "speak" ? (
+        <SpeakStage
+          task={speakTask}
+          pending={pending}
+          isFinal={isFinal}
+          onAdvance={() => advance()}
+          onSpoke={(blob, durationS) => void keepRecording(blob, durationS)}
+        />
+      ) : stage === "retrieve" ? (
+        <RetrieveStage
+          cards={reviewCards}
+          pending={pending}
+          isFinal={isFinal}
+          onAdvance={() => advance()}
+        />
       ) : (
         <NotBuiltYet stage={stage} pending={pending} isFinal={isFinal} onAdvance={advance} />
       )}

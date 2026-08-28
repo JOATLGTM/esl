@@ -93,7 +93,25 @@ to it and plays just that line, using the sentence timings authored into
 `scenes.transcript`. Then three comprehension questions, one at a time, never
 scored: a wrong answer highlights the right one and moves on.
 
-Retrieve, Speak and Ear are still placeholders; see **Next feature**.
+**Retrieve (§4.2 stage 4 / F2)** — built. FSRS via `ts-fsrs`, whose card shape
+maps 1:1 onto `user_cards` so a card round-trips untranslated. A card's first
+sight is recognition (it was met minutes ago; asking a beginner to reproduce it
+cold teaches them they are bad at this), everything after is `produce_typed`.
+Reviews are written **one at a time as they happen**, not batched at the end —
+close the tab after eight of fifteen and you keep eight reviews.
+
+**Speak (§4.2 stage 5 / 4.5 / F5)** — built. Scripted mode: the exact line is on
+screen and success is saying it. No pronunciation score, no pass mark. Recording
+is offered on the last line and never required — it goes browser-direct to
+Storage, and `sessions.speaking_tasks_completed` is incremented server-side on
+finishing the script, never gated on a microphone.
+
+**Ear (§4.2 stage 1 / F3)** — built, and correctly invisible. There are still
+zero human recordings, so `availableStages` skips it; it lights up on its own
+when the clips land, with no code change. The drill logic is fully tested
+without them.
+
+**All five stages are done.** The daily loop is complete.
 
 A one-off welcome modal lived in the root layout for a day and was removed on
 2026-08-28, having served its purpose. One thing it taught is worth keeping:
@@ -102,7 +120,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 114, all passing.**
+**Tests — 141, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -110,11 +128,13 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 | `audio-plan.test.ts` | 24 | no |
 | `session-stages.test.ts` | 25 | no |
 | `quiz.test.ts` | 9 | no |
+| `drill.test.ts` | 12 | no |
+| `grade.test.ts` | 12 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 9 | **yes** |
+| `session.test.ts` | 11 | **yes** |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -164,6 +184,29 @@ new" answerable without any state that can drift from what the learner actually
 saw. It is also why `StageInventory` carries one per-learner number: a unit
 whose chunks have all been met has no Meet left in it, and the stage is skipped
 rather than shown empty.
+
+**Marking is biased toward the learner, deliberately.** `gradeTypedAnswer`
+ignores case, punctuation, spacing and accents, and forgives an edit-distance
+typo that scales with phrase length. A beginner who typed the right English and
+was told "no" over a missing apostrophe does not blame the apostrophe. A
+near-miss still counts as production: they said the phrase, and this is a course
+about speaking.
+
+**Only production matures a card, and the database is the one enforcing it.**
+`countsAsProduction` refuses recognition passes, and `cardStateFor` claims
+`learned` only with two production passes behind it — which is exactly what the
+`learned_requires_production` CHECK will accept. The app is written so it never
+generates a write the database would reject, rather than trusting itself.
+
+**Reviews are written per card, not per stage.** Everything else in the session
+batches its writes on the way out; Retrieve does not, because in a
+spaced-repetition system the review history *is* the product.
+
+**Ear training never repeats a talker back to back.** That single rule in
+`buildDrill` is the entire mechanism — high-variability training works because
+the talkers vary, so a learner builds a category instead of memorising a voice.
+A drill that repeats a speaker still looks and feels correct and teaches
+substantially less, so `buildDrill` runs short rather than repeat one.
 
 **Comprehension options are shuffled, seeded on the session.** `b1_u1` was
 authored with **all eighteen** scene answers at option 1, so tapping first every
@@ -245,7 +288,18 @@ either name.
 **`lib/supabase/database.types.ts` is generated — never edit it.** Hand-written
 schema types go in `lib/supabase/types.ts`, which derives from it.
 
-**Audio cannot be verified through the Chrome automation harness.** A plain
+**Build test fixtures with the admin API, never public `signUp`.** Hosted
+Supabase rate-limits signups per project per hour, so a suite that creates each
+fixture by signing up starts failing *every* test with "Request rate limit
+reached" once it has been run a few times — and the symptom is a
+`Cannot read properties of null` deep in a helper, which says nothing.
+`admin.auth.admin.createUser` + `signInWithPassword` is not rate-limited;
+`rls.test.ts` always did it this way. Public `signUp` now appears once, in the
+two `onboarding.test.ts` tests that are actually about signup.
+
+**Audio cannot be verified through the Chrome automation harness.** Confirmed
+by hand afterwards that Meet's playback is fine, so this is a harness limit and
+not a code smell — but it means every audio path has to be checked by ear. A plain
 `new Audio(url).load()` typed straight into the page console sits at
 `readyState 0`, `networkState 2`, no network request and no error — media
 loading simply does not happen in that context. It presents exactly like a
@@ -321,41 +375,54 @@ from a cookie is client-supplied data.
 7. **Content: 1 unit of 36.** Block 1 needs 6. The PRD is blunt that authoring
    is ~70% of total effort — budget it honestly.
 8. **Email verification flow** — see the confirm-later decision above.
-9. **Listen to the audio.** Meet and Absorb both play clips that no human has
-   heard in the app — the automation harness cannot load media (see traps), so
-   playback is verified only at the HTTP layer. Open a real browser, do one
-   session, and confirm the clips play, the voices differ, and tapping a
-   transcript line lands on the right sentence.
-10. **`speaking_task` is authored but never seeded.** `content/units/b1_u1.yaml`
-   has a full scripted task; `UnitSchema` validates it; `scripts/seed-content.ts`
-   does not write it to any table. `dialogues` is the table it belongs in. Until
-   it is seeded the `speak` stage has no source and is skipped. Fix this as part
-   of building Speak, not before.
-11. **`ts-fsrs` is in `devDependencies`.** The retrieve stage imports it at
-    runtime. Move it to `dependencies` before F2, or the first Vercel build
-    breaks in a way that looks like a Next problem.
+9. **Listen to the audio — partly done.** Confirmed by ear on 2026-08-28:
+   **Meet plays, and its four voices are audibly distinct.** That is worth more
+   than it looks — it is live confirmation that the macOS `say` voice-collision
+   trap (see traps) is not recurring, i.e. the pipeline's probe-hash guard holds
+   all the way through to the browser.
+
+   Still unheard, because the automation harness cannot load media at all:
+   **Absorb** (does the scene play, does the highlight track the line, does
+   tapping a line seek to the right sentence) and **Retrieve** (does the card
+   clip play when the answer is revealed). Both are a couple of minutes in a
+   real browser.
+10. ~~`speaking_task` is authored but never seeded.~~ Resolved 2026-08-28: the
+    unit's speaking task now seeds into `dialogues` and the stage is live. The
+    task gained a `character` field, because `dialogues.character_id` is a
+    not-null foreign key and an anonymous partner would be the one voice in the
+    product belonging to nobody.
+11. ~~`ts-fsrs` is in `devDependencies`.~~ Moved to `dependencies` 2026-08-28.
+12. **Speaking-task lines have no audio.** The audio pipeline covers chunks,
+    examples and scene lines, but not the `speaking_task` script, so the AI half
+    of a conversation is read rather than heard. Adding it means extending
+    `buildAudioPlan` and regenerating — worth doing with the TTS engine decision
+    (item 4), not before.
 
 ### Next feature
 
-The shell walks; the stages are empty. Fill them in this order — each is a
-self-contained slice that leaves the loop working:
+The daily loop is complete: all five stages are built and one learner can walk
+`/home` → Meet → Absorb → Retrieve → Speak → `/home` end to end. Ear is built
+and skipped until its recordings exist.
 
-1. ~~**Meet**~~ — done 2026-08-28.
-2. ~~**Absorb**~~ — done 2026-08-28.
-3. **Retrieve** — F2 proper. FSRS via `ts-fsrs` (see open item 11),
-   `recognize` / `produce_typed` modes, `produce_passes` climbing toward the
-   `learned_requires_production` constraint.
-4. **Speak** — scripted mode, MediaRecorder into the `user-recordings` bucket,
-   `speaking_tasks_completed`. Needs open item 10 first.
-5. **Ear** — last, once the recordings from open item 5 exist.
+What Phase 1 still needs, roughly in order of what blocks the exit criterion:
 
-Then F3/F5/F11. The seam for each is `SessionPlayer` in
-`app/session/[unitId]/session-player.tsx`: replace the placeholder section with
-the stage body, keep the advance button.
+1. **Hear the audio.** Nothing in any stage has been listened to (open item 9).
+   Cheapest and highest-value thing on this list.
+2. **Content: 1 unit of 36.** The loop works and runs out after a few days —
+   Block 1 needs 6 units. Decide the TTS engine first (open item 4); the answer
+   changes every file authored after it.
+3. **Ear-training recordings** (open item 5). Six people, fifty words each. The
+   stage is already written and will turn itself on.
+4. **F8** — XP, the three daily quests, the streak strip on `/home`. Completing
+   a session already credits `days_practiced` and the soft consecutive counter,
+   because `/home` displays them; nothing else is wired.
+5. **Unit progression.** `users.current_unit` is set once at onboarding and
+   never advances, so a learner finishing b1_u1 has no way into b1_u2. Nothing
+   to fix until a second unit exists — but it is the first thing that will be
+   missing when one does.
 
-XP and the three daily quests are deliberately absent — they belong to F8.
-Completing a session already credits `days_practiced` and the soft consecutive
-counter, because `/home` displays them.
+The seam for a new stage body is `SessionPlayer` in
+`app/session/[unitId]/session-player.tsx`.
 
 **Exit criterion for Phase 1:** 30 consecutive days of Block 1 with no dead end,
 and $0 runtime cost confirmed in the network tab.

@@ -5,6 +5,9 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { localDate, practiceCounters } from "@/lib/session/day";
 import { loadMeetChunks, recordMeetChunks } from "@/lib/session/meet";
+import { recordDrillResults } from "@/lib/session/ear";
+import { applyReview } from "@/lib/session/retrieve";
+import { recordSpeakingTask, weekNumber } from "@/lib/session/speak";
 import {
   STAGE_ORDER,
   availableStages,
@@ -53,6 +56,114 @@ const advance = z.object({
 });
 
 export type AdvanceInput = z.input<typeof advance>;
+
+/**
+ * One review, recorded as it happens (PRD F2).
+ *
+ * Separate from `advanceStage` and called per card rather than batched at the
+ * end of the stage, because in a spaced-repetition system the review history is
+ * the product. A learner who closes the tab after eight of twelve cards keeps
+ * eight reviews.
+ *
+ * The client sends what happened, not what to schedule: the outcome is one of
+ * three words and the server decides the rating, the interval and whether the
+ * card matured. A tampered payload can therefore misreport one answer -- about
+ * the learner's own card -- and cannot invent a mastery it did not earn, which
+ * the database refuses independently.
+ */
+const review = z.object({
+  chunkId: z.string().min(1).max(64),
+  mode: z.enum(["recognize", "produce_typed", "produce_spoken"]),
+  outcome: z.enum(["correct", "close", "wrong"]),
+});
+
+export async function reviewCard(input: z.input<typeof review>) {
+  const user = await getUser();
+  if (!user) redirect("/login");
+
+  const parsed = review.safeParse(input);
+  if (!parsed.success) return;
+
+  await applyReview(user.id, parsed.data.chunkId, parsed.data.mode, parsed.data.outcome);
+}
+
+/**
+ * Note a speaking recording the learner chose to keep (PRD F5).
+ *
+ * The audio itself goes straight from the browser to Storage, never through
+ * here: a Server Action body is capped at 1 MB by default and a minute of
+ * `MediaRecorder` webm can exceed it, so routing it through the server would
+ * fail for exactly the learners who talked the longest.
+ *
+ * `recording_path` is checked against the caller rather than trusted. Storage
+ * policies key on the first path segment being the owner's uuid, so a forged
+ * path could not have been written to anyway -- but a row pointing at someone
+ * else's object has no business existing either.
+ */
+const sample = z.object({
+  path: z.string().min(1).max(512),
+  durationS: z.number().int().nonnegative().max(600).catch(0),
+  promptId: z.string().min(1).max(64),
+  promptEs: z.string().min(1).max(500),
+});
+
+export async function recordSpeakingSample(input: z.input<typeof sample>) {
+  const user = await getUser();
+  if (!user) redirect("/login");
+
+  const parsed = sample.safeParse(input);
+  if (!parsed.success) return;
+  if (!parsed.data.path.startsWith(`${user.id}/`)) return;
+
+  const supabase = await createClient();
+
+  const { data: profile } = await supabase
+    .from("users")
+    .select("created_at")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  await supabase.from("speaking_samples").insert({
+    user_id: user.id,
+    prompt_id: parsed.data.promptId,
+    prompt_es: parsed.data.promptEs,
+    recording_path: parsed.data.path,
+    duration_s: parsed.data.durationS,
+    week_number: weekNumber(profile?.created_at ?? new Date().toISOString()),
+  });
+}
+
+/**
+ * Fold one ear-training drill into the learner's record for the contrast.
+ *
+ * The client sends only which items were right, never the accuracy or the
+ * retirement decision -- both are the server's, because retiring a contrast
+ * stops showing it and that is not a call a browser gets to make.
+ */
+const drill = z.object({
+  contrast: z.enum([
+    "ee_ih",
+    "schwa",
+    "final_clusters",
+    "b_v",
+    "s_onset",
+    "aspiration",
+    "th",
+    "h_r",
+    "stress_intonation",
+  ]),
+  results: z.array(z.boolean()).max(64),
+});
+
+export async function recordDrill(input: z.input<typeof drill>) {
+  const user = await getUser();
+  if (!user) redirect("/login");
+
+  const parsed = drill.safeParse(input);
+  if (!parsed.success) return;
+
+  await recordDrillResults(user.id, parsed.data.contrast, parsed.data.results);
+}
 
 export async function advanceStage(input: AdvanceInput) {
   const user = await getUser();
@@ -105,6 +216,13 @@ export async function advanceStage(input: AdvanceInput) {
       newChunkBudget(profile?.daily_goal_minutes ?? 20),
     );
     await recordMeetChunks(user.id, shown, parsed.data.revealedChunkIds ?? []);
+  }
+
+  // PRD 3's counter-metric, incremented from the server on the strength of
+  // finishing the script rather than from a self-report -- and never gated on
+  // the microphone, which is optional forever.
+  if (current === "speak") {
+    await recordSpeakingTask(session.id, user.id);
   }
 
   const elapsed = Math.min(Math.round(parsed.data.elapsedS), MAX_STAGE_SECONDS);

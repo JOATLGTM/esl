@@ -8,7 +8,7 @@
     "content:check": "npm run content:validate && npm run content:audio -- --dry-run",
     "content:publish-check": "npm run content:validate -- --publish",
     "content:recording-kit": "tsx scripts/recording-kit.ts",
-    "content:seed": "tsx scripts/seed-content.ts",
+    "content:seed": "tsx --env-file-if-exists=.env.local scripts/seed-content.ts",
     "content:spike": "tsx scripts/tts-spike.ts",
     "content:validate": "tsx scripts/validate-content.ts",
     "db:diff": "supabase db diff",
@@ -28,6 +28,7 @@
     "react": "19.2.8",
     "react-dom": "19.2.8",
     "server-only": "^0.0.1",
+    "ts-fsrs": "^5.4.1",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
@@ -40,7 +41,6 @@
     "eslint-config-next": "16.3.3",
     "supabase": "^2.115.0",
     "tailwindcss": "^4",
-    "ts-fsrs": "^5.4.1",
     "tsx": "^4.23.12",
     "typescript": "^5"
   }

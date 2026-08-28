@@ -200,6 +200,30 @@ async function main() {
     );
   }
 
+  /*
+   * The speaking task, as a `dialogues` row.
+   *
+   * One per unit. It was authored and validated from the beginning but never
+   * seeded, so Stage 5 had no source and the session skipped it -- authored
+   * content that the product could not reach.
+   *
+   * `nodes` carries the whole script in one column on purpose: a dialogue is
+   * read once and walked entirely client-side, so the core loop keeps working
+   * offline and no turn costs a round trip (PRD F10).
+   */
+  const dialogues = bundle.units.map((u) => ({
+    id: `${u.unit_id}_speaking`,
+    unit_id: u.unit_id,
+    scenario_es: u.speaking_task.scenario_es,
+    scenario_en: u.speaking_task.scenario_en,
+    character_id: u.speaking_task.character,
+    mode: u.speaking_task.mode,
+    nodes: {
+      target_chunks: u.speaking_task.target_chunks,
+      script: u.speaking_task.script ?? [],
+    },
+  }));
+
   // ---- write --------------------------------------------------------------
 
   const batches: [string, Record<string, unknown>[], string][] = [
@@ -211,6 +235,8 @@ async function main() {
     ["units", units, "id"],
     ["chunks", chunks, "id"],
     ["scenes", scenes, "id"],
+    // Dialogues reference units and characters, so they follow both.
+    ["dialogues", dialogues, "id"],
     ["contrast_sets", contrastSets, "contrast"],
     ["minimal_pairs", minimalPairs, "id"],
   ];

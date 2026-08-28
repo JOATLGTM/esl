@@ -1,0 +1,119 @@
+import "server-only";
+import { createClient } from "@/lib/supabase/server";
+import type { SpeakingMode } from "@/lib/supabase/types";
+
+/**
+ * Stage 5, Speak (PRD 4.2 / 4.5 / F5): the learner says the phrases out loud.
+ *
+ * Scripted mode at A0-A1 means the exact line is on screen and success is
+ * saying it, nothing more. There is no scoring, no pronunciation grade and no
+ * pass mark, and that is the design rather than a simplification: the counter-
+ * metric this whole product is built around is speaking minutes, and anything
+ * that makes a beginner afraid to open their mouth costs more than it measures.
+ *
+ * The microphone is optional forever (PRD F1). Everything works without it;
+ * granting it only adds a recording the learner can keep.
+ */
+
+export type SpeakLine = {
+  speaker: "ai" | "user";
+  en: string;
+  es?: string;
+};
+
+export type SpeakTask = {
+  id: string;
+  mode: SpeakingMode;
+  scenarioEs: string;
+  scenarioEn: string;
+  /** Whose half of the conversation the app is playing. */
+  characterName: string;
+  script: SpeakLine[];
+  targetChunks: string[];
+};
+
+type Nodes = { script?: SpeakLine[]; target_chunks?: string[] };
+
+/** The unit's speaking task, or null if none is authored yet. */
+export async function loadSpeakTask(unitId: string, learnerName?: string): Promise<SpeakTask | null> {
+  const supabase = await createClient();
+
+  const { data } = await supabase
+    .from("dialogues")
+    .select("id, mode, scenario_es, scenario_en, character_id, nodes, characters(name)")
+    .eq("unit_id", unitId)
+    .limit(1)
+    .maybeSingle();
+
+  if (!data) return null;
+
+  const nodes = (data.nodes as Nodes | null) ?? {};
+  const character = data.characters as { name: string } | null;
+
+  return {
+    id: data.id,
+    mode: data.mode,
+    scenarioEs: data.scenario_es,
+    scenarioEn: data.scenario_en,
+    characterName: character?.name ?? data.character_id,
+    // `{name}` is substituted here rather than in the component so the script
+    // the learner reads and the script recorded against it are the same text.
+    script: (nodes.script ?? []).map((line) => ({
+      speaker: line.speaker,
+      en: fillName(line.en, learnerName),
+      es: line.es ? fillName(line.es, learnerName) : undefined,
+    })),
+    targetChunks: nodes.target_chunks ?? [],
+  };
+}
+
+/**
+ * The learner has no name field yet, so `{name}` has nothing to fill from.
+ * Left as-is it prints a literal placeholder in the one line the learner is
+ * asked to say about themselves, which is worse than a generic word.
+ */
+function fillName(text: string, name?: string): string {
+  return text.replaceAll("{name}", name?.trim() || "…");
+}
+
+/**
+ * Record that the learner spoke.
+ *
+ * `sessions.speaking_tasks_completed` is a PRD 3 counter-metric and the reason
+ * this stage exists, so it is incremented from the server on the strength of
+ * finishing the script -- not from a self-report the client could inflate, and
+ * not gated on a microphone that is optional.
+ */
+export async function recordSpeakingTask(sessionId: string, userId: string): Promise<void> {
+  const supabase = await createClient();
+
+  const { data: session } = await supabase
+    .from("sessions")
+    .select("speaking_tasks_completed")
+    .eq("id", sessionId)
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (!session) return;
+
+  await supabase
+    .from("sessions")
+    .update({ speaking_tasks_completed: session.speaking_tasks_completed + 1 })
+    .eq("id", sessionId)
+    .eq("user_id", userId);
+}
+
+/**
+ * Weeks since the learner signed up, 1-based.
+ *
+ * `speaking_samples.week_number` exists so the learner can hear week 1 against
+ * week 12 (PRD F5) -- the single most motivating thing a speaking course can
+ * show someone, and it only works if the number is anchored to their start
+ * rather than to the calendar.
+ */
+export function weekNumber(createdAt: string, now: Date = new Date()): number {
+  const started = Date.parse(createdAt);
+  if (Number.isNaN(started)) return 1;
+  const weeks = Math.floor((now.getTime() - started) / (7 * 86_400_000));
+  return Math.max(1, weeks + 1);
+}

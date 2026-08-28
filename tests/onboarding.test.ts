@@ -19,6 +19,12 @@ import { PUBLISHABLE, SECRET, SUPABASE_URL, skipReason } from "./helpers/supabas
 let admin: SupabaseClient;
 const createdUsers: string[] = [];
 
+/**
+ * A real public signup, which is what two of the tests below are actually
+ * about. Rate-limited by hosted Supabase per project per hour, so it is used
+ * only where the signup itself is the thing under test -- everything else
+ * takes a learner from `makeLearner`.
+ */
 async function signUpFresh() {
   const email = `f1-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@example.test`;
   const db = createClient(SUPABASE_URL!, PUBLISHABLE!, {
@@ -27,6 +33,33 @@ async function signUpFresh() {
   const { data, error } = await db.auth.signUp({ email, password: "correct-horse-8" });
   if (data.user) createdUsers.push(data.user.id);
   return { db, data, error, email };
+}
+
+/**
+ * A learner who already exists, created through the admin API.
+ *
+ * Not rate-limited, and indistinguishable from a signed-up learner for any
+ * test that only needs someone to own a row. A suite that makes every fixture
+ * with public `signUp` starts failing all of its tests with "Request rate limit
+ * reached" the moment it is run a few times in an hour.
+ */
+async function makeLearner(): Promise<{ db: SupabaseClient; userId: string }> {
+  const email = `f1a-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@example.test`;
+  const password = `pw-${Math.random().toString(36).slice(2)}-A1!`;
+  const { data, error } = await admin.auth.admin.createUser({
+    email,
+    password,
+    email_confirm: true,
+  });
+  assert.equal(error, null, error?.message);
+  createdUsers.push(data.user!.id);
+
+  const db = createClient(SUPABASE_URL!, PUBLISHABLE!, {
+    auth: { autoRefreshToken: false, persistSession: false },
+  });
+  const signIn = await db.auth.signInWithPassword({ email, password });
+  assert.equal(signIn.error, null, signIn.error?.message);
+  return { db, userId: data.user!.id };
 }
 
 describe("onboarding (PRD F1)", { skip: skipReason }, () => {
@@ -62,7 +95,7 @@ describe("onboarding (PRD F1)", { skip: skipReason }, () => {
   });
 
   test("completing onboarding writes exactly the five answers", async () => {
-    const { db, data } = await signUpFresh();
+    const { db, userId } = await makeLearner();
     const { data: unit } = await db
       .from("units").select("id").order("block").order("order").limit(1).single();
     assert.ok(unit, "no curriculum seeded");
@@ -73,7 +106,7 @@ describe("onboarding (PRD F1)", { skip: skipReason }, () => {
       mic_permission: "granted",
       current_unit: unit.id,
       onboarded_at: new Date().toISOString(),
-    }).eq("id", data.user!.id);
+    }).eq("id", userId);
     assert.equal(error, null, error?.message);
 
     const { data: profile } = await db.from("users").select("*").single();
@@ -84,12 +117,12 @@ describe("onboarding (PRD F1)", { skip: skipReason }, () => {
   });
 
   test("denying the microphone is recorded and blocks nothing", async () => {
-    const { db, data } = await signUpFresh();
+    const { db, userId } = await makeLearner();
     const { error } = await db.from("users").update({
       motivation: "family",
       mic_permission: "denied",
       onboarded_at: new Date().toISOString(),
-    }).eq("id", data.user!.id);
+    }).eq("id", userId);
     assert.equal(error, null, error?.message);
 
     const { data: profile } = await db.from("users").select("*").single();
@@ -99,21 +132,21 @@ describe("onboarding (PRD F1)", { skip: skipReason }, () => {
   });
 
   test("the daily goal is one of the three the UI offers", async () => {
-    const { db, data } = await signUpFresh();
+    const { db, userId } = await makeLearner();
     const { error } = await db.from("users")
-      .update({ daily_goal_minutes: 45 }).eq("id", data.user!.id);
+      .update({ daily_goal_minutes: 45 }).eq("id", userId);
     assert.notEqual(error, null, "a goal outside 10/20/30 was accepted");
   });
 
   test("one learner cannot onboard another", async () => {
-    const victim = await signUpFresh();
-    const attacker = await signUpFresh();
+    const victim = await makeLearner();
+    const attacker = await makeLearner();
     await attacker.db.from("users")
       .update({ onboarded_at: new Date().toISOString(), motivation: "other" })
-      .eq("id", victim.data.user!.id);
+      .eq("id", victim.userId);
 
     const { data: profile } = await admin
-      .from("users").select("onboarded_at").eq("id", victim.data.user!.id).single();
+      .from("users").select("onboarded_at").eq("id", victim.userId).single();
     assert.equal(profile!.onboarded_at, null, "another user's profile was onboarded");
   });
 });

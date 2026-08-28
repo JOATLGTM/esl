@@ -5,7 +5,11 @@ import { ButtonLink } from "@/components/ui/button";
 import { requireOnboardedProfile } from "@/lib/auth/session";
 import { es } from "@/lib/copy/es";
 import { loadAbsorbScene } from "@/lib/session/absorb";
+import { drillBudget } from "@/lib/session/drill";
 import { loadMeetChunks } from "@/lib/session/meet";
+import { loadEarDrill } from "@/lib/session/ear";
+import { loadDueCards, reviewBudget } from "@/lib/session/retrieve";
+import { loadSpeakTask } from "@/lib/session/speak";
 import {
   availableStages,
   firstStage,
@@ -69,10 +73,29 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
   const absorbScene =
     stage === "absorb" ? await loadAbsorbScene(profile.id, unit.id, session.id) : null;
 
+  const reviewCards =
+    stage === "retrieve"
+      ? await loadDueCards(profile.id, reviewBudget(profile.daily_goal_minutes), session.id)
+      : [];
+
+  const speakTask = stage === "speak" ? await loadSpeakTask(unit.id) : null;
+
+  const earDrill =
+    stage === "ear"
+      ? await loadEarDrill(
+          unit.target_contrast,
+          drillBudget(profile.daily_goal_minutes),
+          session.id,
+        )
+      : null;
+
   return (
     <SessionPlayer
+      speakTask={speakTask}
+      earDrill={earDrill}
       meetChunks={meetChunks}
       absorbScene={absorbScene}
+      reviewCards={reviewCards}
       sessionId={session.id}
       unitTitle={unit.title_es}
       stage={stage}

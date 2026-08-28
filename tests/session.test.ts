@@ -20,16 +20,70 @@ import type { StageInventory } from "../lib/session/stages";
 let admin: SupabaseClient;
 const createdUsers: string[] = [];
 
+/**
+ * Two learners for the whole file, reused and wiped between tests.
+ *
+ * Signing up per test is the obvious shape and it does not survive: hosted
+ * Supabase rate-limits auth, so a file with a dozen tests starts failing every
+ * one of them with "Request rate limit reached" the moment it is run twice in
+ * quick succession. Two accounts and a delete are indistinguishable from a
+ * fresh signup for everything below, and cost two requests instead of twenty.
+ */
+type Learner = { db: SupabaseClient; userId: string };
+let alice: Learner;
+let bob: Learner;
+
+/** Everything a learner owns. Reset, not recreated. */
+const LEARNER_TABLES = [
+  "sessions",
+  "user_cards",
+  "user_contrast_stats",
+  "speaking_samples",
+] as const;
+
+async function wipe(learner: Learner) {
+  for (const table of LEARNER_TABLES) {
+    await admin.from(table).delete().eq("user_id", learner.userId);
+  }
+}
+
+/** A learner with no history, as though they had just signed up. */
+async function fresh(): Promise<Learner> {
+  await wipe(alice);
+  return alice;
+}
+
+async function freshPair(): Promise<[Learner, Learner]> {
+  await Promise.all([wipe(alice), wipe(bob)]);
+  return [alice, bob];
+}
+
 /** The first unit in curriculum order, which is what onboarding assigns. */
 const UNIT = "b1_u1";
 
-async function signUpFresh() {
-  const email = `sess-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@example.test`;
+async function makeLearner(tag: string): Promise<Learner> {
+  const email = `sess-${tag}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}@example.test`;
+  const password = `pw-${Math.random().toString(36).slice(2)}-A1!`;
+
+  // The admin API rather than public `signUp`, matching `rls.test.ts`. Hosted
+  // Supabase rate-limits public signups per project per hour, and a suite that
+  // creates its fixtures that way starts failing every test with "Request rate
+  // limit reached" as soon as it is run a few times in a row. Signup itself is
+  // covered by `onboarding.test.ts`, which is where it belongs.
+  const { data, error } = await admin.auth.admin.createUser({
+    email,
+    password,
+    email_confirm: true,
+  });
+  assert.equal(error, null, `could not create ${tag}: ${error?.message}`);
+  createdUsers.push(data.user!.id);
+
   const db = createClient(SUPABASE_URL!, PUBLISHABLE!, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
-  const { data } = await db.auth.signUp({ email, password: "correct-horse-8" });
-  if (data.user) createdUsers.push(data.user.id);
+  const signIn = await db.auth.signInWithPassword({ email, password });
+  assert.equal(signIn.error, null, `could not sign in ${tag}: ${signIn.error?.message}`);
+
   return { db, userId: data.user!.id };
 }
 
@@ -91,10 +145,12 @@ async function openSession(db: SupabaseClient, userId: string, unitId: string, s
 }
 
 describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
-  before(() => {
+  before(async () => {
     admin = createClient(SUPABASE_URL!, SECRET!, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
+    alice = await makeLearner("alice");
+    bob = await makeLearner("bob");
   });
 
   after(async () => {
@@ -102,23 +158,22 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   });
 
   test("the seeded unit serves the stages it has content for, and no others", async () => {
-    const { db } = await signUpFresh();
+    const { db } = await fresh();
     const inventory = await inventoryFor(db, UNIT);
 
     assert.equal(inventory.chunks, 25);
     assert.equal(inventory.scenes, 6);
-    // Both of these are open items, not bugs: the human minimal-pair recordings
-    // do not exist yet, and `speaking_task` is validated in the unit YAML but
-    // never seeded into `dialogues`. If either becomes non-zero, this test is
-    // the reminder to turn the stage on.
-    assert.equal(inventory.earClips, 0, "ear-training recordings exist now — enable the stage");
-    assert.equal(inventory.speakingTasks, 0, "a dialogue is seeded now — enable the stage");
+    assert.equal(inventory.speakingTasks, 1);
+    // The last open content item: the human minimal-pair recordings do not
+    // exist yet, so ear training is the one stage still skipped. When this
+    // becomes non-zero the stage turns itself on and this line is the reminder.
+    assert.equal(inventory.earClips, 0, "ear-training recordings exist now — expect 5 stages");
 
-    assert.deepEqual(availableStages(inventory), ["meet", "absorb", "retrieve"]);
+    assert.deepEqual(availableStages(inventory), ["meet", "absorb", "retrieve", "speak"]);
   });
 
   test("a learner starts one session and resumes it rather than starting another", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
     const available = availableStages(await inventoryFor(db, UNIT));
     const start = firstStage(available)!;
 
@@ -139,7 +194,7 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   });
 
   test("a partial session resumes at the stage it stopped in", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
     const available = availableStages(await inventoryFor(db, UNIT));
     const session = await openSession(db, userId, UNIT, firstStage(available)!);
 
@@ -156,7 +211,7 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   });
 
   test("finishing the last stage closes the session, and the next one is new", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
     const available = availableStages(await inventoryFor(db, UNIT));
     const session = await openSession(db, userId, UNIT, firstStage(available)!);
 
@@ -181,8 +236,11 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       .eq("id", session.id)
       .single();
     assert.ok(finished!.completed_at, "the session never closed");
-    assert.equal(finished!.stage_reached, "retrieve");
-    assert.equal(finished!.duration_s, 90);
+    // Derived, not hardcoded: a stage lighting up when its content lands is a
+    // normal event, and this test is about the walk closing the session -- not
+    // about how many stages there happened to be on the day it was written.
+    assert.equal(finished!.stage_reached, available[available.length - 1]);
+    assert.equal(finished!.duration_s, available.length * 30);
 
     // Tomorrow's visit must not resume a finished session.
     const tomorrow = await openSession(db, userId, UNIT, firstStage(available)!);
@@ -191,7 +249,7 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   });
 
   test("meeting chunks creates cards, and re-running it does not rewrite them", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
 
     const { data: chunkRows } = await db
       .from("chunks")
@@ -242,7 +300,7 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   });
 
   test("meet drops out of the session once every chunk has been met", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
 
     const before = await inventoryFor(db, UNIT);
     assert.equal(before.newChunks, 25);
@@ -256,11 +314,11 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
 
     const after = await inventoryFor(db, UNIT);
     assert.equal(after.newChunks, 0);
-    assert.deepEqual(availableStages(after), ["absorb", "retrieve"]);
+    assert.deepEqual(availableStages(after), ["absorb", "retrieve", "speak"]);
   });
 
   test("a learner cannot end up with two open sessions in the same unit", async () => {
-    const { db, userId } = await signUpFresh();
+    const { db, userId } = await fresh();
     const available = availableStages(await inventoryFor(db, UNIT));
     const first = await openSession(db, userId, UNIT, firstStage(available)!);
 
@@ -285,9 +343,73 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
     assert.notEqual(tomorrow.data!.id, first.id);
   });
 
+  test("a card cannot be called learned without two production passes", async () => {
+    const { db, userId } = await fresh();
+    const { data: chunk } = await db.from("chunks").select("id").eq("unit_id", UNIT).limit(1).single();
+
+    await db.from("user_cards").insert({ user_id: userId, chunk_id: chunk!.id, state: "learning" });
+
+    // The single most load-bearing pedagogical rule in the product, and it is a
+    // CHECK rather than service-layer logic precisely so no code path can miss
+    // it. Recognition passes do not count; only production does.
+    const forged = await db
+      .from("user_cards")
+      .update({ state: "learned", produce_passes: 1 })
+      .eq("user_id", userId)
+      .eq("chunk_id", chunk!.id);
+    assert.ok(forged.error, "a card reached 'learned' on one production pass");
+
+    const earned = await db
+      .from("user_cards")
+      .update({ state: "learned", produce_passes: 2 })
+      .eq("user_id", userId)
+      .eq("chunk_id", chunk!.id);
+    assert.equal(earned.error, null, earned.error?.message);
+  });
+
+  test("the unit has a speaking task to serve", async () => {
+    const { db } = await fresh();
+    const { data } = await db
+      .from("dialogues")
+      .select("id, mode, scenario_es, character_id, nodes")
+      .eq("unit_id", UNIT)
+      .maybeSingle();
+
+    // Authored in the YAML from the beginning but not seeded until 2026-08-28,
+    // which is why Stage 5 had no source and the session skipped it.
+    assert.ok(data, "no dialogue seeded; the speak stage has nothing to serve");
+    assert.equal(data!.mode, "scripted");
+    const nodes = data!.nodes as { script?: unknown[]; target_chunks?: unknown[] };
+    assert.ok((nodes.script ?? []).length > 0, "the dialogue has no script");
+    assert.ok((nodes.target_chunks ?? []).length > 0);
+  });
+
+  test("a learner's speaking samples and contrast stats are their own", async () => {
+    const [alice, bob] = await freshPair();
+
+    await alice.db.from("user_contrast_stats").insert({
+      user_id: alice.userId,
+      contrast: "ee_ih",
+      attempts: 10,
+      correct: 9,
+      recent: [true, true, false],
+    });
+
+    const { data: seen } = await bob.db.from("user_contrast_stats").select("*");
+    assert.deepEqual(seen, [], "another learner could read the contrast stats");
+
+    const forged = await bob.db.from("speaking_samples").insert({
+      user_id: alice.userId,
+      prompt_id: "b1_u1_speaking",
+      prompt_es: "forged",
+      recording_path: `${alice.userId}/speaking/x.webm`,
+      week_number: 1,
+    });
+    assert.ok(forged.error, "a learner could file a recording against another account");
+  });
+
   test("one learner's session is invisible and unwritable to another", async () => {
-    const alice = await signUpFresh();
-    const bob = await signUpFresh();
+    const [alice, bob] = await freshPair();
 
     const available = availableStages(await inventoryFor(alice.db, UNIT));
     const session = await openSession(alice.db, alice.userId, UNIT, firstStage(available)!);
