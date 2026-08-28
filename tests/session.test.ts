@@ -46,6 +46,7 @@ const LEARNER_TABLES = [
   "known_words",
   "error_events",
   "shadowing_attempts",
+  "mission_reports",
 ] as const;
 
 async function wipe(learner: Learner) {
@@ -652,6 +653,69 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       source: "telepathy",
     });
     assert.ok(bad.error, "an unknown error source was accepted");
+  });
+
+  test("a mission is offered only once its preparation has been met", async () => {
+    const { db, userId } = await fresh();
+
+    const { data: missions } = await db
+      .from("missions")
+      .select("id, difficulty, prep_chunk_ids, alternate_es")
+      .eq("unit_id", UNIT)
+      .order("difficulty", { ascending: true });
+    assert.ok(missions!.length > 0, "no missions seeded");
+
+    // PRD F12: a mission with no alternative excludes the learners who most
+    // need this course -- the ones with no English speakers anywhere near them.
+    for (const m of missions!) {
+      assert.ok((m.alternate_es ?? "").length > 10, `${m.id} has no alternative`);
+    }
+
+    const met = new Set<string>();
+    const ready = () =>
+      missions!.filter((m) => ((m.prep_chunk_ids as string[]) ?? []).every((c) => met.has(c)));
+
+    // Nothing met: nothing offered. A mission whose phrases the learner has
+    // never seen is a request to improvise.
+    assert.equal(ready().length, 0);
+
+    const first = missions![0];
+    const prep = (first.prep_chunk_ids as string[]) ?? [];
+    await db.from("user_cards").upsert(
+      prep.map((chunk_id) => ({ user_id: userId, chunk_id })),
+      { onConflict: "user_id,chunk_id", ignoreDuplicates: true },
+    );
+    prep.forEach((c) => met.add(c));
+    assert.ok(ready().some((m) => m.id === first.id), "the prepared mission was not offered");
+  });
+
+  test("a mission report is never a failure, and is owner-only", async () => {
+    const [alice, bob] = await freshPair();
+    const { data: mission } = await alice.db.from("missions").select("id").eq("unit_id", UNIT).limit(1).single();
+
+    // Both feelings questions omitted: saying nothing is a complete answer.
+    const silent = await alice.db.from("mission_reports").insert({
+      user_id: alice.userId,
+      mission_id: mission!.id,
+      attempted: true,
+    });
+    assert.equal(silent.error, null, silent.error?.message);
+
+    const { data: mine } = await alice.db.from("mission_reports").select("*");
+    assert.equal(mine!.length, 1);
+    assert.equal(mine![0].attempted, true, "a report recorded a failure");
+    assert.equal(mine![0].difficulty_felt, null);
+
+    // The scale is 1-3 (😰 😐 🙂); anything else is a bug reaching the database.
+    const bad = await alice.db.from("mission_reports").insert({
+      user_id: alice.userId,
+      mission_id: mission!.id,
+      difficulty_felt: 7,
+    });
+    assert.ok(bad.error, "a difficulty outside the scale was accepted");
+
+    const { data: seen } = await bob.db.from("mission_reports").select("*");
+    assert.deepEqual(seen, [], "another learner could read the report");
   });
 
   test("one learner's session is invisible and unwritable to another", async () => {

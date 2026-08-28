@@ -482,3 +482,40 @@ speaking_task:
     - speaker: user
       en: "Goodbye. See you later."
       es: "Adiós. Hasta luego."
+
+# Real-world missions (PRD F12).
+#
+# The point is not the English. It is that the learner opens their mouth in
+# front of a stranger and survives it -- which is the single thing that decides
+# whether someone becomes a speaker or stays a studier. Difficulty 1 for the
+# first unit means one word, to one person, with no reply required.
+#
+# `alternate_es` is mandatory on every mission. A learner in a town with no
+# English speakers is exactly who this course is for, and a mission they cannot
+# attempt is a mission that tells them the product was not built for them.
+#
+# A mission is never failed. Attempting is the behaviour being rewarded, and the
+# report exists to be listened to, never to gate anything.
+missions:
+  - id: m_0001
+    title_es: "Saluda a una persona"
+    instructions_es: >-
+      Hoy, dile «Hello» a una persona: en la tienda, en el trabajo, en el
+      elevador. Una palabra. No tienes que entender lo que te responda.
+    prep_chunk_ids: [c_0001, c_0002]
+    difficulty: 1
+    alternate_es: >-
+      Si hoy no ves a nadie que hable inglés, dilo en voz alta frente al espejo
+      o grábate un audio. Cuenta igual.
+
+  - id: m_0002
+    title_es: "Di tu nombre"
+    instructions_es: >-
+      Preséntate con alguien en inglés: «Hello, my name is ...». Si te preguntan
+      algo más y no entiendes, di «Sorry, I don't understand». Eso también es
+      hablar inglés.
+    prep_chunk_ids: [c_0001, c_0009, c_0010]
+    difficulty: 2
+    alternate_es: >-
+      Mándale un audio a alguien de confianza presentándote en inglés, o dilo
+      frente al espejo. Lo que importa es que salga de tu boca.

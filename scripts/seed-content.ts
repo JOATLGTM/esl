@@ -224,6 +224,27 @@ async function main() {
     },
   }));
 
+  /*
+   * Missions (PRD F12).
+   *
+   * `prep_dialogue_id` points at the unit's speaking task, so the mission can
+   * offer a rehearsal before the learner does it for real -- which is the whole
+   * difference between "go talk to a stranger" and a thing a nervous person
+   * will actually attempt.
+   */
+  const missions = bundle.units.flatMap((u) =>
+    u.missions.map((m) => ({
+      id: m.id,
+      unit_id: u.unit_id,
+      title_es: m.title_es,
+      instructions_es: m.instructions_es,
+      prep_chunk_ids: m.prep_chunk_ids,
+      prep_dialogue_id: `${u.unit_id}_speaking`,
+      difficulty: m.difficulty,
+      alternate_es: m.alternate_es,
+    }))
+  );
+
   // ---- write --------------------------------------------------------------
 
   const batches: [string, Record<string, unknown>[], string][] = [
@@ -237,6 +258,8 @@ async function main() {
     ["scenes", scenes, "id"],
     // Dialogues reference units and characters, so they follow both.
     ["dialogues", dialogues, "id"],
+    // Missions reference the dialogue, so they follow it.
+    ["missions", missions, "id"],
     ["contrast_sets", contrastSets, "contrast"],
     ["minimal_pairs", minimalPairs, "id"],
   ];

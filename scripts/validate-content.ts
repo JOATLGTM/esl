@@ -193,6 +193,31 @@ function checkUnitStructure(unit: Unit, bundle: ContentBundle) {
     if (!ids.has(ref)) err(where, `speaking_task targets ${ref}, which this unit does not teach`);
   }
 
+  // [PRD F12] A mission the learner cannot attempt is worse than no mission.
+  const missionIds = new Set<string>();
+  for (const mission of unit.missions) {
+    if (missionIds.has(mission.id)) err(where, `duplicate mission id ${mission.id}`);
+    missionIds.add(mission.id);
+
+    for (const ref of mission.prep_chunk_ids) {
+      if (!ids.has(ref)) {
+        err(where, `${mission.id} prepares with ${ref}, which this unit does not teach`);
+      }
+    }
+
+    // The escalation is the design: block 1 is a single word to a stranger, and
+    // a difficulty-5 phone call dropped into unit one is how a learner decides
+    // this product is not for them.
+    const ceiling = Math.min(5, unit.block + 1);
+    if (mission.difficulty > ceiling) {
+      warn(
+        where,
+        `${mission.id} is difficulty ${mission.difficulty} in block ${unit.block}`,
+        `missions escalate with the course; ${ceiling} is the ceiling here`,
+      );
+    }
+  }
+
   // Scripted mode exists so an A0 learner never has to invent a sentence.
   if (unit.speaking_task.mode === "scripted" && !unit.speaking_task.script?.length) {
     err(where, "speaking_task.mode is 'scripted' but no script lines are given");

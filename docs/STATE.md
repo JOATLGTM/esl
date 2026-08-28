@@ -145,7 +145,19 @@ a pool seeded on the date.
   change to accommodate a UI decision. One line per scene, walked through
   listen → repeat → shadow, skippable throughout.
 
-**All five stages, progression, F8, F6 and F11 are done.** The daily loop is
+**F12 missions** — built 2026-08-28, content and all. Its own route
+(`/mission`) rather than a stage, because it is the one thing in the product
+that does not happen on the phone; inside the daily loop it would read as
+another exercise to tap through. Two missions authored for `b1_u1`, offered
+easiest-first and only once their preparation chunks have been met — a mission
+whose phrases the learner has never seen is a request to improvise, which is the
+one thing a nervous beginner will not do.
+
+`alternate_es` is **required** by the schema, not optional. A learner with no
+English speakers near them is exactly who this course is for, and the UI offers
+the alternative as an equal option rather than a consolation.
+
+**All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
 A one-off welcome modal lived in the root layout for a day and was removed on
@@ -155,26 +167,26 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 214, all passing.**
+**Tests — 213, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
 | `content.test.ts` | 23 | no |
 | `audio-plan.test.ts` | 24 | no |
-| `session-stages.test.ts` | 25 | no |
+| `session-stages.test.ts` | 26 | no |
 | `quiz.test.ts` | 9 | no |
 | `drill.test.ts` | 12 | no |
-| `progress.test.ts` | 11 | no |
+| `progress.test.ts` | 17 | no |
 | `quests.test.ts` | 12 | no |
 | `achievements.test.ts` | 7 | no |
 | `error-patterns.test.ts` | 15 | no |
 | `shadowing.test.ts` | 8 | no |
-| `grade.test.ts` | 12 | no |
+| `grade.test.ts` | 16 | no |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 18 | **yes** |
+| `session.test.ts` | 20 | **yes** |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -233,6 +245,12 @@ subject pronoun every single time. Now a match against `ERROR_PATTERNS` forces
 `wrong` before the edit-distance check runs. Found by typing it into a browser
 on 2026-08-28; no test would have caught it, because the rule it broke had not
 been thought of yet.
+
+**A mission is never failed.** `mission_reports.attempted` is always true and
+exists to be reported on, never to gate. Both feelings questions are optional —
+pressing *Listo* with nothing selected files a complete report. Someone who just
+made themselves uncomfortable on purpose should not have to rate their own
+discomfort as the price of admission.
 
 **Nothing in F8 can go down.** No path lowers `total_xp`, resets
 `days_practiced`, or marks a quest failed; an unfinished quest simply ends the
@@ -486,12 +504,11 @@ from a cookie is client-supplied data.
 
 ### What is left, and why
 
-Everything buildable without new content or new decisions is built. The three
-features still designed-but-unbuilt are all blocked on authoring, not on code:
+Everything buildable without new content or new decisions is built. Two
+features remain designed-but-unbuilt, both blocked on authoring:
 
 | Feature | Blocked on |
 |---|---|
-| **F12 missions** (`missions`, `mission_reports`) | No missions authored, and no YAML schema for them. The tables and the "a failed mission awards full XP" rule are ready. |
 | **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
 | **The visible L1 taper** | The mechanism is wired (`l1SupportForBlock`, `shouldOfferMoreSupport`, written on unit advance) but its effect needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
 

@@ -173,6 +173,7 @@ export const es = {
     consecutiveDays: "{count} días seguidos",
     consecutiveDaysOne: "1 día seguido",
     questsTitle: "Hoy puedes",
+    missionCta: "Tienes una misión: {title}",
     questDone: "Listo",
     quests: {
       speak: "Habla en voz alta una vez",
@@ -333,6 +334,36 @@ export const es = {
       title: "Listo por hoy",
       body: "Terminaste la sesión. Nos vemos mañana.",
     },
+  },
+
+  // Real-world missions (PRD F12). The hardest copy in the product to get
+  // right: it is asking a nervous person to speak to a stranger. Every line is
+  // written to lower the stakes, and nothing anywhere calls it a test, a
+  // challenge, or something to pass.
+  mission: {
+    label: "Tu misión",
+    title: "Una misión de verdad",
+    difficulty: "Nivel {level}",
+    // Named plainly, because the whole point is that it happens off the phone.
+    outOfApp: "Esto no se hace en la app. Se hace allá afuera.",
+    alternateTitle: "¿No hay nadie con quien hablar inglés hoy?",
+    alternateNote: "Esta opción cuenta exactamente igual. No es un premio de consolación.",
+    start: "Ya la hice",
+    later: "Hoy no",
+    // The report. Three taps, all optional, none of them a grade.
+    reportTitle: "¿Cómo te fue?",
+    reportSkip: "Las dos preguntas son opcionales. Puedes no contestar ninguna.",
+    feltLabel: "¿Cómo te sentiste?",
+    felt: { 1: "Me costó", 2: "Más o menos", 3: "Bien" },
+    understoodLabel: "¿Te entendieron?",
+    understood: { yes: "Sí", partly: "Más o menos", no: "No" },
+    send: "Listo",
+    // Shown after any report, whatever it said. Attempting is the whole thing.
+    thanks: "Lo hiciste. Eso es lo que cuenta.",
+    thanksBody: "No importa cómo salió. Abriste la boca en inglés con una persona real.",
+    none: "No tienes misión pendiente ahora.",
+    noneBody: "Aparecen cuando ya conoces las frases que necesitas.",
+    back: "Volver a Hoy",
   },
 
   common: {

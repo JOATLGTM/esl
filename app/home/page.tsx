@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { requireOnboardedProfile } from "@/lib/auth/session";
 import { QuestList, type QuestView } from "@/components/ui/quest-list";
+import { loadCurrentMission } from "@/lib/session/missions";
 import { ensureDailyQuests } from "@/lib/session/rewards";
 import { curriculumStatus } from "@/lib/session/store";
 import { signOutAction } from "@/app/auth/actions";
@@ -35,6 +36,10 @@ export default async function HomePage() {
   // Created on first sight of the day rather than by a scheduled job: this
   // product has no cron and should not need one, and a learner who skipped
   // Tuesday should not find Tuesday's unfinished quests waiting on Wednesday.
+  // Offered only once its preparation chunks have been met, so it is never a
+  // request to improvise (PRD F12).
+  const mission = await loadCurrentMission(profile.id, profile.current_unit);
+
   const quests: QuestView[] = (
     await ensureDailyQuests(profile.id, profile.timezone, profile.daily_goal_minutes)
   ).map((quest) => ({
@@ -97,6 +102,12 @@ export default async function HomePage() {
           </div>
         )}
       </section>
+
+      {mission && (
+        <ButtonLink href="/mission" variant="secondary">
+          {fill(es.home.missionCta, { title: mission.titleEs })}
+        </ButtonLink>
+      )}
 
       <QuestList quests={quests} />
 

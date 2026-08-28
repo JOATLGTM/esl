@@ -127,6 +127,30 @@ export const SpeakingTaskSchema = z.object({
 });
 export type SpeakingTask = z.infer<typeof SpeakingTaskSchema>;
 
+/**
+ * A real-world mission (PRD F12).
+ *
+ * The learner does this outside the app, with an actual person, and then says
+ * how it went. Missions escalate across the course: one word to a stranger,
+ * then an order, then a question, then a conversation, then a phone call.
+ *
+ * `alternate_es` is required rather than optional, and that is the whole ethics
+ * of the feature: a learner with no English speakers anywhere near them must
+ * have a real way to do this, not a consolation message. A mission without an
+ * alternative is a mission that excludes the people who need the course most.
+ */
+export const MissionSchema = z.object({
+  id: z.string().regex(/^m_\d{4}$/, "mission ids look like m_0001"),
+  title_es: z.string().min(1),
+  instructions_es: z.string().min(1),
+  /** Chunks the learner should have met before this is offered. */
+  prep_chunk_ids: z.array(chunkId).min(1),
+  /** 1 is a single word to a stranger; 5 is a phone call. */
+  difficulty: z.number().int().min(1).max(5),
+  alternate_es: z.string().min(1),
+});
+export type Mission = z.infer<typeof MissionSchema>;
+
 export const UnitSchema = z.object({
   unit_id: unitId,
   block: z.number().int().min(1).max(6),
@@ -139,6 +163,8 @@ export const UnitSchema = z.object({
   chunks: z.array(ChunkSchema).min(1),
   scenes: z.array(SceneSchema).min(1),
   speaking_task: SpeakingTaskSchema,
+  /** Optional: a unit may ship before its missions are written. */
+  missions: z.array(MissionSchema).default([]),
 });
 export type Unit = z.infer<typeof UnitSchema>;
 
