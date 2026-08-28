@@ -189,6 +189,26 @@ export const es = {
     },
     progress: "Paso {position} de {total}",
 
+    // Stage 3 (Absorb). The scene is meant to be almost followable already, so
+    // the transcript is never hidden -- this is comprehension, not a memory test.
+    absorb: {
+      sceneCounter: "Escena {position} de {total}",
+      play: "Escuchar la escena",
+      playAgain: "Escuchar otra vez",
+      stop: "Pausar",
+      tapHint: "Toca cualquier línea para repetirla.",
+      toQuestions: "Ya escuché",
+      questionCounter: "Pregunta {position} de {total}",
+      // Never a score and never the word "incorrecto". Getting one wrong is
+      // information, not a verdict, and the learner is told the answer either way.
+      right: "¡Eso es!",
+      // No trailing colon: the correct option is highlighted in the list *above*
+      // this line, so "la respuesta es:" dangles with nothing after it.
+      wrong: "Casi. La correcta está marcada.",
+      nextQuestion: "Siguiente",
+      noAudio: "Esta escena todavía no tiene audio. Puedes leerla.",
+    },
+
     // Stage 2 (Meet). Nothing here may read as a test -- this is the first time
     // the learner sees these words, and there is nothing yet to get wrong.
     meet: {

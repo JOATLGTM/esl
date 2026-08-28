@@ -84,7 +84,16 @@ card for yet. Leaving the stage writes one `user_cards` row per chunk shown,
 revealed — which is the number F2 later reads to offer stepping the Spanish
 taper back a level.
 
-Absorb, Retrieve, Speak and Ear are still placeholders; see **Next feature**.
+**Absorb (§4.2 stage 3 / F4)** — built. One scene per session, taken in story
+order from how many sessions the learner has finished in the unit
+(`pickSceneIndex`) — there is no table recording a scene as seen, and inventing
+one would be a second source of truth about progress. The transcript is on
+screen throughout, the playing line is highlighted, and tapping any line seeks
+to it and plays just that line, using the sentence timings authored into
+`scenes.transcript`. Then three comprehension questions, one at a time, never
+scored: a wrong answer highlights the right one and moves on.
+
+Retrieve, Speak and Ear are still placeholders; see **Next feature**.
 
 A one-off welcome modal lived in the root layout for a day and was removed on
 2026-08-28, having served its purpose. One thing it taught is worth keeping:
@@ -93,13 +102,15 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 100, all passing.**
+**Tests — 114, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
 | `content.test.ts` | 23 | no |
 | `audio-plan.test.ts` | 24 | no |
 | `session-stages.test.ts` | 25 | no |
+| `quiz.test.ts` | 9 | no |
+| `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
 | `rls.test.ts` | 9 | **yes** |
 | `onboarding.test.ts` | 6 | **yes** |
@@ -153,6 +164,14 @@ new" answerable without any state that can drift from what the learner actually
 saw. It is also why `StageInventory` carries one per-learner number: a unit
 whose chunks have all been met has no Meet left in it, and the stage is skipped
 rather than shown empty.
+
+**Comprehension options are shuffled, seeded on the session.** `b1_u1` was
+authored with **all eighteen** scene answers at option 1, so tapping first every
+time scored full marks without listening — the check measured nothing.
+`npm run content:validate` now warns when a unit's answers all share a slot, and
+`shuffleQuestion` reorders them regardless, so no unit can have the problem
+however it was written. Seeded rather than random because a refresh mid-question
+must not rearrange the answers under the learner.
 
 **Meet writes cards on the way out, with `ignoreDuplicates`.** On the way out so
 that abandoning the stage costs nothing; `ignoreDuplicates` rather than a plain
@@ -226,6 +245,15 @@ either name.
 **`lib/supabase/database.types.ts` is generated — never edit it.** Hand-written
 schema types go in `lib/supabase/types.ts`, which derives from it.
 
+**Audio cannot be verified through the Chrome automation harness.** A plain
+`new Audio(url).load()` typed straight into the page console sits at
+`readyState 0`, `networkState 2`, no network request and no error — media
+loading simply does not happen in that context. It presents exactly like a
+broken player. Check the server instead (`curl -I` for a 200, the right
+`Content-Type`, and a 206 on a `Range` request) and cover the timing logic with
+pure tests (`tests/transcript.test.ts`); then listen to it in a normal browser
+by hand. **Nothing in Meet or Absorb has had its audio heard.**
+
 **`onClick={handler}` passes the click event as the first argument.** Wire a
 Server Action's wrapper straight to `onClick` and React hands it a
 SyntheticEvent, which crosses the boundary as an opaque client reference and
@@ -293,12 +321,17 @@ from a cookie is client-supplied data.
 7. **Content: 1 unit of 36.** Block 1 needs 6. The PRD is blunt that authoring
    is ~70% of total effort — budget it honestly.
 8. **Email verification flow** — see the confirm-later decision above.
-9. **`speaking_task` is authored but never seeded.** `content/units/b1_u1.yaml`
+9. **Listen to the audio.** Meet and Absorb both play clips that no human has
+   heard in the app — the automation harness cannot load media (see traps), so
+   playback is verified only at the HTTP layer. Open a real browser, do one
+   session, and confirm the clips play, the voices differ, and tapping a
+   transcript line lands on the right sentence.
+10. **`speaking_task` is authored but never seeded.** `content/units/b1_u1.yaml`
    has a full scripted task; `UnitSchema` validates it; `scripts/seed-content.ts`
    does not write it to any table. `dialogues` is the table it belongs in. Until
    it is seeded the `speak` stage has no source and is skipped. Fix this as part
    of building Speak, not before.
-10. **`ts-fsrs` is in `devDependencies`.** The retrieve stage imports it at
+11. **`ts-fsrs` is in `devDependencies`.** The retrieve stage imports it at
     runtime. Move it to `dependencies` before F2, or the first Vercel build
     breaks in a way that looks like a Next problem.
 
@@ -308,14 +341,12 @@ The shell walks; the stages are empty. Fill them in this order — each is a
 self-contained slice that leaves the loop working:
 
 1. ~~**Meet**~~ — done 2026-08-28.
-2. **Absorb** — scene playback plus the three authored multiple-choice
-   questions; tapping a transcript line replays that line (§F4 needs the
-   sentence timings already in `scenes.transcript`).
-3. **Retrieve** — F2 proper. FSRS via `ts-fsrs` (see open item 10),
+2. ~~**Absorb**~~ — done 2026-08-28.
+3. **Retrieve** — F2 proper. FSRS via `ts-fsrs` (see open item 11),
    `recognize` / `produce_typed` modes, `produce_passes` climbing toward the
    `learned_requires_production` constraint.
 4. **Speak** — scripted mode, MediaRecorder into the `user-recordings` bucket,
-   `speaking_tasks_completed`. Needs open item 9 first.
+   `speaking_tasks_completed`. Needs open item 10 first.
 5. **Ear** — last, once the recordings from open item 5 exist.
 
 Then F3/F5/F11. The seam for each is `SessionPlayer` in

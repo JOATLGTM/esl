@@ -223,6 +223,25 @@ function checkUnitStructure(unit: Unit, bundle: ContentBundle) {
     }
   }
 
+  // Every correct answer sitting in the same slot makes the comprehension check
+  // measure nothing: tapping the first option every time scores full marks
+  // without listening. Authoring naturally drifts this way -- the true answer is
+  // the one you think of first, so you type it first -- and b1_u1 shipped with
+  // all 18 answers at index 0 before anyone noticed.
+  //
+  // The player shuffles options per session as well, so this is defence in
+  // depth rather than the only guard. It is a warning and not an error because
+  // it is a judgement about a whole unit, and a two-scene unit can honestly
+  // land this way.
+  const answerSlots = unit.scenes.flatMap((scene) => scene.questions.map((q) => q.answer));
+  if (answerSlots.length >= 6 && new Set(answerSlots).size === 1) {
+    warn(
+      where,
+      `all ${answerSlots.length} scene answers are option ${answerSlots[0] + 1}`,
+      "a learner can score full marks without listening -- vary which option is correct",
+    );
+  }
+
   // [PRD F2] every chunk needs >=2 speaker audio files before publishing.
   //
   // `auto` means the TTS pipeline owns the file, so the YAML can never answer

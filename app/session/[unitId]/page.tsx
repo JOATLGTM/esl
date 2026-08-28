@@ -4,6 +4,7 @@ import { SessionPlayer } from "./session-player";
 import { ButtonLink } from "@/components/ui/button";
 import { requireOnboardedProfile } from "@/lib/auth/session";
 import { es } from "@/lib/copy/es";
+import { loadAbsorbScene } from "@/lib/session/absorb";
 import { loadMeetChunks } from "@/lib/session/meet";
 import {
   availableStages,
@@ -64,9 +65,14 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
       ? await loadMeetChunks(profile.id, unit.id, newChunkBudget(profile.daily_goal_minutes))
       : [];
 
+  // Seeded on the session so the option order survives a refresh mid-question.
+  const absorbScene =
+    stage === "absorb" ? await loadAbsorbScene(profile.id, unit.id, session.id) : null;
+
   return (
     <SessionPlayer
       meetChunks={meetChunks}
+      absorbScene={absorbScene}
       sessionId={session.id}
       unitTitle={unit.title_es}
       stage={stage}

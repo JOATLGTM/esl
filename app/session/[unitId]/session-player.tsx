@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
+import { AbsorbStage } from "./absorb-stage";
 import { MeetStage } from "./meet-stage";
 import { advanceStage } from "../actions";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { es, fill } from "@/lib/copy/es";
+import type { AbsorbScene } from "@/lib/session/absorb";
 import type { MeetChunk } from "@/lib/session/meet";
 import type { Stage } from "@/lib/session/stages";
 
@@ -17,8 +19,8 @@ import type { Stage } from "@/lib/session/stages";
  * the fourth of six phrases and "Continuar" on the last are the same button
  * doing different jobs, and only the stage knows which.
  *
- * Absorb, Retrieve, Speak and Ear are still placeholders and say so, rather
- * than showing a screen that does nothing.
+ * Retrieve, Speak and Ear are still placeholders and say so, rather than
+ * showing a screen that does nothing.
  *
  * Time on a stage is measured here and sent with the advance, not inferred
  * server-side from `started_at`. A session resumed the next morning would
@@ -34,6 +36,7 @@ export function SessionPlayer({
   isFinal,
   resumed,
   meetChunks,
+  absorbScene,
 }: {
   sessionId: string;
   unitTitle: string;
@@ -43,6 +46,7 @@ export function SessionPlayer({
   isFinal: boolean;
   resumed: boolean;
   meetChunks: MeetChunk[];
+  absorbScene: AbsorbScene | null;
 }) {
   const [pending, startTransition] = useTransition();
 
@@ -105,6 +109,8 @@ export function SessionPlayer({
 
       {stage === "meet" ? (
         <MeetStage chunks={meetChunks} pending={pending} onAdvance={advance} />
+      ) : stage === "absorb" && absorbScene ? (
+        <AbsorbStage scene={absorbScene} pending={pending} onAdvance={() => advance()} />
       ) : (
         <NotBuiltYet stage={stage} pending={pending} isFinal={isFinal} onAdvance={advance} />
       )}
