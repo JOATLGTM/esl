@@ -199,3 +199,118 @@ for an open repo, but it is a compliance chore with a real hour count.
 - **§4's "freeze the vocabulary release schedule first" is right** and is the
   main reason authoring feels adversarial today: the 95% rule is currently
   discovered at validation time instead of being a design input.
+
+---
+
+## Round 2 — what we did with the answer
+
+**Copy-pasteable, like the brief above.** Everything below the line goes back to
+whoever answered, so round 2 starts grounded instead of re-deriving the repo.
+
+> Thank you — this changed the project. Two of your three root objections were
+> adopted and are now committed (`85c49ae`). Here is exactly what happened,
+> including where you were wrong about our codebase, so the next round does not
+> repeat it.
+>
+> ### Adopted
+>
+> **R1 — the course now ends at A2 in 24 units, not B1 in 36.** Your arithmetic
+> carried it, and the supporting point did more work than the hours did: the
+> cognate discount arrives at B1+, which is exactly where the old spine stopped,
+> so it was never going to rescue the gap. `content/curriculum.yaml` is four
+> blocks; targets are 150 / 380 / 620 / 850 cumulative chunks. Blocks 5–6 are
+> deferred, not deleted — the CEFR enum and the curriculum schema still admit
+> them, so they return without a migration.
+>
+> We also split the metric as you suggested: `chunk_target_cumulative` and
+> `frame_target_cumulative` are separate fields, because one frame with a dozen
+> fillers is not one chunk. You were right that the old 2,500 was vocabulary-size
+> research (word *families*) applied to chunks.
+>
+> **R2 — the `frame` type exists.** Schema, validator, known-word timeline, 18
+> tests. `pattern` / `es_pattern` / `slot` / `fillers` / `literal_fillers` /
+> `cefr`. The validator enforces: fillers must resolve to chunks taught **at or
+> before** this unit (a forward reference is an error), every sentence the frame
+> can generate is scored against the 95% rule, and a frame with fewer than 8
+> usable fillers warns because the leverage ratio is the entire argument for the
+> type. Each guard was proved firing against real content, then reverted.
+>
+> Two departures from your sketch, both deliberate:
+>
+> 1. **One slot name in both patterns.** Your example used `{NP}` in English and
+>    `{SN}` in Spanish. No UI renders the raw marker — it becomes a blank or a
+>    chooser — so a second name can only fail to match the first. Now enforced.
+> 2. **`literal_fillers` had to be added,** and Unit 1 forced it. Three of its
+>    "chunks" — `My name is`, `I'm from`, `This is` — are frames wearing a
+>    chunk's clothes: none is a sentence, each has a hole, and the hole is filled
+>    by a name or a place that the curriculum will never teach as a chunk. A
+>    chunk-ids-only filler model could not express the most obvious frame in the
+>    entire course. Literal fillers are gated by the same readability scorer, so
+>    they license a word the learner already has rather than putting a hole in
+>    the 95% rule.
+>
+> **No frames are authored into any unit yet, on purpose.** The session player
+> does not read them. Authoring 200 before a stage can display one would repeat a
+> mistake this project already made once (`l1_support_level`: written on every
+> unit advance, read by nothing, still).
+>
+> ### Where you were wrong about our repo
+>
+> Not criticism — you answered from the brief, and the brief did not say. But
+> round 2 should be grounded:
+>
+> - **The cognate whitelist you recommended building already exists** and has
+>   since the pipeline was written: `lib/content/cognates.ts` +
+>   `content/wordlists/cognates.yaml`. **254 curated pairs, 16 generative suffix
+>   rules** (`-tion`→`-ción`, `-ity`→`-idad`, …, so coverage is far wider than
+>   254), **37 proper nouns**, **50 false friends explicitly excluded**, credited
+>   at A0–A2 and switched off above. That is essentially the "400–600 hand-vetted
+>   entries" you asked for.
+> - **Your open question answers itself: we count tokens, not types.** So the
+>   follow-on ("if it is type-based, that alone explains a lot of the pain") does
+>   not apply — coverage already climbs as function words accumulate.
+> - **Your contrast list is not a reordering of ours.** `/æ/–/ɛ/` and `/uː/–/ʊ/`
+>   are not in our enum at all; you also merged `schwa` with `stress_intonation`
+>   and narrowed `h_r` to `/h/`. Ours are: `ee_ih`, `schwa`, `final_clusters`,
+>   `b_v`, `s_onset`, `aspiration`, `th`, `h_r`, `stress_intonation`. Adopting
+>   your list is a Postgres enum migration on the type behind `target_contrast`.
+>   The pedagogy stands and we have recorded it; the cost was not priced.
+> - **You flagged attribution but not copyleft.** NGSL and Lingua Libre are CC
+>   BY-**SA**. A wordlist derived from NGSL inherits ShareAlike, and 2,700
+>   Lingua Libre clips carry per-file obligations.
+>
+> ### Rejected
+>
+> **R3a — relaxing scenes from 95% to 90%.** The support apparatus exists so a
+> learner can work *comfortably* at 95%, not so authoring can push lower. We took
+> the better idea in the same section instead and will implement it: **weight
+> unknown content words above unknown function words**, so a scene cannot pass at
+> 95% with its 5% landing on the word carrying the point.
+>
+> ### What we need from you now
+>
+> Your §4 diagnosis — that the 95% rule is *discovered* at validation time rather
+> than being a design input — is the thing that actually blocks authoring. So,
+> concretely, in this order:
+>
+> 1. **`content/vocab-schedule.yaml`.** Propose its shape and its content for
+>    Block 1 (units 2–6): exactly which word types become legal in which unit,
+>    derived from NGSL-Spoken frequency with function words first, ordered so the
+>    scenes we need are writable. Unit 1's 25 chunks are the fixed starting
+>    point. This is the single highest-leverage unbuilt thing we have.
+> 2. **A frame inventory.** Now that the type is real and validated, name the
+>    ~200 patterns worth authoring across A0→A2, with the slot, the filler class,
+>    and the unit each becomes legal in. Flag which of Unit 1's existing chunks
+>    should be *converted* to frames.
+> 3. **The story bible** — six characters (Ana, Miguel, María, Carlos, Rosa,
+>    Tom), four blocks, an arc per block with real stakes. Fixed voices, so the
+>    cast cannot grow.
+> 4. **The licence follow-ups you flagged as open:** the PHRASE List's actual
+>    status, VOA per-asset confirmation, and We Speak NYC's terms. If any is a
+>    dead end, say so early — we would rather write than litigate.
+> 5. **The contrast enum.** Given a migration is required either way: what are
+>    the final nine, and is `/æ/–/ɛ/` worth the change before 2,700 clips exist?
+>
+> Constraints are unchanged: $0 at runtime, no API calls during a session,
+> content is YAML validated by `npm run content:validate`, ear training is human
+> recordings only. Assume build-time LLM authoring is available.
