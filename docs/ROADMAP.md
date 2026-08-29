@@ -204,7 +204,7 @@ already enforces that. Pure authoring.
 
 ## Tier 4 — bridge to his actual day
 
-### 8. A phrasebook
+### 8. ~~A phrasebook~~ — built 2026-08-29
 
 `/frases`: every chunk he has met, grouped by situation (at the counter, at
 work, lost, didn't understand), searchable, with audio. He is *surrounded by

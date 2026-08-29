@@ -149,6 +149,28 @@ export const es = {
     },
   },
 
+  // The phrasebook (ROADMAP #8). Headings are situations, not grammar, because
+  // that is how he will look: "I'm at the counter", never "ordering".
+  phrasebook: {
+    title: "Mis frases",
+    blurb: "Todo lo que ya viste, por situación. Toca una para oírla.",
+    search: "Buscar",
+    searchHint: "En inglés o en español",
+    noMatch: "Nada con esas palabras. Prueba con otra.",
+    empty: "Todavía no tienes frases. Empieza una sesión y aquí van quedando.",
+    groups: {
+      repair: "Si no entiendes",
+      greet: "Saludar y despedirse",
+      numbers: "Números y teléfono",
+      people: "Familia y gente",
+      street: "En la calle",
+      work: "El trabajo y la hora",
+      cafe: "En el café",
+      feelings: "Cómo te sientes",
+      other: "Otras",
+    },
+  },
+
   // The listening library (ROADMAP #4). A shelf, not a stage: the copy must
   // never suggest there is something to get right here. "Más historias" and
   // not "práctica de escucha", because practice is what he does in the
@@ -197,6 +219,7 @@ export const es = {
   },
 
   home: {
+    phrasebookCta: "Mis frases",
     listeningCta: "Más historias para escuchar",
     settingsCta: "Ajustes",
     greeting: "Hola",

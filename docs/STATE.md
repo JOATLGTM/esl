@@ -441,6 +441,15 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**The phrasebook** — built 2026-08-29, `docs/ROADMAP.md` #8. `/frases`: every
+chunk he has met, grouped by *situation* rather than grammar — "Si no
+entiendes" pinned first, then greetings, numbers, people, the street, work and
+time, the café, feelings — searchable in either language with accents and case
+ignored, one voice per phrase. He is surrounded by English he cannot use, and
+until this his phrases only existed inside a lesson. Reads only; nothing is
+scored. Grouping is pure (`lib/session/phrasebook.ts`) and tested, including a
+test that every situation has a heading in the copy.
+
 **English comprehension questions** — authored 2026-08-29, `docs/ROADMAP.md`
 #7. All 108 scene questions now carry `q_en` / `options_en` beside the
 Spanish, so the taper's upper levels finally differ from its middle: at level
@@ -557,7 +566,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 354, all passing.**
+**Tests — 363, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
