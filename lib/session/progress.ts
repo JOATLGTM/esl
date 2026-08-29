@@ -84,6 +84,11 @@ export function nextUnit(
  * the learner moves up. A learner who wants English chrome at A1 is allowed to
  * have it, and a learner who is quietly struggling gets offered a step back.
  *
+ * That paragraph described an intention for most of this project's life: the
+ * column was written here and read nowhere, so every learner saw the same
+ * amount of Spanish whatever it said. `lib/session/l1.ts` is what turned it
+ * into behaviour, and `lib/session/l1-server.ts` is what makes the offer.
+ *
  * The signal for that offer is `user_cards.gloss_reveals`: someone revealing
  * the Spanish on most cards is not ready for less of it, and reveal taps are
  * the only way to notice, because nobody reports being lost.

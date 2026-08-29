@@ -3,6 +3,7 @@ import { test, describe, before, after } from "node:test";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { PUBLISHABLE, SECRET, SUPABASE_URL, skipReason } from "./helpers/supabase-env";
 import { isUnitComplete, nextUnit } from "../lib/session/progress";
+import { L1_CHOICES, l1Support } from "../lib/session/l1";
 import { dailyQuestPlan, xpForSession } from "../lib/session/quests";
 import { availableStages, firstStage, nextStage, resumeAt } from "../lib/session/stages";
 import type { StageInventory } from "../lib/session/stages";
@@ -496,6 +497,31 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       assert.equal(profile!.current_unit, expected.id);
       assert.equal(profile!.current_block, expected.block);
     }
+  });
+
+  test("a learner owns their own Spanish support level", async () => {
+    // The taper is the learner's, not the curriculum's (PRD 4.6): the block
+    // *proposes* a level on advance, and the learner may override it from
+    // /ajustes. That only works if they can write their own row and nobody
+    // else's, and if the database refuses a level outside the range the UI
+    // offers.
+    const { db, userId } = await fresh();
+
+    for (const level of L1_CHOICES) {
+      const ok = await db.from("users").update({ l1_support_level: level }).eq("id", userId);
+      assert.equal(ok.error, null, `level ${level} should be allowed: ${ok.error?.message}`);
+
+      const { data } = await db.from("users").select("l1_support_level").eq("id", userId).single();
+      assert.equal(data!.l1_support_level, level);
+      // Whatever is stored has to produce a usable screen.
+      assert.equal(l1Support(data!.l1_support_level).level, level);
+    }
+
+    // Out of range is refused by the CHECK, not by the app remembering to ask.
+    const bad = await db.from("users").update({ l1_support_level: 9 }).eq("id", userId);
+    assert.notEqual(bad.error, null, "the database should refuse a level of 9");
+
+    await admin.from("users").update({ l1_support_level: 1 }).eq("id", userId);
   });
 
   test("the end of the authored curriculum is a state, not an error", async () => {

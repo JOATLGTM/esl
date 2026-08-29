@@ -49,6 +49,7 @@ export function SessionPlayer({
   reviewCards,
   speakTask,
   speakFrame,
+  offerGloss,
   earDrill,
 }: {
   sessionId: string;
@@ -63,6 +64,7 @@ export function SessionPlayer({
   reviewCards: ReviewCard[];
   speakTask: SpeakTask | null;
   speakFrame: SessionFrame | null;
+  offerGloss: boolean;
   earDrill: EarDrill | null;
 }) {
   const [pending, startTransition] = useTransition();
@@ -162,7 +164,12 @@ export function SessionPlayer({
       {stage === "ear" ? (
         <EarStage drill={earDrill} pending={pending} onAdvance={() => advance()} />
       ) : stage === "meet" ? (
-        <MeetStage chunks={meetChunks} pending={pending} onAdvance={advance} />
+        <MeetStage
+          chunks={meetChunks}
+          offerGloss={offerGloss}
+          pending={pending}
+          onAdvance={advance}
+        />
       ) : stage === "absorb" && absorbScene ? (
         <AbsorbStage scene={absorbScene} pending={pending} onAdvance={() => advance()} />
       ) : stage === "speak" ? (

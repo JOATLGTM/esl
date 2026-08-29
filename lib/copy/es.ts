@@ -149,7 +149,39 @@ export const es = {
     },
   },
 
+  // Ajustes. The one place the learner is in charge of the product rather than
+  // the other way round, so the copy never scolds and never implies a "right"
+  // answer. Less Spanish is not better; it is just later.
+  settings: {
+    title: "Ajustes",
+    back: "Volver",
+    saved: "Listo, guardado.",
+    save: "Guardar",
+
+    spanishTitle: "¿Cuánto español quieres ver?",
+    spanishBlurb:
+      "Puedes cambiarlo cuando quieras. Ver más español no es hacer trampa: es como se aprende al principio.",
+    spanish: {
+      "1": "Bastante. Quiero ver la traducción cuando la necesite.",
+      "3": "El justo. Traducción a la mano, preguntas en inglés cuando las haya.",
+      "5": "Poco. Quiero intentarlo sin traducción.",
+    },
+
+    goalTitle: "¿Cuántos minutos al día?",
+    goalBlurb: "Es una meta, no una regla. Nadie te va a quitar nada por no llegar.",
+    goalOption: "{minutes} minutos",
+
+    // Offered when the learner keeps revealing the Spanish -- never announced
+    // as a problem, and never applied without them saying yes.
+    offerTitle: "¿Te ponemos más español?",
+    offerBody:
+      "Vimos que abres la traducción seguido. Eso está bien, y podemos dejarla más a la mano.",
+    offerAccept: "Sí, más español",
+    offerDismiss: "Así está bien",
+  },
+
   home: {
+    settingsCta: "Ajustes",
     greeting: "Hola",
     startSession: "Empezar",
     sessionLength: "unos {minutes} minutos",

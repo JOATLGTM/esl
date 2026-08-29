@@ -4,6 +4,8 @@ import { requireOnboardedProfile } from "@/lib/auth/session";
 import { QuestList, type QuestView } from "@/components/ui/quest-list";
 import { loadCurrentMission } from "@/lib/session/missions";
 import { hasPatternsToShow } from "@/lib/session/patterns-server";
+import { shouldOfferSupport } from "@/lib/session/l1-server";
+import { SupportOffer } from "./support-offer";
 import { ensureDailyQuests } from "@/lib/session/rewards";
 import { curriculumStatus } from "@/lib/session/store";
 import { signOutAction } from "@/app/auth/actions";
@@ -45,6 +47,9 @@ export default async function HomePage() {
   // then showing an empty page is a small cruelty -- the learner clicks
   // expecting to be told something and is told nothing.
   const showPatterns = await hasPatternsToShow(profile.id);
+  // Only when there is something to offer. Asking a learner at full support
+  // whether they want more would imply there was more, and there is not.
+  const offerSupport = await shouldOfferSupport(profile.id, profile.l1_support_level);
 
   const quests: QuestView[] = (
     await ensureDailyQuests(profile.id, profile.timezone, profile.daily_goal_minutes)
@@ -115,6 +120,8 @@ export default async function HomePage() {
         </ButtonLink>
       )}
 
+      {offerSupport && <SupportOffer level={profile.l1_support_level} />}
+
       {showPatterns && (
         <ButtonLink href="/patterns" variant="quiet">
           {es.home.patternsCta}
@@ -122,6 +129,10 @@ export default async function HomePage() {
       )}
 
       <QuestList quests={quests} />
+
+      <ButtonLink href="/ajustes" variant="quiet">
+        {es.home.settingsCta}
+      </ButtonLink>
 
       <form action={signOutAction}>
         <Button type="submit" variant="quiet">{es.home.signOut}</Button>

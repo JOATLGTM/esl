@@ -332,6 +332,32 @@ which language a conversation happens in.
 
 The course now runs about twelve days instead of six.
 
+**The Spanish taper (PRD 4.6) is a behaviour now, not a column** — built
+2026-08-29, and this is the item the previous session listed as
+designed-but-unbuilt. `users.l1_support_level` had been written on every unit
+advance since the first migration and **read by nothing**; the comment in
+`progress.ts` even claimed the app read it, which was false and is now
+corrected.
+
+`lib/session/l1.ts` says what each level shows. Meet withdraws the gloss offer
+at the least-supported level; Absorb prefers English questions above level 3,
+falling back to whatever the scene actually authored — so it changes nothing
+today and will change on its own when a unit ships `q_en`. **Both halves of a
+question always come from one language**: a Spanish prompt over English options
+is worse than either.
+
+The important part is that **the level belongs to the learner, not the
+curriculum**. `l1SupportForBlock` proposes on advance; it does not impose.
+`/ajustes` is where they choose — three options, not five, because asking a
+beginner to pick between "level 3" and "level 4" is asking them to model a
+system they have never seen. It also carries the daily goal, which had been
+chosen once at onboarding and then fixed forever.
+
+`shouldOfferMoreSupport` finally has a caller (`lib/session/l1-server.ts`).
+A learner revealing the gloss on most of their cards is offered a step back
+toward more Spanish — offered, never applied, never framed as a problem, and
+never shown at full support where there is nothing to offer.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -342,7 +368,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 326, all passing.**
+**Tests — 338, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -932,7 +958,7 @@ features remain designed-but-unbuilt, both blocked on authoring:
 | Feature | Blocked on |
 |---|---|
 | **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
-| **The visible L1 taper** | Half-built, and this line previously overstated it. `l1SupportForBlock` is called on unit advance and writes `users.l1_support_level` — **which nothing reads**. `shouldOfferMoreSupport` has zero callers outside its own test. So the taper is a column and two tested functions, not a behaviour. Finishing it also needs content that does not exist: English variants of the scene questions, and an English chrome for `lib/copy/es.ts` at level 5. |
+| **The visible L1 taper** | ~~Half-built~~ **Built 2026-08-29.** What remains is content, not code: no unit authors `q_en`, so levels 3 and 5 are identical in Absorb until one does, and `lib/copy/es.ts` has no English chrome — the taper reaches the *material*, never the interface. Both are authoring, and both light up on their own. |
 
 Branching dialogue is the last one, and it is blocked in a way missions were
 not: a `guided` dialogue asks the learner to choose what to say, and the

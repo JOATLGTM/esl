@@ -22,10 +22,19 @@ import type { MeetChunk } from "@/lib/session/meet";
  */
 export function MeetStage({
   chunks,
+  offerGloss,
   pending,
   onAdvance,
 }: {
   chunks: MeetChunk[];
+  /**
+   * Whether the Spanish is offered at all (PRD 4.6, the taper).
+   *
+   * Only the least-supported level withdraws it. The audio, the replays and
+   * the example sentence are identical either way -- what tapers is the
+   * translation and nothing else.
+   */
+  offerGloss: boolean;
   pending: boolean;
   onAdvance: (revealedChunkIds: string[]) => void;
 }) {
@@ -106,7 +115,7 @@ export function MeetStage({
         <div className="flex flex-col gap-3">
           <h1 className="text-4xl font-bold text-balance text-ink">{chunk.en}</h1>
 
-          {isRevealed ? (
+          {!offerGloss ? null : isRevealed ? (
             <p className="text-xl text-muted">{chunk.es}</p>
           ) : (
             <button
@@ -154,7 +163,9 @@ export function MeetStage({
         <div className="rounded-2xl border-2 border-line bg-surface px-5 py-4">
           <p className="text-sm font-medium text-faint">{es.session.meet.example}</p>
           <p className="mt-1 text-lg text-ink">{chunk.exampleEn}</p>
-          {isRevealed && <p className="text-base text-muted">{chunk.exampleEs}</p>}
+          {offerGloss && isRevealed && (
+            <p className="text-base text-muted">{chunk.exampleEs}</p>
+          )}
         </div>
       </div>
 

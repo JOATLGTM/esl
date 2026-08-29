@@ -45,6 +45,7 @@ export async function loadAbsorbScene(
   userId: string,
   unitId: string,
   seed: string,
+  spanishQuestions = true,
 ): Promise<AbsorbScene | null> {
   const supabase = await createClient();
 
@@ -90,15 +91,20 @@ export async function loadAbsorbScene(
       startMs: line.start_ms,
       endMs: line.end_ms,
     })),
-    questions: ((scene.questions as SceneQuestion[] | null) ?? []).map((q, i) =>
-      shuffleQuestion(`${seed}:${scene.id}:${i}`, {
-        // Spanish at A0-A1, English from A2 -- the taper (PRD 4.5). The content
-        // carries whichever it was authored with; this picks what is there.
-        prompt: q.q_es ?? q.q_en ?? "",
-        options: q.options_es ?? q.options_en ?? [],
+    questions: ((scene.questions as SceneQuestion[] | null) ?? []).map((q, i) => {
+      // The taper (PRD 4.6): Spanish while the learner still wants it, English
+      // once they do not. Both halves must come from the same language -- a
+      // Spanish question over English options is worse than either -- so this
+      // switches only when the scene authored a complete English version, and
+      // otherwise serves whatever exists. No unit has `q_en` yet, which is why
+      // this changes nothing today and will change on its own when one does.
+      const english = !spanishQuestions && q.q_en && q.options_en?.length;
+      return shuffleQuestion(`${seed}:${scene.id}:${i}`, {
+        prompt: (english ? q.q_en : q.q_es ?? q.q_en) ?? "",
+        options: (english ? q.options_en : q.options_es ?? q.options_en) ?? [],
         answer: q.answer,
-      }),
-    ),
+      });
+    }),
     position: index + 1,
     total: all.length,
   };

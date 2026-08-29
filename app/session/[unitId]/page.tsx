@@ -10,6 +10,7 @@ import { loadMeetChunks } from "@/lib/session/meet";
 import { loadEarDrill } from "@/lib/session/ear";
 import { loadDueCards, reviewBudget } from "@/lib/session/retrieve";
 import { loadSessionFrame, loadSpeakTask } from "@/lib/session/speak";
+import { l1Support } from "@/lib/session/l1";
 import {
   availableStages,
   firstStage,
@@ -61,6 +62,11 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
 
   const { position, total } = stageProgress(stage, available);
 
+  // The Spanish taper (PRD 4.6). Read once and shared by every stage that shows
+  // Spanish, so a learner cannot meet two different amounts of it in one
+  // session.
+  const support = l1Support(profile.l1_support_level);
+
   // Loaded only for the stage that needs it. `advanceStage` recomputes the same
   // list with the same budget when the learner leaves Meet, which is how the
   // server records what was shown without trusting the client to say.
@@ -71,7 +77,7 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
 
   // Seeded on the session so the option order survives a refresh mid-question.
   const absorbScene =
-    stage === "absorb" ? await loadAbsorbScene(profile.id, unit.id, session.id) : null;
+    stage === "absorb" ? await loadAbsorbScene(profile.id, unit.id, session.id, support.spanishQuestions) : null;
 
   const reviewCards =
     stage === "retrieve"
@@ -94,6 +100,7 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
 
   return (
     <SessionPlayer
+      offerGloss={support.offerGloss}
       speakTask={speakTask}
       speakFrame={speakFrame}
       earDrill={earDrill}
