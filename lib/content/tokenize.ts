@@ -100,8 +100,28 @@ export function tokenizeTranscript(transcript: string): string[] {
  * Regular English inflections a learner who knows the base form can decode.
  * Used only to match against a known-word set — never to *add* words to it.
  */
+/**
+ * Words whose trailing letters look like an inflection and are not.
+ *
+ * `his` is not the plural of `hi`, and `its` is not the plural of `it` -- but
+ * both bases are taught in unit 1, so stripping the `s` credited the learner
+ * for two distinct high-frequency function words they had never met. The same
+ * goes for `was`, `yes`, `this` and `bus`. Every one of these silently
+ * *inflated* readability, which is the direction that matters: a scene passed
+ * the 95% gate while containing words the learner did not have.
+ *
+ * Length is not a usable rule here -- `cars`, `eyes` and `days` are the same
+ * size as `his` and are genuine plurals -- so this is a list, kept short and
+ * confined to words frequent enough to matter.
+ */
+const NEVER_DECOMPOSED = new Set([
+  "his", "its", "this", "was", "has", "is", "as", "us", "yes", "does", "goes",
+  "bus", "gas", "less", "class", "press", "always", "perhaps", "news",
+]);
+
 export function morphologicalVariants(word: string): string[] {
   const v = new Set<string>([word]);
+  if (NEVER_DECOMPOSED.has(word)) return [...v];
   const add = (s: string) => { if (s.length > 1) v.add(s); };
 
   if (word.endsWith("s")) {

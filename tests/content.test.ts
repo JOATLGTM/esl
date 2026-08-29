@@ -164,3 +164,56 @@ describe("curriculum known-word timeline", () => {
     assert.equal(r.passes, false);
   });
 });
+
+/**
+ * Two ways readability was silently *inflated* -- both found 2026-08-28 while
+ * planning the vocabulary for `b1_u2`, the numbers unit, which is exactly
+ * where the first would have done its damage.
+ *
+ * Inflation is the dangerous direction. A scene that scores too low gets
+ * rewritten; a scene that scores too high ships, and the learner meets words
+ * nobody ever taught them.
+ */
+describe("readability credit is not inflated", () => {
+  test("English numbers are not free cognates", () => {
+    // `twenty` shares not one letter with `veinte`. The old bare `ty` -> `dad`
+    // suffix rule credited it as "twendad", and every number to ninety with it.
+    for (const n of ["twenty", "thirty", "forty", "fifty", "sixty", "eighty", "ninety"]) {
+      assert.equal(isCognate(n), false, `${n} must not be credited`);
+    }
+  });
+
+  test("nor are common -ty adjectives", () => {
+    for (const w of ["party", "dirty", "empty", "pretty", "safety"]) {
+      assert.equal(isCognate(w), false, `${w} must not be credited`);
+    }
+  });
+
+  test("true cognates survive the fix", () => {
+    for (const w of ["information", "university", "decision", "difficulty", "famous", "moment"]) {
+      assert.equal(isCognate(w), true, `${w} should still be credited`);
+    }
+  });
+
+  test("a suffix rule cannot invent a Spanish word", () => {
+    // `payment` -> "paymento" is not a word; the rules construct without
+    // checking, so the exception list is the only guard.
+    assert.equal(isCognate("payment"), false);
+    assert.equal(isCognate("government"), false);
+  });
+
+  test("a trailing -s is not always an inflection", () => {
+    // `his` is not the plural of `hi`, and both bases are taught in unit 1 --
+    // so stripping the s credited two distinct function words for free.
+    assert.deepEqual(morphologicalVariants("his"), ["his"]);
+    assert.deepEqual(morphologicalVariants("its"), ["its"]);
+    assert.deepEqual(morphologicalVariants("was"), ["was"]);
+    assert.deepEqual(morphologicalVariants("yes"), ["yes"]);
+  });
+
+  test("but real plurals still decompose", () => {
+    assert.ok(morphologicalVariants("days").includes("day"));
+    assert.ok(morphologicalVariants("names").includes("name"));
+    assert.ok(morphologicalVariants("boxes").includes("box"));
+  });
+});

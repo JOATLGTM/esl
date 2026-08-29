@@ -9,6 +9,8 @@ content/
   curriculum.yaml            the A0→A2 spine; lists only units that exist
   vocab-schedule.yaml        which words become legal in which unit -- read
                              this BEFORE authoring, not after
+  STORY.md                   who the cast are, what is at stake, and the beat
+                             each unit hits -- read this before a scene
   characters.yaml            the recurring cast, one fixed voice each
   units/<unit_id>.yaml       chunks + scenes + speaking task
   contrasts/<contrast>.yaml  HVPT minimal-pair drill sets

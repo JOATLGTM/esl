@@ -14,6 +14,7 @@ Read it alongside, not instead of:
 | `docs/DEPLOY.md` | env vars, audio hosting, auth URLs — read before any deploy |
 | `docs/CONTENT-BRIEF.md` | the brief for sourcing and authoring the other 35 units — the actual bottleneck |
 | `content/README.md` | the authoring pipeline, the 95% rule, the two kinds of audio |
+| `content/STORY.md` | the cast, the four block arcs, the beat each unit hits |
 | `supabase/README.md` | schema, RLS, the connection layer |
 | `lib/copy/es.ts` | every Spanish string, with the house style at the top |
 
@@ -278,6 +279,25 @@ Stepping outside the schedule is an **error**, not a warning, and deliberately:
 adding a word is one line, and having to write that line on purpose is the
 whole mechanism. As a warning the file would be decoration.
 
+**The story bible and the Block 1 vocabulary plan** — written 2026-08-28, and
+between them the last two authoring foundations.
+
+`content/STORY.md` gives the four blocks an arc with stakes: **to be seen** (A0)
+→ **to belong** (A1) → **to manage alone** (A1+) → **to have a voice** (A2).
+Miguel arrives unable to say anything and ends the course explaining a problem
+to his supervisor and being believed. Block 3 carries the real setback — he
+goes out without Carlos translating, it goes wrong, and *he* fixes it. Rules
+that matter: no seventh character ever (a seventh permanent voice dilutes the
+recognition the cast exists for), nobody explains English inside a scene, and
+immigration/police/employers/clinics may appear but Miguel is never in legal
+jeopardy — the tension is always linguistic, never existential.
+
+`content/vocab-schedule.yaml` now plans all six Block 1 units: **176 word types,
+zero duplicates**, 41 → 176 across the block. Blocks 2–4 are deliberately still
+empty, because they want frequency work this repo does not have.
+
+**Two readability-inflation bugs found while doing it** — see the traps.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -288,7 +308,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 317, all passing.**
+**Tests — 323, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -526,6 +546,30 @@ content under generated noise.
 
 ## Traps — things that cost time once already
 
+**Readability was inflated two ways, and both were found by planning `b1_u2`
+rather than by any test.** Inflation is the dangerous direction: a scene that
+scores too low gets rewritten, and one that scores too high ships.
+
+1. **The `ty` → `dad` suffix rule credited every number from twenty to
+   ninety** as a free cognate ("twendad"), plus party, dirty, empty, pretty and
+   safety. A Spanish speaker gets nothing free from `twenty` — *veinte* shares
+   not one letter. `b1_u2` is the numbers unit, so this was about to land
+   exactly where it did most damage. Removed. It did catch true cognates
+   (difficulty, liberty, property) and `ity` does **not** cover them —
+   `difficulty` ends in `lty` — but all of those are Latinate B1+, above where
+   this course now ends, while every false positive is core A0. `difficulty` is
+   curated instead. **The suffix rules construct a Spanish word and never check
+   it exists**, which is the general failure: `payment` → "paymento" sailed
+   through. `suffix_exceptions` in `cognates.yaml` is the only guard.
+2. **`morphologicalVariants` stripped a trailing `s` unconditionally**, so
+   `his` → `hi` and `its` → `it` — and both bases are taught in unit 1, so two
+   distinct high-frequency function words were free. Length cannot separate
+   these (`days`, `eyes` are the same size and are real plurals), so
+   `NEVER_DECOMPOSED` is a list.
+
+Unit 1 was unaffected — its scenes score 100% with **zero** cognate credit — so
+this was latent, not historic. Pinned by `tests/content.test.ts`.
+
 **`produce_spoken` has no emitter, and that is the feature.** It is a legal
 review mode, `countsAsProduction` returns true for it, and `learned` needs two
 production passes — guarded by a CHECK because it is the most load-bearing
@@ -755,13 +799,14 @@ from a cookie is client-supplied data.
 
    a. ~~**Wire a stage to frames.**~~ Done 2026-08-28 — Speak displays them and
       `b1_u1` has three.
-   b. ~~**Freeze a vocabulary release schedule.**~~ The *mechanism* is done —
-      `content/vocab-schedule.yaml`, enforced. **Units 2–6 are still empty**,
-      and filling them is the next real piece of work. Unit 1's 41 words are
-      the measured baseline to plan against.
-   c. **A story bible** — six characters, four blocks, an arc per block with
-      actual stakes. Not started. Without it, generated scenes become a
-      sequence of errands and nobody cares whether Ana gets the job.
+   b. ~~**Freeze a vocabulary release schedule.**~~ Done — Block 1 is planned
+      in full (176 word types, 41 → 176 across six units). **Blocks 2–4 are
+      still empty** and want frequency work this repo does not have.
+   c. ~~**A story bible.**~~ Done — `content/STORY.md`.
+
+   **All three foundations are done. `b1_u2` is now writable**: its beat is in
+   `STORY.md`, its legal vocabulary is in `vocab-schedule.yaml`, and the
+   validator will hold both.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person

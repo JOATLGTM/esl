@@ -25,6 +25,7 @@ export type CognateData = {
   curated: Map<string, string>;
   falseFriends: Map<string, { looks_like: string; really_means_es: string }>;
   properNouns: Set<string>;
+  suffixExceptions: Set<string>;
 };
 
 let cache: CognateData | null = null;
@@ -41,6 +42,9 @@ export function loadCognateData(contentDir = CONTENT_DIR): CognateData {
 
   cache = {
     suffixRules: cognates.suffix_rules as SuffixRule[],
+    suffixExceptions: new Set(
+      ((cognates.suffix_exceptions as string[] | undefined) ?? []).map((w) => w.toLowerCase())
+    ),
     curated: new Map(
       (cognates.curated as { en: string; es: string }[]).map((c) => [c.en.toLowerCase(), c.es])
     ),
@@ -82,7 +86,11 @@ export function classifyCognate(token: string, data = loadCognateData()): Cognat
     if (curated) return { cognate: true, via: "curated", es: curated };
   }
 
-  if (word.length >= MIN_SUFFIX_RULE_LENGTH) {
+  // A suffix rule constructs a Spanish word and cannot check that it exists,
+  // so a word that transforms plausibly but falsely -- `payment` -> "paymento"
+  // -- would be waved through. Exceptions are the check the rules cannot do
+  // for themselves.
+  if (word.length >= MIN_SUFFIX_RULE_LENGTH && !data.suffixExceptions.has(word)) {
     for (const rule of data.suffixRules) {
       if (word.endsWith(rule.en)) {
         return { cognate: true, via: "suffix", es: word.slice(0, -rule.en.length) + rule.es };

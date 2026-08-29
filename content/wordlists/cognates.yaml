@@ -23,7 +23,19 @@ suffix_rules:
   - { en: "tion",  es: "ción",   note: "information / información" }
   - { en: "sion",  es: "sión",   note: "decision / decisión" }
   - { en: "ity",   es: "idad",   note: "university / universidad" }
-  - { en: "ty",    es: "dad",    note: "difficulty / dificultad" }
+  # No bare `ty` -> `dad` rule, removed 2026-08-28. It credited every English
+  # number from twenty to ninety as a free cognate ("twendad"), plus party,
+  # dirty, empty, pretty, safety, beauty and duty. A Spanish speaker gets
+  # nothing free from `twenty` -- veinte shares not one letter with it -- and
+  # `b1_u2` is the numbers unit, so the inflation was about to land exactly
+  # where it did most damage.
+  #
+  # It did catch true cognates (difficulty, liberty, property, cruelty), and
+  # `ity` does NOT cover them -- difficulty ends in `lty`. But every one of
+  # those is Latinate B1+ vocabulary, above where this course ends, while every
+  # false positive is core A0. So the rule was a bad trade *for this
+  # curriculum*; `difficulty` is curated below instead. Restore the rule only
+  # alongside Blocks 5-6, and with the exceptions list extended first.
   - { en: "ous",   es: "oso",    note: "famous / famoso" }
   - { en: "ment",  es: "mento",  note: "moment / momento" }
   - { en: "able",  es: "able",   note: "probable / probable" }
@@ -41,6 +53,22 @@ suffix_rules:
 # False friends. NEVER counted as known. Each one is a documented trap; the
 # `error_type: false_friend` deck in PRD F6 seeds from this list.
 # --------------------------------------------------------------------------
+# Words a suffix rule would credit but should not.
+#
+# The rules construct a Spanish word and never check that it exists, so
+# `payment` becomes "paymento" and is waved through. That is the whole failure
+# mode: a plausible-looking transformation of a word the learner has to learn.
+# Keep this list to words common enough to actually appear.
+suffix_exceptions:
+  - payment
+  - government
+  - movement
+  - statement
+  - treatment
+  - agreement
+  - management
+  - basement
+
 false_friends:
   - { en: actually,     looks_like: actualmente,  really_means_es: "en realidad" }
   - { en: actual,       looks_like: actual,       really_means_es: "real, verdadero" }
@@ -97,6 +125,8 @@ false_friends:
 # Curated transparent cognates. English word -> the Spanish word it rides on.
 # --------------------------------------------------------------------------
 curated:
+  # Rescued from the removed `ty` -> `dad` suffix rule; see the note above.
+  - { en: difficulty, es: dificultad }
   # people, places, everyday nouns
   - { en: hospital,   es: hospital }
   - { en: hotel,      es: hotel }

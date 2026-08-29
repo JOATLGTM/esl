@@ -24,10 +24,16 @@
 #     the schedule is a plan, and `npm run content:validate` checks the units
 #     that do exist against it.
 #
-# Block 1's remaining units are listed with empty releases and a note. That is
-# deliberate: filling them is a curriculum decision that wants the sourcing
-# research in `docs/CONTENT-BRIEF.md`, and inventing a word list here to look
-# finished would be the worst kind of content -- authoritative and unfounded.
+# Block 1 is planned in full. Its vocabulary is close to forced: the can-do
+# statements in `curriculum.yaml` and the unit beats in `content/STORY.md`
+# between them decide most of it, and what remains is ordering -- function
+# words first, then the nouns each beat needs. Blocks 2-4 are NOT planned here
+# yet; they want the frequency work in `docs/CONTENT-BRIEF.md`, and a word list
+# that looked authoritative but was invented would be worse than none.
+#
+# Every word below was machine-checked before it was written: it tokenizes to
+# itself, is not already released, is not an inflection of something released,
+# and is not a cognate or proper noun the readability scorer credits anyway.
 
 version: 1
 
@@ -87,21 +93,171 @@ units:
   # ---------------------------------------------------------------------------
 
   - unit: b1_u2
-    note: Numbers, age, and yes/no questions.
-    releases: []
+    note: >-
+      Numbers to twenty, age, and the yes/no question. The beat is a form Miguel
+      has to fill in -- a phone number, an age -- and survive without help.
+      Articles land here too: `a`, `an` and `the` are the highest-frequency
+      words in English and unit 1's formulaic chunks happen to contain none.
+    releases:
+      - a
+      - an
+      - eight
+      - eighteen
+      - eleven
+      - fifteen
+      - five
+      - four
+      - fourteen
+      - have
+      - here
+      - it
+      - many
+      - nine
+      - nineteen
+      - okay
+      - old
+      - one
+      - phone
+      - seven
+      - seventeen
+      - six
+      - sixteen
+      - sure
+      - ten
+      - the
+      - thirteen
+      - three
+      - twelve
+      - twenty
+      - two
+      - year
 
   - unit: b1_u3
-    note: Family and people.
-    releases: []
+    note: >-
+      Family and people. Ana asks who is in the photo. This unit carries the
+      third-person pronouns, which unblocks every scene where someone is
+      talked about rather than talked to.
+    releases:
+      - back
+      - brother
+      - daughter
+      - father
+      - friend
+      - he
+      - her
+      - him
+      - home
+      - husband
+      - in
+      - little
+      - love
+      - miss
+      - mother
+      - our
+      - people
+      - she
+      - sister
+      - son
+      - their
+      - there
+      - they
+      - too
+      - us
+      - we
+      - who
+      - wife
+      - with
 
   - unit: b1_u4
-    note: Places, and where things are.
-    releases: []
+    note: >-
+      Places and where things are. Miguel gets lost on the way to the cafe.
+      Prepositions of place, and the first verbs of motion.
+    releases:
+      - across
+      - at
+      - block
+      - building
+      - closed
+      - come
+      - corner
+      - down
+      - far
+      - first
+      - go
+      - house
+      - left
+      - near
+      - next
+      - on
+      - open
+      - right
+      - side
+      - stop
+      - store
+      - straight
+      - street
+      - turn
+      - up
+      - where
+      - work
 
   - unit: b1_u5
-    note: Time, days, and routine.
-    releases: []
+    note: >-
+      Time, days, and routine. Rosa gives Miguel his hours and he reads one
+      back wrong. `o'clock` is one token, not two -- the tokenizer keeps the
+      apostrophe, so releasing `o` and `clock` separately would match nothing.
+    releases:
+      - day
+      - early
+      - evening
+      - every
+      - finish
+      - friday
+      - late
+      - monday
+      - need
+      - o'clock
+      - saturday
+      - start
+      - sunday
+      - thursday
+      - time
+      - today
+      - tomorrow
+      - tuesday
+      - until
+      - wednesday
+      - week
+      - when
+      - yesterday
 
   - unit: b1_u6
-    note: Wants and needs -- the first frames with an open filler class.
-    releases: []
+    note: >-
+      Wants and needs -- and the first frames with an open filler class, which
+      is what makes `I'd like {NP}, please` worth authoring. Miguel orders at
+      Maria's counter alone. The block ends here on purpose.
+    releases:
+      - any
+      - big
+      - bread
+      - cold
+      - drink
+      - eat
+      - food
+      - for
+      - give
+      - help
+      - hot
+      - like
+      - milk
+      - more
+      - much
+      - new
+      - small
+      - some
+      - take
+      - tea
+      - want
+      - water
+      - without
+      - would
