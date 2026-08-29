@@ -82,6 +82,54 @@ export const DECLARED_TOLERANCE = 0.2;
  */
 export const MAX_SCENE_SPREAD = 1.25;
 
+/**
+ * Typical syllables per word in the English this course teaches.
+ *
+ * Words-per-minute is not a speaking rate. It is a speaking rate divided by
+ * word length, and word length is a property of the *text* -- so the same voice
+ * at the same physical pace measures faster on monosyllables. `b1_u2` proved
+ * it: teaching numbers pushed the cast from 157 to 176 wpm and every voice
+ * looked like a regression, while the actual rate moved 3.24 -> 3.38 syllables
+ * per second, which is nothing. The unit is 1.16 syllables per word against
+ * unit 1's 1.26.
+ *
+ * Left uncorrected, every unit that teaches numbers or function words would
+ * fail this gate forever, and the gate would be deleted -- so rates are
+ * measured in syllables and reported in words, normalised to this constant.
+ * 1.3 is conversational English; A0 content sits a little below it, which is
+ * exactly the distortion being corrected for.
+ */
+export const SYLLABLES_PER_WORD = 1.3;
+
+/**
+ * Syllables in a word, by vowel groups.
+ *
+ * An estimate, and it does not need to be better than one: it is applied to
+ * both sides of every comparison, so a consistent small error cancels. Silent
+ * final `e` is the one correction worth making because it is systematic
+ * ("phone", "name", "fine" are all over this curriculum).
+ */
+export function estimateSyllables(word: string): number {
+  const w = word.toLowerCase().replace(/[^a-z]/g, "");
+  if (!w) return 0;
+  const groups = w.match(/[aeiouy]+/g);
+  let n = groups ? groups.length : 1;
+  if (w.endsWith("e") && !w.endsWith("le") && n > 1) n--;
+  return Math.max(1, n);
+}
+
+export function syllablesIn(text: string): number {
+  return text.trim().split(/\s+/).reduce((a, w) => a + estimateSyllables(w), 0);
+}
+
+/**
+ * Speaking rate as a words-per-minute figure that does not depend on how long
+ * the words happen to be. This is what `rate_wpm` in the roster means.
+ */
+export function normalisedWpm(text: string, durationMs: number): number {
+  return syllablesIn(text) / (durationMs / 60_000) / SYLLABLES_PER_WORD;
+}
+
 export type VoiceRate = {
   voiceId: string;
   wpm: number;
@@ -105,7 +153,7 @@ export function measureVoiceRates(
 ): VoiceRate[] {
   const byVoice = new Map<string, number[]>();
   for (const clip of measurable(clips)) {
-    const wpm = wordsIn(clip.text) / (clip.durationMs / 60_000);
+    const wpm = normalisedWpm(clip.text, clip.durationMs);
     if (!byVoice.has(clip.voiceId)) byVoice.set(clip.voiceId, []);
     byVoice.get(clip.voiceId)!.push(wpm);
   }

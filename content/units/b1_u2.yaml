@@ -1,0 +1,577 @@
+# Block 1, Unit 2 -- numbers, age, and the yes/no answer.
+#
+# The beat (content/STORY.md): Miguel needs a phone, which means a form, which
+# means saying his age and a string of digits to a stranger. Carlos turns up and
+# offers to translate, and Miguel says no. That refusal is the unit: the first
+# time he chooses the harder path on purpose.
+#
+# Design notes for whoever edits this next:
+#   * Five counting chunks (c_0045-c_0049) carry one through twenty, and no
+#     example introduces more than two new numbers -- the validator caps an
+#     example at two unknown words, which is what forced the shape. Twenty
+#     single-word chunks would have been vocabulary, not chunks; counting aloud
+#     is a real thing a real person does, and it puts every digit on a card with
+#     audio.
+#   * `Yes, I do` and `No, I do not` are here because English answers yes/no
+#     questions with an auxiliary and Spanish does not. A learner who answers
+#     "Yes" alone is understood; one who can answer "Yes, I do" sounds like
+#     someone who speaks English.
+#   * Tom joins the story here. His accent is different on purpose (PRD 4.4) and
+#     the first time the learner meets it, he is being kind.
+
+unit_id: b1_u2
+block: 1
+order: 2
+title_es: "Números"
+title_en: "Numbers"
+cefr: A0
+can_do_es: "Puedo decir mi edad, mi número de teléfono y contestar sí o no"
+# Still ee_ih: it is the only authored drill set, and /iː/-/ɪ/ is not a contrast
+# a beginner finishes in one unit. `thirteen`/`thirty` lives exactly here.
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0026
+    en: "How old are you?"
+    es: "¿Cuántos años tienes?"
+    cefr: A0
+    example_en: "How old are you, Miguel?"
+    example_es: "¿Cuántos años tienes, Miguel?"
+    tags: [question, age]
+    audio: [auto]
+
+  - id: c_0027
+    en: "I am twenty years old"
+    es: "Tengo veinte años"
+    cefr: A0
+    # The transfer error this pre-empts is the most common one there is:
+    # *"I have twenty years", straight from `tengo veinte años`.
+    example_en: "I am twenty years old, and you?"
+    example_es: "Tengo veinte años, ¿y tú?"
+    accepts: ["I'm twenty years old", "I am twenty"]
+    tags: [age]
+    audio: [auto]
+
+  - id: c_0028
+    en: "What is your phone number?"
+    es: "¿Cuál es tu número de teléfono?"
+    cefr: A0
+    example_en: "What is your phone number, please?"
+    example_es: "¿Cuál es tu número de teléfono, por favor?"
+    tags: [question, phone]
+    audio: [auto]
+
+  - id: c_0029
+    en: "My phone number is"
+    es: "Mi número de teléfono es"
+    cefr: A0
+    example_en: "My phone number is five, one, two."
+    example_es: "Mi número de teléfono es cinco, uno, dos."
+    tags: [phone]
+    audio: [auto]
+
+  - id: c_0030
+    en: "Do you have a phone?"
+    es: "¿Tienes teléfono?"
+    cefr: A0
+    example_en: "Do you have a phone, Miguel?"
+    example_es: "¿Tienes teléfono, Miguel?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0031
+    en: "Yes, I do"
+    es: "Sí (respuesta corta)"
+    cefr: A0
+    example_en: "Yes, I do. Here it is."
+    example_es: "Sí. Aquí está."
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0032
+    en: "No, I do not"
+    es: "No (respuesta corta)"
+    cefr: A0
+    example_en: "No, I do not have a phone."
+    example_es: "No, no tengo teléfono."
+    accepts: ["No, I don't"]
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0033
+    en: "Here it is"
+    es: "Aquí está"
+    cefr: A0
+    example_en: "Here it is, Ana."
+    example_es: "Aquí está, Ana."
+    tags: [giving]
+    audio: [auto]
+
+  - id: c_0034
+    en: "One moment, please"
+    es: "Un momento, por favor"
+    cefr: A0
+    example_en: "One moment, please. Here it is."
+    example_es: "Un momento, por favor. Aquí está."
+    tags: [repair, courtesy]
+    audio: [auto]
+
+  - id: c_0035
+    en: "How many?"
+    es: "¿Cuántos?"
+    cefr: A0
+    example_en: "How many years?"
+    example_es: "¿Cuántos años?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0036
+    en: "Are you sure?"
+    es: "¿Estás seguro?"
+    cefr: A0
+    example_en: "Are you sure? Can you repeat it?"
+    example_es: "¿Estás seguro? ¿Puedes repetirlo?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0037
+    en: "I am sure"
+    es: "Estoy seguro"
+    cefr: A0
+    example_en: "I am sure. It is nine."
+    example_es: "Estoy seguro. Es nueve."
+    accepts: ["I'm sure"]
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0038
+    en: "Okay"
+    es: "Está bien"
+    cefr: A0
+    example_en: "Okay, thank you."
+    example_es: "Está bien, gracias."
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0039
+    en: "Can you repeat the number?"
+    es: "¿Puedes repetir el número?"
+    cefr: A0
+    example_en: "Can you repeat the number, please?"
+    example_es: "¿Puedes repetir el número, por favor?"
+    tags: [repair, phone]
+    audio: [auto]
+
+  - id: c_0040
+    en: "I do not have it"
+    es: "No lo tengo"
+    cefr: A0
+    example_en: "I do not have it here."
+    example_es: "No lo tengo aquí."
+    accepts: ["I don't have it"]
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0041
+    en: "I have a phone"
+    es: "Tengo un teléfono"
+    cefr: A0
+    example_en: "I have a phone. It is here."
+    example_es: "Tengo un teléfono. Está aquí."
+    tags: [phone]
+    audio: [auto]
+
+  - id: c_0042
+    en: "Is this your phone?"
+    es: "¿Es este tu teléfono?"
+    cefr: A0
+    example_en: "Is this your phone, Miguel?"
+    example_es: "¿Es este tu teléfono, Miguel?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0043
+    en: "It is an old phone"
+    es: "Es un teléfono viejo"
+    cefr: A0
+    example_en: "It is an old phone, and it is fine."
+    example_es: "Es un teléfono viejo, y está bien."
+    tags: [describing]
+    audio: [auto]
+
+  - id: c_0044
+    en: "Say it, please"
+    es: "Dilo, por favor"
+    cefr: A0
+    example_en: "Say it, please. I do not understand."
+    example_es: "Dilo, por favor. No entiendo."
+    tags: [repair]
+    audio: [auto]
+
+  # Counting. Four chunks rather than twenty, so every digit reaches a card
+  # with audio without the unit turning into a vocabulary list.
+  - id: c_0045
+    en: "One, two, three"
+    es: "Uno, dos, tres"
+    cefr: A0
+    example_en: "One, two, three, four, five."
+    example_es: "Uno, dos, tres, cuatro, cinco."
+    tags: [numbers]
+    audio: [auto]
+
+  - id: c_0046
+    en: "Six, seven, eight"
+    es: "Seis, siete, ocho"
+    cefr: A0
+    example_en: "Six, seven, eight, nine, ten."
+    example_es: "Seis, siete, ocho, nueve, diez."
+    tags: [numbers]
+    audio: [auto]
+
+  - id: c_0047
+    en: "Eleven, twelve"
+    es: "Once, doce"
+    cefr: A0
+    example_en: "Eleven, twelve, thirteen."
+    example_es: "Once, doce, trece."
+    tags: [numbers]
+    audio: [auto]
+
+  - id: c_0048
+    en: "Fourteen, fifteen"
+    es: "Catorce, quince"
+    cefr: A0
+    example_en: "Fourteen, fifteen, sixteen."
+    example_es: "Catorce, quince, dieciséis."
+    tags: [numbers]
+    audio: [auto]
+
+  - id: c_0049
+    en: "Seventeen, eighteen"
+    es: "Diecisiete, dieciocho"
+    cefr: A0
+    example_en: "Seventeen, eighteen, nineteen."
+    example_es: "Diecisiete, dieciocho, diecinueve."
+    tags: [numbers]
+    audio: [auto]
+
+  # Teaches `in`, and is the phrase the whole unit turns on: Carlos offers
+  # Spanish in s_0010 and Miguel answers in English. A learner who can ask for
+  # English gets to choose which language a conversation happens in, which is
+  # the entire difference between practising and being practised on.
+  - id: c_0050
+    en: "in English"
+    es: "en inglés"
+    cefr: A0
+    example_en: "Say it in English, please."
+    example_es: "Dilo en inglés, por favor."
+    tags: [repair, language]
+    audio: [auto]
+
+# The age frame. Its fillers are numbers, which the curriculum will never teach
+# as chunks -- the same reason unit 1's three frames are all literal.
+frames:
+  - id: f_0004
+    pattern: "I am {AGE} years old."
+    es_pattern: "Tengo {AGE} años."
+    slot: AGE
+    literal_fillers:
+      ["sixteen", "seventeen", "eighteen", "nineteen", "twenty", "fifteen", "fourteen", "thirteen"]
+    cefr: A0
+    tags: [age]
+
+scenes:
+  # One afternoon: Miguel needs a phone, gets one, and gives the number to two
+  # people. Carlos offers to translate in s_0010 and is turned down, which is
+  # the beat the whole unit is built around.
+
+  - id: s_0007
+    title_es: "¿Cuántos años tienes?"
+    character: ana
+    duration_target_s: 48
+    transcript: |
+      ANA: Good morning, Miguel.
+      MIGUEL: Good morning, Ana. How are you?
+      ANA: I am fine, thank you. And you?
+      MIGUEL: I am fine.
+      ANA: Miguel, do you have a phone?
+      MIGUEL: No, I do not.
+      ANA: No phone? Okay. How old are you?
+      MIGUEL: Excuse me? Can you repeat that?
+      ANA: How old are you? Twenty? Twenty one?
+      MIGUEL: Yes. I am twenty years old.
+      ANA: Twenty. Okay. And how old are you, Tom?
+      TOM: I am twenty seven years old.
+      MIGUEL: Twenty seven?
+      TOM: Yes, twenty seven.
+      ANA: Miguel, this is Tom. Tom, this is Miguel.
+      TOM: Hello, Miguel. Nice to meet you.
+      MIGUEL: Nice to meet you, Tom.
+    questions:
+      - q_es: "¿Quién es mayor, Miguel o Tom?"
+        options_es:
+          - "Miguel"
+          - "Tom"
+          - "Tienen la misma edad"
+        answer: 1
+      - q_es: "¿Qué hace Miguel cuando no entiende la pregunta de Ana?"
+        options_es:
+          - "Se va sin contestar"
+          - "Contesta un número cualquiera"
+          - "Pide que se la repitan"
+        answer: 2
+      - q_es: "Miguel repite \"twenty seven\". ¿Para qué?"
+        options_es:
+          - "Para confirmar que entendió"
+          - "Para pedir ayuda"
+          - "Para despedirse"
+        answer: 0
+
+  - id: s_0008
+    title_es: "En la tienda"
+    character: tom
+    duration_target_s: 40
+    transcript: |
+      TOM: Hello. How are you?
+      MIGUEL: I am fine, thank you. And you?
+      TOM: I am fine, thank you. What is your name?
+      MIGUEL: My name is Miguel.
+      TOM: Miguel. Okay. And how old are you, Miguel?
+      MIGUEL: Excuse me? I do not understand.
+      TOM: How many years? One, two, three... how many?
+      MIGUEL: Okay. I am twenty years old.
+      TOM: Twenty. Thank you. Do you have a phone?
+      MIGUEL: No, I do not have a phone.
+      TOM: Okay. One moment, please.
+      MIGUEL: Thank you, Tom.
+      TOM: You are welcome, Miguel.
+    questions:
+      - q_es: "¿Qué hace Tom cuando Miguel no entiende?"
+        options_es:
+          - "Repite la pregunta de otra manera"
+          - "Le dice adiós"
+          - "Le pregunta su nombre"
+        answer: 0
+      - q_es: "¿Cómo pide ayuda Miguel?"
+        options_es:
+          - "Dice su edad"
+          - "Dice que no entiende"
+          - "Cuenta hasta tres"
+        answer: 1
+      - q_es: "¿Miguel llega a contestar la pregunta?"
+        options_es:
+          - "No, se va"
+          - "No, Tom contesta por él"
+          - "Sí, después de la segunda pregunta"
+        answer: 2
+
+  - id: s_0009
+    title_es: "El número"
+    character: tom
+    duration_target_s: 42
+    transcript: |
+      TOM: Miguel, here it is. This is your phone.
+      MIGUEL: Thank you. Is this my phone number?
+      TOM: Yes, it is. Five, one, two, nine, eight.
+      MIGUEL: Can you repeat the number, please?
+      TOM: Five, one, two, nine, eight.
+      MIGUEL: Five, one, two, nine... eight?
+      TOM: Yes. Are you sure?
+      MIGUEL: One moment, please.
+      MIGUEL: Five, one, two, nine, eight. I am sure.
+      TOM: Good. It is an old phone, and it is fine.
+      MIGUEL: It is fine. Thank you, Tom.
+      TOM: You are welcome. See you later, Miguel.
+      MIGUEL: See you later.
+    questions:
+      - q_es: "¿Por qué Miguel dice \"un momento, por favor\"?"
+        options_es:
+          - "Porque no quiere el teléfono"
+          - "Porque necesita tiempo para repasar el número"
+          - "Porque Tom habla muy despacio"
+        answer: 1
+      - q_es: "¿Cuántas veces dice Tom el número?"
+        options_es:
+          - "Dos veces"
+          - "Una vez"
+          - "Tres veces"
+        answer: 0
+      - q_es: "Al final, ¿Miguel se queda tranquilo?"
+        options_es:
+          - "No, sigue sin entender"
+          - "No, se va sin el teléfono"
+          - "Sí, dice que está seguro"
+        answer: 2
+
+  - id: s_0010
+    title_es: "Carlos quiere ayudar"
+    character: carlos
+    duration_target_s: 44
+    transcript: |
+      CARLOS: Hello, Miguel. Hello, Tom.
+      TOM: Hi, Carlos. How are you?
+      CARLOS: I am fine, thank you.
+      CARLOS: Miguel, do you understand? I can say it in Spanish.
+      MIGUEL: No, thank you. In English, please.
+      CARLOS: Are you sure?
+      MIGUEL: I am sure. I can say it in English.
+      CARLOS: Okay. What is your phone number?
+      MIGUEL: My phone number is five, one, two, nine, eight.
+      CARLOS: Five, one, two, nine, eight. Okay, Miguel!
+      TOM: It is an old phone.
+      CARLOS: An old phone is fine.
+      MIGUEL: It is fine. Thank you, Tom. Goodbye, Carlos.
+    questions:
+      - q_es: "¿Qué le ofrece Carlos a Miguel?"
+        options_es:
+          - "Un teléfono nuevo"
+          - "Hablarle en español"
+          - "Su número"
+        answer: 1
+      - q_es: "¿Por qué Miguel dice que no?"
+        options_es:
+          - "Porque quiere hacerlo en inglés"
+          - "Porque no le cae bien Carlos"
+          - "Porque no escuchó"
+        answer: 0
+      - q_es: "¿Cómo demuestra Miguel que entendió?"
+        options_es:
+          - "Le da las gracias a Carlos"
+          - "Le pide a Tom que repita"
+          - "Dice el número en voz alta"
+        answer: 2
+
+  - id: s_0011
+    title_es: "Miguel da su número"
+    character: ana
+    duration_target_s: 46
+    transcript: |
+      ANA: Miguel! Good afternoon.
+      MIGUEL: Good afternoon, Ana.
+      ANA: Do you have a phone?
+      MIGUEL: Yes, I do. Here it is.
+      ANA: Is this your phone? It is an old phone!
+      MIGUEL: Yes, it is old. It is fine.
+      ANA: What is your phone number?
+      MIGUEL: My phone number is five, one, two, nine, eight.
+      ANA: Five, one, two, nine... Can you repeat it, please?
+      MIGUEL: Five, one, two, nine, eight.
+      ANA: Five, one, two, nine, eight. Okay.
+      MIGUEL: Yes. That is it.
+      ANA: Thank you, Miguel. Good afternoon.
+      MIGUEL: Good afternoon, Ana. See you later.
+    questions:
+      - q_es: "En la tienda Miguel pidió que le repitieran. ¿Quién lo pide aquí?"
+        options_es:
+          - "Ana"
+          - "Miguel"
+          - "Nadie, se entienden a la primera"
+        answer: 0
+      - q_es: "¿Qué cambió desde la mañana?"
+        options_es:
+          - "Ahora Miguel tiene teléfono"
+          - "Ahora Ana tiene teléfono"
+          - "Ahora Miguel tiene veintisiete años"
+        answer: 0
+      - q_es: "¿Cómo se despiden?"
+        options_es:
+          - "No se despiden"
+          - "Solo Ana se despide"
+          - "Los dos, y uno dice \"hasta luego\""
+        answer: 2
+
+  - id: s_0012
+    title_es: "En el café"
+    character: maria
+    duration_target_s: 48
+    transcript: |
+      MARIA: Good afternoon! How are you?
+      MIGUEL: I am fine, thank you. And you?
+      MARIA: I am fine, thank you.
+      MARIA: Miguel, is this your phone?
+      MIGUEL: Yes, it is. It is an old phone.
+      MARIA: It is fine! What is your phone number?
+      MIGUEL: One moment, please. Five, one, two, nine, eight.
+      MARIA: Five, one, two, nine, eight. Okay!
+      MIGUEL: How old is your phone, Maria?
+      MARIA: My phone? Ten years old!
+      MIGUEL: Ten years! My phone is not ten years old.
+      MARIA: No! Your phone is fine, Miguel.
+      MIGUEL: Okay. Thank you, Maria. Good night.
+      MARIA: Good night, Miguel. See you later.
+    questions:
+      - q_es: "¿Qué le pregunta Miguel a Maria?"
+        options_es:
+          - "Su número de teléfono"
+          - "Cuántos años tiene ella"
+          - "Cuántos años tiene su teléfono"
+        answer: 2
+      - q_es: "¿Por qué dice Miguel \"un momento, por favor\"?"
+        options_es:
+          - "Para recordar su número"
+          - "Para pedir un café"
+          - "Para despedirse"
+        answer: 0
+      - q_es: "¿Qué opina Maria del teléfono viejo?"
+        options_es:
+          - "Que no sirve"
+          - "Que está bien"
+          - "Que es de ella"
+        answer: 1
+
+speaking_task:
+  mode: scripted
+  character: tom
+  scenario_es: "Alguien te pide tu edad y tu número de teléfono. Contéstale."
+  scenario_en: "Someone asks your age and phone number. Answer them."
+  target_chunks: [c_0026, c_0027, c_0028, c_0029, c_0031, c_0039]
+  script:
+    - speaker: ai
+      en: "Hello! What is your name?"
+      es: "¡Hola! ¿Cómo te llamas?"
+    - speaker: user
+      en: "My name is {name}."
+      es: "Me llamo {name}."
+    - speaker: ai
+      en: "How old are you?"
+      es: "¿Cuántos años tienes?"
+    - speaker: user
+      en: "I am twenty years old."
+      es: "Tengo veinte años."
+    - speaker: ai
+      en: "Do you have a phone? What is your phone number?"
+      es: "¿Tienes teléfono? ¿Cuál es tu número de teléfono?"
+    - speaker: user
+      en: "Yes, I do. My phone number is five, one, two, nine, eight."
+      es: "Sí. Mi número de teléfono es cinco, uno, dos, nueve, ocho."
+    - speaker: ai
+      en: "Thank you. Goodbye!"
+      es: "Gracias. ¡Adiós!"
+    - speaker: user
+      en: "Can you repeat the number, please?"
+      es: "¿Puedes repetir el número, por favor?"
+
+missions:
+  - id: m_0003
+    title_es: "Cuenta en voz alta"
+    instructions_es: >-
+      Cuenta del uno al diez en inglés, en voz alta, delante de otra persona.
+      No tiene que ser en inglés con ella: dile "escucha esto" en español y
+      cuenta. Lo único que importa es que alguien te oiga hacerlo.
+    prep_chunk_ids: [c_0045, c_0046]
+    difficulty: 1
+    alternate_es: >-
+      Cuenta del uno al diez en voz alta en una llamada, o grábalo con el
+      teléfono y escúchalo. Contar solo, en voz alta, también cuenta.
+
+  - id: m_0004
+    title_es: "Di tu edad"
+    instructions_es: >-
+      Dile a alguien "I am ... years old" en inglés. Una frase. Si te pregunta
+      algo más y no entiendes, di "I do not understand" — eso también es
+      hablar inglés.
+    prep_chunk_ids: [c_0026, c_0027]
+    difficulty: 2
+    alternate_es: >-
+      Dilo en voz alta frente al espejo tres veces, o mándale a alguien una nota
+      de voz diciéndolo. La meta es que salga de tu boca, no que haya público.

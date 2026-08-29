@@ -298,6 +298,22 @@ empty, because they want frequency work this repo does not have.
 
 **Two readability-inflation bugs found while doing it** — see the traps.
 
+**`b1_u2` — the second unit** — authored 2026-08-28, the first written against
+the foundations rather than from scratch. Numbers, age, and the yes/no answer;
+25 chunks, 6 scenes, 1 frame, 2 missions, 2.2 MB of audio. Miguel needs a
+phone, which means a form, which means saying his age and a string of digits to
+a stranger — and Carlos turns up offering to translate and is turned down. That
+refusal is the unit.
+
+Two shapes worth copying. **Four counting chunks carry one to twenty**, because
+twenty single-word chunks would be vocabulary rather than chunks, and no
+example may introduce more than two new words — that cap is what forced the
+shape, not taste. And **`in English` is a chunk**, which teaches `in` and is
+the phrase the whole unit turns on: a learner who can ask for English chooses
+which language a conversation happens in.
+
+The course now runs about twelve days instead of six.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -308,7 +324,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 323, all passing.**
+**Tests — 326, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -545,6 +561,35 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**Words per minute is not a speaking rate.** It is a speaking rate divided by
+word length, and word length belongs to the *text*. Authoring `b1_u2` pushed
+the whole cast from 157 to 176 wpm and every voice looked like a regression —
+while the physical rate moved **3.24 → 3.38 syllables per second**, which is
+nothing. The unit is simply monosyllabic (1.16 syllables per word against unit
+1's 1.26) because numbers and function words are short. Uncorrected, every unit
+teaching numbers would have failed the gate forever, and a gate that cries wolf
+gets deleted. `lib/content/speech-rate.ts` now measures syllables and reports
+words, normalised to `SYLLABLES_PER_WORD`. Same lesson as `MIN_WORDS`: **fix
+the measurement before accusing the content.**
+
+**The audio manifest kept clips for lines that no longer existed.** It is
+loaded and merged into, so an edited transcript leaves its old entry behind
+forever — the new line hashes differently and never overwrites it. That is not
+untidy, it is three bugs: the stale entry claims its file, so `pruneOrphans`
+treats the file as live and never deletes it; it counts toward the per-unit
+download budget; and it is fed to the speech-rate gate, where a deleted line
+goes on dragging a voice's average around. Caught because removing one of
+Carlos's lines made a scene's speaker spread *worse*. `pruneStaleEntries` runs
+before `pruneOrphans` — order matters — and dropped **21 dead entries and 21
+orphan files** on its first run.
+
+**A test that manufactures its own fixture goes stale silently.** The
+progression test created a throwaway `zz_test_u2` because b1_u1 was the only
+authored unit, and asserted the learner advanced to it. Authoring `b1_u2` made
+that assertion wrong — the learner correctly advanced to the real next unit —
+and the test failed for the one reason that is good news. It now derives the
+expected target from curriculum order, so authoring `b1_u3` will not break it.
 
 **Readability was inflated two ways, and both were found by planning `b1_u2`
 rather than by any test.** Inflation is the dangerous direction: a scene that
@@ -804,9 +849,10 @@ from a cookie is client-supplied data.
       still empty** and want frequency work this repo does not have.
    c. ~~**A story bible.**~~ Done — `content/STORY.md`.
 
-   **All three foundations are done. `b1_u2` is now writable**: its beat is in
-   `STORY.md`, its legal vocabulary is in `vocab-schedule.yaml`, and the
-   validator will hold both.
+   **All three foundations are done, and `b1_u2` is written** — the first unit
+   authored against them. It took one pass plus validator iteration, which is
+   the whole argument for having built them. **`b1_u3` is next**; its beat and
+   its legal vocabulary are already waiting.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person

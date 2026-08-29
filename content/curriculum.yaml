@@ -26,6 +26,7 @@ blocks:
     l1_support_level: 1
     units:
       - b1_u1
+      - b1_u2
       # b1_u2 .. b1_u6 to come -- numbers, yes/no questions, family, places, time
 
   - block: 2

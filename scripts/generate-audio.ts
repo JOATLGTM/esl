@@ -268,6 +268,42 @@ function ingestRecordings(plan: AudioPlan, manifest: Manifest, force: boolean) {
   return { ingested, present: present.length, missing: plan.recordings.length - present.length };
 }
 
+/**
+ * Drop manifest entries for content that no longer exists.
+ *
+ * The manifest is loaded and *merged into*, so an edited transcript leaves its
+ * old line behind forever: the entry is never overwritten, because the new line
+ * hashes differently. That is not merely untidy. The stale entry claims its
+ * file, so `pruneOrphans` treats the file as live and never deletes it; it
+ * counts toward the per-unit download budget; and it is fed to the speech-rate
+ * gate, where a deleted line goes on dragging a voice's average around.
+ *
+ * Found on 2026-08-28 while rebalancing `s_0010`: removing one of Carlos's
+ * lines made the scene's speaker spread *worse*, because the removed line was
+ * still being measured.
+ *
+ * Recordings are deliberately not pruned here. They are human-read files that
+ * cost somebody an afternoon, and a contrast set being edited must never be a
+ * reason to throw them away -- `pruneOrphans` handles their files separately.
+ */
+function pruneStaleEntries(manifest: Manifest, plan: AudioPlan): number {
+  const liveClips = new Set(plan.clips.map((c) => c.hash));
+  const liveScenes = new Set(plan.scenes.map((s) => s.sceneId));
+
+  let removed = 0;
+  for (const hash of Object.keys(manifest.clips)) {
+    if (liveClips.has(hash)) continue;
+    delete manifest.clips[hash];
+    removed++;
+  }
+  for (const id of Object.keys(manifest.scenes)) {
+    if (liveScenes.has(id)) continue;
+    delete manifest.scenes[id];
+    removed++;
+  }
+  return removed;
+}
+
 /** Delete generated files the current plan no longer references. */
 function pruneOrphans(manifest: Manifest): number {
   if (!fs.existsSync(OUT_DIR)) return 0;
@@ -462,6 +498,10 @@ async function main() {
 
   const rec = ingestRecordings(plan, manifest, force);
   if (rec.ingested) console.log(`    ingested ${rec.ingested} human recording(s)`);
+
+  // Order matters: stale entries must go first, or they keep their files alive.
+  const stale = pruneStaleEntries(manifest, plan);
+  if (stale) console.log(`    dropped ${stale} stale manifest entr(ies)`);
 
   const pruned = pruneOrphans(manifest);
   if (pruned) console.log(`    pruned ${pruned} orphaned file(s)`);

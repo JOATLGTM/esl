@@ -30,6 +30,13 @@ names:
   - emma
   - david
 
+# Languages and nationalities. Capitalised in English, transparent to a Spanish
+# speaker, and never taught as vocabulary -- but load-bearing from unit 2, where
+# Carlos offers to switch to Spanish and Miguel turns him down.
+languages:
+  - spanish
+  - english
+
 places:
   - mexico
   - colombia

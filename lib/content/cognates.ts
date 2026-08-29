@@ -53,7 +53,9 @@ export function loadCognateData(contentDir = CONTENT_DIR): CognateData {
         .map((f) => [f.en.toLowerCase(), { looks_like: f.looks_like, really_means_es: f.really_means_es }])
     ),
     properNouns: new Set(
-      [...(proper.names ?? []), ...(proper.places ?? [])].map((n: string) => n.toLowerCase())
+      [...(proper.names ?? []), ...(proper.places ?? []), ...(proper.languages ?? [])].map(
+        (n: string) => n.toLowerCase()
+      )
     ),
   };
   return cache;

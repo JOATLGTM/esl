@@ -419,22 +419,16 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
   test("a learner who finishes a unit is moved to the next one", async () => {
     const { db, userId } = await fresh();
 
-    // Progression needs somewhere to go, and only one unit is authored. A
-    // throwaway second unit is the only way to prove the learner actually
-    // moves rather than that the query happens to return null.
-    const TEMP = "zz_test_u2";
-    await admin.from("units").upsert({
-      id: TEMP,
-      block: 1,
-      order: 99,
-      title_es: "Prueba",
-      title_en: "Test",
-      cefr: "A0",
-      can_do_es: "Prueba",
-      target_contrast: "ee_ih",
-    });
-
-    try {
+    // This used to create a throwaway `zz_test_u2`, because b1_u1 was the only
+    // authored unit and progression needed somewhere to go. Real units exist
+    // now, so the fixture is gone -- it was also the exact hazard the cleanup
+    // block below documents (`users.current_unit` is a foreign key with no
+    // cascade), and a test that manufactures its own next unit stops proving
+    // the thing it is named after.
+    //
+    // The expected target is derived from curriculum order rather than named,
+    // so authoring b1_u3 does not break this.
+    {
       const { data: chunkRows } = await db.from("chunks").select("id").eq("unit_id", UNIT);
       const { count: sceneCount } = await db
         .from("scenes")
@@ -481,9 +475,15 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
         "the unit did not register as finished",
       );
 
-      // And there is somewhere to go.
+      // And there is somewhere to go: the next unit in curriculum order,
+      // computed independently of `nextUnit` so this is a real check.
+      const ordered = [...curriculum!].sort((a, b) => a.block - b.block || a.order - b.order);
+      const expected = ordered[ordered.findIndex((u) => u.id === UNIT) + 1];
+      assert.ok(expected, "no unit follows the first one -- author another before this can pass");
+
       const target = nextUnit(curriculum!, UNIT);
-      assert.equal(target?.id, TEMP);
+      assert.equal(target?.id, expected.id);
+      assert.notEqual(target?.id, UNIT);
 
       // The learner may move themselves on; row-level security scopes it.
       const moved = await db
@@ -493,17 +493,8 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       assert.equal(moved.error, null, moved.error?.message);
 
       const { data: profile } = await db.from("users").select("current_unit, current_block").single();
-      assert.equal(profile!.current_unit, TEMP);
-      assert.equal(profile!.current_block, 1);
-    } finally {
-      // Order matters, and the error is checked rather than assumed.
-      // `users.current_unit` is a plain foreign key with no cascade, and the
-      // learner is now pointing at this unit -- deleting it under them fails,
-      // silently, and the leftover row then breaks the *next* test that counts
-      // units. Which is exactly what happened before this line existed.
-      await admin.from("users").update({ current_unit: UNIT, current_block: 1 }).eq("id", userId);
-      const cleanup = await admin.from("units").delete().eq("id", TEMP);
-      assert.equal(cleanup.error, null, `left ${TEMP} behind: ${cleanup.error?.message}`);
+      assert.equal(profile!.current_unit, expected.id);
+      assert.equal(profile!.current_block, expected.block);
     }
   });
 

@@ -7,18 +7,29 @@ import {
   MAX_WPM,
   MIN_WORDS,
   MIN_WPM,
+  SYLLABLES_PER_WORD,
+  estimateSyllables,
   measureSceneSpreads,
   measureVoiceRates,
+  normalisedWpm,
+  syllablesIn,
   rateProblems,
   type RateClip,
 } from "../lib/content/speech-rate";
 
-/** A clip of `words` words spoken at `wpm`. */
+/**
+ * A clip of `words` words spoken at `wpm`.
+ *
+ * The duration is derived from *syllables*, because that is what the gate
+ * measures: the fixture text is monosyllabic, so building it from words would
+ * make `clip("a", 150)` measure 115 and every expectation below a puzzle.
+ */
 function clip(voiceId: string, wpm: number, words = 6, ownerId = "s_0001"): RateClip {
+  const text = Array(words).fill("word").join(" ");
   return {
     voiceId,
-    text: Array(words).fill("word").join(" "),
-    durationMs: (words / wpm) * 60_000,
+    text,
+    durationMs: (syllablesIn(text) / SYLLABLES_PER_WORD / wpm) * 60_000,
     kind: "scene_line",
     ownerId,
   };
@@ -149,5 +160,45 @@ describe("not accusing anyone on thin evidence", () => {
     assert.equal(MIN_WORDS, 6);
     assert.deepEqual(measureVoiceRates([clip("a", 150, 4), clip("a", 150, 5)]), []);
     assert.equal(measureVoiceRates([clip("a", 150, 6)]).length, 1);
+  });
+});
+
+/**
+ * Why the gate counts syllables.
+ *
+ * Found by authoring `b1_u2`, the numbers unit: it pushed the whole cast from
+ * 157 to 176 wpm and every voice looked like a regression, while the physical
+ * rate moved 3.24 -> 3.38 syllables per second, which is nothing. The unit is
+ * simply monosyllabic -- 1.16 syllables per word against unit 1's 1.26 --
+ * because numbers and function words are short.
+ *
+ * Uncorrected, every unit teaching numbers would fail this gate forever, and a
+ * gate that cries wolf gets deleted. This is the same lesson as MIN_WORDS: fix
+ * the measurement before accusing the content.
+ */
+describe("word length does not masquerade as speaking rate", () => {
+  test("estimateSyllables handles the shapes this curriculum is made of", () => {
+    assert.equal(estimateSyllables("one"), 1);
+    assert.equal(estimateSyllables("seven"), 2);
+    assert.equal(estimateSyllables("seventeen"), 3);
+    assert.equal(estimateSyllables("phone"), 1, "silent final e");
+    assert.equal(estimateSyllables("name"), 1);
+    assert.equal(estimateSyllables("understand"), 3);
+    assert.equal(estimateSyllables(""), 0);
+  });
+
+  test("two texts at the same physical rate measure the same", () => {
+    // Six monosyllables against six two-syllable words, both spoken at
+    // 4 syllables per second. Raw wpm would differ by 2x; this must not.
+    const mono = "one two three four five six";        // 6 syllables
+    const poly = "seven seven seven seven seven seven"; // 12 syllables
+    const a = normalisedWpm(mono, (6 / 4) * 1000);
+    const b = normalisedWpm(poly, (12 / 4) * 1000);
+    assert.equal(Math.round(a), Math.round(b));
+  });
+
+  test("a genuinely faster voice still reads as faster", () => {
+    const text = "one two three four five six";
+    assert.ok(normalisedWpm(text, 1500) > normalisedWpm(text, 3000));
   });
 });
