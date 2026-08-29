@@ -334,18 +334,33 @@ scenes:
           - "Uno"
           - "Dos"
           - "Tres"
+        q_en: "How many siblings does Miguel have?"
+        options_en:
+          - "One"
+          - "Two"
+          - "Three"
         answer: 1
       - q_es: "¿Quién es mayor, la hermana o el hermano?"
         options_es:
           - "La hermana"
           - "El hermano"
           - "Tienen la misma edad"
+        q_en: "Who is older, the sister or the brother?"
+        options_en:
+          - "The sister"
+          - "The brother"
+          - "They are the same age"
         answer: 0
       - q_es: "¿Por qué Miguel cuenta en voz alta al final?"
         options_es:
           - "Porque no sabe contar"
           - "Porque Ana no entiende"
           - "Porque está sumando a su familia"
+        q_en: "Why does Miguel count out loud at the end?"
+        options_en:
+          - "He cannot count"
+          - "Ana does not understand"
+          - "He is adding up his family"
         answer: 2
 
   - id: s_0014
@@ -377,18 +392,33 @@ scenes:
           - "Que extraña a su familia"
           - "Su número de teléfono"
           - "Cuántos años tiene"
+        q_en: "What does Miguel tell Ana that he had told nobody?"
+        options_en:
+          - "That he misses his family"
+          - "His phone number"
+          - "How old he is"
         answer: 0
       - q_es: "¿Qué hace Ana cuando Miguel le dice eso?"
         options_es:
           - "Cambia de tema"
           - "Le dice que le pasa lo mismo"
           - "No contesta"
+        q_en: "What does Ana do when Miguel tells her?"
+        options_en:
+          - "Changes the subject"
+          - "Says the same is true for her"
+          - "Does not answer"
         answer: 1
       - q_es: "¿Por qué Miguel dice \"me too\" al final?"
         options_es:
           - "Porque él también tiene teléfono"
           - "Porque él también es de México"
           - "Porque él también extraña a los suyos"
+        q_en: "Why does Miguel say \"me too\" at the end?"
+        options_en:
+          - "He also has a phone"
+          - "He is also from Mexico"
+          - "He also misses his people"
         answer: 2
 
   - id: s_0015
@@ -413,18 +443,33 @@ scenes:
           - "Miguel"
           - "Tom"
           - "Los dos tienen igual"
+        q_en: "Who has more siblings?"
+        options_en:
+          - "Miguel"
+          - "Tom"
+          - "They have the same"
         answer: 2
       - q_es: "¿Qué diferencia hay entre la familia de Tom y la de Miguel?"
         options_es:
           - "La de Tom está aquí"
           - "La de Tom es más grande"
           - "Tom no tiene familia"
+        q_en: "What is different about Tom's family?"
+        options_en:
+          - "Tom's family is here"
+          - "Tom's family is bigger"
+          - "Tom has no family"
         answer: 0
       - q_es: "¿Miguel pregunta algo en esta escena?"
         options_es:
           - "No, solo contesta"
           - "Sí, pregunta si están aquí"
           - "Sí, pregunta la edad de Tom"
+        q_en: "Does Miguel ask anything in this scene?"
+        options_en:
+          - "No, he only answers"
+          - "Yes, he asks if they are here"
+          - "Yes, he asks Tom's age"
         answer: 1
 
   - id: s_0016
@@ -450,18 +495,33 @@ scenes:
           - "Sus padres"
           - "Su esposa y su hijo"
           - "Sus hermanas"
+        q_en: "Who is here with Carlos?"
+        options_en:
+          - "His parents"
+          - "His wife and his son"
+          - "His sisters"
         answer: 1
       - q_es: "¿Qué le quiere decir Carlos a Miguel al final?"
         options_es:
           - "Que aquí también tiene gente suya"
           - "Que debe volver a México"
           - "Que su hijo se llama Miguel"
+        q_en: "What does Carlos want to tell Miguel at the end?"
+        options_en:
+          - "That he has people here too"
+          - "That he should go back to Mexico"
+          - "That his son is called Miguel"
         answer: 0
       - q_es: "¿Cuántos años tiene Diego?"
         options_es:
           - "Diez"
           - "Doce"
           - "Dos"
+        q_en: "How old is Diego?"
+        options_en:
+          - "Ten"
+          - "Twelve"
+          - "Two"
         answer: 2
 
   - id: s_0017
@@ -487,18 +547,33 @@ scenes:
           - "A su hermana"
           - "A su madre"
           - "A su hijo"
+        q_en: "Who does Maria miss?"
+        options_en:
+          - "Her sister"
+          - "Her mother"
+          - "Her son"
         answer: 1
       - q_es: "¿Qué hace Miguel aquí que no hizo con Ana ni con Tom?"
         options_es:
           - "Preguntarle a la otra persona si extraña a alguien"
           - "Enseñar la foto"
           - "Decir su edad"
+        q_en: "What does Miguel do here that he did not do with Ana or Tom?"
+        options_en:
+          - "Ask the other person if they miss someone"
+          - "Show the photo"
+          - "Say his age"
         answer: 0
       - q_es: "¿Cómo termina la conversación?"
         options_es:
           - "Miguel se despide sin contestar"
           - "Maria cambia de tema"
           - "Los dos dicen que extrañan a alguien"
+        q_en: "How does the conversation end?"
+        options_en:
+          - "Miguel leaves without answering"
+          - "Maria changes the subject"
+          - "Both say they miss someone"
         answer: 2
 
   - id: s_0018
@@ -524,18 +599,33 @@ scenes:
           - "Que su familia va a venir"
           - "Que aquí también tiene gente suya"
           - "Que Tom es su hermano"
+        q_en: "What does Miguel understand at the end of the unit?"
+        options_en:
+          - "That his family is coming"
+          - "That he has people here too"
+          - "That Tom is his brother"
         answer: 1
       - q_es: "¿Quién pregunta primero por la persona de la foto?"
         options_es:
           - "Miguel"
           - "Ana"
           - "Nadie pregunta por la foto"
+        q_en: "Who asks first about the person in the photo?"
+        options_en:
+          - "Miguel"
+          - "Ana"
+          - "Nobody asks about the photo"
         answer: 0
       - q_es: "¿Por qué Miguel nombra a Carlos, a Tom, a Ana y a Maria?"
         options_es:
           - "Porque no recuerda sus nombres"
           - "Porque son su familia en México"
           - "Porque son la gente que tiene aquí"
+        q_en: "Why does Miguel name Carlos, Tom, Ana and Maria?"
+        options_en:
+          - "He cannot remember their names"
+          - "They are his family in Mexico"
+          - "They are the people he has here"
         answer: 2
 
 speaking_task:

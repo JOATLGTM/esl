@@ -192,7 +192,7 @@ bytes.
 *Cost: schema ~hours; ~1 day of curation; portraits an afternoon. Depends on:
 nothing.*
 
-### 7. English comprehension questions
+### 7. ~~English comprehension questions~~ — authored 2026-08-29, all 108
 
 `q_en` / `options_en` on scene questions, so the upper taper levels do
 something. Both halves of a question must come from one language — the code

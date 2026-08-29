@@ -313,18 +313,33 @@ scenes:
           - "Miguel"
           - "Tom"
           - "Tienen la misma edad"
+        q_en: "Who is older, Miguel or Tom?"
+        options_en:
+          - "Miguel"
+          - "Tom"
+          - "They are the same age"
         answer: 1
       - q_es: "¿Qué hace Miguel cuando no entiende la pregunta de Ana?"
         options_es:
           - "Se va sin contestar"
           - "Contesta un número cualquiera"
           - "Pide que se la repitan"
+        q_en: "What does Miguel do when he does not understand Ana's question?"
+        options_en:
+          - "Leaves without answering"
+          - "Says any number"
+          - "Asks her to repeat it"
         answer: 2
       - q_es: "Miguel repite \"twenty seven\". ¿Para qué?"
         options_es:
           - "Para confirmar que entendió"
           - "Para pedir ayuda"
           - "Para despedirse"
+        q_en: "Miguel repeats \"twenty seven\". Why?"
+        options_en:
+          - "To confirm he understood"
+          - "To ask for help"
+          - "To say goodbye"
         answer: 0
 
   - id: s_0008
@@ -351,18 +366,33 @@ scenes:
           - "Repite la pregunta de otra manera"
           - "Le dice adiós"
           - "Le pregunta su nombre"
+        q_en: "What does Tom do when Miguel does not understand?"
+        options_en:
+          - "Asks the question a different way"
+          - "Says goodbye"
+          - "Asks his name"
         answer: 0
       - q_es: "¿Cómo pide ayuda Miguel?"
         options_es:
           - "Dice su edad"
           - "Dice que no entiende"
           - "Cuenta hasta tres"
+        q_en: "How does Miguel ask for help?"
+        options_en:
+          - "He says his age"
+          - "He says he does not understand"
+          - "He counts to three"
         answer: 1
       - q_es: "¿Miguel llega a contestar la pregunta?"
         options_es:
           - "No, se va"
           - "No, Tom contesta por él"
           - "Sí, después de la segunda pregunta"
+        q_en: "Does Miguel answer the question in the end?"
+        options_en:
+          - "No, he leaves"
+          - "No, Tom answers for him"
+          - "Yes, after the second question"
         answer: 2
 
   - id: s_0009
@@ -389,18 +419,33 @@ scenes:
           - "Porque no quiere el teléfono"
           - "Porque necesita tiempo para repasar el número"
           - "Porque Tom habla muy despacio"
+        q_en: "Why does Miguel say \"one moment, please\"?"
+        options_en:
+          - "He does not want the phone"
+          - "He needs time to go over the number"
+          - "Tom speaks very slowly"
         answer: 1
       - q_es: "¿Cuántas veces dice Tom el número?"
         options_es:
           - "Dos veces"
           - "Una vez"
           - "Tres veces"
+        q_en: "How many times does Tom say the number?"
+        options_en:
+          - "Twice"
+          - "Once"
+          - "Three times"
         answer: 0
       - q_es: "Al final, ¿Miguel se queda tranquilo?"
         options_es:
           - "No, sigue sin entender"
           - "No, se va sin el teléfono"
           - "Sí, dice que está seguro"
+        q_en: "In the end, is Miguel sure?"
+        options_en:
+          - "No, he still does not understand"
+          - "No, he leaves without the phone"
+          - "Yes, he says he is sure"
         answer: 2
 
   - id: s_0010
@@ -427,18 +472,33 @@ scenes:
           - "Un teléfono nuevo"
           - "Hablarle en español"
           - "Su número"
+        q_en: "What does Carlos offer Miguel?"
+        options_en:
+          - "A new phone"
+          - "To speak to him in Spanish"
+          - "His number"
         answer: 1
       - q_es: "¿Por qué Miguel dice que no?"
         options_es:
           - "Porque quiere hacerlo en inglés"
           - "Porque no le cae bien Carlos"
           - "Porque no escuchó"
+        q_en: "Why does Miguel say no?"
+        options_en:
+          - "He wants to do it in English"
+          - "He does not like Carlos"
+          - "He did not hear"
         answer: 0
       - q_es: "¿Cómo demuestra Miguel que entendió?"
         options_es:
           - "Le da las gracias a Carlos"
           - "Le pide a Tom que repita"
           - "Dice el número en voz alta"
+        q_en: "How does Miguel show he understood?"
+        options_en:
+          - "He thanks Carlos"
+          - "He asks Tom to repeat"
+          - "He says the number out loud"
         answer: 2
 
   - id: s_0011
@@ -466,18 +526,33 @@ scenes:
           - "Ana"
           - "Miguel"
           - "Nadie, se entienden a la primera"
+        q_en: "In the store Miguel asked for a repeat. Who asks here?"
+        options_en:
+          - "Ana"
+          - "Miguel"
+          - "Nobody, they understand first time"
         answer: 0
       - q_es: "¿Qué cambió desde la mañana?"
         options_es:
           - "Ahora Miguel tiene teléfono"
           - "Ahora Ana tiene teléfono"
           - "Ahora Miguel tiene veintisiete años"
+        q_en: "What changed since the morning?"
+        options_en:
+          - "Now Miguel has a phone"
+          - "Now Ana has a phone"
+          - "Now Miguel is twenty seven"
         answer: 0
       - q_es: "¿Cómo se despiden?"
         options_es:
           - "No se despiden"
           - "Solo Ana se despide"
           - "Los dos, y uno dice \"hasta luego\""
+        q_en: "How do they say goodbye?"
+        options_en:
+          - "They do not"
+          - "Only Ana does"
+          - "Both, and one says \"see you later\""
         answer: 2
 
   - id: s_0012
@@ -505,18 +580,33 @@ scenes:
           - "Su número de teléfono"
           - "Cuántos años tiene ella"
           - "Cuántos años tiene su teléfono"
+        q_en: "What does Miguel ask Maria?"
+        options_en:
+          - "Her phone number"
+          - "How old she is"
+          - "How old her phone is"
         answer: 2
       - q_es: "¿Por qué dice Miguel \"un momento, por favor\"?"
         options_es:
           - "Para recordar su número"
           - "Para pedir un café"
           - "Para despedirse"
+        q_en: "Why does Miguel say \"one moment, please\"?"
+        options_en:
+          - "To remember his number"
+          - "To order a coffee"
+          - "To say goodbye"
         answer: 0
       - q_es: "¿Qué opina Maria del teléfono viejo?"
         options_es:
           - "Que no sirve"
           - "Que está bien"
           - "Que es de ella"
+        q_en: "What does Maria think of the old phone?"
+        options_en:
+          - "That it is no good"
+          - "That it is fine"
+          - "That it is hers"
         answer: 1
 
 speaking_task:

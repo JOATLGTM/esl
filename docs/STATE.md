@@ -441,6 +441,18 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**English comprehension questions** — authored 2026-08-29, `docs/ROADMAP.md`
+#7. All 108 scene questions now carry `q_en` / `options_en` beside the
+Spanish, so the taper's upper levels finally differ from its middle: at level
+4–5 Absorb asks in English, and both halves of a question always come from one
+language. Same answer index in both, so `answer` is shared and cannot drift.
+
+The English is plain and deliberately *not* held to the 95% rule: a question
+about a scene is meta-language ("Why does Tom say his name again?") and needs
+`why`, `again`, `introduces` — words no A0 unit teaches. A learner who has
+chosen less Spanish has chosen this, and the fallback to Spanish is one tap in
+`/ajustes`.
+
 **Image slots, without images** — built 2026-08-29, `docs/ROADMAP.md` #6.
 `chunks[].image`, `frames[].filler_images` (keyed by literal filler text) and
 `characters[].portrait`, each an optional public path; the validator fails on
@@ -1235,7 +1247,7 @@ features remain designed-but-unbuilt, both blocked on authoring:
 | Feature | Blocked on |
 |---|---|
 | **Branching dialogue** (`dialogue_runs`) | `dialogues.nodes` holds a flat script; `guided` and `open_response` modes need authored node trees. |
-| **The visible L1 taper** | ~~Half-built~~ **Built 2026-08-29.** What remains is content, not code: no unit authors `q_en`, so levels 3 and 5 are identical in Absorb until one does, and `lib/copy/es.ts` has no English chrome — the taper reaches the *material*, never the interface. Both are authoring, and both light up on their own. |
+| **The visible L1 taper** | ~~Half-built~~ **Built 2026-08-29.** `q_en` is authored for all of Block 1 as of 2026-08-29, so the upper levels now differ in Absorb. What remains is an English chrome for `lib/copy/es.ts` at level 5 — the taper reaches the material but not the interface. |
 
 Branching dialogue is the last one, and it is blocked in a way missions were
 not: a `guided` dialogue asks the learner to choose what to say, and the

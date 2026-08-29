@@ -306,18 +306,33 @@ scenes:
           - "La repite"
           - "Pregunta otra cosa"
           - "No dice nada"
+        q_en: "What does Miguel do after each direction?"
+        options_en:
+          - "Repeats it"
+          - "Asks something else"
+          - "Says nothing"
         answer: 0
       - q_es: "¿El café está lejos?"
         options_es:
           - "Sí, muy lejos"
           - "No, está cerca"
           - "Ana no lo sabe"
+        q_en: "Is the café far?"
+        options_en:
+          - "Yes, very far"
+          - "No, it is near"
+          - "Ana does not know"
         answer: 1
       - q_es: "¿Dónde tiene que dar vuelta Miguel?"
         options_es:
           - "En el parque"
           - "En la esquina"
           - "En la tienda"
+        q_en: "Where does Miguel have to turn?"
+        options_en:
+          - "At the park"
+          - "At the corner"
+          - "At the store"
         answer: 2
 
   - id: s_0020
@@ -343,18 +358,33 @@ scenes:
           - "Fue por la calle equivocada"
           - "Olvidó el nombre del café"
           - "Llegó tarde"
+        q_en: "What did Miguel do wrong before this scene?"
+        options_en:
+          - "Took the wrong street"
+          - "Forgot the café's name"
+          - "Arrived late"
         answer: 0
       - q_es: "¿Qué hace Miguel cuando no alcanza a entender?"
         options_es:
           - "Se va"
           - "Pide que se lo repitan"
           - "Dice que sí sin entender"
+        q_en: "What does Miguel do when he cannot follow?"
+        options_en:
+          - "Leaves"
+          - "Asks for it to be repeated"
+          - "Says yes without understanding"
         answer: 1
       - q_es: "¿Cómo reacciona Tom al ver que Miguel está perdido?"
         options_es:
           - "Se ríe de él"
           - "Le dice que no puede ayudarlo"
           - "Le da las indicaciones sin más"
+        q_en: "How does Tom react when Miguel is lost?"
+        options_en:
+          - "He laughs at him"
+          - "He says he cannot help"
+          - "He just gives the directions"
         answer: 2
 
   - id: s_0021
@@ -379,18 +409,33 @@ scenes:
           - "Ninguna"
           - "Una"
           - "Dos"
+        q_en: "How many times does Miguel ask for something to be repeated?"
+        options_en:
+          - "Never"
+          - "Once"
+          - "Twice"
         answer: 2
       - q_es: "¿Qué está cerca del parque?"
         options_es:
           - "El banco"
           - "La casa de Tom"
           - "La parada del autobús"
+        q_en: "What is near the park?"
+        options_en:
+          - "The bank"
+          - "Tom's house"
+          - "The bus stop"
         answer: 0
       - q_es: "¿Por qué Tom le dice \"you understand\"?"
         options_es:
           - "Porque Miguel se va sin decir nada"
           - "Porque Miguel repitió bien las indicaciones"
           - "Porque Miguel habla como Tom"
+        q_en: "Why does Tom say \"you understand\"?"
+        options_en:
+          - "Miguel leaves without a word"
+          - "Miguel repeated the directions correctly"
+          - "Miguel talks like Tom"
         answer: 1
 
   - id: s_0022
@@ -421,18 +466,33 @@ scenes:
           - "Alguien lo trae"
           - "Llega él solo, después de perderse"
           - "No llega"
+        q_en: "How does Miguel get to the café?"
+        options_en:
+          - "Someone brings him"
+          - "On his own, after getting lost"
+          - "He does not get there"
         answer: 1
       - q_es: "¿Qué está cerrado?"
         options_es:
           - "La tienda"
           - "El café"
           - "El banco"
+        q_en: "What is closed?"
+        options_en:
+          - "The store"
+          - "The café"
+          - "The bank"
         answer: 0
       - q_es: "¿Por qué dice Miguel \"but I am here\"?"
         options_es:
           - "Porque el café está cerca"
           - "Porque Maria no lo esperaba"
           - "Porque llegó aunque le costó"
+        q_en: "Why does Miguel say \"but I am here\"?"
+        options_en:
+          - "The café is near"
+          - "Maria was not expecting him"
+          - "He arrived even though it was hard"
         answer: 2
 
   - id: s_0023
@@ -462,18 +522,33 @@ scenes:
           - "Que trabajan juntos"
           - "Que viven en la misma casa"
           - "Que están cerca el uno del otro"
+        q_en: "What do Carlos and Miguel discover?"
+        options_en:
+          - "That they work together"
+          - "That they live in the same house"
+          - "That they are near each other"
         answer: 2
       - q_es: "¿Dónde trabaja Carlos?"
         options_es:
           - "En un edificio en la esquina"
           - "En el café"
           - "En la tienda"
+        q_en: "Where does Carlos work?"
+        options_en:
+          - "In a building on the corner"
+          - "In the café"
+          - "In the store"
         answer: 0
       - q_es: "¿Quién pregunta primero por el trabajo del otro?"
         options_es:
           - "Carlos"
           - "Miguel"
           - "Nadie pregunta"
+        q_en: "Who asks first about the other's work?"
+        options_en:
+          - "Carlos"
+          - "Miguel"
+          - "Nobody asks"
         answer: 1
 
   - id: s_0024
@@ -503,18 +578,33 @@ scenes:
           - "Ahora Miguel da las indicaciones"
           - "Ahora Miguel está perdido otra vez"
           - "Ahora Carlos habla español"
+        q_en: "What changed between the first scene and this one?"
+        options_en:
+          - "Now Miguel gives the directions"
+          - "Now Miguel is lost again"
+          - "Now Carlos speaks Spanish"
         answer: 0
       - q_es: "¿Qué le ofrece Miguel a Carlos al final?"
         options_es:
           - "Su teléfono"
           - "Acompañarlo"
           - "Un café"
+        q_en: "What does Miguel offer Carlos at the end?"
+        options_en:
+          - "His phone"
+          - "To go with him"
+          - "A coffee"
         answer: 1
       - q_es: "¿Miguel duda al dar las indicaciones?"
         options_es:
           - "Sí, no sabe la calle"
           - "Sí, se equivoca dos veces"
           - "No, solo pide un momento y sigue"
+        q_en: "Does Miguel hesitate giving the directions?"
+        options_en:
+          - "Yes, he does not know the street"
+          - "Yes, he gets it wrong twice"
+          - "No, he just asks for a moment and goes on"
         answer: 2
 
 speaking_task:

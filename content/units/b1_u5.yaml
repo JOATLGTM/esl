@@ -316,18 +316,33 @@ scenes:
           - "Llevarlo a ver a Rosa por trabajo"
           - "Su número de teléfono"
           - "Acompañarlo al café"
+        q_en: "What does Carlos offer Miguel?"
+        options_en:
+          - "To take him to see Rosa about work"
+          - "His phone number"
+          - "To go with him to the café"
         answer: 0
       - q_es: "¿Por qué Carlos dice que es temprano?"
         options_es:
           - "Porque Miguel llegó tarde"
           - "Porque hay tiempo para ir ahora"
           - "Porque Rosa no está"
+        q_en: "Why does Carlos say it is early?"
+        options_en:
+          - "Miguel arrived late"
+          - "There is time to go now"
+          - "Rosa is not there"
         answer: 1
       - q_es: "¿Miguel entiende la pregunta de Carlos a la primera?"
         options_es:
           - "Sí, contesta enseguida"
           - "No, y se queda callado"
           - "No, y dice que no entiende"
+        q_en: "Does Miguel understand Carlos's question first time?"
+        options_en:
+          - "Yes, he answers right away"
+          - "No, and he stays quiet"
+          - "No, and he says he does not understand"
         answer: 2
 
   - id: s_0026
@@ -354,18 +369,33 @@ scenes:
           - "El inglés de Miguel"
           - "Cuántos días va a trabajar"
           - "Cómo se llama"
+        q_en: "What does Rosa correct?"
+        options_en:
+          - "Miguel's English"
+          - "How many days he will work"
+          - "His name"
         answer: 1
       - q_es: "¿Miguel quería trabajar más o menos días de los que le dan?"
         options_es:
           - "Más"
           - "Menos"
           - "Los mismos"
+        q_en: "Did Miguel want to work more or fewer days than he gets?"
+        options_en:
+          - "More"
+          - "Fewer"
+          - "The same"
         answer: 0
       - q_es: "¿Cómo le habla Rosa a Miguel?"
         options_es:
           - "Con enojo"
           - "Muy despacio, como a un niño"
           - "Directa y sin problema"
+        q_en: "How does Rosa talk to Miguel?"
+        options_en:
+          - "Angrily"
+          - "Very slowly, like to a child"
+          - "Directly, no problem"
         answer: 2
 
   - id: s_0027
@@ -393,18 +423,33 @@ scenes:
           - "Empieza más tarde y termina antes"
           - "No trabaja"
           - "Empieza más temprano"
+        q_en: "What is different about Saturday?"
+        options_en:
+          - "Starts later and finishes earlier"
+          - "No work"
+          - "Starts earlier"
         answer: 0
       - q_es: "¿Qué hace Miguel cuando se pierde con el sábado?"
         options_es:
           - "Dice que sí igual"
           - "Dice que no entiende"
           - "Se va"
+        q_en: "What does Miguel do when he gets lost on Saturday?"
+        options_en:
+          - "Says yes anyway"
+          - "Says he does not understand"
+          - "Leaves"
         answer: 1
       - q_es: "¿A qué hora termina de lunes a viernes?"
         options_es:
           - "A la una"
           - "A las nueve"
           - "A las cuatro"
+        q_en: "What time does he finish Monday to Friday?"
+        options_en:
+          - "At one"
+          - "At nine"
+          - "At four"
         answer: 2
 
   - id: s_0028
@@ -432,18 +477,33 @@ scenes:
           - "En la hora del sábado"
           - "En los días que trabaja"
           - "En la hora de salida"
+        q_en: "What does Miguel get wrong?"
+        options_en:
+          - "The Saturday time"
+          - "The days he works"
+          - "The finishing time"
         answer: 0
       - q_es: "¿Qué hace Rosa cuando Miguel se equivoca?"
         options_es:
           - "Se lo pasa por alto"
           - "Se lo corrige y le pide que lo repita"
           - "Le dice que su inglés está mal"
+        q_en: "What does Rosa do when Miguel gets it wrong?"
+        options_en:
+          - "Lets it go"
+          - "Corrects it and asks him to repeat"
+          - "Says his English is bad"
         answer: 1
       - q_es: "¿Qué día empieza a trabajar?"
         options_es:
           - "El sábado"
           - "El domingo"
           - "El lunes"
+        q_en: "What day does he start work?"
+        options_en:
+          - "Saturday"
+          - "Sunday"
+          - "Monday"
         answer: 2
 
   - id: s_0029
@@ -471,18 +531,33 @@ scenes:
           - "Se equivoca con el sábado otra vez"
           - "Le pide a Ana que lo ayude"
           - "Lo dice entero y bien"
+        q_en: "How does Miguel tell his schedule here?"
+        options_en:
+          - "Gets Saturday wrong again"
+          - "Asks Ana for help"
+          - "Says it all, and right"
         answer: 2
       - q_es: "¿Qué le parece a Ana la hora de entrada?"
         options_es:
           - "Que es temprano"
           - "Que es tarde"
           - "No dice nada"
+        q_en: "What does Ana think of the start time?"
+        options_en:
+          - "That it is early"
+          - "That it is late"
+          - "She says nothing"
         answer: 0
       - q_es: "¿Qué es el domingo para Miguel?"
         options_es:
           - "El día que empieza"
           - "Su día libre"
           - "Un día de trabajo corto"
+        q_en: "What is Sunday for Miguel?"
+        options_en:
+          - "The day he starts"
+          - "His day off"
+          - "A short work day"
         answer: 1
 
   - id: s_0030
@@ -510,18 +585,33 @@ scenes:
           - "Porque el café cierra el resto de la semana"
           - "Porque es el único día que Miguel no trabaja"
           - "Porque el domingo hay más gente"
+        q_en: "Why does Maria tell him to come on Sunday?"
+        options_en:
+          - "The café is closed the rest of the week"
+          - "It is the only day Miguel does not work"
+          - "Sunday has more people"
         answer: 1
       - q_es: "¿Qué hace Miguel antes de decir la hora?"
         options_es:
           - "Pide un momento"
           - "Pregunta a otra persona"
           - "Dice que no sabe"
+        q_en: "What does Miguel do before saying the time?"
+        options_en:
+          - "Asks for a moment"
+          - "Asks someone else"
+          - "Says he does not know"
         answer: 0
       - q_es: "Maria se despide hasta mañana y Miguel hasta el domingo. ¿Por qué?"
         options_es:
           - "Porque no entendió a Maria"
           - "Porque mañana trabaja y el domingo no"
           - "Porque el café cierra mañana"
+        q_en: "Maria says \"see you tomorrow\" and Miguel says \"see you on Sunday\". Why?"
+        options_en:
+          - "He did not understand Maria"
+          - "He works tomorrow and not on Sunday"
+          - "The café is closed tomorrow"
         answer: 1
 
 speaking_task:

@@ -316,12 +316,27 @@ scenes:
     questions:
       - q_es: "¿Quién presenta a Carlos?"
         options_es: ["Miguel", "Ana", "Carlos mismo"]
+        q_en: "Who introduces Carlos?"
+        options_en:
+          - "Miguel"
+          - "Ana"
+          - "Carlos himself"
         answer: 1
       - q_es: "Cuando Ana pregunta «How are you?», ¿qué contesta Miguel?"
         options_es: ["Que no entiende", "Que está bien", "Que ya se va"]
+        q_en: "When Ana asks \"How are you?\", what does Miguel answer?"
+        options_en:
+          - "That he does not understand"
+          - "That he is fine"
+          - "That he is leaving"
         answer: 1
       - q_es: "¿Quiénes se despiden al final?"
         options_es: ["Solo Ana", "Solo Miguel", "Los tres"]
+        q_en: "Who says goodbye at the end?"
+        options_en:
+          - "Only Ana"
+          - "Only Miguel"
+          - "All three"
         answer: 2
 
   - id: s_0002
@@ -349,12 +364,27 @@ scenes:
     questions:
       - q_es: "¿De dónde es María?"
         options_es: ["De México", "De Texas", "De España"]
+        q_en: "Where is Maria from?"
+        options_en:
+          - "Mexico"
+          - "Texas"
+          - "Spain"
         answer: 1
       - q_es: "¿Qué hace Miguel antes de preguntarle el nombre?"
         options_es: ["Le da las gracias", "Se disculpa para llamar su atención", "Se despide"]
+        q_en: "What does Miguel do before asking her name?"
+        options_en:
+          - "Thanks her"
+          - "Says \"excuse me\" to get her attention"
+          - "Says goodbye"
         answer: 1
       - q_es: "¿Quién llega después y saluda a Miguel?"
         options_es: ["Carlos", "Tom", "Rosa"]
+        q_en: "Who arrives later and greets Miguel?"
+        options_en:
+          - "Carlos"
+          - "Tom"
+          - "Rosa"
         answer: 2
 
   - id: s_0003
@@ -385,12 +415,27 @@ scenes:
     questions:
       - q_es: "¿Cuántas veces le pide Miguel a Tom que repita?"
         options_es: ["Una", "Dos", "Ninguna"]
+        q_en: "How many times does Miguel ask Tom to repeat?"
+        options_en:
+          - "Once"
+          - "Twice"
+          - "Never"
         answer: 1
       - q_es: "¿Por qué Tom dice su nombre otra vez?"
         options_es: ["Porque se equivocó de nombre", "Porque Miguel no lo entendió", "Porque Miguel se lo preguntó dos veces"]
+        q_en: "Why does Tom say his name again?"
+        options_en:
+          - "He got the name wrong"
+          - "Miguel did not understand it"
+          - "Miguel asked twice"
         answer: 1
       - q_es: "Miguel dice «You're welcome». ¿Por qué?"
         options_es: ["Porque se está despidiendo", "Porque Tom le dio las gracias", "Porque no entendió"]
+        q_en: "Miguel says \"You're welcome\". Why?"
+        options_en:
+          - "He is saying goodbye"
+          - "Tom thanked him"
+          - "He did not understand"
         answer: 1
 
   - id: s_0004
@@ -418,12 +463,27 @@ scenes:
     questions:
       - q_es: "¿De dónde es Rosa?"
         options_es: ["De Colombia", "De México", "De Perú"]
+        q_en: "Where is Rosa from?"
+        options_en:
+          - "Colombia"
+          - "Mexico"
+          - "Peru"
         answer: 2
       - q_es: "¿Quién presenta a Ana?"
         options_es: ["Rosa", "Carlos", "Ana se presenta sola"]
+        q_en: "Who introduces Ana?"
+        options_en:
+          - "Rosa"
+          - "Carlos"
+          - "Ana introduces herself"
         answer: 1
       - q_es: "¿En qué momento del día se despiden?"
         options_es: ["En la mañana", "En la noche", "En la tarde"]
+        q_en: "What time of day do they say goodbye?"
+        options_en:
+          - "In the morning"
+          - "At night"
+          - "In the afternoon"
         answer: 1
 
   - id: s_0005
@@ -451,12 +511,27 @@ scenes:
     questions:
       - q_es: "¿Qué hace Miguel cuando no entiende el nombre de María?"
         options_es: ["Se va", "Le pide que lo repita", "Cambia de tema"]
+        q_en: "What does Miguel do when he does not understand Maria's name?"
+        options_en:
+          - "He leaves"
+          - "He asks her to repeat it"
+          - "He changes the subject"
         answer: 1
       - q_es: "¿Quién dice «You're welcome»?"
         options_es: ["Miguel", "María", "Los dos"]
+        q_en: "Who says \"You're welcome\"?"
+        options_en:
+          - "Miguel"
+          - "Maria"
+          - "Both"
         answer: 1
       - q_es: "¿Cuántas veces le da las gracias Miguel a María?"
         options_es: ["Una", "Dos", "Ninguna"]
+        q_en: "How many times does Miguel thank Maria?"
+        options_en:
+          - "Once"
+          - "Twice"
+          - "Never"
         answer: 1
 
   - id: s_0006
@@ -485,12 +560,27 @@ scenes:
     questions:
       - q_es: "¿De dónde es Tom?"
         options_es: ["De México", "De Inglaterra", "De Estados Unidos"]
+        q_en: "Where is Tom from?"
+        options_en:
+          - "Mexico"
+          - "England"
+          - "The United States"
         answer: 1
       - q_es: "¿Qué pasa cuando Miguel dice de dónde es?"
         options_es: ["Tom no entiende y le pide que repita", "Rosa lo corrige", "Nadie le contesta"]
+        q_en: "What happens when Miguel says where he is from?"
+        options_en:
+          - "Tom does not understand and asks him to repeat"
+          - "Rosa corrects him"
+          - "Nobody answers"
         answer: 0
       - q_es: "La conversación empieza por la tarde. ¿Cómo termina?"
         options_es: ["Por la mañana", "Ya de noche", "Sigue siendo de tarde"]
+        q_en: "The conversation starts in the afternoon. How does it end?"
+        options_en:
+          - "In the morning"
+          - "At night"
+          - "Still in the afternoon"
         answer: 1
 
 speaking_task:

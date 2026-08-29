@@ -314,18 +314,33 @@ scenes:
           - "Acompañarlo al café"
           - "Comida de su casa"
           - "Llevarlo en autobús"
+        q_en: "What does Carlos offer that Miguel turns down?"
+        options_en:
+          - "To go with him to the café"
+          - "Food from his house"
+          - "A bus ride"
         answer: 0
       - q_es: "¿Por qué Miguel quiere ir al café?"
         options_es:
           - "Para ver a Maria"
           - "Porque tiene hambre"
           - "Porque no trabaja hoy"
+        q_en: "Why does Miguel want to go to the café?"
+        options_en:
+          - "To see Maria"
+          - "He is hungry"
+          - "He is not working today"
         answer: 1
       - q_es: "¿Cómo dice Miguel que no necesita ayuda?"
         options_es:
           - "No contesta"
           - "Dice que está ocupado"
           - "Dice que no, gracias, dos veces"
+        q_en: "How does Miguel say he does not need help?"
+        options_en:
+          - "He does not answer"
+          - "He says he is busy"
+          - "He says \"no, thank you\" twice"
         answer: 2
 
   - id: s_0032
@@ -357,17 +372,32 @@ scenes:
           - "Espera"
           - "Le contesta ella"
           - "Le habla en español"
+        q_en: "What does Maria do when Miguel needs to think?"
+        options_en:
+          - "Waits"
+          - "Answers for him"
+          - "Speaks to him in Spanish"
         answer: 0
       - q_es: "¿Qué pide Miguel exactamente?"
         options_es:
           - "Un café grande sin leche"
           - "Un café pequeño con leche y pan"
           - "Un té con leche"
+        q_en: "What exactly does Miguel order?"
+        options_en:
+          - "A big coffee without milk"
+          - "A small coffee with milk and bread"
+          - "A tea with milk"
         answer: 1
       - q_es: "¿Quién decide el tamaño del café?"
         options_es:
           - "Maria"
           - "Nadie, viene de un tamaño"
+          - "Miguel"
+        q_en: "Who decides the size of the coffee?"
+        options_en:
+          - "Maria"
+          - "Nobody, it comes in one size"
           - "Miguel"
         answer: 2
 
@@ -400,18 +430,33 @@ scenes:
           - "Le da el teléfono a Maria"
           - "Cuenta el dinero en voz alta"
           - "Le pide ayuda a Maria"
+        q_en: "What does Miguel do to pay?"
+        options_en:
+          - "Gives Maria his phone"
+          - "Counts the money out loud"
+          - "Asks Maria for help"
         answer: 1
       - q_es: "¿Cómo le gusta el café a Miguel?"
         options_es:
           - "Caliente"
           - "Frío"
           - "No dice"
+        q_en: "How does Miguel like his coffee?"
+        options_en:
+          - "Hot"
+          - "Cold"
+          - "He does not say"
         answer: 0
       - q_es: "¿Qué le pregunta Maria al final?"
         options_es:
           - "Si quiere más café"
           - "Cuánto tiene"
           - "Si le gusta el pan"
+        q_en: "What does Maria ask at the end?"
+        options_en:
+          - "If he wants more coffee"
+          - "How much he has"
+          - "If he likes the bread"
         answer: 2
 
   - id: s_0034
@@ -441,18 +486,33 @@ scenes:
           - "Le pide un té"
           - "Le da su café"
           - "Le presta dinero"
+        q_en: "What does Miguel do for Tom?"
+        options_en:
+          - "Orders him a tea"
+          - "Gives him his coffee"
+          - "Lends him money"
         answer: 0
       - q_es: "¿Por qué Tom no pide café?"
         options_es:
           - "Porque está frío"
           - "Porque no le gusta"
           - "Porque es caro"
+        q_en: "Why does Tom not order coffee?"
+        options_en:
+          - "It is cold"
+          - "He does not like it"
+          - "It is expensive"
         answer: 1
       - q_es: "¿Qué hace Miguel que no había hecho nunca en el café?"
         options_es:
           - "Saludar a Maria"
           - "Pedir algo para él"
           - "Pedir algo para otra persona"
+        q_en: "What does Miguel do that he had never done in the café?"
+        options_en:
+          - "Greet Maria"
+          - "Order something for himself"
+          - "Order something for someone else"
         answer: 2
 
   - id: s_0035
@@ -479,18 +539,33 @@ scenes:
           - "Comida, tiene hambre"
           - "Un café caliente"
           - "Agua, tiene sed"
+        q_en: "What does Ana need?"
+        options_en:
+          - "Food, she is hungry"
+          - "A hot coffee"
+          - "Water, she is thirsty"
         answer: 2
       - q_es: "¿Quién habla con Maria por Ana?"
         options_es:
           - "Miguel"
           - "Ana misma"
           - "Nadie"
+        q_en: "Who talks to Maria for Ana?"
+        options_en:
+          - "Miguel"
+          - "Ana herself"
+          - "Nobody"
         answer: 0
       - q_es: "¿Qué quiere decir Miguel con \"es mi café\"?"
         options_es:
           - "Que el café es de su propiedad"
           - "Que ya es un lugar suyo"
           - "Que le pagó a Maria"
+        q_en: "What does Miguel mean by \"it is my café\"?"
+        options_en:
+          - "That he owns the café"
+          - "That it is his place now"
+          - "That he paid Maria"
         answer: 1
 
   - id: s_0036
@@ -518,18 +593,33 @@ scenes:
           - "Pide solo para él"
           - "Le pregunta a Maria si quiere algo"
           - "Se va sin pedir"
+        q_en: "What does Miguel do at the end of the unit?"
+        options_en:
+          - "Orders only for himself"
+          - "Asks Maria if she wants something"
+          - "Leaves without ordering"
         answer: 1
       - q_es: "¿Maria tiene que preguntarle a Miguel qué quiere?"
         options_es:
           - "No, ya sabe lo que pide"
           - "Sí, se lo pregunta cada vez"
           - "Sí, porque cambia de pedido"
+        q_en: "Does Maria have to ask Miguel what he wants?"
+        options_en:
+          - "No, she already knows his order"
+          - "Yes, she asks every time"
+          - "Yes, because he changes his order"
         answer: 0
       - q_es: "¿Para quién pide fruta Miguel?"
         options_es:
           - "Para él"
           - "Para Maria"
           - "Para Ana"
+        q_en: "Who does Miguel order fruit for?"
+        options_en:
+          - "Himself"
+          - "Maria"
+          - "Ana"
         answer: 2
 
 speaking_task:
