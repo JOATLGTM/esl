@@ -13,6 +13,8 @@ content/
                              each unit hits -- read this before a scene
   characters.yaml            the recurring cast, one fixed voice each
   units/<unit_id>.yaml       chunks + scenes + speaking task
+  listening/<unit_id>.yaml   the listening library: tracks made only of words
+                             the unit has released, gated at 100% known
   contrasts/<contrast>.yaml  HVPT minimal-pair drill sets
   voices.yaml                the TTS roster, for scripted content only
   speakers.yaml              the HUMAN roster, for ear training only

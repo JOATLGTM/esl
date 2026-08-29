@@ -1,0 +1,37 @@
+unit: b1_u5
+tracks:
+  - id: l_0009
+    title_es: "La semana de Miguel"
+    character: miguel
+    transcript: |
+      MIGUEL: This is my week. I work with Carlos and Rosa.
+      MIGUEL: I work from Monday to Friday. I start at eight o'clock in the morning.
+      MIGUEL: Eight o'clock is early. I am not late. I start early.
+      MIGUEL: I finish at four o'clock in the afternoon.
+      MIGUEL: On Saturday I start at nine o'clock. Not eight. Nine.
+      MIGUEL: And on Saturday I finish at one o'clock.
+      MIGUEL: I do not work on Sunday. Sunday is my day.
+      MIGUEL: On Sunday I go to the café. The café is open on Sunday. Maria is there.
+      MIGUEL: Today is Monday. I start today, at eight o'clock.
+      MIGUEL: Tomorrow is Tuesday. I work tomorrow too.
+      MIGUEL: Monday, Tuesday, Wednesday, Thursday, Friday. That is my work.
+      MIGUEL: Saturday, until one o'clock. And Sunday is my day.
+      MIGUEL: Rosa says: Miguel, say the week. And I say it. Every day, I say it.
+      MIGUEL: I need this work. I start now.
+
+  - id: l_0010
+    title_es: "Rosa habla de Miguel"
+    character: rosa
+    transcript: |
+      ROSA: Hello. My name is Rosa. I work with Carlos, and now I work with Miguel.
+      ROSA: Miguel is not from here. He needs work. He is good.
+      ROSA: Miguel starts at eight o'clock in the morning, from Monday to Friday.
+      ROSA: He finishes at four o'clock. On Saturday he starts at nine.
+      ROSA: Miguel says the week. He says: Monday to Friday, eight to four.
+      ROSA: And Saturday? He says: eight o'clock. No, Miguel. Saturday is nine.
+      ROSA: He says it: Saturday is nine o'clock. Good. That is it.
+      ROSA: Miguel does not work on Sunday. Sunday is his day.
+      ROSA: Miguel is early every day. He is not late. That is good.
+      ROSA: When he does not understand, he says: one moment, I do not understand.
+      ROSA: And I repeat it. That is fine. I understand him.
+      ROSA: Today is Monday. Miguel starts today. See you at eight, Miguel.

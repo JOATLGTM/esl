@@ -53,8 +53,8 @@ Linked. Eight migrations applied. Content seeded. Auth config pushed.
 | Table | Rows |
 |---|---|
 | blocks / characters / speakers | 6 / 6 / 6 |
-| units / chunks / frames | 6 / 152 / 12 |
-| scenes / dialogues / missions | 36 / 6 / 12 |
+| units / chunks / frames | 6 / 154 / 12 |
+| scenes (story + listening) / dialogues / missions | 36 + 12 / 6 / 12 |
 | contrast_sets / minimal_pairs | 1 / 25 |
 
 `.env.local` exists and works. It is gitignored; `.env.example` documents it.
@@ -440,6 +440,39 @@ chosen once at onboarding and then fixed forever.
 A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
+
+**The listening library** — built 2026-08-29, `docs/ROADMAP.md` #4. A new
+content type, `content/listening/<unit>.yaml`: connected speech in the cast's
+voices made **entirely of words the unit has already released**. It is gated
+at 100% known, not 95% — a track introduces nothing, which is the whole point:
+input that costs no vocabulary. Twelve tracks exist across Block 1, **11.3
+minutes, all at 100%**, taking connected speech from 22 to 33 minutes and the
+per-day figure from 37 s to 56 s.
+
+**That is the mechanism proven, not the target met.** The roadmap asks for
+10–20 minutes *per unit* (3–4 hours for Block 1); two tracks a unit is a
+foundation. Authoring more is now cheap — a track is ~150 tokens, passes the
+validator on the first try if it stays inside the word list, and costs
+nothing in vocabulary — so the remaining gap is hours, not design.
+
+Tracks ride in the `scenes` table with **`kind = 'listening'`** rather than
+a table of their own: the audio pipeline, the transcript timings and the
+player are all scene-shaped already. What they must *not* share is the daily
+loop — `pickSceneIndex` deals scenes by count and `isUnitComplete` finishes a
+unit on scenes heard — so every reader that counts or picks scenes filters on
+`kind = 'story'`. Proved live: `b1_u1` has 8 scene rows and the loop sees 6.
+
+The library is `/escuchar`, off `/home`: every track from units at or before
+the learner's current one, grouped by unit, with a player like Absorb's plus a
+**0.8× / 1× / 1.25× speed control** (`playbackRate`, pitch preserved). No
+questions, no score, nothing written. A shelf, not a stage.
+
+**Writing the tracks exposed a real content gap.** Every chunk in six units is
+first or second person, because conversation is — and narration is third
+person. Nothing anywhere taught `has` or `does`. Two chunks fixed it
+(`c_0153`, `c_0154`), which is the honest answer; the alternative was teaching
+the tokenizer that `has` is a form of `have`, which would have hidden the gap
+from every future scene as well.
 
 **He can hear himself now** — built 2026-08-29, `docs/ROADMAP.md` #3. Until
 this, `MediaRecorder` captured a take and uploaded it straight to Storage, and

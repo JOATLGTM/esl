@@ -45,6 +45,7 @@ const chunkId = z.string().regex(/^c_\d{4}$/, "chunk id must look like c_0412");
 const sceneId = z.string().regex(/^s_\d{4}$/, "scene id must look like s_0088");
 const unitId = z.string().regex(/^b\d_u\d$/, "unit id must look like b2_u3");
 const frameId = z.string().regex(/^f_\d{4}$/, "frame id must look like f_0031");
+const trackId = z.string().regex(/^l_\d{4}$/, "listening track id must look like l_0001");
 const characterId = z.string().regex(/^[a-z][a-z0-9_]*$/, "character id must be lowercase, like maria");
 
 /**
@@ -324,6 +325,45 @@ export const UnitSchema = z.object({
   missions: z.array(MissionSchema).default([]),
 });
 export type Unit = z.infer<typeof UnitSchema>;
+
+/* -------------------------------------------------------------------------- */
+/* The listening library                                                      */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * A listening track: connected speech in the cast's voices, made entirely of
+ * words the unit has already released. `docs/ROADMAP.md` #4.
+ *
+ * The whole course carried 34 minutes of English audio when this was added --
+ * 29 seconds of connected speech per day -- because every authored minute had
+ * to introduce vocabulary and fight the validator for it. A track introduces
+ * nothing. It is a re-narration, a monologue, the story from someone else's
+ * side, told inside the closed word list, so it passes the 95% rule at 100%
+ * by construction and costs a fraction of a scene to write. Input volume is
+ * what fluency is made of, and this is the only cheap source of it.
+ *
+ * Unscored, unquestioned, and outside the daily loop: it is a library the
+ * learner opens when he wants more, not a sixth stage. Which is why it is a
+ * separate type with no `questions` and no `duration_target_s` -- a monologue
+ * may run two minutes -- and why the seeder stores it as a scene with
+ * `kind = 'listening'` rather than in a table of its own: the audio pipeline,
+ * the transcript timings and the player are all scene-shaped already.
+ */
+export const ListeningTrackSchema = z.object({
+  id: trackId,
+  title_es: z.string().min(1),
+  /** Who is telling it -- the voice that carries the track. Must be in the cast. */
+  character: characterId,
+  /** Speaker-labelled lines, exactly like a scene transcript. */
+  transcript: z.string().min(1),
+});
+export type ListeningTrack = z.infer<typeof ListeningTrackSchema>;
+
+export const ListeningSetSchema = z.object({
+  unit: unitId,
+  tracks: z.array(ListeningTrackSchema).min(1),
+});
+export type ListeningSet = z.infer<typeof ListeningSetSchema>;
 
 export const MinimalPairSchema = z.object({
   id: z.string().regex(/^mp_\d{4}$/, "minimal pair id must look like mp_0001"),

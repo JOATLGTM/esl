@@ -251,6 +251,34 @@ export function buildAudioPlan(
         relPath: `scene/${trackHash}.${AUDIO_FORMAT.ext}`,
       });
     }
+
+    // Listening tracks are scene-shaped for the pipeline's purposes: lines in
+    // cast voices, stitched into one file with timings. Same clips, same
+    // stitch, same manifest -- only the id prefix (`l_`) tells them apart.
+    for (const track of bundle.listening.get(unit.unit_id) ?? []) {
+      const parsed = parseTranscriptLines(track.transcript);
+      const lines = parsed.map((line, index) => {
+        const voiceId = voiceForCharacter(line.speaker, `${track.id} line ${index + 1}`);
+        const spec = clip("scene_line", line.text, voiceId, track.id, {
+          unitId: unit.unit_id,
+          lineIndex: index,
+        });
+        push(spec);
+        return { index, character: line.speaker, text: line.text, clipHash: spec.hash };
+      });
+      const trackHash = crypto
+        .createHash("sha256")
+        .update(JSON.stringify([AUDIO_PIPELINE_VERSION, lines.map((l) => l.clipHash)]))
+        .digest("hex")
+        .slice(0, 16);
+      scenes.push({
+        sceneId: track.id,
+        unitId: unit.unit_id,
+        lines,
+        trackHash,
+        relPath: `scene/${trackHash}.${AUDIO_FORMAT.ext}`,
+      });
+    }
   }
 
   // Ear training: every word, read by every human speaker assigned to the set.

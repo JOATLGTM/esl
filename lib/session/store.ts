@@ -44,7 +44,7 @@ export async function loadStageInventory(
 
   const [chunks, scenes, speakingTasks, pairs, met] = await Promise.all([
     supabase.from("chunks").select("id", { count: "exact", head: true }).eq("unit_id", unit.id),
-    supabase.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unit.id),
+    supabase.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unit.id).eq("kind", "story"),
     supabase.from("dialogues").select("id", { count: "exact", head: true }).eq("unit_id", unit.id),
     // Counted, not just "does a pair row exist": all 25 pairs for `ee_ih` are
     // seeded with an empty `audio` array, because the human recordings are a
@@ -167,7 +167,7 @@ export async function advanceUnitIfComplete(
   const [chunkIds, cards, sceneCount, completed, curriculum] = await Promise.all([
     loadUnitChunkIds(unitId),
     supabase.from("user_cards").select("chunk_id").eq("user_id", userId),
-    supabase.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unitId),
+    supabase.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unitId).eq("kind", "story"),
     supabase
       .from("sessions")
       .select("id", { count: "exact", head: true })

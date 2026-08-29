@@ -124,7 +124,7 @@ few pronunciation interventions that works without a teacher, and it is
 
 ## Tier 2 — more English per day
 
-### 4. An extensive listening library
+### 4. ~~An extensive listening library~~ — mechanism built 2026-08-29; 12 tracks / 11.3 min so far, target is 10–20 min per unit
 
 A new content type — `content/listening/<unit>.yaml` — of re-narrations,
 monologues, second takes of the story from another character's view, all in the

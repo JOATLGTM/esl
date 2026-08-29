@@ -106,7 +106,7 @@ async function inventoryFor(db: SupabaseClient, unitId: string): Promise<StageIn
 
   const [chunks, scenes, dialogues, pairs] = await Promise.all([
     db.from("chunks").select("id", { count: "exact", head: true }).eq("unit_id", unitId),
-    db.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unitId),
+    db.from("scenes").select("id", { count: "exact", head: true }).eq("unit_id", unitId).eq("kind", "story"),
     db.from("dialogues").select("id", { count: "exact", head: true }).eq("unit_id", unitId),
     db.from("minimal_pairs").select("audio").eq("contrast", unit!.target_contrast),
   ]);
@@ -434,7 +434,8 @@ describe("the daily session (PRD 4.2)", { skip: skipReason }, () => {
       const { count: sceneCount } = await db
         .from("scenes")
         .select("id", { count: "exact", head: true })
-        .eq("unit_id", UNIT);
+        .eq("unit_id", UNIT)
+        .eq("kind", "story");
 
       // Not finished: nothing met, no sessions.
       const { data: curriculum } = await db.from("units").select("id, block, order");

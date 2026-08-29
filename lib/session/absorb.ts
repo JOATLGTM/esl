@@ -54,6 +54,9 @@ export async function loadAbsorbScene(
       .from("scenes")
       .select("id, title_es, audio_url, transcript, questions")
       .eq("unit_id", unitId)
+      // Story scenes only. Listening tracks share the table and must never be
+      // dealt into the daily loop or counted toward finishing a unit.
+      .eq("kind", "story")
       .order("id", { ascending: true }),
     // Sessions already finished in this unit. The current one is still open, so
     // this number is stable for its whole duration -- the page and a later

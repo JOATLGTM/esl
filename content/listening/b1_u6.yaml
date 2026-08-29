@@ -1,0 +1,40 @@
+unit: b1_u6
+tracks:
+  - id: l_0011
+    title_es: "Miguel en el café, solo"
+    character: miguel
+    transcript: |
+      MIGUEL: It is morning. I am hungry, and I am thirsty.
+      MIGUEL: I go to the café. I go without Carlos. I go without Ana. I go, and I am here.
+      MIGUEL: Maria says: good morning, Miguel! What do you want?
+      MIGUEL: I say: I would like a coffee, please.
+      MIGUEL: Maria says: big or small? I say: give me a moment, please.
+      MIGUEL: A small coffee, please. With milk. And some bread.
+      MIGUEL: Maria says: hot? I say: yes, hot. I do not like it cold.
+      MIGUEL: Maria gives me the coffee. It is hot. It is good. I like it.
+      MIGUEL: I say: how much is it? Maria says: four. One, two, three, four. Here it is.
+      MIGUEL: I eat the bread. I drink the coffee. I am not hungry now.
+      MIGUEL: Tom comes in. Tom is thirsty. Tom wants tea, without milk.
+      MIGUEL: I say: Maria, a tea for Tom, please. Without milk.
+      MIGUEL: Ana comes in. Ana wants water. I say: Maria, do you have water?
+      MIGUEL: Maria has water. It is cold. Ana likes it.
+      MIGUEL: This is my café now. I come every morning. Every morning I want a small coffee with milk, and some bread.
+
+  - id: l_0012
+    title_es: "Maria y su café"
+    character: maria
+    transcript: |
+      MARIA: Good morning! My name is Maria. This is my café.
+      MARIA: The café is open every morning, and every afternoon. It is open on Sunday too.
+      MARIA: I have coffee. I have tea. I have water, hot or cold.
+      MARIA: I have bread, and some fruit. I have milk for the coffee.
+      MARIA: Do you want a big coffee or a small coffee? Do you want it with milk?
+      MARIA: Miguel wants a small coffee with milk. Every morning! And some bread.
+      MARIA: Tom does not like coffee. Tom likes tea, without milk.
+      MARIA: Ana likes water. Cold water. Ana is not hungry in the morning.
+      MARIA: Carlos likes a big coffee. Hot! And a sandwich.
+      MARIA: When Miguel does not understand, he says: give me a moment, please.
+      MARIA: And I give him a moment. That is fine. I like Miguel.
+      MARIA: He is here every morning now. He says: I would like a coffee, please.
+      MARIA: And I say: a small coffee with milk, and some bread? And he says: yes! That is it.
+      MARIA: Come to my café. I have anything you want.

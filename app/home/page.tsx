@@ -130,6 +130,10 @@ export default async function HomePage() {
 
       <QuestList quests={quests} />
 
+      <ButtonLink href="/escuchar" variant="quiet">
+        {es.home.listeningCta}
+      </ButtonLink>
+
       <ButtonLink href="/ajustes" variant="quiet">
         {es.home.settingsCta}
       </ButtonLink>

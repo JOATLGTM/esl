@@ -1,0 +1,36 @@
+unit: b1_u3
+tracks:
+  - id: l_0005
+    title_es: "La familia de Miguel"
+    character: miguel
+    transcript: |
+      MIGUEL: This is a photo of my family. They are in Mexico.
+      MIGUEL: This is my mother. Her name is Elena. She is nice.
+      MIGUEL: This is my father. His name is Juan. He is nice too.
+      MIGUEL: This is my sister. Her name is Sofia. She is nineteen years old.
+      MIGUEL: And this is my little brother. He is fifteen. He has a phone!
+      MIGUEL: My family is not here. They are there, in Mexico.
+      MIGUEL: I miss them. I miss my mother, and I miss my father.
+      MIGUEL: I miss my sister, and I miss my little brother.
+      MIGUEL: I miss my home. My home is there, with them.
+      MIGUEL: But my friends are here. Ana is my friend. Tom is my friend.
+      MIGUEL: Carlos is my friend, and his family is here. His wife is here, and his son is here.
+      MIGUEL: Maria is my friend too. We are friends.
+      MIGUEL: My family is there, and my friends are with me. I love my family.
+
+  - id: l_0006
+    title_es: "Carlos y su hijo"
+    character: carlos
+    transcript: |
+      CARLOS: Hello. My name is Carlos. This is my family.
+      CARLOS: This is my wife. Her name is Laura. She is here, with me.
+      CARLOS: And this is my son. His name is Diego. He is two years old. He is little.
+      CARLOS: Diego says: hello! Diego says: mother! Diego says: father!
+      CARLOS: My mother is in Mexico. My father is in Mexico too.
+      CARLOS: I miss them. But my wife is here, and my son is here.
+      CARLOS: Miguel is my friend. His family is not here.
+      CARLOS: Miguel misses his family. He misses his mother, and he misses his home.
+      CARLOS: I understand Miguel. I say: Miguel, we are here. We are your friends.
+      CARLOS: Ana is his friend. Tom is his friend. Maria is his friend.
+      CARLOS: And Diego is his friend too! Diego says: hello, Miguel!
+      CARLOS: We are people with people. That is my family here.

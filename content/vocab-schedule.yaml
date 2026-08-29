@@ -149,6 +149,7 @@ units:
       - daughter
       - father
       - friend
+      - has
       - he
       - her
       - him
@@ -228,6 +229,7 @@ units:
       both.
     releases:
       - day
+      - does
       - early
       - evening
       - every

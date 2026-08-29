@@ -588,6 +588,7 @@ export type Database = {
           created_at: string
           duration_s: number | null
           id: string
+          kind: string
           questions: Json
           title_es: string
           transcript: Json
@@ -599,6 +600,7 @@ export type Database = {
           created_at?: string
           duration_s?: number | null
           id: string
+          kind?: string
           questions: Json
           title_es: string
           transcript: Json
@@ -610,6 +612,7 @@ export type Database = {
           created_at?: string
           duration_s?: number | null
           id?: string
+          kind?: string
           questions?: Json
           title_es?: string
           transcript?: Json

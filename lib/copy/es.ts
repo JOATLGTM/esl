@@ -149,6 +149,22 @@ export const es = {
     },
   },
 
+  // The listening library (ROADMAP #4). A shelf, not a stage: the copy must
+  // never suggest there is something to get right here. "Más historias" and
+  // not "práctica de escucha", because practice is what he does in the
+  // session and this is what he does on the bus.
+  listening: {
+    title: "Más historias",
+    blurb: "Las mismas personas, las mismas palabras que ya conoces, más tiempo escuchando. Sin preguntas.",
+    empty: "Todavía no hay historias para lo que llevas. Pronto.",
+    narrator: "Cuenta {name}",
+    play: "Escuchar",
+    pause: "Pausa",
+    speed: "Velocidad",
+    noAudio: "Esta historia todavía no tiene audio.",
+    backToLibrary: "Todas las historias",
+  },
+
   // Ajustes. The one place the learner is in charge of the product rather than
   // the other way round, so the copy never scolds and never implies a "right"
   // answer. Less Spanish is not better; it is just later.
@@ -181,6 +197,7 @@ export const es = {
   },
 
   home: {
+    listeningCta: "Más historias para escuchar",
     settingsCta: "Ajustes",
     greeting: "Hola",
     startSession: "Empezar",

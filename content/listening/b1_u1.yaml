@@ -1,0 +1,41 @@
+# Listening library for b1_u1 (docs/ROADMAP.md #4).
+#
+# Every word here was taught by unit 1. That is the rule and the point: a
+# track introduces nothing, so it costs no vocabulary and the validator holds
+# it at 100%. Unit 1 has 45 words, so these are short and repetitive -- which
+# at A0 is the lesson, not a limitation.
+unit: b1_u1
+tracks:
+  - id: l_0001
+    title_es: "Miguel cuenta su día"
+    character: miguel
+    transcript: |
+      MIGUEL: Hello. My name is Miguel. I am from Mexico.
+      MIGUEL: This is my morning. Good morning, Ana. Good morning, Carlos.
+      MIGUEL: Ana is nice. Carlos is nice.
+      MIGUEL: I say hello. I say good morning. I say thank you.
+      MIGUEL: I do not understand. I say: excuse me, can you repeat that?
+      MIGUEL: Ana can repeat that. Ana is nice.
+      MIGUEL: How are you, Miguel? I am fine, thank you. And you?
+      MIGUEL: This is good. This is my afternoon.
+      MIGUEL: Good afternoon, Maria. Nice to meet you.
+      MIGUEL: Goodbye, Ana. See you later, Carlos. Good night.
+      MIGUEL: My name is Miguel. I am from Mexico. Thank you.
+
+  - id: l_0002
+    title_es: "Ana y Carlos hablan de Miguel"
+    character: ana
+    transcript: |
+      ANA: Hello, Carlos. Good morning.
+      CARLOS: Good morning, Ana. How are you?
+      ANA: I am fine, thank you. And you?
+      CARLOS: I am fine. Ana, this is Miguel.
+      ANA: Yes! I see Miguel. Miguel is from Mexico.
+      CARLOS: Miguel is nice. Miguel says hello.
+      ANA: Yes. Miguel says good morning, and Miguel says thank you.
+      CARLOS: Miguel says: I do not understand.
+      ANA: And I repeat. I say: good morning, Miguel. And Miguel understands.
+      CARLOS: That is nice, Ana.
+      ANA: Miguel is nice. I see Miguel this afternoon.
+      CARLOS: See you later, Ana. Good afternoon.
+      ANA: Goodbye, Carlos. See you later.

@@ -252,6 +252,19 @@ chunks:
     tags: [family]
     audio: [auto]
 
+  # Third person. Every chunk before this is first or second person, because
+  # conversation is -- and then the listening library tried to narrate ("Ana
+  # has a phone") and found that nothing had ever taught `has`. `him` was
+  # released for this unit and taught by nothing, for the same reason.
+  - id: c_0153
+    en: "She has a phone"
+    es: "Ella tiene teléfono"
+    cefr: A0
+    example_en: "He has a phone, but I miss him."
+    example_es: "Él tiene teléfono, pero lo extraño."
+    tags: [people]
+    audio: [auto]
+
   # Carlos's household, and the two frames' fillers. A word released by
   # content/vocab-schedule.yaml is *permitted*, not taught -- the 95% rule reads
   # what chunks and examples actually put in front of the learner, and these two

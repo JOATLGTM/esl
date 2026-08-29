@@ -5,6 +5,7 @@ import {
   CastSchema,
   ContrastSetSchema,
   CurriculumSchema,
+  ListeningSetSchema,
   PronunciationOverridesSchema,
   SpeakerRosterSchema,
   UnitSchema,
@@ -15,6 +16,8 @@ import {
   type Contrast,
   type ContrastSet,
   type Curriculum,
+  type ListeningSet,
+  type ListeningTrack,
   type PronunciationOverride,
   type SpeakerRoster,
   type Unit,
@@ -33,6 +36,8 @@ export type ContentBundle = {
   units: Unit[];
   unitsById: Map<string, Unit>;
   contrasts: Map<Contrast, ContrastSet>;
+  /** Listening-library tracks by unit id (`content/listening/`). */
+  listening: Map<string, ListeningTrack[]>;
   /** Files that exist on disk but aren't referenced by the curriculum. */
   orphanUnitFiles: string[];
 };
@@ -118,6 +123,23 @@ export function loadContent(contentDir = CONTENT_DIR): ContentBundle {
     }
   }
 
+  // The listening library: one file per unit, keyed to a unit that exists.
+  const listeningDir = path.join(contentDir, "listening");
+  const listening = new Map<string, ListeningTrack[]>();
+  if (fs.existsSync(listeningDir)) {
+    for (const file of fs.readdirSync(listeningDir).filter((f) => f.endsWith(".yaml"))) {
+      const full = path.join(listeningDir, file);
+      const set = parseOrThrow<ListeningSet>(ListeningSetSchema, readYaml(full), full);
+      if (!unitsById.has(set.unit)) {
+        throw new ContentError(file, `is for ${set.unit}, which the curriculum does not list`);
+      }
+      if (listening.has(set.unit)) {
+        throw new ContentError(file, `duplicate listening set for ${set.unit}`);
+      }
+      listening.set(set.unit, set.tracks);
+    }
+  }
+
   const castFile = path.join(contentDir, "characters.yaml");
   const castDoc = parseOrThrow<Cast>(CastSchema, readYaml(castFile), castFile);
   const cast = new Map<string, Character>();
@@ -134,6 +156,7 @@ export function loadContent(contentDir = CONTENT_DIR): ContentBundle {
     units,
     unitsById,
     contrasts,
+    listening,
     orphanUnitFiles: onDisk.filter((f) => !referenced.has(f)),
   };
 }

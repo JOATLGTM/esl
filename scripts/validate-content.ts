@@ -449,6 +449,70 @@ function checkFrames(bundle: ContentBundle) {
   });
 }
 
+/**
+ * The listening library (`docs/ROADMAP.md` #4).
+ *
+ * One rule carries the whole idea: **a track introduces nothing.** It is
+ * gated at 100% known, not 95% -- every word must already be taught by this
+ * unit or an earlier one -- because the entire point of the type is content
+ * that costs no vocabulary. A track that slips one new word in is a scene
+ * without questions, and the course already has those.
+ */
+function checkListening(bundle: ContentBundle) {
+  const timeline = buildKnownWordTimeline(bundle.units);
+  const seenIds = new Map<string, string>();
+  const manifestPath = path.join(process.cwd(), "content", "audio-manifest.json");
+  const manifest = fs.existsSync(manifestPath)
+    ? (JSON.parse(fs.readFileSync(manifestPath, "utf8")) as { scenes: Record<string, { durationMs: number }> })
+    : null;
+
+  for (const unit of bundle.units) {
+    const tracks = bundle.listening.get(unit.unit_id) ?? [];
+    if (tracks.length === 0) continue;
+    const where = unit.unit_id;
+    const known = timeline.during.get(unit.unit_id)!;
+    const countCognates = cognateCreditAllowed(unit.cefr);
+    const missing: string[] = [];
+    let totalMs = 0;
+
+    for (const track of tracks) {
+      const prev = seenIds.get(track.id);
+      if (prev) err(where, `listening track id ${track.id} is already used in ${prev}`);
+      seenIds.set(track.id, where);
+
+      if (!bundle.cast.has(track.character)) {
+        err(where, `${track.id} belongs to "${track.character}", who is not in the cast`);
+      }
+      for (const line of parseTranscriptLines(track.transcript)) {
+        if (!bundle.cast.has(line.speaker)) {
+          err(where, `${track.id} has a line from "${line.speaker.toUpperCase()}", who is not in the cast`);
+        }
+      }
+
+      const report = scoreTranscript(track.transcript, known, { countCognates });
+      if (report.unknown.length > 0) {
+        err(
+          where,
+          `${track.id} introduces ${report.unknown.length} word(s); a listening track introduces none`,
+          report.unknown.join(", "),
+        );
+      } else {
+        console.log(`    ${track.id}  100.0%  ${String(report.total).padStart(3)} tokens  (listening)`);
+      }
+
+      const ms = manifest?.scenes[track.id]?.durationMs;
+      if (ms === undefined) missing.push(track.id);
+      else totalMs += ms;
+    }
+
+    if (missing.length) {
+      gate(where, `${missing.length}/${tracks.length} listening track(s) have no generated audio`, `${missing.join(", ")} — npm run content:audio`);
+    } else {
+      console.log(`    ${where} listening: ${tracks.length} track(s), ${(totalMs / 60000).toFixed(1)} min`);
+    }
+  }
+}
+
 function checkReadability(bundle: ContentBundle) {
   const timeline = buildKnownWordTimeline(bundle.units);
 
@@ -773,6 +837,8 @@ function main() {
   for (const unit of bundle.units) checkUnitStructure(unit, bundle);
   checkFrames(bundle);
   checkReadability(bundle);
+  console.log("\n  Listening library (ROADMAP #4, 100% known)");
+  checkListening(bundle);
   console.log("\n  HVPT drill sets (PRD F3)");
   checkContrasts(bundle, plan);
   checkGeneratedDurations(bundle);

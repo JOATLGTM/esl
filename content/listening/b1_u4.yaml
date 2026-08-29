@@ -1,0 +1,37 @@
+unit: b1_u4
+tracks:
+  - id: l_0007
+    title_es: "Miguel se pierde"
+    character: miguel
+    transcript: |
+      MIGUEL: This is my street. My house is here, in this building, near the park.
+      MIGUEL: I go to the café. The café is not on this street.
+      MIGUEL: I go down this street. I turn left at the store. I go straight.
+      MIGUEL: And I am lost. I do not understand this street.
+      MIGUEL: I see Tom. I say: Tom, excuse me. I am lost. Where is the café?
+      MIGUEL: Tom says: go up this street, to the corner. It is across from the park.
+      MIGUEL: I do not understand. I say: can you repeat that, please?
+      MIGUEL: Tom repeats it. Go up this street. To the corner. Across from the park.
+      MIGUEL: I say it: up this street, to the corner, across from the park. I understand!
+      MIGUEL: I go up the street. I go to the corner. The park is here. And the café is across from the park.
+      MIGUEL: The café is open. Maria is here. I am here!
+      MIGUEL: It is far from my house. But I understand this street.
+      MIGUEL: Go up this street, to the corner, and it is across from the park. That is it.
+
+  - id: l_0008
+    title_es: "Ana explica la calle"
+    character: ana
+    transcript: |
+      ANA: Hello. This is my street, and this is my building.
+      ANA: Miguel is in this building too. He is my friend.
+      ANA: The café is near here. It is not far. It is one block from here.
+      ANA: Go down this street. Turn right at the store. The café is on the corner.
+      ANA: The store is next to the bank. The bank is across from the park.
+      ANA: The park is on this street, near my house. I go to the park with Tom.
+      ANA: The bus stop is near the park too. It is on the corner, on the left.
+      ANA: The market is far. It is not on this street. Go down, turn left, go straight.
+      ANA: Miguel is lost. He says: Ana, where is the café?
+      ANA: I say: go down this street, and turn right at the store. And he repeats it.
+      ANA: Go down this street. Turn right at the store. It is on the corner.
+      ANA: Yes, Miguel! That is it. You understand this street.
+      ANA: Come with me. It is near here.

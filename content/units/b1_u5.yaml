@@ -255,6 +255,18 @@ chunks:
     tags: [repair]
     audio: [auto]
 
+  # `does` -- the other third-person form narration cannot do without, and
+  # the negative the error pattern `missing_third_person_s` is waiting on.
+  - id: c_0154
+    en: "He does not work on Sunday"
+    es: "Él no trabaja el domingo"
+    cefr: A0
+    example_en: "She does not work on Sunday. Sunday is her day."
+    example_es: "Ella no trabaja el domingo. El domingo es su día."
+    accepts: ["He doesn't work on Sunday"]
+    tags: [work, days]
+    audio: [auto]
+
 frames:
   - id: f_0009
     pattern: "I work on {DAY}."

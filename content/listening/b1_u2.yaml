@@ -1,0 +1,40 @@
+unit: b1_u2
+tracks:
+  - id: l_0003
+    title_es: "Miguel y su teléfono"
+    character: miguel
+    transcript: |
+      MIGUEL: Hello. My name is Miguel. I am twenty years old.
+      MIGUEL: I have a phone. It is an old phone, and it is fine.
+      MIGUEL: My phone number is five, one, two, nine, eight.
+      MIGUEL: Five, one, two, nine, eight. I am sure.
+      MIGUEL: Do you have a phone, Ana? Yes. Do you have a phone, Tom? Yes.
+      MIGUEL: Ana is twenty seven years old. Tom is twenty seven years old.
+      MIGUEL: How old is Carlos? I do not have it. I say: Carlos, how old are you?
+      MIGUEL: Carlos says: I am twenty nine. Okay. I do not understand twenty nine.
+      MIGUEL: I say: can you repeat the number, please? Carlos repeats it.
+      MIGUEL: One, two, three, four, five, six, seven, eight, nine, ten.
+      MIGUEL: Eleven, twelve, thirteen, fourteen, fifteen.
+      MIGUEL: Sixteen, seventeen, eighteen, nineteen, twenty.
+      MIGUEL: Twenty. I am twenty years old. And you? How old are you?
+
+  - id: l_0004
+    title_es: "Tom y Maria: el número de Miguel"
+    character: tom
+    transcript: |
+      TOM: Good afternoon, Maria. How are you?
+      MARIA: I am fine, thank you, Tom. And you?
+      TOM: I am fine. Maria, do you have the phone number? Miguel is not here.
+      MARIA: Yes, I do. One moment, please. Here it is.
+      TOM: What is it?
+      MARIA: It is five, one, two, nine, eight.
+      TOM: Five, one, two, nine... can you repeat the number?
+      MARIA: Five, one, two, nine, eight. Are you sure you have it?
+      TOM: Yes, I am sure. Five, one, two, nine, eight. Thank you, Maria.
+      MARIA: You are welcome. Miguel? Miguel is fine. It is an old phone.
+      TOM: It is an old phone, and it is fine.
+      MARIA: How old is Miguel, Tom?
+      TOM: Miguel is twenty years old.
+      MARIA: Twenty! And how old are you?
+      TOM: I am twenty seven. And you, Maria?
+      MARIA: Me? That is my number, Tom. Goodbye!

@@ -174,12 +174,42 @@ async function main() {
       return {
         id: s.id,
         unit_id: u.unit_id,
+        kind: "story" as const,
         title_es: s.title_es,
         character_id: s.character,
         audio_url: track?.url ?? null,
         duration_s: track ? Math.round(track.durationMs / 1000) : null,
         transcript: segments,
         questions: s.questions,
+      };
+    })
+  );
+
+  // Listening tracks ride in the scenes table with kind = 'listening' -- same
+  // shape, same player, no questions -- and never enter the daily loop, which
+  // filters on kind everywhere it counts or picks scenes.
+  const listening = [...bundle.listening.entries()].flatMap(([unitId, tracks]) =>
+    tracks.map((t) => {
+      const track = manifest.scenes[t.id];
+      if (!track) warn(`${t.id} has no generated audio track; seeding it silent.`);
+      const segments: TranscriptSegment[] = track
+        ? track.segments.map((seg) => ({ ...seg }))
+        : parseTranscriptLines(t.transcript).map((line) => ({
+            start_ms: 0,
+            end_ms: 0,
+            character: line.speaker,
+            en: line.text,
+          }));
+      return {
+        id: t.id,
+        unit_id: unitId,
+        kind: "listening" as const,
+        title_es: t.title_es,
+        character_id: t.character,
+        audio_url: track?.url ?? null,
+        duration_s: track ? Math.round(track.durationMs / 1000) : null,
+        transcript: segments,
+        questions: [],
       };
     })
   );
@@ -277,7 +307,7 @@ async function main() {
     // validator has already proved every one resolves, so this only needs to
     // follow chunks for the ids to mean anything.
     ["frames", frames, "id"],
-    ["scenes", scenes, "id"],
+    ["scenes", [...scenes, ...listening], "id"],
     // Dialogues reference units and characters, so they follow both.
     ["dialogues", dialogues, "id"],
     // Missions reference the dialogue, so they follow it.

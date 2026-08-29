@@ -12507,6 +12507,1646 @@
       "unitId": "b1_u6",
       "durationMs": 1539,
       "bytes": 6405
+    },
+    "0cf21bb6fa01eae7": {
+      "url": "/audio/scene_line/0cf21bb6fa01eae7.opus",
+      "kind": "scene_line",
+      "text": "Hello. My name is Miguel. I am from Mexico.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3513,
+      "bytes": 14440
+    },
+    "92be8b1142be69b4": {
+      "url": "/audio/scene_line/92be8b1142be69b4.opus",
+      "kind": "scene_line",
+      "text": "This is my morning. Good morning, Ana. Good morning, Carlos.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 4523,
+      "bytes": 18188
+    },
+    "5aae7f20a0addce3": {
+      "url": "/audio/scene_line/5aae7f20a0addce3.opus",
+      "kind": "scene_line",
+      "text": "Ana is nice. Carlos is nice.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2909,
+      "bytes": 11989
+    },
+    "04d46b3de3ddd221": {
+      "url": "/audio/scene_line/04d46b3de3ddd221.opus",
+      "kind": "scene_line",
+      "text": "I say hello. I say good morning. I say thank you.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2921,
+      "bytes": 12146
+    },
+    "e6f7615ae236156f": {
+      "url": "/audio/scene_line/e6f7615ae236156f.opus",
+      "kind": "scene_line",
+      "text": "I do not understand. I say: excuse me, can you repeat that?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3977,
+      "bytes": 16120
+    },
+    "ca9404ec23a9ad46": {
+      "url": "/audio/scene_line/ca9404ec23a9ad46.opus",
+      "kind": "scene_line",
+      "text": "Ana can repeat that. Ana is nice.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3246,
+      "bytes": 13118
+    },
+    "37e9198ec308698d": {
+      "url": "/audio/scene_line/37e9198ec308698d.opus",
+      "kind": "scene_line",
+      "text": "How are you, Miguel? I am fine, thank you. And you?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3281,
+      "bytes": 13080
+    },
+    "d747e372d6d18323": {
+      "url": "/audio/scene_line/d747e372d6d18323.opus",
+      "kind": "scene_line",
+      "text": "This is good. This is my afternoon.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2259,
+      "bytes": 9521
+    },
+    "cc3e9c08c70d06b1": {
+      "url": "/audio/scene_line/cc3e9c08c70d06b1.opus",
+      "kind": "scene_line",
+      "text": "Good afternoon, Maria. Nice to meet you.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 2062,
+      "bytes": 9110
+    },
+    "4bf0383954657e06": {
+      "url": "/audio/scene_line/4bf0383954657e06.opus",
+      "kind": "scene_line",
+      "text": "Goodbye, Ana. See you later, Carlos. Good night.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3675,
+      "bytes": 16286
+    },
+    "a0533c925951b141": {
+      "url": "/audio/scene_line/a0533c925951b141.opus",
+      "kind": "scene_line",
+      "text": "My name is Miguel. I am from Mexico. Thank you.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0001",
+      "unitId": "b1_u1",
+      "durationMs": 3954,
+      "bytes": 16251
+    },
+    "4b596988ff80e30a": {
+      "url": "/audio/scene_line/4b596988ff80e30a.opus",
+      "kind": "scene_line",
+      "text": "Hello, Carlos. Good morning.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2120,
+      "bytes": 9078
+    },
+    "a55dbbec69cc2bd6": {
+      "url": "/audio/scene_line/a55dbbec69cc2bd6.opus",
+      "kind": "scene_line",
+      "text": "Good morning, Ana. How are you?",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2270,
+      "bytes": 8891
+    },
+    "5199ca5bf4dcc1bc": {
+      "url": "/audio/scene_line/5199ca5bf4dcc1bc.opus",
+      "kind": "scene_line",
+      "text": "I am fine. Ana, this is Miguel.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2828,
+      "bytes": 11023
+    },
+    "f9e3c3ff7a396d08": {
+      "url": "/audio/scene_line/f9e3c3ff7a396d08.opus",
+      "kind": "scene_line",
+      "text": "Yes! I see Miguel. Miguel is from Mexico.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 4209,
+      "bytes": 17277
+    },
+    "f71465f4a4ef4d7e": {
+      "url": "/audio/scene_line/f71465f4a4ef4d7e.opus",
+      "kind": "scene_line",
+      "text": "Miguel is nice. Miguel says hello.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3106,
+      "bytes": 13045
+    },
+    "8bc755141ffdb572": {
+      "url": "/audio/scene_line/8bc755141ffdb572.opus",
+      "kind": "scene_line",
+      "text": "Yes. Miguel says good morning, and Miguel says thank you.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 4047,
+      "bytes": 16613
+    },
+    "d3889de6680300bd": {
+      "url": "/audio/scene_line/d3889de6680300bd.opus",
+      "kind": "scene_line",
+      "text": "Miguel says: I do not understand.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2828,
+      "bytes": 11299
+    },
+    "350c3e10a046cdc0": {
+      "url": "/audio/scene_line/350c3e10a046cdc0.opus",
+      "kind": "scene_line",
+      "text": "And I repeat. I say: good morning, Miguel. And Miguel understands.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 4778,
+      "bytes": 19466
+    },
+    "27ce2a03558b8b90": {
+      "url": "/audio/scene_line/27ce2a03558b8b90.opus",
+      "kind": "scene_line",
+      "text": "That is nice, Ana.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 1771,
+      "bytes": 6922
+    },
+    "1ef55d50cf2aafde": {
+      "url": "/audio/scene_line/1ef55d50cf2aafde.opus",
+      "kind": "scene_line",
+      "text": "Miguel is nice. I see Miguel this afternoon.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 3466,
+      "bytes": 14250
+    },
+    "1d18e1639ad6f36c": {
+      "url": "/audio/scene_line/1d18e1639ad6f36c.opus",
+      "kind": "scene_line",
+      "text": "See you later, Ana. Good afternoon.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2654,
+      "bytes": 10465
+    },
+    "f76ae2c2d376ae2f": {
+      "url": "/audio/scene_line/f76ae2c2d376ae2f.opus",
+      "kind": "scene_line",
+      "text": "Goodbye, Carlos. See you later.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0002",
+      "unitId": "b1_u1",
+      "durationMs": 2282,
+      "bytes": 9291
+    },
+    "15397a4093ffa622": {
+      "url": "/audio/scene_line/15397a4093ffa622.opus",
+      "kind": "scene_line",
+      "text": "Hello. My name is Miguel. I am twenty years old.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 3536,
+      "bytes": 14539
+    },
+    "37f028f3a478a065": {
+      "url": "/audio/scene_line/37f028f3a478a065.opus",
+      "kind": "scene_line",
+      "text": "I have a phone. It is an old phone, and it is fine.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 3292,
+      "bytes": 13276
+    },
+    "1adfa28abc510a60": {
+      "url": "/audio/scene_line/1adfa28abc510a60.opus",
+      "kind": "scene_line",
+      "text": "Do you have a phone, Ana? Yes. Do you have a phone, Tom? Yes.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 3989,
+      "bytes": 16307
+    },
+    "a59bd3d2a52a5eaa": {
+      "url": "/audio/scene_line/a59bd3d2a52a5eaa.opus",
+      "kind": "scene_line",
+      "text": "Ana is twenty seven years old. Tom is twenty seven years old.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 4372,
+      "bytes": 17912
+    },
+    "0c9cb683f993549b": {
+      "url": "/audio/scene_line/0c9cb683f993549b.opus",
+      "kind": "scene_line",
+      "text": "How old is Carlos? I do not have it. I say: Carlos, how old are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 5068,
+      "bytes": 20839
+    },
+    "3b694fde7e81886b": {
+      "url": "/audio/scene_line/3b694fde7e81886b.opus",
+      "kind": "scene_line",
+      "text": "Carlos says: I am twenty nine. Okay. I do not understand twenty nine.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 4534,
+      "bytes": 18349
+    },
+    "5702a07909f0a08b": {
+      "url": "/audio/scene_line/5702a07909f0a08b.opus",
+      "kind": "scene_line",
+      "text": "I say: can you repeat the number, please? Carlos repeats it.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 4047,
+      "bytes": 16263
+    },
+    "0366cdf46d062a76": {
+      "url": "/audio/scene_line/0366cdf46d062a76.opus",
+      "kind": "scene_line",
+      "text": "One, two, three, four, five, six, seven, eight, nine, ten.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 8621,
+      "bytes": 32107
+    },
+    "d1485ad853662b42": {
+      "url": "/audio/scene_line/d1485ad853662b42.opus",
+      "kind": "scene_line",
+      "text": "Eleven, twelve, thirteen, fourteen, fifteen.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 4674,
+      "bytes": 17800
+    },
+    "3b0126194773bc67": {
+      "url": "/audio/scene_line/3b0126194773bc67.opus",
+      "kind": "scene_line",
+      "text": "Sixteen, seventeen, eighteen, nineteen, twenty.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 5277,
+      "bytes": 20140
+    },
+    "3f96d27f9627e8f8": {
+      "url": "/audio/scene_line/3f96d27f9627e8f8.opus",
+      "kind": "scene_line",
+      "text": "Twenty. I am twenty years old. And you? How old are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0003",
+      "unitId": "b1_u2",
+      "durationMs": 3199,
+      "bytes": 13270
+    },
+    "257cd906c875ef2e": {
+      "url": "/audio/scene_line/257cd906c875ef2e.opus",
+      "kind": "scene_line",
+      "text": "Good afternoon, Maria. How are you?",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3188,
+      "bytes": 13364
+    },
+    "9347d4b701933fbe": {
+      "url": "/audio/scene_line/9347d4b701933fbe.opus",
+      "kind": "scene_line",
+      "text": "I am fine, thank you, Tom. And you?",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 2630,
+      "bytes": 10904
+    },
+    "2bb5a65be98c5f1a": {
+      "url": "/audio/scene_line/2bb5a65be98c5f1a.opus",
+      "kind": "scene_line",
+      "text": "I am fine. Maria, do you have the phone number? Miguel is not here.",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 5498,
+      "bytes": 22717
+    },
+    "b28673cb440aa08e": {
+      "url": "/audio/scene_line/b28673cb440aa08e.opus",
+      "kind": "scene_line",
+      "text": "Yes, I do. One moment, please. Here it is.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3780,
+      "bytes": 15302
+    },
+    "b8d3345e903e862e": {
+      "url": "/audio/scene_line/b8d3345e903e862e.opus",
+      "kind": "scene_line",
+      "text": "What is it?",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 982,
+      "bytes": 4063
+    },
+    "01e2d273b67f1a91": {
+      "url": "/audio/scene_line/01e2d273b67f1a91.opus",
+      "kind": "scene_line",
+      "text": "It is five, one, two, nine, eight.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 2491,
+      "bytes": 10266
+    },
+    "e00230b4e80fd72d": {
+      "url": "/audio/scene_line/e00230b4e80fd72d.opus",
+      "kind": "scene_line",
+      "text": "Five, one, two, nine... can you repeat the number?",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3072,
+      "bytes": 12913
+    },
+    "05cf221855b81caa": {
+      "url": "/audio/scene_line/05cf221855b81caa.opus",
+      "kind": "scene_line",
+      "text": "Five, one, two, nine, eight. Are you sure you have it?",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3849,
+      "bytes": 15707
+    },
+    "2f1a009ab635c94c": {
+      "url": "/audio/scene_line/2f1a009ab635c94c.opus",
+      "kind": "scene_line",
+      "text": "Yes, I am sure. Five, one, two, nine, eight. Thank you, Maria.",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 6299,
+      "bytes": 25812
+    },
+    "b6ed5da86c352059": {
+      "url": "/audio/scene_line/b6ed5da86c352059.opus",
+      "kind": "scene_line",
+      "text": "You are welcome. Miguel? Miguel is fine. It is an old phone.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 4674,
+      "bytes": 19187
+    },
+    "858df8a7df344c78": {
+      "url": "/audio/scene_line/858df8a7df344c78.opus",
+      "kind": "scene_line",
+      "text": "It is an old phone, and it is fine.",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 2688,
+      "bytes": 11197
+    },
+    "d5bb2d936067ea48": {
+      "url": "/audio/scene_line/d5bb2d936067ea48.opus",
+      "kind": "scene_line",
+      "text": "How old is Miguel, Tom?",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 1818,
+      "bytes": 7612
+    },
+    "15aad35aa7ed2503": {
+      "url": "/audio/scene_line/15aad35aa7ed2503.opus",
+      "kind": "scene_line",
+      "text": "Miguel is twenty years old.",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 2584,
+      "bytes": 10891
+    },
+    "b127391b41405f68": {
+      "url": "/audio/scene_line/b127391b41405f68.opus",
+      "kind": "scene_line",
+      "text": "Twenty! And how old are you?",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 2236,
+      "bytes": 9170
+    },
+    "785d0d49e2d28d02": {
+      "url": "/audio/scene_line/785d0d49e2d28d02.opus",
+      "kind": "scene_line",
+      "text": "I am twenty seven. And you, Maria?",
+      "voiceId": "uk_m_1",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3199,
+      "bytes": 13771
+    },
+    "42c5815f448446ed": {
+      "url": "/audio/scene_line/42c5815f448446ed.opus",
+      "kind": "scene_line",
+      "text": "Me? That is my number, Tom. Goodbye!",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0004",
+      "unitId": "b1_u2",
+      "durationMs": 3014,
+      "bytes": 12205
+    },
+    "0572d677b59e7a37": {
+      "url": "/audio/chunk/0572d677b59e7a37.opus",
+      "kind": "chunk",
+      "text": "She has a phone",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0153",
+      "unitId": "b1_u3",
+      "durationMs": 1051,
+      "bytes": 4428
+    },
+    "8445c821aa2a44aa": {
+      "url": "/audio/chunk/8445c821aa2a44aa.opus",
+      "kind": "chunk",
+      "text": "She has a phone",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0153",
+      "unitId": "b1_u3",
+      "durationMs": 1156,
+      "bytes": 4806
+    },
+    "a97feab55672d882": {
+      "url": "/audio/chunk/a97feab55672d882.opus",
+      "kind": "chunk",
+      "text": "She has a phone",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0153",
+      "unitId": "b1_u3",
+      "durationMs": 1075,
+      "bytes": 4493
+    },
+    "854dc4a811c8c1f5": {
+      "url": "/audio/chunk/854dc4a811c8c1f5.opus",
+      "kind": "chunk",
+      "text": "She has a phone",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0153",
+      "unitId": "b1_u3",
+      "durationMs": 1063,
+      "bytes": 4833
+    },
+    "0303138d9a93a2fa": {
+      "url": "/audio/example/0303138d9a93a2fa.opus",
+      "kind": "example",
+      "text": "He has a phone, but I miss him.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0153",
+      "unitId": "b1_u3",
+      "durationMs": 1957,
+      "bytes": 7506
+    },
+    "6a421cb015f876bb": {
+      "url": "/audio/scene_line/6a421cb015f876bb.opus",
+      "kind": "scene_line",
+      "text": "This is a photo of my family. They are in Mexico.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3803,
+      "bytes": 15807
+    },
+    "01f0374ca9f01446": {
+      "url": "/audio/scene_line/01f0374ca9f01446.opus",
+      "kind": "scene_line",
+      "text": "This is my mother. Her name is Elena. She is nice.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3292,
+      "bytes": 13580
+    },
+    "5c39e9d9048f8912": {
+      "url": "/audio/scene_line/5c39e9d9048f8912.opus",
+      "kind": "scene_line",
+      "text": "This is my father. His name is Juan. He is nice too.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3571,
+      "bytes": 14702
+    },
+    "0b4596fb499d8d60": {
+      "url": "/audio/scene_line/0b4596fb499d8d60.opus",
+      "kind": "scene_line",
+      "text": "This is my sister. Her name is Sofia. She is nineteen years old.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 4360,
+      "bytes": 17949
+    },
+    "949cf2a5202cf774": {
+      "url": "/audio/scene_line/949cf2a5202cf774.opus",
+      "kind": "scene_line",
+      "text": "And this is my little brother. He is fifteen. He has a phone!",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3269,
+      "bytes": 13914
+    },
+    "be41c31579ea34cf": {
+      "url": "/audio/scene_line/be41c31579ea34cf.opus",
+      "kind": "scene_line",
+      "text": "My family is not here. They are there, in Mexico.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3966,
+      "bytes": 16140
+    },
+    "cb140eb9ec0025a8": {
+      "url": "/audio/scene_line/cb140eb9ec0025a8.opus",
+      "kind": "scene_line",
+      "text": "I miss them. I miss my mother, and I miss my father.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3397,
+      "bytes": 13969
+    },
+    "5ec262892c62ca3d": {
+      "url": "/audio/scene_line/5ec262892c62ca3d.opus",
+      "kind": "scene_line",
+      "text": "I miss my sister, and I miss my little brother.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 3130,
+      "bytes": 12901
+    },
+    "f2575337a7a5e952": {
+      "url": "/audio/scene_line/f2575337a7a5e952.opus",
+      "kind": "scene_line",
+      "text": "I miss my home. My home is there, with them.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 2770,
+      "bytes": 11433
+    },
+    "53c9d44005ec037a": {
+      "url": "/audio/scene_line/53c9d44005ec037a.opus",
+      "kind": "scene_line",
+      "text": "But my friends are here. Ana is my friend. Tom is my friend.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 4035,
+      "bytes": 17000
+    },
+    "f0880864b83bf45a": {
+      "url": "/audio/scene_line/f0880864b83bf45a.opus",
+      "kind": "scene_line",
+      "text": "Carlos is my friend, and his family is here. His wife is here, and his son is here.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 5347,
+      "bytes": 21874
+    },
+    "eca0c42932ec5df5": {
+      "url": "/audio/scene_line/eca0c42932ec5df5.opus",
+      "kind": "scene_line",
+      "text": "Maria is my friend too. We are friends.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 2723,
+      "bytes": 12058
+    },
+    "250a3bf744252de9": {
+      "url": "/audio/scene_line/250a3bf744252de9.opus",
+      "kind": "scene_line",
+      "text": "My family is there, and my friends are with me. I love my family.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0005",
+      "unitId": "b1_u3",
+      "durationMs": 4442,
+      "bytes": 18308
+    },
+    "8695f668c493262b": {
+      "url": "/audio/scene_line/8695f668c493262b.opus",
+      "kind": "scene_line",
+      "text": "Hello. My name is Carlos. This is my family.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 3397,
+      "bytes": 13453
+    },
+    "175a0bc385d2d888": {
+      "url": "/audio/scene_line/175a0bc385d2d888.opus",
+      "kind": "scene_line",
+      "text": "This is my wife. Her name is Laura. She is here, with me.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 4035,
+      "bytes": 15867
+    },
+    "95b7b37b47f49863": {
+      "url": "/audio/scene_line/95b7b37b47f49863.opus",
+      "kind": "scene_line",
+      "text": "And this is my son. His name is Diego. He is two years old. He is little.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 5161,
+      "bytes": 20597
+    },
+    "f211a4822c21d148": {
+      "url": "/audio/scene_line/f211a4822c21d148.opus",
+      "kind": "scene_line",
+      "text": "Diego says: hello! Diego says: mother! Diego says: father!",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 5115,
+      "bytes": 19382
+    },
+    "4f3ffc048f7b3871": {
+      "url": "/audio/scene_line/4f3ffc048f7b3871.opus",
+      "kind": "scene_line",
+      "text": "My mother is in Mexico. My father is in Mexico too.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 5196,
+      "bytes": 19735
+    },
+    "1d8736ae0680c77e": {
+      "url": "/audio/scene_line/1d8736ae0680c77e.opus",
+      "kind": "scene_line",
+      "text": "I miss them. But my wife is here, and my son is here.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 3559,
+      "bytes": 13909
+    },
+    "b3a5b8350bd5c326": {
+      "url": "/audio/scene_line/b3a5b8350bd5c326.opus",
+      "kind": "scene_line",
+      "text": "Miguel is my friend. His family is not here.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 3466,
+      "bytes": 14408
+    },
+    "d10e850fd5ba6f58": {
+      "url": "/audio/scene_line/d10e850fd5ba6f58.opus",
+      "kind": "scene_line",
+      "text": "Miguel misses his family. He misses his mother, and he misses his home.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 5103,
+      "bytes": 20819
+    },
+    "e4e298c61a47dac1": {
+      "url": "/audio/scene_line/e4e298c61a47dac1.opus",
+      "kind": "scene_line",
+      "text": "I understand Miguel. I say: Miguel, we are here. We are your friends.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 5196,
+      "bytes": 20381
+    },
+    "cbcf58f167b64312": {
+      "url": "/audio/scene_line/cbcf58f167b64312.opus",
+      "kind": "scene_line",
+      "text": "Ana is his friend. Tom is his friend. Maria is his friend.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 4476,
+      "bytes": 18359
+    },
+    "b20a1eaae265a888": {
+      "url": "/audio/scene_line/b20a1eaae265a888.opus",
+      "kind": "scene_line",
+      "text": "And Diego is his friend too! Diego says: hello, Miguel!",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 4116,
+      "bytes": 16461
+    },
+    "6bcc134497b7db29": {
+      "url": "/audio/scene_line/6bcc134497b7db29.opus",
+      "kind": "scene_line",
+      "text": "We are people with people. That is my family here.",
+      "voiceId": "us_m_2",
+      "ownerId": "l_0006",
+      "unitId": "b1_u3",
+      "durationMs": 3176,
+      "bytes": 12752
+    },
+    "3ad31c6d3a3aa14f": {
+      "url": "/audio/scene_line/3ad31c6d3a3aa14f.opus",
+      "kind": "scene_line",
+      "text": "This is my street. My house is here, in this building, near the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 4244,
+      "bytes": 17498
+    },
+    "017670035551f4c7": {
+      "url": "/audio/scene_line/017670035551f4c7.opus",
+      "kind": "scene_line",
+      "text": "I go to the café. The café is not on this street.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 2979,
+      "bytes": 12270
+    },
+    "098caf0e4461b41c": {
+      "url": "/audio/scene_line/098caf0e4461b41c.opus",
+      "kind": "scene_line",
+      "text": "I go down this street. I turn left at the store. I go straight.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 3803,
+      "bytes": 15757
+    },
+    "9fff800ac9438c31": {
+      "url": "/audio/scene_line/9fff800ac9438c31.opus",
+      "kind": "scene_line",
+      "text": "And I am lost. I do not understand this street.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 2944,
+      "bytes": 12115
+    },
+    "eefa8b01e80ad043": {
+      "url": "/audio/scene_line/eefa8b01e80ad043.opus",
+      "kind": "scene_line",
+      "text": "I see Tom. I say: Tom, excuse me. I am lost. Where is the café?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 4860,
+      "bytes": 19907
+    },
+    "889b9e0445a2e335": {
+      "url": "/audio/scene_line/889b9e0445a2e335.opus",
+      "kind": "scene_line",
+      "text": "Tom says: go up this street, to the corner. It is across from the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 4929,
+      "bytes": 19517
+    },
+    "8ad7e668a5236da1": {
+      "url": "/audio/scene_line/8ad7e668a5236da1.opus",
+      "kind": "scene_line",
+      "text": "I do not understand. I say: can you repeat that, please?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 3490,
+      "bytes": 14004
+    },
+    "356e6099ad9acdb3": {
+      "url": "/audio/scene_line/356e6099ad9acdb3.opus",
+      "kind": "scene_line",
+      "text": "Tom repeats it. Go up this street. To the corner. Across from the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 4569,
+      "bytes": 18791
+    },
+    "93d8c45001a1e11f": {
+      "url": "/audio/scene_line/93d8c45001a1e11f.opus",
+      "kind": "scene_line",
+      "text": "I say it: up this street, to the corner, across from the park. I understand!",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 5312,
+      "bytes": 21411
+    },
+    "46fbcdd014f78f86": {
+      "url": "/audio/scene_line/46fbcdd014f78f86.opus",
+      "kind": "scene_line",
+      "text": "I go up the street. I go to the corner. The park is here. And the café is across from the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 5695,
+      "bytes": 23965
+    },
+    "b6c2a9d978c3eb00": {
+      "url": "/audio/scene_line/b6c2a9d978c3eb00.opus",
+      "kind": "scene_line",
+      "text": "The café is open. Maria is here. I am here!",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 3710,
+      "bytes": 15640
+    },
+    "58f55b19365eb42c": {
+      "url": "/audio/scene_line/58f55b19365eb42c.opus",
+      "kind": "scene_line",
+      "text": "It is far from my house. But I understand this street.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 3373,
+      "bytes": 13779
+    },
+    "37cb58ed7759b39b": {
+      "url": "/audio/scene_line/37cb58ed7759b39b.opus",
+      "kind": "scene_line",
+      "text": "Go up this street, to the corner, and it is across from the park. That is it.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0007",
+      "unitId": "b1_u4",
+      "durationMs": 4476,
+      "bytes": 18372
+    },
+    "106e108417278d21": {
+      "url": "/audio/scene_line/106e108417278d21.opus",
+      "kind": "scene_line",
+      "text": "Hello. This is my street, and this is my building.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3095,
+      "bytes": 12746
+    },
+    "0277abc45ed25c24": {
+      "url": "/audio/scene_line/0277abc45ed25c24.opus",
+      "kind": "scene_line",
+      "text": "Miguel is in this building too. He is my friend.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3350,
+      "bytes": 13938
+    },
+    "15e688e614b14fd0": {
+      "url": "/audio/scene_line/15e688e614b14fd0.opus",
+      "kind": "scene_line",
+      "text": "The café is near here. It is not far. It is one block from here.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3954,
+      "bytes": 16223
+    },
+    "f8f35ac802313035": {
+      "url": "/audio/scene_line/f8f35ac802313035.opus",
+      "kind": "scene_line",
+      "text": "Go down this street. Turn right at the store. The café is on the corner.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 4256,
+      "bytes": 17386
+    },
+    "234099b63facaff1": {
+      "url": "/audio/scene_line/234099b63facaff1.opus",
+      "kind": "scene_line",
+      "text": "The store is next to the bank. The bank is across from the park.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3652,
+      "bytes": 14881
+    },
+    "63d5ce896745d78d": {
+      "url": "/audio/scene_line/63d5ce896745d78d.opus",
+      "kind": "scene_line",
+      "text": "The park is on this street, near my house. I go to the park with Tom.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 4256,
+      "bytes": 17312
+    },
+    "db0b99ba0bb77cf3": {
+      "url": "/audio/scene_line/db0b99ba0bb77cf3.opus",
+      "kind": "scene_line",
+      "text": "The bus stop is near the park too. It is on the corner, on the left.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 4140,
+      "bytes": 16798
+    },
+    "65588cd08f7864ae": {
+      "url": "/audio/scene_line/65588cd08f7864ae.opus",
+      "kind": "scene_line",
+      "text": "The market is far. It is not on this street. Go down, turn left, go straight.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 5010,
+      "bytes": 20451
+    },
+    "ebc02296b640b8bc": {
+      "url": "/audio/scene_line/ebc02296b640b8bc.opus",
+      "kind": "scene_line",
+      "text": "Miguel is lost. He says: Ana, where is the café?",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3757,
+      "bytes": 15165
+    },
+    "5365615e54d9c6c7": {
+      "url": "/audio/scene_line/5365615e54d9c6c7.opus",
+      "kind": "scene_line",
+      "text": "I say: go down this street, and turn right at the store. And he repeats it.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 4395,
+      "bytes": 17723
+    },
+    "124499bd0c7b8bc5": {
+      "url": "/audio/scene_line/124499bd0c7b8bc5.opus",
+      "kind": "scene_line",
+      "text": "Go down this street. Turn right at the store. It is on the corner.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3815,
+      "bytes": 15610
+    },
+    "c660ce5556d4078e": {
+      "url": "/audio/scene_line/c660ce5556d4078e.opus",
+      "kind": "scene_line",
+      "text": "Yes, Miguel! That is it. You understand this street.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 3559,
+      "bytes": 14616
+    },
+    "c758739dcbfbff8d": {
+      "url": "/audio/scene_line/c758739dcbfbff8d.opus",
+      "kind": "scene_line",
+      "text": "Come with me. It is near here.",
+      "voiceId": "us_f_1",
+      "ownerId": "l_0008",
+      "unitId": "b1_u4",
+      "durationMs": 1957,
+      "bytes": 8050
+    },
+    "4835398e1a0b2160": {
+      "url": "/audio/chunk/4835398e1a0b2160.opus",
+      "kind": "chunk",
+      "text": "He does not work on Sunday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0154",
+      "unitId": "b1_u5",
+      "durationMs": 1562,
+      "bytes": 6653
+    },
+    "4b9687494b30a20b": {
+      "url": "/audio/chunk/4b9687494b30a20b.opus",
+      "kind": "chunk",
+      "text": "He does not work on Sunday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0154",
+      "unitId": "b1_u5",
+      "durationMs": 1690,
+      "bytes": 7194
+    },
+    "a28175684fb0dee4": {
+      "url": "/audio/chunk/a28175684fb0dee4.opus",
+      "kind": "chunk",
+      "text": "He does not work on Sunday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0154",
+      "unitId": "b1_u5",
+      "durationMs": 1597,
+      "bytes": 6635
+    },
+    "e3b01429ea96e21b": {
+      "url": "/audio/chunk/e3b01429ea96e21b.opus",
+      "kind": "chunk",
+      "text": "He does not work on Sunday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0154",
+      "unitId": "b1_u5",
+      "durationMs": 1853,
+      "bytes": 7839
+    },
+    "8ef5fac78abdd0fe": {
+      "url": "/audio/example/8ef5fac78abdd0fe.opus",
+      "kind": "example",
+      "text": "She does not work on Sunday. Sunday is her day.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0154",
+      "unitId": "b1_u5",
+      "durationMs": 3014,
+      "bytes": 12323
+    },
+    "0143d48d551e8bc0": {
+      "url": "/audio/scene_line/0143d48d551e8bc0.opus",
+      "kind": "scene_line",
+      "text": "This is my week. I work with Carlos and Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3640,
+      "bytes": 15132
+    },
+    "ddde657e14df030c": {
+      "url": "/audio/scene_line/ddde657e14df030c.opus",
+      "kind": "scene_line",
+      "text": "I work from Monday to Friday. I start at eight o'clock in the morning.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3710,
+      "bytes": 15465
+    },
+    "7109ad0ef3d104ab": {
+      "url": "/audio/scene_line/7109ad0ef3d104ab.opus",
+      "kind": "scene_line",
+      "text": "Eight o'clock is early. I am not late. I start early.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3223,
+      "bytes": 13394
+    },
+    "d2223b51eaa618b7": {
+      "url": "/audio/scene_line/d2223b51eaa618b7.opus",
+      "kind": "scene_line",
+      "text": "On Saturday I start at nine o'clock. Not eight. Nine.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3884,
+      "bytes": 15865
+    },
+    "8f46f4400ecc7bed": {
+      "url": "/audio/scene_line/8f46f4400ecc7bed.opus",
+      "kind": "scene_line",
+      "text": "And on Saturday I finish at one o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 2410,
+      "bytes": 9912
+    },
+    "e98a484943bdddb6": {
+      "url": "/audio/scene_line/e98a484943bdddb6.opus",
+      "kind": "scene_line",
+      "text": "On Sunday I go to the café. The café is open on Sunday. Maria is there.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 4616,
+      "bytes": 19001
+    },
+    "b6182e9cb2f9d959": {
+      "url": "/audio/scene_line/b6182e9cb2f9d959.opus",
+      "kind": "scene_line",
+      "text": "Today is Monday. I start today, at eight o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3269,
+      "bytes": 13117
+    },
+    "b18cadab5336190c": {
+      "url": "/audio/scene_line/b18cadab5336190c.opus",
+      "kind": "scene_line",
+      "text": "Tomorrow is Tuesday. I work tomorrow too.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3002,
+      "bytes": 12437
+    },
+    "f6bfb111c030fab1": {
+      "url": "/audio/scene_line/f6bfb111c030fab1.opus",
+      "kind": "scene_line",
+      "text": "Monday, Tuesday, Wednesday, Thursday, Friday. That is my work.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 5707,
+      "bytes": 22616
+    },
+    "ae9b7b25c8c096d8": {
+      "url": "/audio/scene_line/ae9b7b25c8c096d8.opus",
+      "kind": "scene_line",
+      "text": "Saturday, until one o'clock. And Sunday is my day.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 3687,
+      "bytes": 14915
+    },
+    "5f0a6a5d1188dd1e": {
+      "url": "/audio/scene_line/5f0a6a5d1188dd1e.opus",
+      "kind": "scene_line",
+      "text": "Rosa says: Miguel, say the week. And I say it. Every day, I say it.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 5463,
+      "bytes": 24708
+    },
+    "94fe93b2ae743fe4": {
+      "url": "/audio/scene_line/94fe93b2ae743fe4.opus",
+      "kind": "scene_line",
+      "text": "I need this work. I start now.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0009",
+      "unitId": "b1_u5",
+      "durationMs": 1678,
+      "bytes": 7043
+    },
+    "565d749eb7a61e8b": {
+      "url": "/audio/scene_line/565d749eb7a61e8b.opus",
+      "kind": "scene_line",
+      "text": "Hello. My name is Rosa. I work with Carlos, and now I work with Miguel.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 5951,
+      "bytes": 23589
+    },
+    "49541a09d30236e0": {
+      "url": "/audio/scene_line/49541a09d30236e0.opus",
+      "kind": "scene_line",
+      "text": "Miguel is not from here. He needs work. He is good.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3594,
+      "bytes": 14431
+    },
+    "0be1c19f5b0f5d3f": {
+      "url": "/audio/scene_line/0be1c19f5b0f5d3f.opus",
+      "kind": "scene_line",
+      "text": "Miguel starts at eight o'clock in the morning, from Monday to Friday.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3907,
+      "bytes": 15582
+    },
+    "62feb1ae15f95e24": {
+      "url": "/audio/scene_line/62feb1ae15f95e24.opus",
+      "kind": "scene_line",
+      "text": "He finishes at four o'clock. On Saturday he starts at nine.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3699,
+      "bytes": 14818
+    },
+    "aeca7ad20f37d375": {
+      "url": "/audio/scene_line/aeca7ad20f37d375.opus",
+      "kind": "scene_line",
+      "text": "Miguel says the week. He says: Monday to Friday, eight to four.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 4581,
+      "bytes": 18287
+    },
+    "0b48ea67e463dc36": {
+      "url": "/audio/scene_line/0b48ea67e463dc36.opus",
+      "kind": "scene_line",
+      "text": "And Saturday? He says: eight o'clock. No, Miguel. Saturday is nine.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 4836,
+      "bytes": 18974
+    },
+    "b6365e4c0c6ba05c": {
+      "url": "/audio/scene_line/b6365e4c0c6ba05c.opus",
+      "kind": "scene_line",
+      "text": "He says it: Saturday is nine o'clock. Good. That is it.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3513,
+      "bytes": 13857
+    },
+    "6e706c4b5dc77460": {
+      "url": "/audio/scene_line/6e706c4b5dc77460.opus",
+      "kind": "scene_line",
+      "text": "Miguel does not work on Sunday. Sunday is his day.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3582,
+      "bytes": 14256
+    },
+    "fb97c74d9a0338ed": {
+      "url": "/audio/scene_line/fb97c74d9a0338ed.opus",
+      "kind": "scene_line",
+      "text": "Miguel is early every day. He is not late. That is good.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3745,
+      "bytes": 15101
+    },
+    "236e56a9b34e5952": {
+      "url": "/audio/scene_line/236e56a9b34e5952.opus",
+      "kind": "scene_line",
+      "text": "When he does not understand, he says: one moment, I do not understand.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 4918,
+      "bytes": 19516
+    },
+    "1f85be47ae181ad6": {
+      "url": "/audio/scene_line/1f85be47ae181ad6.opus",
+      "kind": "scene_line",
+      "text": "And I repeat it. That is fine. I understand him.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 3153,
+      "bytes": 12406
+    },
+    "d1ab7703473ed344": {
+      "url": "/audio/scene_line/d1ab7703473ed344.opus",
+      "kind": "scene_line",
+      "text": "Today is Monday. Miguel starts today. See you at eight, Miguel.",
+      "voiceId": "us_f_3",
+      "ownerId": "l_0010",
+      "unitId": "b1_u5",
+      "durationMs": 4592,
+      "bytes": 17976
+    },
+    "8f1e5a145acaff1a": {
+      "url": "/audio/scene_line/8f1e5a145acaff1a.opus",
+      "kind": "scene_line",
+      "text": "It is morning. I am hungry, and I am thirsty.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 2863,
+      "bytes": 11899
+    },
+    "5f8543a85be5257b": {
+      "url": "/audio/scene_line/5f8543a85be5257b.opus",
+      "kind": "scene_line",
+      "text": "I go to the café. I go without Carlos. I go without Ana. I go, and I am here.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 6218,
+      "bytes": 26435
+    },
+    "c79179879c4d60bc": {
+      "url": "/audio/scene_line/c79179879c4d60bc.opus",
+      "kind": "scene_line",
+      "text": "Maria says: good morning, Miguel! What do you want?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 3327,
+      "bytes": 13934
+    },
+    "dcbefc9534469eed": {
+      "url": "/audio/scene_line/dcbefc9534469eed.opus",
+      "kind": "scene_line",
+      "text": "I say: I would like a coffee, please.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 2270,
+      "bytes": 9398
+    },
+    "5d53364c47f53ea6": {
+      "url": "/audio/scene_line/5d53364c47f53ea6.opus",
+      "kind": "scene_line",
+      "text": "Maria says: big or small? I say: give me a moment, please.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 5672,
+      "bytes": 24561
+    },
+    "840e8abc518fab6b": {
+      "url": "/audio/scene_line/840e8abc518fab6b.opus",
+      "kind": "scene_line",
+      "text": "A small coffee, please. With milk. And some bread.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 3490,
+      "bytes": 14356
+    },
+    "418c24e2411593d3": {
+      "url": "/audio/scene_line/418c24e2411593d3.opus",
+      "kind": "scene_line",
+      "text": "Maria says: hot? I say: yes, hot. I do not like it cold.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 5080,
+      "bytes": 20552
+    },
+    "5fcf50b661a99f16": {
+      "url": "/audio/scene_line/5fcf50b661a99f16.opus",
+      "kind": "scene_line",
+      "text": "Maria gives me the coffee. It is hot. It is good. I like it.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 4035,
+      "bytes": 17317
+    },
+    "cbffcd23fb4b6a2e": {
+      "url": "/audio/scene_line/cbffcd23fb4b6a2e.opus",
+      "kind": "scene_line",
+      "text": "I say: how much is it? Maria says: four. One, two, three, four. Here it is.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 7565,
+      "bytes": 29679
+    },
+    "c96e306548c2ec92": {
+      "url": "/audio/scene_line/c96e306548c2ec92.opus",
+      "kind": "scene_line",
+      "text": "I eat the bread. I drink the coffee. I am not hungry now.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 3652,
+      "bytes": 15152
+    },
+    "77ee43d2a0146d35": {
+      "url": "/audio/scene_line/77ee43d2a0146d35.opus",
+      "kind": "scene_line",
+      "text": "Tom comes in. Tom is thirsty. Tom wants tea, without milk.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 4558,
+      "bytes": 18303
+    },
+    "4b30bfb86a74f1a7": {
+      "url": "/audio/scene_line/4b30bfb86a74f1a7.opus",
+      "kind": "scene_line",
+      "text": "I say: Maria, a tea for Tom, please. Without milk.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 4325,
+      "bytes": 17395
+    },
+    "8b1c8eb436e73b65": {
+      "url": "/audio/scene_line/8b1c8eb436e73b65.opus",
+      "kind": "scene_line",
+      "text": "Ana comes in. Ana wants water. I say: Maria, do you have water?",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 5637,
+      "bytes": 22621
+    },
+    "b8ea04eb5db56e5e": {
+      "url": "/audio/scene_line/b8ea04eb5db56e5e.opus",
+      "kind": "scene_line",
+      "text": "Maria has water. It is cold. Ana likes it.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 3234,
+      "bytes": 14590
+    },
+    "a9c21fc43df800dd": {
+      "url": "/audio/scene_line/a9c21fc43df800dd.opus",
+      "kind": "scene_line",
+      "text": "This is my café now. I come every morning. Every morning I want a small coffee with milk, and some bread.",
+      "voiceId": "us_m_1",
+      "ownerId": "l_0011",
+      "unitId": "b1_u6",
+      "durationMs": 7100,
+      "bytes": 29255
+    },
+    "fd032094f7dbff80": {
+      "url": "/audio/scene_line/fd032094f7dbff80.opus",
+      "kind": "scene_line",
+      "text": "Good morning! My name is Maria. This is my café.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3919,
+      "bytes": 16153
+    },
+    "2b17219d4f123d5b": {
+      "url": "/audio/scene_line/2b17219d4f123d5b.opus",
+      "kind": "scene_line",
+      "text": "The café is open every morning, and every afternoon. It is open on Sunday too.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 4906,
+      "bytes": 19755
+    },
+    "63dc71f2c828df01": {
+      "url": "/audio/scene_line/63dc71f2c828df01.opus",
+      "kind": "scene_line",
+      "text": "I have coffee. I have tea. I have water, hot or cold.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 4070,
+      "bytes": 16616
+    },
+    "702a654ee9fb0a46": {
+      "url": "/audio/scene_line/702a654ee9fb0a46.opus",
+      "kind": "scene_line",
+      "text": "I have bread, and some fruit. I have milk for the coffee.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3327,
+      "bytes": 13671
+    },
+    "a4cd4a9aee326348": {
+      "url": "/audio/scene_line/a4cd4a9aee326348.opus",
+      "kind": "scene_line",
+      "text": "Do you want a big coffee or a small coffee? Do you want it with milk?",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3582,
+      "bytes": 14723
+    },
+    "5826bab186140293": {
+      "url": "/audio/scene_line/5826bab186140293.opus",
+      "kind": "scene_line",
+      "text": "Miguel wants a small coffee with milk. Every morning! And some bread.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 4569,
+      "bytes": 18713
+    },
+    "0e12554475c8ead3": {
+      "url": "/audio/scene_line/0e12554475c8ead3.opus",
+      "kind": "scene_line",
+      "text": "Tom does not like coffee. Tom likes tea, without milk.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3559,
+      "bytes": 14495
+    },
+    "3b8ceaef39d3ea58": {
+      "url": "/audio/scene_line/3b8ceaef39d3ea58.opus",
+      "kind": "scene_line",
+      "text": "Ana likes water. Cold water. Ana is not hungry in the morning.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 5150,
+      "bytes": 21207
+    },
+    "30173938caaf16d1": {
+      "url": "/audio/scene_line/30173938caaf16d1.opus",
+      "kind": "scene_line",
+      "text": "Carlos likes a big coffee. Hot! And a sandwich.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3431,
+      "bytes": 14064
+    },
+    "569c3d63cf7a6d4e": {
+      "url": "/audio/scene_line/569c3d63cf7a6d4e.opus",
+      "kind": "scene_line",
+      "text": "When Miguel does not understand, he says: give me a moment, please.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 4709,
+      "bytes": 18726
+    },
+    "60e735f9a9255a46": {
+      "url": "/audio/scene_line/60e735f9a9255a46.opus",
+      "kind": "scene_line",
+      "text": "And I give him a moment. That is fine. I like Miguel.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3420,
+      "bytes": 14004
+    },
+    "f3fdc55e2543ec90": {
+      "url": "/audio/scene_line/f3fdc55e2543ec90.opus",
+      "kind": "scene_line",
+      "text": "He is here every morning now. He says: I would like a coffee, please.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 3966,
+      "bytes": 16285
+    },
+    "0a55b60c274a063b": {
+      "url": "/audio/scene_line/0a55b60c274a063b.opus",
+      "kind": "scene_line",
+      "text": "And I say: a small coffee with milk, and some bread? And he says: yes! That is it.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 5870,
+      "bytes": 23148
+    },
+    "fdcb15ac65bbd901": {
+      "url": "/audio/scene_line/fdcb15ac65bbd901.opus",
+      "kind": "scene_line",
+      "text": "Come to my café. I have anything you want.",
+      "voiceId": "us_f_2",
+      "ownerId": "l_0012",
+      "unitId": "b1_u6",
+      "durationMs": 2561,
+      "bytes": 10552
     }
   },
   "scenes": {
@@ -15965,15 +17605,1065 @@
           "en": "See you tomorrow, Maria."
         }
       ]
+    },
+    "l_0001": {
+      "url": "/audio/scene/89c6472bfc7d90e9.opus",
+      "unitId": "b1_u1",
+      "durationMs": 40590,
+      "bytes": 160854,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3513,
+          "character": "miguel",
+          "en": "Hello. My name is Miguel. I am from Mexico."
+        },
+        {
+          "start_ms": 3933,
+          "end_ms": 8456,
+          "character": "miguel",
+          "en": "This is my morning. Good morning, Ana. Good morning, Carlos."
+        },
+        {
+          "start_ms": 8876,
+          "end_ms": 11785,
+          "character": "miguel",
+          "en": "Ana is nice. Carlos is nice."
+        },
+        {
+          "start_ms": 12205,
+          "end_ms": 15126,
+          "character": "miguel",
+          "en": "I say hello. I say good morning. I say thank you."
+        },
+        {
+          "start_ms": 15546,
+          "end_ms": 19523,
+          "character": "miguel",
+          "en": "I do not understand. I say: excuse me, can you repeat that?"
+        },
+        {
+          "start_ms": 19943,
+          "end_ms": 23189,
+          "character": "miguel",
+          "en": "Ana can repeat that. Ana is nice."
+        },
+        {
+          "start_ms": 23609,
+          "end_ms": 26890,
+          "character": "miguel",
+          "en": "How are you, Miguel? I am fine, thank you. And you?"
+        },
+        {
+          "start_ms": 27310,
+          "end_ms": 29569,
+          "character": "miguel",
+          "en": "This is good. This is my afternoon."
+        },
+        {
+          "start_ms": 29989,
+          "end_ms": 32051,
+          "character": "miguel",
+          "en": "Good afternoon, Maria. Nice to meet you."
+        },
+        {
+          "start_ms": 32471,
+          "end_ms": 36146,
+          "character": "miguel",
+          "en": "Goodbye, Ana. See you later, Carlos. Good night."
+        },
+        {
+          "start_ms": 36566,
+          "end_ms": 40520,
+          "character": "miguel",
+          "en": "My name is Miguel. I am from Mexico. Thank you."
+        }
+      ]
+    },
+    "l_0002": {
+      "url": "/audio/scene/05aff8489add48a0.opus",
+      "unitId": "b1_u1",
+      "durationMs": 43627,
+      "bytes": 168237,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 2120,
+          "character": "ana",
+          "en": "Hello, Carlos. Good morning."
+        },
+        {
+          "start_ms": 2540,
+          "end_ms": 4810,
+          "character": "carlos",
+          "en": "Good morning, Ana. How are you?"
+        },
+        {
+          "start_ms": 5230,
+          "end_ms": 7373,
+          "character": "ana",
+          "en": "I am fine, thank you. And you?"
+        },
+        {
+          "start_ms": 7793,
+          "end_ms": 10621,
+          "character": "carlos",
+          "en": "I am fine. Ana, this is Miguel."
+        },
+        {
+          "start_ms": 11041,
+          "end_ms": 15250,
+          "character": "ana",
+          "en": "Yes! I see Miguel. Miguel is from Mexico."
+        },
+        {
+          "start_ms": 15670,
+          "end_ms": 18776,
+          "character": "carlos",
+          "en": "Miguel is nice. Miguel says hello."
+        },
+        {
+          "start_ms": 19196,
+          "end_ms": 23243,
+          "character": "ana",
+          "en": "Yes. Miguel says good morning, and Miguel says thank you."
+        },
+        {
+          "start_ms": 23663,
+          "end_ms": 26491,
+          "character": "carlos",
+          "en": "Miguel says: I do not understand."
+        },
+        {
+          "start_ms": 26911,
+          "end_ms": 31689,
+          "character": "ana",
+          "en": "And I repeat. I say: good morning, Miguel. And Miguel understands."
+        },
+        {
+          "start_ms": 32109,
+          "end_ms": 33880,
+          "character": "carlos",
+          "en": "That is nice, Ana."
+        },
+        {
+          "start_ms": 34300,
+          "end_ms": 37766,
+          "character": "ana",
+          "en": "Miguel is nice. I see Miguel this afternoon."
+        },
+        {
+          "start_ms": 38186,
+          "end_ms": 40840,
+          "character": "carlos",
+          "en": "See you later, Ana. Good afternoon."
+        },
+        {
+          "start_ms": 41260,
+          "end_ms": 43542,
+          "character": "ana",
+          "en": "Goodbye, Carlos. See you later."
+        }
+      ]
+    },
+    "l_0003": {
+      "url": "/audio/scene/0ac50be369b10cf2.opus",
+      "unitId": "b1_u2",
+      "durationMs": 64745,
+      "bytes": 254615,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3536,
+          "character": "miguel",
+          "en": "Hello. My name is Miguel. I am twenty years old."
+        },
+        {
+          "start_ms": 3956,
+          "end_ms": 7248,
+          "character": "miguel",
+          "en": "I have a phone. It is an old phone, and it is fine."
+        },
+        {
+          "start_ms": 7668,
+          "end_ms": 12017,
+          "character": "miguel",
+          "en": "My phone number is five, one, two, nine, eight."
+        },
+        {
+          "start_ms": 12437,
+          "end_ms": 17099,
+          "character": "miguel",
+          "en": "Five, one, two, nine, eight. I am sure."
+        },
+        {
+          "start_ms": 17519,
+          "end_ms": 21508,
+          "character": "miguel",
+          "en": "Do you have a phone, Ana? Yes. Do you have a phone, Tom? Yes."
+        },
+        {
+          "start_ms": 21928,
+          "end_ms": 26300,
+          "character": "miguel",
+          "en": "Ana is twenty seven years old. Tom is twenty seven years old."
+        },
+        {
+          "start_ms": 26720,
+          "end_ms": 31788,
+          "character": "miguel",
+          "en": "How old is Carlos? I do not have it. I say: Carlos, how old are you?"
+        },
+        {
+          "start_ms": 32208,
+          "end_ms": 36742,
+          "character": "miguel",
+          "en": "Carlos says: I am twenty nine. Okay. I do not understand twenty nine."
+        },
+        {
+          "start_ms": 37162,
+          "end_ms": 41209,
+          "character": "miguel",
+          "en": "I say: can you repeat the number, please? Carlos repeats it."
+        },
+        {
+          "start_ms": 41629,
+          "end_ms": 50250,
+          "character": "miguel",
+          "en": "One, two, three, four, five, six, seven, eight, nine, ten."
+        },
+        {
+          "start_ms": 50670,
+          "end_ms": 55344,
+          "character": "miguel",
+          "en": "Eleven, twelve, thirteen, fourteen, fifteen."
+        },
+        {
+          "start_ms": 55764,
+          "end_ms": 61041,
+          "character": "miguel",
+          "en": "Sixteen, seventeen, eighteen, nineteen, twenty."
+        },
+        {
+          "start_ms": 61461,
+          "end_ms": 64660,
+          "character": "miguel",
+          "en": "Twenty. I am twenty years old. And you? How old are you?"
+        }
+      ]
+    },
+    "l_0004": {
+      "url": "/audio/scene/c2c5d144200b484d.opus",
+      "unitId": "b1_u2",
+      "durationMs": 58405,
+      "bytes": 230966,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3188,
+          "character": "tom",
+          "en": "Good afternoon, Maria. How are you?"
+        },
+        {
+          "start_ms": 3608,
+          "end_ms": 6238,
+          "character": "maria",
+          "en": "I am fine, thank you, Tom. And you?"
+        },
+        {
+          "start_ms": 6658,
+          "end_ms": 12156,
+          "character": "tom",
+          "en": "I am fine. Maria, do you have the phone number? Miguel is not here."
+        },
+        {
+          "start_ms": 12576,
+          "end_ms": 16356,
+          "character": "maria",
+          "en": "Yes, I do. One moment, please. Here it is."
+        },
+        {
+          "start_ms": 16776,
+          "end_ms": 17758,
+          "character": "tom",
+          "en": "What is it?"
+        },
+        {
+          "start_ms": 18178,
+          "end_ms": 20669,
+          "character": "maria",
+          "en": "It is five, one, two, nine, eight."
+        },
+        {
+          "start_ms": 21089,
+          "end_ms": 24161,
+          "character": "tom",
+          "en": "Five, one, two, nine... can you repeat the number?"
+        },
+        {
+          "start_ms": 24581,
+          "end_ms": 28430,
+          "character": "maria",
+          "en": "Five, one, two, nine, eight. Are you sure you have it?"
+        },
+        {
+          "start_ms": 28850,
+          "end_ms": 35149,
+          "character": "tom",
+          "en": "Yes, I am sure. Five, one, two, nine, eight. Thank you, Maria."
+        },
+        {
+          "start_ms": 35569,
+          "end_ms": 40243,
+          "character": "maria",
+          "en": "You are welcome. Miguel? Miguel is fine. It is an old phone."
+        },
+        {
+          "start_ms": 40663,
+          "end_ms": 43351,
+          "character": "tom",
+          "en": "It is an old phone, and it is fine."
+        },
+        {
+          "start_ms": 43771,
+          "end_ms": 45589,
+          "character": "maria",
+          "en": "How old is Miguel, Tom?"
+        },
+        {
+          "start_ms": 46009,
+          "end_ms": 48593,
+          "character": "tom",
+          "en": "Miguel is twenty years old."
+        },
+        {
+          "start_ms": 49013,
+          "end_ms": 51249,
+          "character": "maria",
+          "en": "Twenty! And how old are you?"
+        },
+        {
+          "start_ms": 51669,
+          "end_ms": 54868,
+          "character": "tom",
+          "en": "I am twenty seven. And you, Maria?"
+        },
+        {
+          "start_ms": 55288,
+          "end_ms": 58302,
+          "character": "maria",
+          "en": "Me? That is my number, Tom. Goodbye!"
+        }
+      ]
+    },
+    "l_0005": {
+      "url": "/audio/scene/95866a4b34bdfc43.opus",
+      "unitId": "b1_u3",
+      "durationMs": 53228,
+      "bytes": 215464,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3803,
+          "character": "miguel",
+          "en": "This is a photo of my family. They are in Mexico."
+        },
+        {
+          "start_ms": 4223,
+          "end_ms": 7515,
+          "character": "miguel",
+          "en": "This is my mother. Her name is Elena. She is nice."
+        },
+        {
+          "start_ms": 7935,
+          "end_ms": 11506,
+          "character": "miguel",
+          "en": "This is my father. His name is Juan. He is nice too."
+        },
+        {
+          "start_ms": 11926,
+          "end_ms": 16286,
+          "character": "miguel",
+          "en": "This is my sister. Her name is Sofia. She is nineteen years old."
+        },
+        {
+          "start_ms": 16706,
+          "end_ms": 19975,
+          "character": "miguel",
+          "en": "And this is my little brother. He is fifteen. He has a phone!"
+        },
+        {
+          "start_ms": 20395,
+          "end_ms": 24361,
+          "character": "miguel",
+          "en": "My family is not here. They are there, in Mexico."
+        },
+        {
+          "start_ms": 24781,
+          "end_ms": 28178,
+          "character": "miguel",
+          "en": "I miss them. I miss my mother, and I miss my father."
+        },
+        {
+          "start_ms": 28598,
+          "end_ms": 31728,
+          "character": "miguel",
+          "en": "I miss my sister, and I miss my little brother."
+        },
+        {
+          "start_ms": 32148,
+          "end_ms": 34918,
+          "character": "miguel",
+          "en": "I miss my home. My home is there, with them."
+        },
+        {
+          "start_ms": 35338,
+          "end_ms": 39373,
+          "character": "miguel",
+          "en": "But my friends are here. Ana is my friend. Tom is my friend."
+        },
+        {
+          "start_ms": 39793,
+          "end_ms": 45140,
+          "character": "miguel",
+          "en": "Carlos is my friend, and his family is here. His wife is here, and his son is here."
+        },
+        {
+          "start_ms": 45560,
+          "end_ms": 48283,
+          "character": "miguel",
+          "en": "Maria is my friend too. We are friends."
+        },
+        {
+          "start_ms": 48703,
+          "end_ms": 53145,
+          "character": "miguel",
+          "en": "My family is there, and my friends are with me. I love my family."
+        }
+      ]
+    },
+    "l_0006": {
+      "url": "/audio/scene/4197ffd635c39ee4.opus",
+      "unitId": "b1_u3",
+      "durationMs": 56696,
+      "bytes": 217824,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3397,
+          "character": "carlos",
+          "en": "Hello. My name is Carlos. This is my family."
+        },
+        {
+          "start_ms": 3817,
+          "end_ms": 7852,
+          "character": "carlos",
+          "en": "This is my wife. Her name is Laura. She is here, with me."
+        },
+        {
+          "start_ms": 8272,
+          "end_ms": 13433,
+          "character": "carlos",
+          "en": "And this is my son. His name is Diego. He is two years old. He is little."
+        },
+        {
+          "start_ms": 13853,
+          "end_ms": 18968,
+          "character": "carlos",
+          "en": "Diego says: hello! Diego says: mother! Diego says: father!"
+        },
+        {
+          "start_ms": 19388,
+          "end_ms": 24584,
+          "character": "carlos",
+          "en": "My mother is in Mexico. My father is in Mexico too."
+        },
+        {
+          "start_ms": 25004,
+          "end_ms": 28563,
+          "character": "carlos",
+          "en": "I miss them. But my wife is here, and my son is here."
+        },
+        {
+          "start_ms": 28983,
+          "end_ms": 32449,
+          "character": "carlos",
+          "en": "Miguel is my friend. His family is not here."
+        },
+        {
+          "start_ms": 32869,
+          "end_ms": 37972,
+          "character": "carlos",
+          "en": "Miguel misses his family. He misses his mother, and he misses his home."
+        },
+        {
+          "start_ms": 38392,
+          "end_ms": 43588,
+          "character": "carlos",
+          "en": "I understand Miguel. I say: Miguel, we are here. We are your friends."
+        },
+        {
+          "start_ms": 44008,
+          "end_ms": 48484,
+          "character": "carlos",
+          "en": "Ana is his friend. Tom is his friend. Maria is his friend."
+        },
+        {
+          "start_ms": 48904,
+          "end_ms": 53020,
+          "character": "carlos",
+          "en": "And Diego is his friend too! Diego says: hello, Miguel!"
+        },
+        {
+          "start_ms": 53440,
+          "end_ms": 56616,
+          "character": "carlos",
+          "en": "We are people with people. That is my family here."
+        }
+      ]
+    },
+    "l_0007": {
+      "url": "/audio/scene/a1f709b227127cd1.opus",
+      "unitId": "b1_u4",
+      "durationMs": 59509,
+      "bytes": 243335,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 4244,
+          "character": "miguel",
+          "en": "This is my street. My house is here, in this building, near the park."
+        },
+        {
+          "start_ms": 4664,
+          "end_ms": 7643,
+          "character": "miguel",
+          "en": "I go to the café. The café is not on this street."
+        },
+        {
+          "start_ms": 8063,
+          "end_ms": 11866,
+          "character": "miguel",
+          "en": "I go down this street. I turn left at the store. I go straight."
+        },
+        {
+          "start_ms": 12286,
+          "end_ms": 15230,
+          "character": "miguel",
+          "en": "And I am lost. I do not understand this street."
+        },
+        {
+          "start_ms": 15650,
+          "end_ms": 20510,
+          "character": "miguel",
+          "en": "I see Tom. I say: Tom, excuse me. I am lost. Where is the café?"
+        },
+        {
+          "start_ms": 20930,
+          "end_ms": 25859,
+          "character": "miguel",
+          "en": "Tom says: go up this street, to the corner. It is across from the park."
+        },
+        {
+          "start_ms": 26279,
+          "end_ms": 29769,
+          "character": "miguel",
+          "en": "I do not understand. I say: can you repeat that, please?"
+        },
+        {
+          "start_ms": 30189,
+          "end_ms": 34758,
+          "character": "miguel",
+          "en": "Tom repeats it. Go up this street. To the corner. Across from the park."
+        },
+        {
+          "start_ms": 35178,
+          "end_ms": 40490,
+          "character": "miguel",
+          "en": "I say it: up this street, to the corner, across from the park. I understand!"
+        },
+        {
+          "start_ms": 40910,
+          "end_ms": 46605,
+          "character": "miguel",
+          "en": "I go up the street. I go to the corner. The park is here. And the café is across from the park."
+        },
+        {
+          "start_ms": 47025,
+          "end_ms": 50735,
+          "character": "miguel",
+          "en": "The café is open. Maria is here. I am here!"
+        },
+        {
+          "start_ms": 51155,
+          "end_ms": 54528,
+          "character": "miguel",
+          "en": "It is far from my house. But I understand this street."
+        },
+        {
+          "start_ms": 54948,
+          "end_ms": 59424,
+          "character": "miguel",
+          "en": "Go up this street, to the corner, and it is across from the park. That is it."
+        }
+      ]
+    },
+    "l_0008": {
+      "url": "/audio/scene/3c39ce9e47c6999d.opus",
+      "unitId": "b1_u4",
+      "durationMs": 54320,
+      "bytes": 215066,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3095,
+          "character": "ana",
+          "en": "Hello. This is my street, and this is my building."
+        },
+        {
+          "start_ms": 3515,
+          "end_ms": 6865,
+          "character": "ana",
+          "en": "Miguel is in this building too. He is my friend."
+        },
+        {
+          "start_ms": 7285,
+          "end_ms": 11239,
+          "character": "ana",
+          "en": "The café is near here. It is not far. It is one block from here."
+        },
+        {
+          "start_ms": 11659,
+          "end_ms": 15915,
+          "character": "ana",
+          "en": "Go down this street. Turn right at the store. The café is on the corner."
+        },
+        {
+          "start_ms": 16335,
+          "end_ms": 19987,
+          "character": "ana",
+          "en": "The store is next to the bank. The bank is across from the park."
+        },
+        {
+          "start_ms": 20407,
+          "end_ms": 24663,
+          "character": "ana",
+          "en": "The park is on this street, near my house. I go to the park with Tom."
+        },
+        {
+          "start_ms": 25083,
+          "end_ms": 29223,
+          "character": "ana",
+          "en": "The bus stop is near the park too. It is on the corner, on the left."
+        },
+        {
+          "start_ms": 29643,
+          "end_ms": 34653,
+          "character": "ana",
+          "en": "The market is far. It is not on this street. Go down, turn left, go straight."
+        },
+        {
+          "start_ms": 35073,
+          "end_ms": 38830,
+          "character": "ana",
+          "en": "Miguel is lost. He says: Ana, where is the café?"
+        },
+        {
+          "start_ms": 39250,
+          "end_ms": 43645,
+          "character": "ana",
+          "en": "I say: go down this street, and turn right at the store. And he repeats it."
+        },
+        {
+          "start_ms": 44065,
+          "end_ms": 47880,
+          "character": "ana",
+          "en": "Go down this street. Turn right at the store. It is on the corner."
+        },
+        {
+          "start_ms": 48300,
+          "end_ms": 51859,
+          "character": "ana",
+          "en": "Yes, Miguel! That is it. You understand this street."
+        },
+        {
+          "start_ms": 52279,
+          "end_ms": 54236,
+          "character": "ana",
+          "en": "Come with me. It is near here."
+        }
+      ]
+    },
+    "l_0009": {
+      "url": "/audio/scene/6a4aa2f6715d8e15.opus",
+      "unitId": "b1_u5",
+      "durationMs": 55275,
+      "bytes": 219749,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3640,
+          "character": "miguel",
+          "en": "This is my week. I work with Carlos and Rosa."
+        },
+        {
+          "start_ms": 4060,
+          "end_ms": 7770,
+          "character": "miguel",
+          "en": "I work from Monday to Friday. I start at eight o'clock in the morning."
+        },
+        {
+          "start_ms": 8190,
+          "end_ms": 11413,
+          "character": "miguel",
+          "en": "Eight o'clock is early. I am not late. I start early."
+        },
+        {
+          "start_ms": 11833,
+          "end_ms": 14347,
+          "character": "miguel",
+          "en": "I finish at four o'clock in the afternoon."
+        },
+        {
+          "start_ms": 14767,
+          "end_ms": 18651,
+          "character": "miguel",
+          "en": "On Saturday I start at nine o'clock. Not eight. Nine."
+        },
+        {
+          "start_ms": 19071,
+          "end_ms": 21481,
+          "character": "miguel",
+          "en": "And on Saturday I finish at one o'clock."
+        },
+        {
+          "start_ms": 21901,
+          "end_ms": 24822,
+          "character": "miguel",
+          "en": "I do not work on Sunday. Sunday is my day."
+        },
+        {
+          "start_ms": 25242,
+          "end_ms": 29858,
+          "character": "miguel",
+          "en": "On Sunday I go to the café. The café is open on Sunday. Maria is there."
+        },
+        {
+          "start_ms": 30278,
+          "end_ms": 33547,
+          "character": "miguel",
+          "en": "Today is Monday. I start today, at eight o'clock."
+        },
+        {
+          "start_ms": 33967,
+          "end_ms": 36969,
+          "character": "miguel",
+          "en": "Tomorrow is Tuesday. I work tomorrow too."
+        },
+        {
+          "start_ms": 37389,
+          "end_ms": 43096,
+          "character": "miguel",
+          "en": "Monday, Tuesday, Wednesday, Thursday, Friday. That is my work."
+        },
+        {
+          "start_ms": 43516,
+          "end_ms": 47203,
+          "character": "miguel",
+          "en": "Saturday, until one o'clock. And Sunday is my day."
+        },
+        {
+          "start_ms": 47623,
+          "end_ms": 53086,
+          "character": "miguel",
+          "en": "Rosa says: Miguel, say the week. And I say it. Every day, I say it."
+        },
+        {
+          "start_ms": 53506,
+          "end_ms": 55184,
+          "character": "miguel",
+          "en": "I need this work. I start now."
+        }
+      ]
+    },
+    "l_0010": {
+      "url": "/audio/scene/367e589c1c234de3.opus",
+      "unitId": "b1_u5",
+      "durationMs": 54769,
+      "bytes": 210374,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 5951,
+          "character": "rosa",
+          "en": "Hello. My name is Rosa. I work with Carlos, and now I work with Miguel."
+        },
+        {
+          "start_ms": 6371,
+          "end_ms": 9965,
+          "character": "rosa",
+          "en": "Miguel is not from here. He needs work. He is good."
+        },
+        {
+          "start_ms": 10385,
+          "end_ms": 14292,
+          "character": "rosa",
+          "en": "Miguel starts at eight o'clock in the morning, from Monday to Friday."
+        },
+        {
+          "start_ms": 14712,
+          "end_ms": 18411,
+          "character": "rosa",
+          "en": "He finishes at four o'clock. On Saturday he starts at nine."
+        },
+        {
+          "start_ms": 18831,
+          "end_ms": 23412,
+          "character": "rosa",
+          "en": "Miguel says the week. He says: Monday to Friday, eight to four."
+        },
+        {
+          "start_ms": 23832,
+          "end_ms": 28668,
+          "character": "rosa",
+          "en": "And Saturday? He says: eight o'clock. No, Miguel. Saturday is nine."
+        },
+        {
+          "start_ms": 29088,
+          "end_ms": 32601,
+          "character": "rosa",
+          "en": "He says it: Saturday is nine o'clock. Good. That is it."
+        },
+        {
+          "start_ms": 33021,
+          "end_ms": 36603,
+          "character": "rosa",
+          "en": "Miguel does not work on Sunday. Sunday is his day."
+        },
+        {
+          "start_ms": 37023,
+          "end_ms": 40768,
+          "character": "rosa",
+          "en": "Miguel is early every day. He is not late. That is good."
+        },
+        {
+          "start_ms": 41188,
+          "end_ms": 46106,
+          "character": "rosa",
+          "en": "When he does not understand, he says: one moment, I do not understand."
+        },
+        {
+          "start_ms": 46526,
+          "end_ms": 49679,
+          "character": "rosa",
+          "en": "And I repeat it. That is fine. I understand him."
+        },
+        {
+          "start_ms": 50099,
+          "end_ms": 54691,
+          "character": "rosa",
+          "en": "Today is Monday. Miguel starts today. See you at eight, Miguel."
+        }
+      ]
+    },
+    "l_0011": {
+      "url": "/audio/scene/b5a489c81036a3a5.opus",
+      "unitId": "b1_u6",
+      "durationMs": 75004,
+      "bytes": 309243,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 2863,
+          "character": "miguel",
+          "en": "It is morning. I am hungry, and I am thirsty."
+        },
+        {
+          "start_ms": 3283,
+          "end_ms": 9501,
+          "character": "miguel",
+          "en": "I go to the café. I go without Carlos. I go without Ana. I go, and I am here."
+        },
+        {
+          "start_ms": 9921,
+          "end_ms": 13248,
+          "character": "miguel",
+          "en": "Maria says: good morning, Miguel! What do you want?"
+        },
+        {
+          "start_ms": 13668,
+          "end_ms": 15938,
+          "character": "miguel",
+          "en": "I say: I would like a coffee, please."
+        },
+        {
+          "start_ms": 16358,
+          "end_ms": 22030,
+          "character": "miguel",
+          "en": "Maria says: big or small? I say: give me a moment, please."
+        },
+        {
+          "start_ms": 22450,
+          "end_ms": 25940,
+          "character": "miguel",
+          "en": "A small coffee, please. With milk. And some bread."
+        },
+        {
+          "start_ms": 26360,
+          "end_ms": 31440,
+          "character": "miguel",
+          "en": "Maria says: hot? I say: yes, hot. I do not like it cold."
+        },
+        {
+          "start_ms": 31860,
+          "end_ms": 35895,
+          "character": "miguel",
+          "en": "Maria gives me the coffee. It is hot. It is good. I like it."
+        },
+        {
+          "start_ms": 36315,
+          "end_ms": 43880,
+          "character": "miguel",
+          "en": "I say: how much is it? Maria says: four. One, two, three, four. Here it is."
+        },
+        {
+          "start_ms": 44300,
+          "end_ms": 47952,
+          "character": "miguel",
+          "en": "I eat the bread. I drink the coffee. I am not hungry now."
+        },
+        {
+          "start_ms": 48372,
+          "end_ms": 52930,
+          "character": "miguel",
+          "en": "Tom comes in. Tom is thirsty. Tom wants tea, without milk."
+        },
+        {
+          "start_ms": 53350,
+          "end_ms": 57675,
+          "character": "miguel",
+          "en": "I say: Maria, a tea for Tom, please. Without milk."
+        },
+        {
+          "start_ms": 58095,
+          "end_ms": 63732,
+          "character": "miguel",
+          "en": "Ana comes in. Ana wants water. I say: Maria, do you have water?"
+        },
+        {
+          "start_ms": 64152,
+          "end_ms": 67386,
+          "character": "miguel",
+          "en": "Maria has water. It is cold. Ana likes it."
+        },
+        {
+          "start_ms": 67806,
+          "end_ms": 74906,
+          "character": "miguel",
+          "en": "This is my café now. I come every morning. Every morning I want a small coffee with milk, and some bread."
+        }
+      ]
+    },
+    "l_0012": {
+      "url": "/audio/scene/7f3cf1742cfbbc3d.opus",
+      "unitId": "b1_u6",
+      "durationMs": 62589,
+      "bytes": 247379,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 3919,
+          "character": "maria",
+          "en": "Good morning! My name is Maria. This is my café."
+        },
+        {
+          "start_ms": 4339,
+          "end_ms": 9245,
+          "character": "maria",
+          "en": "The café is open every morning, and every afternoon. It is open on Sunday too."
+        },
+        {
+          "start_ms": 9665,
+          "end_ms": 13735,
+          "character": "maria",
+          "en": "I have coffee. I have tea. I have water, hot or cold."
+        },
+        {
+          "start_ms": 14155,
+          "end_ms": 17482,
+          "character": "maria",
+          "en": "I have bread, and some fruit. I have milk for the coffee."
+        },
+        {
+          "start_ms": 17902,
+          "end_ms": 21484,
+          "character": "maria",
+          "en": "Do you want a big coffee or a small coffee? Do you want it with milk?"
+        },
+        {
+          "start_ms": 21904,
+          "end_ms": 26473,
+          "character": "maria",
+          "en": "Miguel wants a small coffee with milk. Every morning! And some bread."
+        },
+        {
+          "start_ms": 26893,
+          "end_ms": 30452,
+          "character": "maria",
+          "en": "Tom does not like coffee. Tom likes tea, without milk."
+        },
+        {
+          "start_ms": 30872,
+          "end_ms": 36022,
+          "character": "maria",
+          "en": "Ana likes water. Cold water. Ana is not hungry in the morning."
+        },
+        {
+          "start_ms": 36442,
+          "end_ms": 39873,
+          "character": "maria",
+          "en": "Carlos likes a big coffee. Hot! And a sandwich."
+        },
+        {
+          "start_ms": 40293,
+          "end_ms": 45002,
+          "character": "maria",
+          "en": "When Miguel does not understand, he says: give me a moment, please."
+        },
+        {
+          "start_ms": 45422,
+          "end_ms": 48842,
+          "character": "maria",
+          "en": "And I give him a moment. That is fine. I like Miguel."
+        },
+        {
+          "start_ms": 49262,
+          "end_ms": 53228,
+          "character": "maria",
+          "en": "He is here every morning now. He says: I would like a coffee, please."
+        },
+        {
+          "start_ms": 53648,
+          "end_ms": 59518,
+          "character": "maria",
+          "en": "And I say: a small coffee with milk, and some bread? And he says: yes! That is it."
+        },
+        {
+          "start_ms": 59938,
+          "end_ms": 62499,
+          "character": "maria",
+          "en": "Come to my café. I have anything you want."
+        }
+      ]
     }
   },
   "recordings": {},
   "voiceProbes": {
-    "us_f_1": "fb8289c6fe0d80d3",
-    "us_m_1": "8d71b4f88a12e5bc",
-    "us_m_2": "a5a80ffa3d9fb767",
-    "us_f_2": "4d529c89789ca5f7",
-    "us_f_3": "28534a2d8cb66573",
-    "uk_m_1": "124ef2a1229f982d"
+    "us_f_1": "a9043d3aa71d3b63",
+    "us_m_1": "86f684f2460ddc46",
+    "us_m_2": "25aa59fb72c56817",
+    "us_f_2": "6b5db10c496286f1",
+    "us_f_3": "3cc76939b4affc9f",
+    "uk_m_1": "cd9e367a8c24065d"
   }
 }
