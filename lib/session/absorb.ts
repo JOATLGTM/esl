@@ -18,6 +18,8 @@ export type AbsorbLine = {
   /** Character id, for the key; `name` is what the learner reads. */
   character: string;
   name: string;
+  /** The speaker's portrait, when the cast has one. */
+  portraitUrl?: string | null;
   en: string;
   es?: string;
   startMs: number;
@@ -67,7 +69,7 @@ export async function loadAbsorbScene(
       .eq("user_id", userId)
       .eq("unit_id", unitId)
       .not("completed_at", "is", null),
-    supabase.from("characters").select("id, name"),
+    supabase.from("characters").select("id, name, portrait_url"),
   ]);
 
   const all = scenes.data ?? [];
@@ -77,6 +79,7 @@ export async function loadAbsorbScene(
   const scene = all[index];
 
   const names = new Map((characters.data ?? []).map((c) => [c.id, c.name]));
+  const portraits = new Map((characters.data ?? []).map((c) => [c.id, c.portrait_url]));
   const transcript = (scene.transcript as TranscriptSegment[] | null) ?? [];
 
   return {
@@ -89,6 +92,7 @@ export async function loadAbsorbScene(
       // transcript tag that is not in the cast -- but a name is not worth a
       // crash, so fall back to the id rather than rendering "undefined:".
       name: names.get(line.character) ?? line.character,
+      portraitUrl: portraits.get(line.character) ?? null,
       en: line.en,
       es: line.es,
       startMs: line.start_ms,

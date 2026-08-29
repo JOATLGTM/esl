@@ -115,6 +115,13 @@ export function MeetStage({
       <div className="flex flex-1 flex-col justify-center gap-6">
         <div className="flex flex-col gap-3">
           <h1 className="text-4xl font-bold text-balance text-ink">{chunk.en}</h1>
+          {/* The picture is meaning without Spanish -- the one thing the taper
+              can withdraw the gloss *to*. Empty alt: the English is the text
+              already on screen. */}
+          {chunk.imageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element -- static pictogram, no optimisation wanted
+            <img src={chunk.imageUrl} alt="" className="h-28 w-28 object-contain" />
+          )}
 
           {!offerGloss ? null : isRevealed ? (
             <p className="text-xl text-muted">{chunk.es}</p>

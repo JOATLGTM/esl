@@ -513,6 +513,31 @@ function checkListening(bundle: ContentBundle) {
   }
 }
 
+/**
+ * Every image a unit or the cast points at must exist in `public/`. A path
+ * that resolves to nothing renders as a broken-image glyph exactly where the
+ * learner was promised meaning, which is worse than no picture at all.
+ */
+function checkImages(bundle: ContentBundle) {
+  const exists = (p: string) => fs.existsSync(path.join(process.cwd(), "public", p));
+  for (const c of bundle.cast.values()) {
+    if (c.portrait && !exists(c.portrait)) err(`character:${c.id}`, `portrait ${c.portrait} is not in public/`);
+  }
+  for (const unit of bundle.units) {
+    for (const chunk of unit.chunks) {
+      if (chunk.image && !exists(chunk.image)) err(unit.unit_id, `${chunk.id} image ${chunk.image} is not in public/`);
+    }
+    for (const frame of unit.frames) {
+      for (const [filler, img] of Object.entries(frame.filler_images)) {
+        if (!frame.literal_fillers.includes(filler)) {
+          err(unit.unit_id, `${frame.id} has an image for "${filler}", which is not one of its literal fillers`);
+        }
+        if (!exists(img)) err(unit.unit_id, `${frame.id} image ${img} for "${filler}" is not in public/`);
+      }
+    }
+  }
+}
+
 function checkReadability(bundle: ContentBundle) {
   const timeline = buildKnownWordTimeline(bundle.units);
 
@@ -836,6 +861,7 @@ function main() {
   checkCast(bundle);
   for (const unit of bundle.units) checkUnitStructure(unit, bundle);
   checkFrames(bundle);
+  checkImages(bundle);
   checkReadability(bundle);
   console.log("\n  Listening library (ROADMAP #4, 100% known)");
   checkListening(bundle);

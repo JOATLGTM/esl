@@ -84,6 +84,7 @@ async function main() {
     role_es: c.role_es,
     role_en: c.role_en,
     speaks_english: c.speaks_english,
+    portrait_url: c.portrait ?? null,
   }));
 
   const speakers = speakerRoster.speakers.map((s) => ({
@@ -131,7 +132,8 @@ async function main() {
         example_en: c.example_en,
         example_es: c.example_es,
         tags: c.tags,
-      accepts: c.accepts,
+        accepts: c.accepts,
+        image_url: c.image ?? null,
         slots: [],
         audio_urls: audio,
       };
@@ -152,6 +154,7 @@ async function main() {
       tags: f.tags,
       fillers: f.fillers,
       literal_fillers: f.literal_fillers,
+      filler_images: f.filler_images,
     }))
   );
 

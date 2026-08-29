@@ -106,7 +106,13 @@ export function ListeningPlayer({ track }: { track: ListeningTrack }) {
                 activeLine === i ? "border-primary bg-primary-soft" : "border-line bg-surface"
               }`}
             >
-              <span className="block text-sm font-medium text-faint">{line.name}</span>
+              <span className="flex items-center gap-2 text-sm font-medium text-faint">
+                {line.portraitUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element -- static portrait
+                  <img src={line.portraitUrl} alt="" className="h-6 w-6 rounded-full object-cover" />
+                )}
+                {line.name}
+              </span>
               <span className="block text-lg text-ink">{line.en}</span>
             </button>
           </li>

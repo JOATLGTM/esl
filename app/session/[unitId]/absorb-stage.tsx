@@ -322,7 +322,13 @@ export function AbsorbStage({
                   : "border-transparent hover:border-line"
               } disabled:cursor-default`}
             >
-              <span className="text-sm font-semibold text-faint">{line.name}</span>
+              <span className="flex items-center gap-2 text-sm font-semibold text-faint">
+                {line.portraitUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element -- static portrait
+                  <img src={line.portraitUrl} alt="" className="h-6 w-6 rounded-full object-cover" />
+                )}
+                {line.name}
+              </span>
               <span className="block text-lg text-ink">{line.en}</span>
               {line.es && <span className="block text-base text-muted">{line.es}</span>}
             </button>

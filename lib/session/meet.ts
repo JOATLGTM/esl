@@ -27,13 +27,15 @@ export type MeetChunk = {
   es: string;
   exampleEn: string;
   exampleEs: string;
+  /** A picture of the referent, when one exists. The taper's terminus. */
+  imageUrl: string | null;
   /** At least two, by PRD F2 -- a card that cannot be heard in two voices is not a card. */
   voices: ChunkAudio[];
 };
 
 type ChunkRow = Pick<
   Tables<"chunks">,
-  "id" | "en_text" | "es_gloss" | "example_en" | "example_es" | "audio_urls"
+  "id" | "en_text" | "es_gloss" | "example_en" | "example_es" | "audio_urls" | "image_url"
 >;
 
 function toMeetChunk(row: ChunkRow): MeetChunk {
@@ -43,6 +45,7 @@ function toMeetChunk(row: ChunkRow): MeetChunk {
     es: row.es_gloss,
     exampleEn: row.example_en,
     exampleEs: row.example_es,
+    imageUrl: row.image_url,
     voices: (row.audio_urls as ChunkAudio[] | null) ?? [],
   };
 }
@@ -65,7 +68,7 @@ export async function loadMeetChunks(
   const [chunks, met] = await Promise.all([
     supabase
       .from("chunks")
-      .select("id, en_text, es_gloss, example_en, example_es, audio_urls")
+      .select("id, en_text, es_gloss, example_en, example_es, audio_urls, image_url")
       .eq("unit_id", unitId)
       .order("id", { ascending: true }),
     supabase.from("user_cards").select("chunk_id").eq("user_id", userId),

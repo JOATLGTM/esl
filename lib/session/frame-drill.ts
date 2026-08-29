@@ -28,6 +28,8 @@ export type FrameFiller = {
   key: string;
   /** What goes in the hole: "a coffee", "Mexico". */
   text: string;
+  /** A picture of it, when the content has one. */
+  imageUrl?: string | null;
 };
 
 export type SessionFrame = {
@@ -44,6 +46,7 @@ export type FrameOption = {
   text: string;
   /** The whole sentence the learner says. */
   sentence: string;
+  imageUrl?: string | null;
 };
 
 export type FrameDrill = {
@@ -103,6 +106,7 @@ export function buildFrameDrill(frame: SessionFrame, seed: string): FrameDrill |
       key: filler.key,
       text: filler.text,
       sentence: expandFrame(frame.pattern, frame.slot, filler.text),
+      imageUrl: filler.imageUrl ?? null,
     });
   }
 

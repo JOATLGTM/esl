@@ -441,6 +441,22 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**Image slots, without images** — built 2026-08-29, `docs/ROADMAP.md` #6.
+`chunks[].image`, `frames[].filler_images` (keyed by literal filler text) and
+`characters[].portrait`, each an optional public path; the validator fails on
+a path that is not in `public/`, and on a filler image whose filler does not
+exist. Seeded to `chunks.image_url`, `frames.filler_images`,
+`characters.portrait_url`. Meet shows the chunk's picture beside the English —
+which is the taper's missing terminus, the one thing it can withdraw the gloss
+*to* — the frame chooser shows a thumbnail per filler, and both players show a
+portrait beside the speaker's name.
+
+**Nothing is pictured yet, on purpose.** Sourcing pictograms is curation with a
+licence decision attached (ARASAAC is CC BY-NC-SA; Mulberry and OpenMoji are
+BY-SA), and it is not a thing to do from inside a build session. The slots
+exist so assets can land without a schema change or a migration; the rules
+are in `public/images/README.md`.
+
 **The cast speaks at deliberately different rates, and the learner can change
 the speed** — built 2026-08-29, `docs/ROADMAP.md` #5. The gate used to hold the
 whole cast within 1.10× of each other, which is tidier than real people and

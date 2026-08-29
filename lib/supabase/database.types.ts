@@ -97,6 +97,7 @@ export type Database = {
           created_at: string
           id: string
           name: string
+          portrait_url: string | null
           role_en: string
           role_es: string
           speaks_english: string
@@ -106,6 +107,7 @@ export type Database = {
           created_at?: string
           id: string
           name: string
+          portrait_url?: string | null
           role_en: string
           role_es: string
           speaks_english: string
@@ -115,6 +117,7 @@ export type Database = {
           created_at?: string
           id?: string
           name?: string
+          portrait_url?: string | null
           role_en?: string
           role_es?: string
           speaks_english?: string
@@ -133,6 +136,7 @@ export type Database = {
           example_en: string
           example_es: string
           id: string
+          image_url: string | null
           slots: Json
           tags: Json
           unit_id: string
@@ -147,6 +151,7 @@ export type Database = {
           example_en: string
           example_es: string
           id: string
+          image_url?: string | null
           slots?: Json
           tags?: Json
           unit_id: string
@@ -161,6 +166,7 @@ export type Database = {
           example_en?: string
           example_es?: string
           id?: string
+          image_url?: string | null
           slots?: Json
           tags?: Json
           unit_id?: string
@@ -373,6 +379,7 @@ export type Database = {
           cefr: Database["public"]["Enums"]["cefr_level"]
           created_at: string
           es_pattern: string
+          filler_images: Json
           fillers: Json
           id: string
           literal_fillers: Json
@@ -385,6 +392,7 @@ export type Database = {
           cefr: Database["public"]["Enums"]["cefr_level"]
           created_at?: string
           es_pattern: string
+          filler_images?: Json
           fillers?: Json
           id: string
           literal_fillers?: Json
@@ -397,6 +405,7 @@ export type Database = {
           cefr?: Database["public"]["Enums"]["cefr_level"]
           created_at?: string
           es_pattern?: string
+          filler_images?: Json
           fillers?: Json
           id?: string
           literal_fillers?: Json

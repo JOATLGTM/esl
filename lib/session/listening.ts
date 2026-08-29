@@ -66,7 +66,7 @@ export async function loadListeningLibrary(currentUnit: string | null): Promise<
         reached.map((u) => u.id),
       )
       .order("id"),
-    supabase.from("characters").select("id, name"),
+    supabase.from("characters").select("id, name, portrait_url"),
   ]);
   const names = new Map((characters ?? []).map((c) => [c.id, c.name]));
 
@@ -98,7 +98,7 @@ export async function loadListeningTrack(
       .eq("id", trackId)
       .eq("kind", "listening")
       .maybeSingle(),
-    supabase.from("characters").select("id, name"),
+    supabase.from("characters").select("id, name, portrait_url"),
     reachedUnitIds(currentUnit),
   ]);
   if (!scene) return null;
@@ -106,6 +106,7 @@ export async function loadListeningTrack(
   if (!reached.some((u) => u.id === scene.unit_id)) return null;
 
   const names = new Map((characters ?? []).map((c) => [c.id, c.name]));
+  const portraits = new Map((characters ?? []).map((c) => [c.id, c.portrait_url]));
   const transcript = (scene.transcript as TranscriptSegment[] | null) ?? [];
   return {
     id: scene.id,
@@ -115,6 +116,7 @@ export async function loadListeningTrack(
     lines: transcript.map((line) => ({
       character: line.character,
       name: names.get(line.character) ?? line.character,
+      portraitUrl: portraits.get(line.character) ?? null,
       en: line.en,
       es: line.es,
       startMs: line.start_ms,

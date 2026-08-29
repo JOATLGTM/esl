@@ -82,6 +82,18 @@ export const ChunkSchema = z.object({
    * content. Empty for almost every chunk.
    */
   accepts: z.array(z.string()).default([]),
+  /**
+   * A picture of the referent, as a public path (`/images/coffee.svg`).
+   *
+   * Optional, and most chunks will never have one: the repair strategies
+   * that are the course's best content -- "I don't understand", "Give me a
+   * moment" -- cannot be drawn. Concrete nouns can, and for those a picture is
+   * the only route to meaning that is neither Spanish nor an English
+   * definition. That matters because the taper withdraws the Spanish gloss at
+   * its last level and, until this field existed, replaced it with nothing.
+   * Pictograms, not photos; never generated images of people.
+   */
+  image: z.string().regex(/^\/images\/[a-z0-9_./-]+$/i, "image must be a public path like /images/coffee.svg").optional(),
   audio: AudioSpec,
 });
 export type Chunk = z.infer<typeof ChunkSchema>;
@@ -254,6 +266,13 @@ export const FrameSchema = z.object({
    * a word the learner already, demonstrably, has.
    */
   literal_fillers: z.array(z.string().min(1)).default([]),
+  /**
+   * Pictures for fillers, keyed by the literal filler text. A picture chooser
+   * is the highest-value image in the product: it makes slot-filling
+   * non-translational, and it makes the frame visibly a machine rather than
+   * eight more phrases to memorise.
+   */
+  filler_images: z.record(z.string(), z.string().regex(/^\/images\/[a-z0-9_./-]+$/i)).default({}),
   cefr: z.enum(CEFR_LEVELS),
   tags: z.array(z.string()).default([]),
 }).superRefine((frame, ctx) => {
@@ -492,6 +511,12 @@ export const CharacterSchema = z.object({
    * demonstrate that rather than only assert it.
    */
   speaks_english: z.enum(["native", "learner"]),
+  /**
+   * A face. Six characters had permanent voices and no faces, and the story
+   * bible's whole argument for a fixed cast is recognition -- a face is the
+   * cheapest recognition there is. One-time, six files, hand-picked.
+   */
+  portrait: z.string().regex(/^\/images\/[a-z0-9_./-]+$/i).optional(),
 });
 export type Character = z.infer<typeof CharacterSchema>;
 

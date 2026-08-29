@@ -385,8 +385,12 @@ export function SpeakStage({
                     <button
                       type="button"
                       onClick={() => setChosen(option.key)}
-                      className="flex min-h-16 w-full items-center rounded-2xl border-2 border-line bg-surface px-5 py-3 text-left text-lg text-ink transition-colors"
+                      className="flex min-h-16 w-full items-center gap-3 rounded-2xl border-2 border-line bg-surface px-5 py-3 text-left text-lg text-ink transition-colors"
                     >
+                      {option.imageUrl && (
+                        // eslint-disable-next-line @next/next/no-img-element -- static pictogram
+                        <img src={option.imageUrl} alt="" className="h-10 w-10 shrink-0 object-contain" />
+                      )}
                       {option.text}
                     </button>
                   </li>

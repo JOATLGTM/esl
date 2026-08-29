@@ -142,7 +142,7 @@ export async function loadSessionFrame(
   const [{ data: frames }, { count }] = await Promise.all([
     supabase
       .from("frames")
-      .select("id, pattern, es_pattern, slot, fillers, literal_fillers")
+      .select("id, pattern, es_pattern, slot, fillers, literal_fillers, filler_images")
       .eq("unit_id", unitId)
       .order("id"),
     // Sessions already finished in this unit, exactly as Absorb counts scenes:
@@ -175,6 +175,7 @@ export async function loadSessionFrame(
     ...(((frame.literal_fillers as string[] | null) ?? []).map((text) => ({
       key: `lit:${text}`,
       text,
+      imageUrl: ((frame.filler_images as Record<string, string> | null) ?? {})[text] ?? null,
     }))),
   ];
 
