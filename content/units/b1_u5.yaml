@@ -1,0 +1,569 @@
+# Block 1, Unit 5 -- time, days, and the first thing Miguel gets wrong on
+# purpose.
+#
+# The beat (content/STORY.md): Rosa gives him his hours. He reads them back and
+# gets one wrong. This is where Block 1 stops being about meeting people and
+# starts being about the thing he came here to do.
+#
+# Design notes for whoever edits this next:
+#   * Rosa is the authority figure and a nervous beginner expects authority to
+#     be a threat. She is the proof it is not. When Miguel reads his hours back
+#     wrong she corrects the FACT and not his English, and she never says sorry
+#     for him or slows down theatrically. That scene is doing more work than
+#     the vocabulary is.
+#   * Two grouped chunks carry the seven days, for the same reason four carried
+#     the numbers in b1_u2: seven single-word chunks would be vocabulary, and
+#     an example may introduce at most two new words.
+#   * `yesterday` was planned for this unit and cut. There is no way to use it
+#     without a past tense and the past tense is Block 4 -- see the note in
+#     content/vocab-schedule.yaml.
+
+unit_id: b1_u5
+block: 1
+order: 5
+title_es: "La hora"
+title_en: "Time"
+cefr: A0
+can_do_es: "Puedo decir a qué hora y qué días trabajo, y entender un horario"
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0103
+    en: "What time is it?"
+    es: "¿Qué hora es?"
+    cefr: A0
+    example_en: "Excuse me, what time is it?"
+    example_es: "Disculpe, ¿qué hora es?"
+    tags: [question, time]
+    audio: [auto]
+
+  - id: c_0104
+    en: "It is eight o'clock"
+    es: "Son las ocho"
+    cefr: A0
+    example_en: "It is eight o'clock in the morning."
+    example_es: "Son las ocho de la mañana."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0105
+    en: "Monday, Tuesday, Wednesday"
+    es: "Lunes, martes, miércoles"
+    cefr: A0
+    example_en: "Monday, Tuesday, Wednesday, Thursday."
+    example_es: "Lunes, martes, miércoles, jueves."
+    tags: [days]
+    audio: [auto]
+
+  - id: c_0106
+    en: "Friday, Saturday, Sunday"
+    es: "Viernes, sábado, domingo"
+    cefr: A0
+    example_en: "Friday, Saturday, Sunday. That is the week."
+    example_es: "Viernes, sábado, domingo. Esa es la semana."
+    tags: [days]
+    audio: [auto]
+
+  - id: c_0107
+    en: "When do you work?"
+    es: "¿Cuándo trabajas?"
+    cefr: A0
+    example_en: "When do you work, Carlos?"
+    example_es: "¿Cuándo trabajas, Carlos?"
+    tags: [question, work]
+    audio: [auto]
+
+  - id: c_0108
+    en: "I work on Monday"
+    es: "Trabajo el lunes"
+    cefr: A0
+    example_en: "I work on Monday and on Tuesday."
+    example_es: "Trabajo el lunes y el martes."
+    tags: [work, days]
+    audio: [auto]
+
+  - id: c_0109
+    en: "From Monday to Friday"
+    es: "De lunes a viernes"
+    cefr: A0
+    example_en: "I work from Monday to Friday."
+    example_es: "Trabajo de lunes a viernes."
+    tags: [work, days]
+    audio: [auto]
+
+  - id: c_0110
+    en: "I start at eight"
+    es: "Empiezo a las ocho"
+    cefr: A0
+    example_en: "I start at eight in the morning."
+    example_es: "Empiezo a las ocho de la mañana."
+    tags: [work, time]
+    audio: [auto]
+
+  - id: c_0111
+    en: "I finish at four"
+    es: "Termino a las cuatro"
+    cefr: A0
+    example_en: "I finish at four in the afternoon."
+    example_es: "Termino a las cuatro de la tarde."
+    tags: [work, time]
+    audio: [auto]
+
+  - id: c_0112
+    en: "What time do you start?"
+    es: "¿A qué hora empiezas?"
+    cefr: A0
+    example_en: "What time do you start on Monday?"
+    example_es: "¿A qué hora empiezas el lunes?"
+    tags: [question, work]
+    audio: [auto]
+
+  - id: c_0113
+    en: "It is early"
+    es: "Es temprano"
+    cefr: A0
+    example_en: "Eight o'clock in the morning is early."
+    example_es: "Las ocho de la mañana es temprano."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0114
+    en: "It is late"
+    es: "Es tarde"
+    cefr: A0
+    example_en: "It is late. It is ten o'clock."
+    example_es: "Es tarde. Son las diez."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0115
+    en: "I am late"
+    es: "Voy tarde"
+    cefr: A0
+    example_en: "I am late. I need to start now."
+    example_es: "Voy tarde. Necesito empezar ahora."
+    accepts: ["I'm late"]
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0116
+    en: "Today is Monday"
+    es: "Hoy es lunes"
+    cefr: A0
+    example_en: "Today is Monday, and I work today."
+    example_es: "Hoy es lunes, y hoy trabajo."
+    tags: [days]
+    audio: [auto]
+
+  - id: c_0117
+    en: "Tomorrow is Tuesday"
+    es: "Mañana es martes"
+    cefr: A0
+    example_en: "Tomorrow is Tuesday. I work tomorrow."
+    example_es: "Mañana es martes. Mañana trabajo."
+    tags: [days]
+    audio: [auto]
+
+  - id: c_0118
+    en: "See you tomorrow"
+    es: "Hasta mañana"
+    cefr: A0
+    example_en: "Good night, and see you tomorrow."
+    example_es: "Buenas noches, y hasta mañana."
+    tags: [farewell]
+    audio: [auto]
+
+  - id: c_0119
+    en: "This week"
+    es: "Esta semana"
+    cefr: A0
+    example_en: "This week I work from Monday to Friday."
+    example_es: "Esta semana trabajo de lunes a viernes."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0120
+    en: "Next week"
+    es: "La próxima semana"
+    cefr: A0
+    example_en: "Next week I start on Tuesday."
+    example_es: "La próxima semana empiezo el martes."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0121
+    en: "Until five o'clock"
+    es: "Hasta las cinco"
+    cefr: A0
+    example_en: "I work until five o'clock."
+    example_es: "Trabajo hasta las cinco."
+    tags: [work, time]
+    audio: [auto]
+
+  - id: c_0122
+    en: "I do not work on Sunday"
+    es: "No trabajo el domingo"
+    cefr: A0
+    example_en: "I do not work on Sunday or on Saturday."
+    example_es: "No trabajo el domingo ni el sábado."
+    accepts: ["I don't work on Sunday"]
+    tags: [work, days]
+    audio: [auto]
+
+  - id: c_0123
+    en: "I work every day"
+    es: "Trabajo todos los días"
+    cefr: A0
+    example_en: "I work every day, from Monday to Saturday."
+    example_es: "Trabajo todos los días, de lunes a sábado."
+    tags: [work]
+    audio: [auto]
+
+  - id: c_0124
+    en: "I need to work"
+    es: "Necesito trabajar"
+    cefr: A0
+    example_en: "I need to work. I need the work."
+    example_es: "Necesito trabajar. Necesito el trabajo."
+    tags: [work]
+    audio: [auto]
+
+  - id: c_0125
+    en: "In the evening"
+    es: "En la noche"
+    cefr: A0
+    example_en: "I finish in the evening, at eight o'clock."
+    example_es: "Termino en la noche, a las ocho."
+    tags: [time]
+    audio: [auto]
+
+  - id: c_0126
+    en: "What days do you work?"
+    es: "¿Qué días trabajas?"
+    cefr: A0
+    example_en: "What days do you work this week?"
+    example_es: "¿Qué días trabajas esta semana?"
+    tags: [question, work]
+    audio: [auto]
+
+  - id: c_0127
+    en: "One moment, I do not understand"
+    es: "Un momento, no entiendo"
+    cefr: A0
+    example_en: "One moment, I do not understand. Can you repeat that?"
+    example_es: "Un momento, no entiendo. ¿Puede repetirlo?"
+    tags: [repair]
+    audio: [auto]
+
+frames:
+  - id: f_0009
+    pattern: "I work on {DAY}."
+    es_pattern: "Trabajo el {DAY}."
+    slot: DAY
+    literal_fillers:
+      ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    cefr: A0
+    tags: [work, days]
+
+  - id: f_0010
+    pattern: "I start at {TIME}."
+    es_pattern: "Empiezo a las {TIME}."
+    slot: TIME
+    literal_fillers:
+      ["six o'clock", "seven o'clock", "eight o'clock", "nine o'clock", "ten o'clock"]
+    cefr: A0
+    tags: [work, time]
+
+scenes:
+  # One day: Carlos brings the work, Rosa gives the hours, Miguel gets one
+  # wrong and is corrected without being made small, and then he tells two
+  # people his schedule because it is his.
+
+  - id: s_0025
+    title_es: "Carlos trae el trabajo"
+    character: carlos
+    duration_target_s: 46
+    transcript: |
+      CARLOS: Miguel! Good morning.
+      MIGUEL: Good morning, Carlos. How are you?
+      CARLOS: I am fine. Miguel, do you need work?
+      MIGUEL: Yes. I need to work.
+      CARLOS: Okay. I work with Rosa. Rosa is here every day.
+      MIGUEL: Rosa?
+      CARLOS: Yes. She is my friend. When do you start?
+      MIGUEL: Excuse me? I do not understand.
+      CARLOS: What days do you work? Monday? Tuesday?
+      MIGUEL: I do not work. I need to work.
+      CARLOS: Okay! Come with me. Rosa is here.
+      MIGUEL: Now?
+      CARLOS: Now. It is early. It is eight o'clock.
+    questions:
+      - q_es: "¿Qué le ofrece Carlos a Miguel?"
+        options_es:
+          - "Llevarlo a ver a Rosa por trabajo"
+          - "Su número de teléfono"
+          - "Acompañarlo al café"
+        answer: 0
+      - q_es: "¿Por qué Carlos dice que es temprano?"
+        options_es:
+          - "Porque Miguel llegó tarde"
+          - "Porque hay tiempo para ir ahora"
+          - "Porque Rosa no está"
+        answer: 1
+      - q_es: "¿Miguel entiende la pregunta de Carlos a la primera?"
+        options_es:
+          - "Sí, contesta enseguida"
+          - "No, y se queda callado"
+          - "No, y dice que no entiende"
+        answer: 2
+
+  - id: s_0026
+    title_es: "Rosa"
+    character: rosa
+    duration_target_s: 46
+    transcript: |
+      CARLOS: Rosa, this is Miguel. Miguel, this is Rosa.
+      ROSA: Hello, Miguel. Nice to meet you.
+      MIGUEL: Nice to meet you, Rosa.
+      ROSA: Miguel, do you need work?
+      MIGUEL: Yes. I need to work.
+      ROSA: Okay. What days do you work?
+      MIGUEL: Every day. I work every day.
+      ROSA: Every day! No, Miguel. Not Sunday.
+      MIGUEL: Not Sunday?
+      ROSA: You do not work on Sunday. From Monday to Saturday.
+      MIGUEL: From Monday to Saturday. Okay.
+      ROSA: And Sunday is your day.
+      MIGUEL: Sunday is my day. Thank you, Rosa.
+    questions:
+      - q_es: "¿Qué corrige Rosa?"
+        options_es:
+          - "El inglés de Miguel"
+          - "Cuántos días va a trabajar"
+          - "Cómo se llama"
+        answer: 1
+      - q_es: "¿Miguel quería trabajar más o menos días de los que le dan?"
+        options_es:
+          - "Más"
+          - "Menos"
+          - "Los mismos"
+        answer: 0
+      - q_es: "¿Cómo le habla Rosa a Miguel?"
+        options_es:
+          - "Con enojo"
+          - "Muy despacio, como a un niño"
+          - "Directa y sin problema"
+        answer: 2
+
+  - id: s_0027
+    title_es: "El horario"
+    character: rosa
+    duration_target_s: 48
+    transcript: |
+      ROSA: Miguel, this is your week.
+      MIGUEL: Okay.
+      ROSA: You start at eight o'clock in the morning.
+      MIGUEL: I start at eight o'clock.
+      ROSA: Yes. And you finish at four o'clock.
+      MIGUEL: I finish at four o'clock in the afternoon.
+      ROSA: Good. From Monday to Friday.
+      MIGUEL: From Monday to Friday. And Saturday?
+      ROSA: On Saturday you start at nine o'clock.
+      MIGUEL: One moment, I do not understand.
+      ROSA: Saturday is not eight. Saturday is nine o'clock.
+      MIGUEL: Saturday is nine o'clock. Okay.
+      ROSA: And you finish at one o'clock.
+      MIGUEL: At one o'clock. Thank you, Rosa.
+    questions:
+      - q_es: "¿Qué tiene de distinto el sábado?"
+        options_es:
+          - "Empieza más tarde y termina antes"
+          - "No trabaja"
+          - "Empieza más temprano"
+        answer: 0
+      - q_es: "¿Qué hace Miguel cuando se pierde con el sábado?"
+        options_es:
+          - "Dice que sí igual"
+          - "Dice que no entiende"
+          - "Se va"
+        answer: 1
+      - q_es: "¿A qué hora termina de lunes a viernes?"
+        options_es:
+          - "A la una"
+          - "A las nueve"
+          - "A las cuatro"
+        answer: 2
+
+  - id: s_0028
+    title_es: "Miguel repite el horario"
+    character: rosa
+    duration_target_s: 48
+    transcript: |
+      ROSA: Miguel, say the week.
+      MIGUEL: From Monday to Friday. I start at eight o'clock.
+      ROSA: Yes.
+      MIGUEL: And I finish at four o'clock.
+      ROSA: Yes. And Saturday?
+      MIGUEL: On Saturday I start at eight o'clock.
+      ROSA: No. Not eight. On Saturday you start at nine o'clock.
+      MIGUEL: Nine o'clock. Not eight.
+      ROSA: Nine. Say it, please.
+      MIGUEL: On Saturday I start at nine o'clock, and I finish at one.
+      ROSA: Good, Miguel. That is it.
+      MIGUEL: I understand. Thank you, Rosa.
+      ROSA: See you tomorrow. Tomorrow is Monday.
+      MIGUEL: Tomorrow is Monday. See you tomorrow.
+    questions:
+      - q_es: "¿En qué se equivoca Miguel?"
+        options_es:
+          - "En la hora del sábado"
+          - "En los días que trabaja"
+          - "En la hora de salida"
+        answer: 0
+      - q_es: "¿Qué hace Rosa cuando Miguel se equivoca?"
+        options_es:
+          - "Se lo pasa por alto"
+          - "Se lo corrige y le pide que lo repita"
+          - "Le dice que su inglés está mal"
+        answer: 1
+      - q_es: "¿Qué día empieza a trabajar?"
+        options_es:
+          - "El sábado"
+          - "El domingo"
+          - "El lunes"
+        answer: 2
+
+  - id: s_0029
+    title_es: "Miguel le cuenta a Ana"
+    character: ana
+    duration_target_s: 46
+    transcript: |
+      ANA: Miguel! Good evening. How are you?
+      MIGUEL: Ana! I am fine. I have work.
+      ANA: You have work! Where do you work?
+      MIGUEL: I work with Carlos and Rosa.
+      ANA: When do you work?
+      MIGUEL: From Monday to Friday. I start at eight o'clock.
+      ANA: Eight o'clock! That is early.
+      MIGUEL: It is early. And I finish at four o'clock.
+      ANA: And Saturday?
+      MIGUEL: On Saturday I start at nine o'clock, until one.
+      ANA: And Sunday?
+      MIGUEL: I do not work on Sunday. Sunday is my day.
+      ANA: Sunday is your day! Good, Miguel.
+      MIGUEL: Tomorrow is Monday. I start tomorrow.
+    questions:
+      - q_es: "¿Cómo cuenta Miguel su horario aquí?"
+        options_es:
+          - "Se equivoca con el sábado otra vez"
+          - "Le pide a Ana que lo ayude"
+          - "Lo dice entero y bien"
+        answer: 2
+      - q_es: "¿Qué le parece a Ana la hora de entrada?"
+        options_es:
+          - "Que es temprano"
+          - "Que es tarde"
+          - "No dice nada"
+        answer: 0
+      - q_es: "¿Qué es el domingo para Miguel?"
+        options_es:
+          - "El día que empieza"
+          - "Su día libre"
+          - "Un día de trabajo corto"
+        answer: 1
+
+  - id: s_0030
+    title_es: "En el café, en la noche"
+    character: maria
+    duration_target_s: 46
+    transcript: |
+      MARIA: Miguel! Good evening.
+      MIGUEL: Good evening, Maria.
+      MARIA: What time is it?
+      MIGUEL: One moment. It is eight o'clock.
+      MARIA: Eight o'clock in the evening! It is late.
+      MIGUEL: It is late. And I start at eight tomorrow.
+      MARIA: Tomorrow! What days do you work?
+      MIGUEL: From Monday to Friday, and Saturday.
+      MARIA: Every day! And Sunday?
+      MIGUEL: I do not work on Sunday.
+      MARIA: The café is open on Sunday. Come on Sunday, Miguel.
+      MIGUEL: On Sunday. Okay!
+      MARIA: Good night. See you tomorrow.
+      MIGUEL: Good night, Maria. See you on Sunday.
+    questions:
+      - q_es: "¿Por qué Maria le dice que vaya el domingo?"
+        options_es:
+          - "Porque el café cierra el resto de la semana"
+          - "Porque es el único día que Miguel no trabaja"
+          - "Porque el domingo hay más gente"
+        answer: 1
+      - q_es: "¿Qué hace Miguel antes de decir la hora?"
+        options_es:
+          - "Pide un momento"
+          - "Pregunta a otra persona"
+          - "Dice que no sabe"
+        answer: 0
+      - q_es: "Maria se despide hasta mañana y Miguel hasta el domingo. ¿Por qué?"
+        options_es:
+          - "Porque no entendió a Maria"
+          - "Porque mañana trabaja y el domingo no"
+          - "Porque el café cierra mañana"
+        answer: 1
+
+speaking_task:
+  mode: scripted
+  character: rosa
+  scenario_es: "Alguien te da un horario. Escúchalo, repítelo y di si entendiste."
+  scenario_en: "Someone gives you a schedule. Listen, repeat it back, and say if you understood."
+  target_chunks: [c_0107, c_0109, c_0110, c_0111, c_0127, c_0122]
+  script:
+    - speaker: ai
+      en: "Hello, {name}. This is your week."
+      es: "Hola, {name}. Esta es tu semana."
+    - speaker: user
+      en: "Okay. When do I work?"
+      es: "Está bien. ¿Cuándo trabajo?"
+    - speaker: ai
+      en: "From Monday to Friday. You start at eight o'clock."
+      es: "De lunes a viernes. Empiezas a las ocho."
+    - speaker: user
+      en: "From Monday to Friday. I start at eight o'clock."
+      es: "De lunes a viernes. Empiezo a las ocho."
+    - speaker: ai
+      en: "And you finish at four o'clock. On Saturday you start at nine."
+      es: "Y terminas a las cuatro. El sábado empiezas a las nueve."
+    - speaker: user
+      en: "One moment, I do not understand."
+      es: "Un momento, no entiendo."
+    - speaker: ai
+      en: "Saturday is nine o'clock. Not eight."
+      es: "El sábado es a las nueve. No a las ocho."
+    - speaker: user
+      en: "Saturday is nine o'clock. I do not work on Sunday."
+      es: "El sábado es a las nueve. No trabajo el domingo."
+
+missions:
+  - id: m_0009
+    title_es: "Pregunta la hora"
+    instructions_es: >-
+      Pregúntale la hora a alguien en inglés: "What time is it?". Aunque traigas
+      el teléfono en la mano. Lo que se practica es abrir la boca, no saber la
+      hora.
+    prep_chunk_ids: [c_0103]
+    difficulty: 2
+    alternate_es: >-
+      Dilo en voz alta cada vez que mires la hora hoy. Tres veces y ya no lo
+      piensas.
+
+  - id: m_0010
+    title_es: "Di tu horario"
+    instructions_es: >-
+      Dile a alguien en inglés qué días y a qué hora trabajas o estudias:
+      "I work from Monday to Friday. I start at eight o'clock." Si te
+      equivocas en una hora, corrígela y sigue. Eso también es hablar.
+    prep_chunk_ids: [c_0109, c_0110]
+    difficulty: 3
+    alternate_es: >-
+      Escríbelo primero, léelo en voz alta, y luego dilo sin leer. Que salga
+      completo una vez es la meta.

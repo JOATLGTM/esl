@@ -8327,6 +8327,2006 @@
       "unitId": "b1_u4",
       "durationMs": 3199,
       "bytes": 13035
+    },
+    "a76049fd32c0e2e2": {
+      "url": "/audio/chunk/a76049fd32c0e2e2.opus",
+      "kind": "chunk",
+      "text": "What time is it?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0103",
+      "unitId": "b1_u5",
+      "durationMs": 1086,
+      "bytes": 4481
+    },
+    "889e02e2c7f6d00a": {
+      "url": "/audio/chunk/889e02e2c7f6d00a.opus",
+      "kind": "chunk",
+      "text": "What time is it?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0103",
+      "unitId": "b1_u5",
+      "durationMs": 796,
+      "bytes": 3409
+    },
+    "5962df8c300a8d29": {
+      "url": "/audio/chunk/5962df8c300a8d29.opus",
+      "kind": "chunk",
+      "text": "What time is it?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0103",
+      "unitId": "b1_u5",
+      "durationMs": 1086,
+      "bytes": 4533
+    },
+    "a5fc62dcc0f3cc6e": {
+      "url": "/audio/chunk/a5fc62dcc0f3cc6e.opus",
+      "kind": "chunk",
+      "text": "What time is it?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0103",
+      "unitId": "b1_u5",
+      "durationMs": 1191,
+      "bytes": 4952
+    },
+    "5932aa42f80f2eef": {
+      "url": "/audio/example/5932aa42f80f2eef.opus",
+      "kind": "example",
+      "text": "Excuse me, what time is it?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0103",
+      "unitId": "b1_u5",
+      "durationMs": 2282,
+      "bytes": 8498
+    },
+    "cacf7d75fc8664c2": {
+      "url": "/audio/chunk/cacf7d75fc8664c2.opus",
+      "kind": "chunk",
+      "text": "It is eight o'clock",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0104",
+      "unitId": "b1_u5",
+      "durationMs": 1063,
+      "bytes": 4532
+    },
+    "8c9dbc8a78ea0cfa": {
+      "url": "/audio/chunk/8c9dbc8a78ea0cfa.opus",
+      "kind": "chunk",
+      "text": "It is eight o'clock",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0104",
+      "unitId": "b1_u5",
+      "durationMs": 1411,
+      "bytes": 5744
+    },
+    "a29f45b8cd967057": {
+      "url": "/audio/chunk/a29f45b8cd967057.opus",
+      "kind": "chunk",
+      "text": "It is eight o'clock",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0104",
+      "unitId": "b1_u5",
+      "durationMs": 1365,
+      "bytes": 5656
+    },
+    "7153672b71226441": {
+      "url": "/audio/chunk/7153672b71226441.opus",
+      "kind": "chunk",
+      "text": "It is eight o'clock",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0104",
+      "unitId": "b1_u5",
+      "durationMs": 1330,
+      "bytes": 5619
+    },
+    "5f4ebf121d80ac96": {
+      "url": "/audio/example/5f4ebf121d80ac96.opus",
+      "kind": "example",
+      "text": "It is eight o'clock in the morning.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0104",
+      "unitId": "b1_u5",
+      "durationMs": 1829,
+      "bytes": 7235
+    },
+    "b80c337183fbbdff": {
+      "url": "/audio/chunk/b80c337183fbbdff.opus",
+      "kind": "chunk",
+      "text": "Monday, Tuesday, Wednesday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0105",
+      "unitId": "b1_u5",
+      "durationMs": 1934,
+      "bytes": 7861
+    },
+    "66832d1b5cf0db9e": {
+      "url": "/audio/chunk/66832d1b5cf0db9e.opus",
+      "kind": "chunk",
+      "text": "Monday, Tuesday, Wednesday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0105",
+      "unitId": "b1_u5",
+      "durationMs": 2723,
+      "bytes": 11527
+    },
+    "eed65d3eac6af6ad": {
+      "url": "/audio/chunk/eed65d3eac6af6ad.opus",
+      "kind": "chunk",
+      "text": "Monday, Tuesday, Wednesday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0105",
+      "unitId": "b1_u5",
+      "durationMs": 2015,
+      "bytes": 8304
+    },
+    "6cef338da8d12f16": {
+      "url": "/audio/chunk/6cef338da8d12f16.opus",
+      "kind": "chunk",
+      "text": "Monday, Tuesday, Wednesday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0105",
+      "unitId": "b1_u5",
+      "durationMs": 2178,
+      "bytes": 9320
+    },
+    "c8439da4cccf60b1": {
+      "url": "/audio/example/c8439da4cccf60b1.opus",
+      "kind": "example",
+      "text": "Monday, Tuesday, Wednesday, Thursday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0105",
+      "unitId": "b1_u5",
+      "durationMs": 3037,
+      "bytes": 11885
+    },
+    "56145a3e28c8e93e": {
+      "url": "/audio/chunk/56145a3e28c8e93e.opus",
+      "kind": "chunk",
+      "text": "Friday, Saturday, Sunday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0106",
+      "unitId": "b1_u5",
+      "durationMs": 1725,
+      "bytes": 7272
+    },
+    "38708bd8c43fc086": {
+      "url": "/audio/chunk/38708bd8c43fc086.opus",
+      "kind": "chunk",
+      "text": "Friday, Saturday, Sunday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0106",
+      "unitId": "b1_u5",
+      "durationMs": 2421,
+      "bytes": 9404
+    },
+    "5fa4d63163a025c1": {
+      "url": "/audio/chunk/5fa4d63163a025c1.opus",
+      "kind": "chunk",
+      "text": "Friday, Saturday, Sunday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0106",
+      "unitId": "b1_u5",
+      "durationMs": 2096,
+      "bytes": 8665
+    },
+    "19590f2db49bcc8f": {
+      "url": "/audio/chunk/19590f2db49bcc8f.opus",
+      "kind": "chunk",
+      "text": "Friday, Saturday, Sunday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0106",
+      "unitId": "b1_u5",
+      "durationMs": 1945,
+      "bytes": 8137
+    },
+    "88f3089056143188": {
+      "url": "/audio/example/88f3089056143188.opus",
+      "kind": "example",
+      "text": "Friday, Saturday, Sunday. That is the week.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0106",
+      "unitId": "b1_u5",
+      "durationMs": 3246,
+      "bytes": 12323
+    },
+    "3fef750423658c11": {
+      "url": "/audio/chunk/3fef750423658c11.opus",
+      "kind": "chunk",
+      "text": "When do you work?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0107",
+      "unitId": "b1_u5",
+      "durationMs": 1086,
+      "bytes": 4501
+    },
+    "f7e83e22d136f4ab": {
+      "url": "/audio/chunk/f7e83e22d136f4ab.opus",
+      "kind": "chunk",
+      "text": "When do you work?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0107",
+      "unitId": "b1_u5",
+      "durationMs": 819,
+      "bytes": 3839
+    },
+    "dde0f47475a23807": {
+      "url": "/audio/chunk/dde0f47475a23807.opus",
+      "kind": "chunk",
+      "text": "When do you work?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0107",
+      "unitId": "b1_u5",
+      "durationMs": 959,
+      "bytes": 4011
+    },
+    "d2ed3c6b78ba2d0d": {
+      "url": "/audio/chunk/d2ed3c6b78ba2d0d.opus",
+      "kind": "chunk",
+      "text": "When do you work?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0107",
+      "unitId": "b1_u5",
+      "durationMs": 1249,
+      "bytes": 5265
+    },
+    "ab7fc08dcbf99548": {
+      "url": "/audio/example/ab7fc08dcbf99548.opus",
+      "kind": "example",
+      "text": "When do you work, Carlos?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0107",
+      "unitId": "b1_u5",
+      "durationMs": 1725,
+      "bytes": 6789
+    },
+    "f63e39d3600ea6e3": {
+      "url": "/audio/chunk/f63e39d3600ea6e3.opus",
+      "kind": "chunk",
+      "text": "I work on Monday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0108",
+      "unitId": "b1_u5",
+      "durationMs": 1214,
+      "bytes": 5127
+    },
+    "e556fb3661736951": {
+      "url": "/audio/chunk/e556fb3661736951.opus",
+      "kind": "chunk",
+      "text": "I work on Monday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0108",
+      "unitId": "b1_u5",
+      "durationMs": 1156,
+      "bytes": 4957
+    },
+    "a34efbd7cb1de228": {
+      "url": "/audio/chunk/a34efbd7cb1de228.opus",
+      "kind": "chunk",
+      "text": "I work on Monday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0108",
+      "unitId": "b1_u5",
+      "durationMs": 1191,
+      "bytes": 4980
+    },
+    "7718eff61923d157": {
+      "url": "/audio/chunk/7718eff61923d157.opus",
+      "kind": "chunk",
+      "text": "I work on Monday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0108",
+      "unitId": "b1_u5",
+      "durationMs": 1458,
+      "bytes": 6106
+    },
+    "156acfca483653a3": {
+      "url": "/audio/example/156acfca483653a3.opus",
+      "kind": "example",
+      "text": "I work on Monday and on Tuesday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0108",
+      "unitId": "b1_u5",
+      "durationMs": 2096,
+      "bytes": 8589
+    },
+    "b5106ae896601195": {
+      "url": "/audio/chunk/b5106ae896601195.opus",
+      "kind": "chunk",
+      "text": "From Monday to Friday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0109",
+      "unitId": "b1_u5",
+      "durationMs": 1377,
+      "bytes": 5688
+    },
+    "cd9b4d9e8bc2c1e5": {
+      "url": "/audio/chunk/cd9b4d9e8bc2c1e5.opus",
+      "kind": "chunk",
+      "text": "From Monday to Friday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0109",
+      "unitId": "b1_u5",
+      "durationMs": 1318,
+      "bytes": 5530
+    },
+    "4805c08823128b20": {
+      "url": "/audio/chunk/4805c08823128b20.opus",
+      "kind": "chunk",
+      "text": "From Monday to Friday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0109",
+      "unitId": "b1_u5",
+      "durationMs": 1388,
+      "bytes": 5785
+    },
+    "9afe168b875f3f81": {
+      "url": "/audio/chunk/9afe168b875f3f81.opus",
+      "kind": "chunk",
+      "text": "From Monday to Friday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0109",
+      "unitId": "b1_u5",
+      "durationMs": 1620,
+      "bytes": 6779
+    },
+    "68062df3840391a4": {
+      "url": "/audio/example/68062df3840391a4.opus",
+      "kind": "example",
+      "text": "I work from Monday to Friday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0109",
+      "unitId": "b1_u5",
+      "durationMs": 1736,
+      "bytes": 7105
+    },
+    "ea83b35dc6099d9a": {
+      "url": "/audio/chunk/ea83b35dc6099d9a.opus",
+      "kind": "chunk",
+      "text": "I start at eight",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0110",
+      "unitId": "b1_u5",
+      "durationMs": 1040,
+      "bytes": 4352
+    },
+    "0c460626fd0687fa": {
+      "url": "/audio/chunk/0c460626fd0687fa.opus",
+      "kind": "chunk",
+      "text": "I start at eight",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0110",
+      "unitId": "b1_u5",
+      "durationMs": 1272,
+      "bytes": 5251
+    },
+    "e2b8c86eb81821ec": {
+      "url": "/audio/chunk/e2b8c86eb81821ec.opus",
+      "kind": "chunk",
+      "text": "I start at eight",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0110",
+      "unitId": "b1_u5",
+      "durationMs": 1249,
+      "bytes": 5155
+    },
+    "7e692080db60f648": {
+      "url": "/audio/chunk/7e692080db60f648.opus",
+      "kind": "chunk",
+      "text": "I start at eight",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0110",
+      "unitId": "b1_u5",
+      "durationMs": 1353,
+      "bytes": 5680
+    },
+    "b2df3d8e66fb5ca3": {
+      "url": "/audio/example/b2df3d8e66fb5ca3.opus",
+      "kind": "example",
+      "text": "I start at eight in the morning.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0110",
+      "unitId": "b1_u5",
+      "durationMs": 1620,
+      "bytes": 6751
+    },
+    "d0fa553cbdd955ae": {
+      "url": "/audio/chunk/d0fa553cbdd955ae.opus",
+      "kind": "chunk",
+      "text": "I finish at four",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0111",
+      "unitId": "b1_u5",
+      "durationMs": 1191,
+      "bytes": 4955
+    },
+    "a0f73421c9d157a8": {
+      "url": "/audio/chunk/a0f73421c9d157a8.opus",
+      "kind": "chunk",
+      "text": "I finish at four",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0111",
+      "unitId": "b1_u5",
+      "durationMs": 1226,
+      "bytes": 5206
+    },
+    "59b52fd72dff4808": {
+      "url": "/audio/chunk/59b52fd72dff4808.opus",
+      "kind": "chunk",
+      "text": "I finish at four",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0111",
+      "unitId": "b1_u5",
+      "durationMs": 1237,
+      "bytes": 5065
+    },
+    "94c6727e746741d2": {
+      "url": "/audio/chunk/94c6727e746741d2.opus",
+      "kind": "chunk",
+      "text": "I finish at four",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0111",
+      "unitId": "b1_u5",
+      "durationMs": 1504,
+      "bytes": 6412
+    },
+    "cd151e203fccd5b4": {
+      "url": "/audio/example/cd151e203fccd5b4.opus",
+      "kind": "example",
+      "text": "I finish at four in the afternoon.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0111",
+      "unitId": "b1_u5",
+      "durationMs": 2003,
+      "bytes": 8284
+    },
+    "d036ab932cf048a4": {
+      "url": "/audio/chunk/d036ab932cf048a4.opus",
+      "kind": "chunk",
+      "text": "What time do you start?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0112",
+      "unitId": "b1_u5",
+      "durationMs": 1423,
+      "bytes": 5885
+    },
+    "5f7c7e2a9aacc6c1": {
+      "url": "/audio/chunk/5f7c7e2a9aacc6c1.opus",
+      "kind": "chunk",
+      "text": "What time do you start?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0112",
+      "unitId": "b1_u5",
+      "durationMs": 1260,
+      "bytes": 5357
+    },
+    "c3fcae064eeafa53": {
+      "url": "/audio/chunk/c3fcae064eeafa53.opus",
+      "kind": "chunk",
+      "text": "What time do you start?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0112",
+      "unitId": "b1_u5",
+      "durationMs": 1353,
+      "bytes": 5601
+    },
+    "04b41116823b5ea3": {
+      "url": "/audio/chunk/04b41116823b5ea3.opus",
+      "kind": "chunk",
+      "text": "What time do you start?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0112",
+      "unitId": "b1_u5",
+      "durationMs": 1539,
+      "bytes": 6406
+    },
+    "4c4211c1521795fa": {
+      "url": "/audio/example/4c4211c1521795fa.opus",
+      "kind": "example",
+      "text": "What time do you start on Monday?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0112",
+      "unitId": "b1_u5",
+      "durationMs": 1841,
+      "bytes": 7544
+    },
+    "6405d0db277a95df": {
+      "url": "/audio/chunk/6405d0db277a95df.opus",
+      "kind": "chunk",
+      "text": "It is early",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0113",
+      "unitId": "b1_u5",
+      "durationMs": 808,
+      "bytes": 3428
+    },
+    "035e108aeb1985ff": {
+      "url": "/audio/chunk/035e108aeb1985ff.opus",
+      "kind": "chunk",
+      "text": "It is early",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0113",
+      "unitId": "b1_u5",
+      "durationMs": 935,
+      "bytes": 3954
+    },
+    "14c9e4f48dd7b4a5": {
+      "url": "/audio/chunk/14c9e4f48dd7b4a5.opus",
+      "kind": "chunk",
+      "text": "It is early",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0113",
+      "unitId": "b1_u5",
+      "durationMs": 1121,
+      "bytes": 4650
+    },
+    "65e3112bb9bf214e": {
+      "url": "/audio/chunk/65e3112bb9bf214e.opus",
+      "kind": "chunk",
+      "text": "It is early",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0113",
+      "unitId": "b1_u5",
+      "durationMs": 1086,
+      "bytes": 4600
+    },
+    "698df757bdda9077": {
+      "url": "/audio/example/698df757bdda9077.opus",
+      "kind": "example",
+      "text": "Eight o'clock in the morning is early.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0113",
+      "unitId": "b1_u5",
+      "durationMs": 2015,
+      "bytes": 8309
+    },
+    "4dec6b5d76adb81a": {
+      "url": "/audio/chunk/4dec6b5d76adb81a.opus",
+      "kind": "chunk",
+      "text": "It is late",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0114",
+      "unitId": "b1_u5",
+      "durationMs": 773,
+      "bytes": 3236
+    },
+    "af405bf61965302c": {
+      "url": "/audio/chunk/af405bf61965302c.opus",
+      "kind": "chunk",
+      "text": "It is late",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0114",
+      "unitId": "b1_u5",
+      "durationMs": 877,
+      "bytes": 3665
+    },
+    "3598f6b50944123d": {
+      "url": "/audio/chunk/3598f6b50944123d.opus",
+      "kind": "chunk",
+      "text": "It is late",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0114",
+      "unitId": "b1_u5",
+      "durationMs": 901,
+      "bytes": 3780
+    },
+    "a08c2be315b16b3a": {
+      "url": "/audio/chunk/a08c2be315b16b3a.opus",
+      "kind": "chunk",
+      "text": "It is late",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0114",
+      "unitId": "b1_u5",
+      "durationMs": 970,
+      "bytes": 4142
+    },
+    "9a16e22f7f6c1dc8": {
+      "url": "/audio/example/9a16e22f7f6c1dc8.opus",
+      "kind": "example",
+      "text": "It is late. It is ten o'clock.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0114",
+      "unitId": "b1_u5",
+      "durationMs": 2178,
+      "bytes": 8535
+    },
+    "70af2d8281047273": {
+      "url": "/audio/chunk/70af2d8281047273.opus",
+      "kind": "chunk",
+      "text": "I am late",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0115",
+      "unitId": "b1_u5",
+      "durationMs": 703,
+      "bytes": 3049
+    },
+    "7eb685dfa01a0ee8": {
+      "url": "/audio/chunk/7eb685dfa01a0ee8.opus",
+      "kind": "chunk",
+      "text": "I am late",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0115",
+      "unitId": "b1_u5",
+      "durationMs": 680,
+      "bytes": 2887
+    },
+    "8dd0120a1b258ec9": {
+      "url": "/audio/chunk/8dd0120a1b258ec9.opus",
+      "kind": "chunk",
+      "text": "I am late",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0115",
+      "unitId": "b1_u5",
+      "durationMs": 1017,
+      "bytes": 4244
+    },
+    "ec1dae5f9b461843": {
+      "url": "/audio/chunk/ec1dae5f9b461843.opus",
+      "kind": "chunk",
+      "text": "I am late",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0115",
+      "unitId": "b1_u5",
+      "durationMs": 970,
+      "bytes": 4180
+    },
+    "b5074b1d5bcbe6f7": {
+      "url": "/audio/example/b5074b1d5bcbe6f7.opus",
+      "kind": "example",
+      "text": "I am late. I need to start now.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0115",
+      "unitId": "b1_u5",
+      "durationMs": 2108,
+      "bytes": 8315
+    },
+    "d0fbeaaae8f1558a": {
+      "url": "/audio/chunk/d0fbeaaae8f1558a.opus",
+      "kind": "chunk",
+      "text": "Today is Monday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0116",
+      "unitId": "b1_u5",
+      "durationMs": 1086,
+      "bytes": 4566
+    },
+    "46ad402dbafd942e": {
+      "url": "/audio/chunk/46ad402dbafd942e.opus",
+      "kind": "chunk",
+      "text": "Today is Monday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0116",
+      "unitId": "b1_u5",
+      "durationMs": 1075,
+      "bytes": 4485
+    },
+    "dbbc7e5d5284cd51": {
+      "url": "/audio/chunk/dbbc7e5d5284cd51.opus",
+      "kind": "chunk",
+      "text": "Today is Monday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0116",
+      "unitId": "b1_u5",
+      "durationMs": 1156,
+      "bytes": 4763
+    },
+    "486959d07d09f8ef": {
+      "url": "/audio/chunk/486959d07d09f8ef.opus",
+      "kind": "chunk",
+      "text": "Today is Monday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0116",
+      "unitId": "b1_u5",
+      "durationMs": 1295,
+      "bytes": 5526
+    },
+    "5f405b851940432f": {
+      "url": "/audio/example/5f405b851940432f.opus",
+      "kind": "example",
+      "text": "Today is Monday, and I work today.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0116",
+      "unitId": "b1_u5",
+      "durationMs": 2387,
+      "bytes": 9239
+    },
+    "6a93c408614ce7f5": {
+      "url": "/audio/chunk/6a93c408614ce7f5.opus",
+      "kind": "chunk",
+      "text": "Tomorrow is Tuesday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0117",
+      "unitId": "b1_u5",
+      "durationMs": 1272,
+      "bytes": 5240
+    },
+    "e87ae688accb5bf4": {
+      "url": "/audio/chunk/e87ae688accb5bf4.opus",
+      "kind": "chunk",
+      "text": "Tomorrow is Tuesday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0117",
+      "unitId": "b1_u5",
+      "durationMs": 1469,
+      "bytes": 6099
+    },
+    "6a4abab8b6d874e8": {
+      "url": "/audio/chunk/6a4abab8b6d874e8.opus",
+      "kind": "chunk",
+      "text": "Tomorrow is Tuesday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0117",
+      "unitId": "b1_u5",
+      "durationMs": 1527,
+      "bytes": 6285
+    },
+    "38f8848078953160": {
+      "url": "/audio/chunk/38f8848078953160.opus",
+      "kind": "chunk",
+      "text": "Tomorrow is Tuesday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0117",
+      "unitId": "b1_u5",
+      "durationMs": 1644,
+      "bytes": 6879
+    },
+    "7ec0ffc2e77a695a": {
+      "url": "/audio/example/7ec0ffc2e77a695a.opus",
+      "kind": "example",
+      "text": "Tomorrow is Tuesday. I work tomorrow.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0117",
+      "unitId": "b1_u5",
+      "durationMs": 2421,
+      "bytes": 9777
+    },
+    "08a7b6d60f94e7fb": {
+      "url": "/audio/chunk/08a7b6d60f94e7fb.opus",
+      "kind": "chunk",
+      "text": "See you tomorrow",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0118",
+      "unitId": "b1_u5",
+      "durationMs": 1098,
+      "bytes": 4629
+    },
+    "202e1f2248bd9ee8": {
+      "url": "/audio/chunk/202e1f2248bd9ee8.opus",
+      "kind": "chunk",
+      "text": "See you tomorrow",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0118",
+      "unitId": "b1_u5",
+      "durationMs": 993,
+      "bytes": 4217
+    },
+    "a27cce83f5c42922": {
+      "url": "/audio/chunk/a27cce83f5c42922.opus",
+      "kind": "chunk",
+      "text": "See you tomorrow",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0118",
+      "unitId": "b1_u5",
+      "durationMs": 1179,
+      "bytes": 4883
+    },
+    "f8d7c8e6beadf471": {
+      "url": "/audio/chunk/f8d7c8e6beadf471.opus",
+      "kind": "chunk",
+      "text": "See you tomorrow",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0118",
+      "unitId": "b1_u5",
+      "durationMs": 1109,
+      "bytes": 4745
+    },
+    "ce6b3c4a136d9490": {
+      "url": "/audio/example/ce6b3c4a136d9490.opus",
+      "kind": "example",
+      "text": "Good night, and see you tomorrow.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0118",
+      "unitId": "b1_u5",
+      "durationMs": 2003,
+      "bytes": 8051
+    },
+    "fcc618b1b6a4d5bd": {
+      "url": "/audio/chunk/fcc618b1b6a4d5bd.opus",
+      "kind": "chunk",
+      "text": "This week",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0119",
+      "unitId": "b1_u5",
+      "durationMs": 610,
+      "bytes": 2663
+    },
+    "a5acc9933a967ea6": {
+      "url": "/audio/chunk/a5acc9933a967ea6.opus",
+      "kind": "chunk",
+      "text": "This week",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0119",
+      "unitId": "b1_u5",
+      "durationMs": 506,
+      "bytes": 2324
+    },
+    "05e947c17b927fc9": {
+      "url": "/audio/chunk/05e947c17b927fc9.opus",
+      "kind": "chunk",
+      "text": "This week",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0119",
+      "unitId": "b1_u5",
+      "durationMs": 726,
+      "bytes": 3053
+    },
+    "f2908b388ea2c743": {
+      "url": "/audio/chunk/f2908b388ea2c743.opus",
+      "kind": "chunk",
+      "text": "This week",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0119",
+      "unitId": "b1_u5",
+      "durationMs": 784,
+      "bytes": 3370
+    },
+    "e81b007524559c7f": {
+      "url": "/audio/example/e81b007524559c7f.opus",
+      "kind": "example",
+      "text": "This week I work from Monday to Friday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0119",
+      "unitId": "b1_u5",
+      "durationMs": 2247,
+      "bytes": 9214
+    },
+    "126aca6840a6863a": {
+      "url": "/audio/chunk/126aca6840a6863a.opus",
+      "kind": "chunk",
+      "text": "Next week",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0120",
+      "unitId": "b1_u5",
+      "durationMs": 808,
+      "bytes": 3468
+    },
+    "ac8246cfa30b4944": {
+      "url": "/audio/chunk/ac8246cfa30b4944.opus",
+      "kind": "chunk",
+      "text": "Next week",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0120",
+      "unitId": "b1_u5",
+      "durationMs": 633,
+      "bytes": 2833
+    },
+    "68a4b241bfa4b81a": {
+      "url": "/audio/chunk/68a4b241bfa4b81a.opus",
+      "kind": "chunk",
+      "text": "Next week",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0120",
+      "unitId": "b1_u5",
+      "durationMs": 912,
+      "bytes": 3777
+    },
+    "c3f47f03643e674d": {
+      "url": "/audio/chunk/c3f47f03643e674d.opus",
+      "kind": "chunk",
+      "text": "Next week",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0120",
+      "unitId": "b1_u5",
+      "durationMs": 959,
+      "bytes": 4064
+    },
+    "9a99f12be590cbd0": {
+      "url": "/audio/example/9a99f12be590cbd0.opus",
+      "kind": "example",
+      "text": "Next week I start on Tuesday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0120",
+      "unitId": "b1_u5",
+      "durationMs": 2085,
+      "bytes": 8476
+    },
+    "3fbdaf387eae7e92": {
+      "url": "/audio/chunk/3fbdaf387eae7e92.opus",
+      "kind": "chunk",
+      "text": "Until five o'clock",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0121",
+      "unitId": "b1_u5",
+      "durationMs": 1295,
+      "bytes": 5449
+    },
+    "ac4595ff0addfad3": {
+      "url": "/audio/chunk/ac4595ff0addfad3.opus",
+      "kind": "chunk",
+      "text": "Until five o'clock",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0121",
+      "unitId": "b1_u5",
+      "durationMs": 1446,
+      "bytes": 6027
+    },
+    "f9bdd3e0948fb91b": {
+      "url": "/audio/chunk/f9bdd3e0948fb91b.opus",
+      "kind": "chunk",
+      "text": "Until five o'clock",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0121",
+      "unitId": "b1_u5",
+      "durationMs": 1284,
+      "bytes": 5283
+    },
+    "66593c6d9e7b206b": {
+      "url": "/audio/chunk/66593c6d9e7b206b.opus",
+      "kind": "chunk",
+      "text": "Until five o'clock",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0121",
+      "unitId": "b1_u5",
+      "durationMs": 1609,
+      "bytes": 6729
+    },
+    "2f044cd32013a85c": {
+      "url": "/audio/example/2f044cd32013a85c.opus",
+      "kind": "example",
+      "text": "I work until five o'clock.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0121",
+      "unitId": "b1_u5",
+      "durationMs": 1887,
+      "bytes": 7470
+    },
+    "d6df3f0ac9357f88": {
+      "url": "/audio/chunk/d6df3f0ac9357f88.opus",
+      "kind": "chunk",
+      "text": "I do not work on Sunday",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0122",
+      "unitId": "b1_u5",
+      "durationMs": 1562,
+      "bytes": 6593
+    },
+    "3c8c175a19583770": {
+      "url": "/audio/chunk/3c8c175a19583770.opus",
+      "kind": "chunk",
+      "text": "I do not work on Sunday",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0122",
+      "unitId": "b1_u5",
+      "durationMs": 1527,
+      "bytes": 6475
+    },
+    "dedfa92276f162f3": {
+      "url": "/audio/chunk/dedfa92276f162f3.opus",
+      "kind": "chunk",
+      "text": "I do not work on Sunday",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0122",
+      "unitId": "b1_u5",
+      "durationMs": 1516,
+      "bytes": 6343
+    },
+    "f52155f7c2df72a0": {
+      "url": "/audio/chunk/f52155f7c2df72a0.opus",
+      "kind": "chunk",
+      "text": "I do not work on Sunday",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0122",
+      "unitId": "b1_u5",
+      "durationMs": 1853,
+      "bytes": 7806
+    },
+    "17cacfc4fd0a77e2": {
+      "url": "/audio/example/17cacfc4fd0a77e2.opus",
+      "kind": "example",
+      "text": "I do not work on Sunday or on Saturday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0122",
+      "unitId": "b1_u5",
+      "durationMs": 2514,
+      "bytes": 10431
+    },
+    "b7e8d0e8dcad9c1f": {
+      "url": "/audio/chunk/b7e8d0e8dcad9c1f.opus",
+      "kind": "chunk",
+      "text": "I work every day",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0123",
+      "unitId": "b1_u5",
+      "durationMs": 1365,
+      "bytes": 5688
+    },
+    "073adff53a6c0f97": {
+      "url": "/audio/chunk/073adff53a6c0f97.opus",
+      "kind": "chunk",
+      "text": "I work every day",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0123",
+      "unitId": "b1_u5",
+      "durationMs": 1330,
+      "bytes": 5566
+    },
+    "06ecba0364410ffe": {
+      "url": "/audio/chunk/06ecba0364410ffe.opus",
+      "kind": "chunk",
+      "text": "I work every day",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0123",
+      "unitId": "b1_u5",
+      "durationMs": 1342,
+      "bytes": 5639
+    },
+    "d16089a38e5601af": {
+      "url": "/audio/chunk/d16089a38e5601af.opus",
+      "kind": "chunk",
+      "text": "I work every day",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0123",
+      "unitId": "b1_u5",
+      "durationMs": 1481,
+      "bytes": 6292
+    },
+    "f6fa1ab2907260fc": {
+      "url": "/audio/example/f6fa1ab2907260fc.opus",
+      "kind": "example",
+      "text": "I work every day, from Monday to Saturday.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0123",
+      "unitId": "b1_u5",
+      "durationMs": 2851,
+      "bytes": 11412
+    },
+    "3c9c1c50734c5d1c": {
+      "url": "/audio/chunk/3c9c1c50734c5d1c.opus",
+      "kind": "chunk",
+      "text": "I need to work",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0124",
+      "unitId": "b1_u5",
+      "durationMs": 1075,
+      "bytes": 4528
+    },
+    "b31d1c762a2bcfdf": {
+      "url": "/audio/chunk/b31d1c762a2bcfdf.opus",
+      "kind": "chunk",
+      "text": "I need to work",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0124",
+      "unitId": "b1_u5",
+      "durationMs": 1005,
+      "bytes": 4357
+    },
+    "5a1396d29be60e07": {
+      "url": "/audio/chunk/5a1396d29be60e07.opus",
+      "kind": "chunk",
+      "text": "I need to work",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0124",
+      "unitId": "b1_u5",
+      "durationMs": 1028,
+      "bytes": 4338
+    },
+    "ace6217ff3ef001d": {
+      "url": "/audio/chunk/ace6217ff3ef001d.opus",
+      "kind": "chunk",
+      "text": "I need to work",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0124",
+      "unitId": "b1_u5",
+      "durationMs": 1284,
+      "bytes": 5549
+    },
+    "944ab35213c9c054": {
+      "url": "/audio/example/944ab35213c9c054.opus",
+      "kind": "example",
+      "text": "I need to work. I need the work.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0124",
+      "unitId": "b1_u5",
+      "durationMs": 1992,
+      "bytes": 7932
+    },
+    "46217824738266f8": {
+      "url": "/audio/chunk/46217824738266f8.opus",
+      "kind": "chunk",
+      "text": "In the evening",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0125",
+      "unitId": "b1_u5",
+      "durationMs": 819,
+      "bytes": 3547
+    },
+    "af5b650cb24e48ec": {
+      "url": "/audio/chunk/af5b650cb24e48ec.opus",
+      "kind": "chunk",
+      "text": "In the evening",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0125",
+      "unitId": "b1_u5",
+      "durationMs": 657,
+      "bytes": 2988
+    },
+    "2cf0dd7d20be208a": {
+      "url": "/audio/chunk/2cf0dd7d20be208a.opus",
+      "kind": "chunk",
+      "text": "In the evening",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0125",
+      "unitId": "b1_u5",
+      "durationMs": 1005,
+      "bytes": 4294
+    },
+    "c6756a2f54baa1eb": {
+      "url": "/audio/chunk/c6756a2f54baa1eb.opus",
+      "kind": "chunk",
+      "text": "In the evening",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0125",
+      "unitId": "b1_u5",
+      "durationMs": 1214,
+      "bytes": 5672
+    },
+    "1ac21f9eb3fb9f2f": {
+      "url": "/audio/example/1ac21f9eb3fb9f2f.opus",
+      "kind": "example",
+      "text": "I finish in the evening, at eight o'clock.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0125",
+      "unitId": "b1_u5",
+      "durationMs": 2538,
+      "bytes": 9846
+    },
+    "b50cc0d2566c239c": {
+      "url": "/audio/chunk/b50cc0d2566c239c.opus",
+      "kind": "chunk",
+      "text": "What days do you work?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0126",
+      "unitId": "b1_u5",
+      "durationMs": 1400,
+      "bytes": 5777
+    },
+    "0f48265e0b85ea07": {
+      "url": "/audio/chunk/0f48265e0b85ea07.opus",
+      "kind": "chunk",
+      "text": "What days do you work?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0126",
+      "unitId": "b1_u5",
+      "durationMs": 1377,
+      "bytes": 5788
+    },
+    "43ca0140a392714c": {
+      "url": "/audio/chunk/43ca0140a392714c.opus",
+      "kind": "chunk",
+      "text": "What days do you work?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0126",
+      "unitId": "b1_u5",
+      "durationMs": 1284,
+      "bytes": 5381
+    },
+    "e35cd7749e3915cb": {
+      "url": "/audio/chunk/e35cd7749e3915cb.opus",
+      "kind": "chunk",
+      "text": "What days do you work?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0126",
+      "unitId": "b1_u5",
+      "durationMs": 1307,
+      "bytes": 5577
+    },
+    "14cc46cca9d8c4f1": {
+      "url": "/audio/example/14cc46cca9d8c4f1.opus",
+      "kind": "example",
+      "text": "What days do you work this week?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0126",
+      "unitId": "b1_u5",
+      "durationMs": 1667,
+      "bytes": 6890
+    },
+    "ee97cab29656eff2": {
+      "url": "/audio/chunk/ee97cab29656eff2.opus",
+      "kind": "chunk",
+      "text": "One moment, I do not understand",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0127",
+      "unitId": "b1_u5",
+      "durationMs": 2062,
+      "bytes": 8591
+    },
+    "a158440207c37870": {
+      "url": "/audio/chunk/a158440207c37870.opus",
+      "kind": "chunk",
+      "text": "One moment, I do not understand",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0127",
+      "unitId": "b1_u5",
+      "durationMs": 2062,
+      "bytes": 8436
+    },
+    "e506451dbabe018b": {
+      "url": "/audio/chunk/e506451dbabe018b.opus",
+      "kind": "chunk",
+      "text": "One moment, I do not understand",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0127",
+      "unitId": "b1_u5",
+      "durationMs": 2410,
+      "bytes": 9617
+    },
+    "94d52f7e4074ab71": {
+      "url": "/audio/chunk/94d52f7e4074ab71.opus",
+      "kind": "chunk",
+      "text": "One moment, I do not understand",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0127",
+      "unitId": "b1_u5",
+      "durationMs": 2793,
+      "bytes": 13101
+    },
+    "50d5ae6547d2157f": {
+      "url": "/audio/example/50d5ae6547d2157f.opus",
+      "kind": "example",
+      "text": "One moment, I do not understand. Can you repeat that?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0127",
+      "unitId": "b1_u5",
+      "durationMs": 3757,
+      "bytes": 14514
+    },
+    "f3dfcd6298efd342": {
+      "url": "/audio/scene_line/f3dfcd6298efd342.opus",
+      "kind": "scene_line",
+      "text": "Miguel! Good morning.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 1493,
+      "bytes": 5871
+    },
+    "f6cc23e92efc5c99": {
+      "url": "/audio/scene_line/f6cc23e92efc5c99.opus",
+      "kind": "scene_line",
+      "text": "Good morning, Carlos. How are you?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 2561,
+      "bytes": 10817
+    },
+    "fc06f6b324de34f2": {
+      "url": "/audio/scene_line/fc06f6b324de34f2.opus",
+      "kind": "scene_line",
+      "text": "I am fine. Miguel, do you need work?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 2468,
+      "bytes": 9529
+    },
+    "dcfcfaf9390d7ba8": {
+      "url": "/audio/scene_line/dcfcfaf9390d7ba8.opus",
+      "kind": "scene_line",
+      "text": "Yes. I need to work.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 1307,
+      "bytes": 5544
+    },
+    "95ef62966fa1ce14": {
+      "url": "/audio/scene_line/95ef62966fa1ce14.opus",
+      "kind": "scene_line",
+      "text": "Okay. I work with Rosa. Rosa is here every day.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 4453,
+      "bytes": 17286
+    },
+    "73114998c9e87d04": {
+      "url": "/audio/scene_line/73114998c9e87d04.opus",
+      "kind": "scene_line",
+      "text": "Rosa?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 517,
+      "bytes": 2272
+    },
+    "3eca4d021b61c39b": {
+      "url": "/audio/scene_line/3eca4d021b61c39b.opus",
+      "kind": "scene_line",
+      "text": "Yes. She is my friend. When do you start?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 2793,
+      "bytes": 11107
+    },
+    "a8231cff804deef7": {
+      "url": "/audio/scene_line/a8231cff804deef7.opus",
+      "kind": "scene_line",
+      "text": "What days do you work? Monday? Tuesday?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 2897,
+      "bytes": 11124
+    },
+    "df1b3a4d8faf57d8": {
+      "url": "/audio/scene_line/df1b3a4d8faf57d8.opus",
+      "kind": "scene_line",
+      "text": "I do not work. I need to work.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 1748,
+      "bytes": 7373
+    },
+    "55adf8a3cff07fed": {
+      "url": "/audio/scene_line/55adf8a3cff07fed.opus",
+      "kind": "scene_line",
+      "text": "Okay! Come with me. Rosa is here.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 3014,
+      "bytes": 11593
+    },
+    "29377da42612862e": {
+      "url": "/audio/scene_line/29377da42612862e.opus",
+      "kind": "scene_line",
+      "text": "Now?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 320,
+      "bytes": 1485
+    },
+    "e73eadc14a5ff268": {
+      "url": "/audio/scene_line/e73eadc14a5ff268.opus",
+      "kind": "scene_line",
+      "text": "Now. It is early. It is eight o'clock.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0025",
+      "unitId": "b1_u5",
+      "durationMs": 2642,
+      "bytes": 10228
+    },
+    "5f1d40848081c7b6": {
+      "url": "/audio/scene_line/5f1d40848081c7b6.opus",
+      "kind": "scene_line",
+      "text": "Rosa, this is Miguel. Miguel, this is Rosa.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 4360,
+      "bytes": 16709
+    },
+    "029cb3d5623834f2": {
+      "url": "/audio/scene_line/029cb3d5623834f2.opus",
+      "kind": "scene_line",
+      "text": "Miguel, do you need work?",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 1585,
+      "bytes": 6281
+    },
+    "739b8facca36ec52": {
+      "url": "/audio/scene_line/739b8facca36ec52.opus",
+      "kind": "scene_line",
+      "text": "Okay. What days do you work?",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 1841,
+      "bytes": 7530
+    },
+    "318a9fb313a0ab25": {
+      "url": "/audio/scene_line/318a9fb313a0ab25.opus",
+      "kind": "scene_line",
+      "text": "Every day. I work every day.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 1864,
+      "bytes": 7806
+    },
+    "ab6a350ded0b10f4": {
+      "url": "/audio/scene_line/ab6a350ded0b10f4.opus",
+      "kind": "scene_line",
+      "text": "Every day! No, Miguel. Not Sunday.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 2874,
+      "bytes": 11118
+    },
+    "a5e5005311e9a2c8": {
+      "url": "/audio/scene_line/a5e5005311e9a2c8.opus",
+      "kind": "scene_line",
+      "text": "Not Sunday?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 993,
+      "bytes": 4560
+    },
+    "5b606c644f340050": {
+      "url": "/audio/scene_line/5b606c644f340050.opus",
+      "kind": "scene_line",
+      "text": "You do not work on Sunday. From Monday to Saturday.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 3281,
+      "bytes": 13076
+    },
+    "d8d6c4f1d1e7156d": {
+      "url": "/audio/scene_line/d8d6c4f1d1e7156d.opus",
+      "kind": "scene_line",
+      "text": "From Monday to Saturday. Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 2073,
+      "bytes": 8492
+    },
+    "d3d8d47faf9d167a": {
+      "url": "/audio/scene_line/d3d8d47faf9d167a.opus",
+      "kind": "scene_line",
+      "text": "And Sunday is your day.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 1539,
+      "bytes": 6094
+    },
+    "d608fa5d327730e1": {
+      "url": "/audio/scene_line/d608fa5d327730e1.opus",
+      "kind": "scene_line",
+      "text": "Sunday is my day. Thank you, Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0026",
+      "unitId": "b1_u5",
+      "durationMs": 2955,
+      "bytes": 12032
+    },
+    "730b88eeba6aa675": {
+      "url": "/audio/scene_line/730b88eeba6aa675.opus",
+      "kind": "scene_line",
+      "text": "Miguel, this is your week.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 1539,
+      "bytes": 6363
+    },
+    "676b58e676f5cd4c": {
+      "url": "/audio/scene_line/676b58e676f5cd4c.opus",
+      "kind": "scene_line",
+      "text": "Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 494,
+      "bytes": 2086
+    },
+    "aa4a4dd3b67d9e0b": {
+      "url": "/audio/scene_line/aa4a4dd3b67d9e0b.opus",
+      "kind": "scene_line",
+      "text": "You start at eight o'clock in the morning.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 1760,
+      "bytes": 7190
+    },
+    "6514a4c7e0807baa": {
+      "url": "/audio/scene_line/6514a4c7e0807baa.opus",
+      "kind": "scene_line",
+      "text": "I start at eight o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 1736,
+      "bytes": 7110
+    },
+    "7587c6851188d603": {
+      "url": "/audio/scene_line/7587c6851188d603.opus",
+      "kind": "scene_line",
+      "text": "Yes. And you finish at four o'clock.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2607,
+      "bytes": 10460
+    },
+    "fbcc80cfa8817e5b": {
+      "url": "/audio/scene_line/fbcc80cfa8817e5b.opus",
+      "kind": "scene_line",
+      "text": "I finish at four o'clock in the afternoon.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2514,
+      "bytes": 10434
+    },
+    "7c58f440158c354f": {
+      "url": "/audio/scene_line/7c58f440158c354f.opus",
+      "kind": "scene_line",
+      "text": "Good. From Monday to Friday.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2073,
+      "bytes": 8139
+    },
+    "4d23363fdad5b515": {
+      "url": "/audio/scene_line/4d23363fdad5b515.opus",
+      "kind": "scene_line",
+      "text": "From Monday to Friday. And Saturday?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2317,
+      "bytes": 9552
+    },
+    "61e05f7683d33b3b": {
+      "url": "/audio/scene_line/61e05f7683d33b3b.opus",
+      "kind": "scene_line",
+      "text": "On Saturday you start at nine o'clock.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2131,
+      "bytes": 8681
+    },
+    "681dc473d72145de": {
+      "url": "/audio/scene_line/681dc473d72145de.opus",
+      "kind": "scene_line",
+      "text": "One moment, I do not understand.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2027,
+      "bytes": 8266
+    },
+    "7be5cde0bb9b61b6": {
+      "url": "/audio/scene_line/7be5cde0bb9b61b6.opus",
+      "kind": "scene_line",
+      "text": "Saturday is not eight. Saturday is nine o'clock.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2677,
+      "bytes": 10559
+    },
+    "6f536040b8f02c20": {
+      "url": "/audio/scene_line/6f536040b8f02c20.opus",
+      "kind": "scene_line",
+      "text": "Saturday is nine o'clock. Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2224,
+      "bytes": 9172
+    },
+    "b5d64ecc14522b8c": {
+      "url": "/audio/scene_line/b5d64ecc14522b8c.opus",
+      "kind": "scene_line",
+      "text": "And you finish at one o'clock.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 1760,
+      "bytes": 7026
+    },
+    "0a68cbe6867158a1": {
+      "url": "/audio/scene_line/0a68cbe6867158a1.opus",
+      "kind": "scene_line",
+      "text": "At one o'clock. Thank you, Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0027",
+      "unitId": "b1_u5",
+      "durationMs": 2387,
+      "bytes": 9849
+    },
+    "f4f27742141d2940": {
+      "url": "/audio/scene_line/f4f27742141d2940.opus",
+      "kind": "scene_line",
+      "text": "Miguel, say the week.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1249,
+      "bytes": 5242
+    },
+    "59459414059107ef": {
+      "url": "/audio/scene_line/59459414059107ef.opus",
+      "kind": "scene_line",
+      "text": "From Monday to Friday. I start at eight o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 3176,
+      "bytes": 13037
+    },
+    "b6fb3d7e1ccdf678": {
+      "url": "/audio/scene_line/b6fb3d7e1ccdf678.opus",
+      "kind": "scene_line",
+      "text": "Yes.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 703,
+      "bytes": 2871
+    },
+    "050f8822688b3b7f": {
+      "url": "/audio/scene_line/050f8822688b3b7f.opus",
+      "kind": "scene_line",
+      "text": "And I finish at four o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1551,
+      "bytes": 6507
+    },
+    "572840bbd428982a": {
+      "url": "/audio/scene_line/572840bbd428982a.opus",
+      "kind": "scene_line",
+      "text": "Yes. And Saturday?",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1644,
+      "bytes": 6593
+    },
+    "641b8312a53c704d": {
+      "url": "/audio/scene_line/641b8312a53c704d.opus",
+      "kind": "scene_line",
+      "text": "On Saturday I start at eight o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 2503,
+      "bytes": 10246
+    },
+    "33251c792b922fad": {
+      "url": "/audio/scene_line/33251c792b922fad.opus",
+      "kind": "scene_line",
+      "text": "No. Not eight. On Saturday you start at nine o'clock.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 3408,
+      "bytes": 13292
+    },
+    "491c672269d5770d": {
+      "url": "/audio/scene_line/491c672269d5770d.opus",
+      "kind": "scene_line",
+      "text": "Nine o'clock. Not eight.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1423,
+      "bytes": 6434
+    },
+    "62a9c51995405919": {
+      "url": "/audio/scene_line/62a9c51995405919.opus",
+      "kind": "scene_line",
+      "text": "Nine. Say it, please.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1829,
+      "bytes": 7256
+    },
+    "a0823024034b1971": {
+      "url": "/audio/scene_line/a0823024034b1971.opus",
+      "kind": "scene_line",
+      "text": "On Saturday I start at nine o'clock, and I finish at one.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 3675,
+      "bytes": 15063
+    },
+    "702c6c6c222e1d27": {
+      "url": "/audio/scene_line/702c6c6c222e1d27.opus",
+      "kind": "scene_line",
+      "text": "Good, Miguel. That is it.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 1818,
+      "bytes": 7277
+    },
+    "3678ffa0ecd05226": {
+      "url": "/audio/scene_line/3678ffa0ecd05226.opus",
+      "kind": "scene_line",
+      "text": "I understand. Thank you, Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 2479,
+      "bytes": 10243
+    },
+    "711992e5894ad9b7": {
+      "url": "/audio/scene_line/711992e5894ad9b7.opus",
+      "kind": "scene_line",
+      "text": "See you tomorrow. Tomorrow is Monday.",
+      "voiceId": "us_f_3",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 2154,
+      "bytes": 8646
+    },
+    "63ce16fb2468a126": {
+      "url": "/audio/scene_line/63ce16fb2468a126.opus",
+      "kind": "scene_line",
+      "text": "Tomorrow is Monday. See you tomorrow.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0028",
+      "unitId": "b1_u5",
+      "durationMs": 2433,
+      "bytes": 9960
+    },
+    "bd37cc5e707e662e": {
+      "url": "/audio/scene_line/bd37cc5e707e662e.opus",
+      "kind": "scene_line",
+      "text": "Miguel! Good evening. How are you?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2247,
+      "bytes": 9312
+    },
+    "9118a66f029108b9": {
+      "url": "/audio/scene_line/9118a66f029108b9.opus",
+      "kind": "scene_line",
+      "text": "Ana! I am fine. I have work.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2387,
+      "bytes": 9765
+    },
+    "bf0ef19a3d9460ae": {
+      "url": "/audio/scene_line/bf0ef19a3d9460ae.opus",
+      "kind": "scene_line",
+      "text": "You have work! Where do you work?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 1969,
+      "bytes": 8091
+    },
+    "8ba3027d8102e532": {
+      "url": "/audio/scene_line/8ba3027d8102e532.opus",
+      "kind": "scene_line",
+      "text": "I work with Carlos and Rosa.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2503,
+      "bytes": 10466
+    },
+    "901049cddea31363": {
+      "url": "/audio/scene_line/901049cddea31363.opus",
+      "kind": "scene_line",
+      "text": "Eight o'clock! That is early.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 1783,
+      "bytes": 7323
+    },
+    "04e3671e789f1219": {
+      "url": "/audio/scene_line/04e3671e789f1219.opus",
+      "kind": "scene_line",
+      "text": "It is early. And I finish at four o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2665,
+      "bytes": 10976
+    },
+    "9ab3494c4be6c0c7": {
+      "url": "/audio/scene_line/9ab3494c4be6c0c7.opus",
+      "kind": "scene_line",
+      "text": "And Saturday?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 1017,
+      "bytes": 4214
+    },
+    "b5184010e6fd1f26": {
+      "url": "/audio/scene_line/b5184010e6fd1f26.opus",
+      "kind": "scene_line",
+      "text": "On Saturday I start at nine o'clock, until one.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 3582,
+      "bytes": 14436
+    },
+    "bb2aaab034d52465": {
+      "url": "/audio/scene_line/bb2aaab034d52465.opus",
+      "kind": "scene_line",
+      "text": "And Sunday?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 889,
+      "bytes": 3690
+    },
+    "6a249231c5cdef06": {
+      "url": "/audio/scene_line/6a249231c5cdef06.opus",
+      "kind": "scene_line",
+      "text": "I do not work on Sunday. Sunday is my day.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2921,
+      "bytes": 12081
+    },
+    "542430ce278723ec": {
+      "url": "/audio/scene_line/542430ce278723ec.opus",
+      "kind": "scene_line",
+      "text": "Sunday is your day! Good, Miguel.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2259,
+      "bytes": 9278
+    },
+    "8ef6ee32f137a119": {
+      "url": "/audio/scene_line/8ef6ee32f137a119.opus",
+      "kind": "scene_line",
+      "text": "Tomorrow is Monday. I start tomorrow.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0029",
+      "unitId": "b1_u5",
+      "durationMs": 2596,
+      "bytes": 10718
+    },
+    "10f3aaa9804ca4d7": {
+      "url": "/audio/scene_line/10f3aaa9804ca4d7.opus",
+      "kind": "scene_line",
+      "text": "Miguel! Good evening.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1667,
+      "bytes": 6841
+    },
+    "a7bbeffabe3725bc": {
+      "url": "/audio/scene_line/a7bbeffabe3725bc.opus",
+      "kind": "scene_line",
+      "text": "Good evening, Maria.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1191,
+      "bytes": 5068
+    },
+    "7995bf8ed73374a5": {
+      "url": "/audio/scene_line/7995bf8ed73374a5.opus",
+      "kind": "scene_line",
+      "text": "One moment. It is eight o'clock.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2189,
+      "bytes": 10176
+    },
+    "fe3b6d3d7eb2e800": {
+      "url": "/audio/scene_line/fe3b6d3d7eb2e800.opus",
+      "kind": "scene_line",
+      "text": "Eight o'clock in the evening! It is late.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2352,
+      "bytes": 9713
+    },
+    "6a57399378dc26a1": {
+      "url": "/audio/scene_line/6a57399378dc26a1.opus",
+      "kind": "scene_line",
+      "text": "It is late. And I start at eight tomorrow.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2863,
+      "bytes": 11741
+    },
+    "71c05e6d6b3c846c": {
+      "url": "/audio/scene_line/71c05e6d6b3c846c.opus",
+      "kind": "scene_line",
+      "text": "Tomorrow! What days do you work?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2178,
+      "bytes": 8978
+    },
+    "7b6d1c44f4849898": {
+      "url": "/audio/scene_line/7b6d1c44f4849898.opus",
+      "kind": "scene_line",
+      "text": "From Monday to Friday, and Saturday.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2514,
+      "bytes": 10218
+    },
+    "a94644ea5b8f22c3": {
+      "url": "/audio/scene_line/a94644ea5b8f22c3.opus",
+      "kind": "scene_line",
+      "text": "Every day! And Sunday?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1957,
+      "bytes": 7964
+    },
+    "f6baa90c362a975a": {
+      "url": "/audio/scene_line/f6baa90c362a975a.opus",
+      "kind": "scene_line",
+      "text": "I do not work on Sunday.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1655,
+      "bytes": 7035
+    },
+    "43feb1bea6d380b1": {
+      "url": "/audio/scene_line/43feb1bea6d380b1.opus",
+      "kind": "scene_line",
+      "text": "The café is open on Sunday. Come on Sunday, Miguel.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 3281,
+      "bytes": 13602
+    },
+    "5fd73ebb07fd8d6f": {
+      "url": "/audio/scene_line/5fd73ebb07fd8d6f.opus",
+      "kind": "scene_line",
+      "text": "On Sunday. Okay!",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1435,
+      "bytes": 5964
+    },
+    "903773ccc57e80ea": {
+      "url": "/audio/scene_line/903773ccc57e80ea.opus",
+      "kind": "scene_line",
+      "text": "Good night. See you tomorrow.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 1945,
+      "bytes": 7969
+    },
+    "a90f19065e879fba": {
+      "url": "/audio/scene_line/a90f19065e879fba.opus",
+      "kind": "scene_line",
+      "text": "Good night, Maria. See you on Sunday.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0030",
+      "unitId": "b1_u5",
+      "durationMs": 2340,
+      "bytes": 9620
     }
   },
   "scenes": {
@@ -10627,15 +12627,555 @@
           "en": "You are welcome, Carlos."
         }
       ]
+    },
+    "s_0025": {
+      "url": "/audio/scene/ed1ed7ccf9eea6e2.opus",
+      "unitId": "b1_u5",
+      "durationMs": 33572,
+      "bytes": 124894,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1493,
+          "character": "carlos",
+          "en": "Miguel! Good morning."
+        },
+        {
+          "start_ms": 1913,
+          "end_ms": 4474,
+          "character": "miguel",
+          "en": "Good morning, Carlos. How are you?"
+        },
+        {
+          "start_ms": 4894,
+          "end_ms": 7362,
+          "character": "carlos",
+          "en": "I am fine. Miguel, do you need work?"
+        },
+        {
+          "start_ms": 7782,
+          "end_ms": 9089,
+          "character": "miguel",
+          "en": "Yes. I need to work."
+        },
+        {
+          "start_ms": 9509,
+          "end_ms": 13962,
+          "character": "carlos",
+          "en": "Okay. I work with Rosa. Rosa is here every day."
+        },
+        {
+          "start_ms": 14382,
+          "end_ms": 14899,
+          "character": "miguel",
+          "en": "Rosa?"
+        },
+        {
+          "start_ms": 15319,
+          "end_ms": 18112,
+          "character": "carlos",
+          "en": "Yes. She is my friend. When do you start?"
+        },
+        {
+          "start_ms": 18532,
+          "end_ms": 20768,
+          "character": "miguel",
+          "en": "Excuse me? I do not understand."
+        },
+        {
+          "start_ms": 21188,
+          "end_ms": 24085,
+          "character": "carlos",
+          "en": "What days do you work? Monday? Tuesday?"
+        },
+        {
+          "start_ms": 24505,
+          "end_ms": 26253,
+          "character": "miguel",
+          "en": "I do not work. I need to work."
+        },
+        {
+          "start_ms": 26673,
+          "end_ms": 29687,
+          "character": "carlos",
+          "en": "Okay! Come with me. Rosa is here."
+        },
+        {
+          "start_ms": 30107,
+          "end_ms": 30427,
+          "character": "miguel",
+          "en": "Now?"
+        },
+        {
+          "start_ms": 30847,
+          "end_ms": 33489,
+          "character": "carlos",
+          "en": "Now. It is early. It is eight o'clock."
+        }
+      ]
+    },
+    "s_0026": {
+      "url": "/audio/scene/6d8477dc79ba2252.opus",
+      "unitId": "b1_u5",
+      "durationMs": 34118,
+      "bytes": 129840,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 4360,
+          "character": "carlos",
+          "en": "Rosa, this is Miguel. Miguel, this is Rosa."
+        },
+        {
+          "start_ms": 4780,
+          "end_ms": 7190,
+          "character": "rosa",
+          "en": "Hello, Miguel. Nice to meet you."
+        },
+        {
+          "start_ms": 7610,
+          "end_ms": 9521,
+          "character": "miguel",
+          "en": "Nice to meet you, Rosa."
+        },
+        {
+          "start_ms": 9941,
+          "end_ms": 11526,
+          "character": "rosa",
+          "en": "Miguel, do you need work?"
+        },
+        {
+          "start_ms": 11946,
+          "end_ms": 13253,
+          "character": "miguel",
+          "en": "Yes. I need to work."
+        },
+        {
+          "start_ms": 13673,
+          "end_ms": 15514,
+          "character": "rosa",
+          "en": "Okay. What days do you work?"
+        },
+        {
+          "start_ms": 15934,
+          "end_ms": 17798,
+          "character": "miguel",
+          "en": "Every day. I work every day."
+        },
+        {
+          "start_ms": 18218,
+          "end_ms": 21092,
+          "character": "rosa",
+          "en": "Every day! No, Miguel. Not Sunday."
+        },
+        {
+          "start_ms": 21512,
+          "end_ms": 22505,
+          "character": "miguel",
+          "en": "Not Sunday?"
+        },
+        {
+          "start_ms": 22925,
+          "end_ms": 26206,
+          "character": "rosa",
+          "en": "You do not work on Sunday. From Monday to Saturday."
+        },
+        {
+          "start_ms": 26626,
+          "end_ms": 28699,
+          "character": "miguel",
+          "en": "From Monday to Saturday. Okay."
+        },
+        {
+          "start_ms": 29119,
+          "end_ms": 30658,
+          "character": "rosa",
+          "en": "And Sunday is your day."
+        },
+        {
+          "start_ms": 31078,
+          "end_ms": 34033,
+          "character": "miguel",
+          "en": "Sunday is my day. Thank you, Rosa."
+        }
+      ]
+    },
+    "s_0027": {
+      "url": "/audio/scene/3267c25d5d801c1e.opus",
+      "unitId": "b1_u5",
+      "durationMs": 33797,
+      "bytes": 129436,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1539,
+          "character": "rosa",
+          "en": "Miguel, this is your week."
+        },
+        {
+          "start_ms": 1959,
+          "end_ms": 2453,
+          "character": "miguel",
+          "en": "Okay."
+        },
+        {
+          "start_ms": 2873,
+          "end_ms": 4633,
+          "character": "rosa",
+          "en": "You start at eight o'clock in the morning."
+        },
+        {
+          "start_ms": 5053,
+          "end_ms": 6789,
+          "character": "miguel",
+          "en": "I start at eight o'clock."
+        },
+        {
+          "start_ms": 7209,
+          "end_ms": 9816,
+          "character": "rosa",
+          "en": "Yes. And you finish at four o'clock."
+        },
+        {
+          "start_ms": 10236,
+          "end_ms": 12750,
+          "character": "miguel",
+          "en": "I finish at four o'clock in the afternoon."
+        },
+        {
+          "start_ms": 13170,
+          "end_ms": 15243,
+          "character": "rosa",
+          "en": "Good. From Monday to Friday."
+        },
+        {
+          "start_ms": 15663,
+          "end_ms": 17980,
+          "character": "miguel",
+          "en": "From Monday to Friday. And Saturday?"
+        },
+        {
+          "start_ms": 18400,
+          "end_ms": 20531,
+          "character": "rosa",
+          "en": "On Saturday you start at nine o'clock."
+        },
+        {
+          "start_ms": 20951,
+          "end_ms": 22978,
+          "character": "miguel",
+          "en": "One moment, I do not understand."
+        },
+        {
+          "start_ms": 23398,
+          "end_ms": 26075,
+          "character": "rosa",
+          "en": "Saturday is not eight. Saturday is nine o'clock."
+        },
+        {
+          "start_ms": 26495,
+          "end_ms": 28719,
+          "character": "miguel",
+          "en": "Saturday is nine o'clock. Okay."
+        },
+        {
+          "start_ms": 29139,
+          "end_ms": 30899,
+          "character": "rosa",
+          "en": "And you finish at one o'clock."
+        },
+        {
+          "start_ms": 31319,
+          "end_ms": 33706,
+          "character": "miguel",
+          "en": "At one o'clock. Thank you, Rosa."
+        }
+      ]
+    },
+    "s_0028": {
+      "url": "/audio/scene/102a79b57518f6f8.opus",
+      "unitId": "b1_u5",
+      "durationMs": 35596,
+      "bytes": 134858,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1249,
+          "character": "rosa",
+          "en": "Miguel, say the week."
+        },
+        {
+          "start_ms": 1669,
+          "end_ms": 4845,
+          "character": "miguel",
+          "en": "From Monday to Friday. I start at eight o'clock."
+        },
+        {
+          "start_ms": 5265,
+          "end_ms": 5968,
+          "character": "rosa",
+          "en": "Yes."
+        },
+        {
+          "start_ms": 6388,
+          "end_ms": 7939,
+          "character": "miguel",
+          "en": "And I finish at four o'clock."
+        },
+        {
+          "start_ms": 8359,
+          "end_ms": 10003,
+          "character": "rosa",
+          "en": "Yes. And Saturday?"
+        },
+        {
+          "start_ms": 10423,
+          "end_ms": 12926,
+          "character": "miguel",
+          "en": "On Saturday I start at eight o'clock."
+        },
+        {
+          "start_ms": 13346,
+          "end_ms": 16754,
+          "character": "rosa",
+          "en": "No. Not eight. On Saturday you start at nine o'clock."
+        },
+        {
+          "start_ms": 17174,
+          "end_ms": 18597,
+          "character": "miguel",
+          "en": "Nine o'clock. Not eight."
+        },
+        {
+          "start_ms": 19017,
+          "end_ms": 20846,
+          "character": "rosa",
+          "en": "Nine. Say it, please."
+        },
+        {
+          "start_ms": 21266,
+          "end_ms": 24941,
+          "character": "miguel",
+          "en": "On Saturday I start at nine o'clock, and I finish at one."
+        },
+        {
+          "start_ms": 25361,
+          "end_ms": 27179,
+          "character": "rosa",
+          "en": "Good, Miguel. That is it."
+        },
+        {
+          "start_ms": 27599,
+          "end_ms": 30078,
+          "character": "miguel",
+          "en": "I understand. Thank you, Rosa."
+        },
+        {
+          "start_ms": 30498,
+          "end_ms": 32652,
+          "character": "rosa",
+          "en": "See you tomorrow. Tomorrow is Monday."
+        },
+        {
+          "start_ms": 33072,
+          "end_ms": 35505,
+          "character": "miguel",
+          "en": "Tomorrow is Monday. See you tomorrow."
+        }
+      ]
+    },
+    "s_0029": {
+      "url": "/audio/scene/aa1689d75bf79b16.opus",
+      "unitId": "b1_u5",
+      "durationMs": 36629,
+      "bytes": 140744,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 2247,
+          "character": "ana",
+          "en": "Miguel! Good evening. How are you?"
+        },
+        {
+          "start_ms": 2667,
+          "end_ms": 5054,
+          "character": "miguel",
+          "en": "Ana! I am fine. I have work."
+        },
+        {
+          "start_ms": 5474,
+          "end_ms": 7443,
+          "character": "ana",
+          "en": "You have work! Where do you work?"
+        },
+        {
+          "start_ms": 7863,
+          "end_ms": 10366,
+          "character": "miguel",
+          "en": "I work with Carlos and Rosa."
+        },
+        {
+          "start_ms": 10786,
+          "end_ms": 11872,
+          "character": "ana",
+          "en": "When do you work?"
+        },
+        {
+          "start_ms": 12292,
+          "end_ms": 15468,
+          "character": "miguel",
+          "en": "From Monday to Friday. I start at eight o'clock."
+        },
+        {
+          "start_ms": 15888,
+          "end_ms": 17671,
+          "character": "ana",
+          "en": "Eight o'clock! That is early."
+        },
+        {
+          "start_ms": 18091,
+          "end_ms": 20756,
+          "character": "miguel",
+          "en": "It is early. And I finish at four o'clock."
+        },
+        {
+          "start_ms": 21176,
+          "end_ms": 22193,
+          "character": "ana",
+          "en": "And Saturday?"
+        },
+        {
+          "start_ms": 22613,
+          "end_ms": 26195,
+          "character": "miguel",
+          "en": "On Saturday I start at nine o'clock, until one."
+        },
+        {
+          "start_ms": 26615,
+          "end_ms": 27504,
+          "character": "ana",
+          "en": "And Sunday?"
+        },
+        {
+          "start_ms": 27924,
+          "end_ms": 30845,
+          "character": "miguel",
+          "en": "I do not work on Sunday. Sunday is my day."
+        },
+        {
+          "start_ms": 31265,
+          "end_ms": 33524,
+          "character": "ana",
+          "en": "Sunday is your day! Good, Miguel."
+        },
+        {
+          "start_ms": 33944,
+          "end_ms": 36540,
+          "character": "miguel",
+          "en": "Tomorrow is Monday. I start tomorrow."
+        }
+      ]
+    },
+    "s_0030": {
+      "url": "/audio/scene/8b5ddb12d697dbf5.opus",
+      "unitId": "b1_u5",
+      "durationMs": 34203,
+      "bytes": 133045,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1667,
+          "character": "maria",
+          "en": "Miguel! Good evening."
+        },
+        {
+          "start_ms": 2087,
+          "end_ms": 3278,
+          "character": "miguel",
+          "en": "Good evening, Maria."
+        },
+        {
+          "start_ms": 3698,
+          "end_ms": 4784,
+          "character": "maria",
+          "en": "What time is it?"
+        },
+        {
+          "start_ms": 5204,
+          "end_ms": 7393,
+          "character": "miguel",
+          "en": "One moment. It is eight o'clock."
+        },
+        {
+          "start_ms": 7813,
+          "end_ms": 10165,
+          "character": "maria",
+          "en": "Eight o'clock in the evening! It is late."
+        },
+        {
+          "start_ms": 10585,
+          "end_ms": 13448,
+          "character": "miguel",
+          "en": "It is late. And I start at eight tomorrow."
+        },
+        {
+          "start_ms": 13868,
+          "end_ms": 16046,
+          "character": "maria",
+          "en": "Tomorrow! What days do you work?"
+        },
+        {
+          "start_ms": 16466,
+          "end_ms": 18980,
+          "character": "miguel",
+          "en": "From Monday to Friday, and Saturday."
+        },
+        {
+          "start_ms": 19400,
+          "end_ms": 21357,
+          "character": "maria",
+          "en": "Every day! And Sunday?"
+        },
+        {
+          "start_ms": 21777,
+          "end_ms": 23432,
+          "character": "miguel",
+          "en": "I do not work on Sunday."
+        },
+        {
+          "start_ms": 23852,
+          "end_ms": 27133,
+          "character": "maria",
+          "en": "The café is open on Sunday. Come on Sunday, Miguel."
+        },
+        {
+          "start_ms": 27553,
+          "end_ms": 28988,
+          "character": "miguel",
+          "en": "On Sunday. Okay!"
+        },
+        {
+          "start_ms": 29408,
+          "end_ms": 31353,
+          "character": "maria",
+          "en": "Good night. See you tomorrow."
+        },
+        {
+          "start_ms": 31773,
+          "end_ms": 34113,
+          "character": "miguel",
+          "en": "Good night, Maria. See you on Sunday."
+        }
+      ]
     }
   },
   "recordings": {},
   "voiceProbes": {
-    "us_f_1": "56abccb9334cd070",
-    "us_m_1": "881df29d47ab083e",
-    "us_m_2": "57b26fdd51abf87d",
-    "us_f_2": "7b9fbb82eb8cccf7",
-    "us_f_3": "894ebaa27054800f",
-    "uk_m_1": "11d52c3d5b42e3b9"
+    "us_f_1": "ba633eaf6eaec5a2",
+    "us_m_1": "b6b98185b89f4f66",
+    "us_m_2": "5fd398747243c65d",
+    "us_f_2": "97043eab052f21c9",
+    "us_f_3": "edd2f25fe92ecd48",
+    "uk_m_1": "164adaf8282f4970"
   }
 }

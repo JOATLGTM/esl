@@ -220,6 +220,12 @@ units:
       Time, days, and routine. Rosa gives Miguel his hours and he reads one
       back wrong. `o'clock` is one token, not two -- the tokenizer keeps the
       apostrophe, so releasing `o` and `clock` separately would match nothing.
+
+      `yesterday` was planned here and removed while authoring: there is no
+      grammatical way to use it without a past tense, and the past tense is
+      Block 4. A word you cannot put in a sentence is not released, it is just
+      listed. `today` and `tomorrow` stay, because the present tense reaches
+      both.
     releases:
       - day
       - early
@@ -230,7 +236,9 @@ units:
       - late
       - monday
       - need
+      - now
       - o'clock
+      - or
       - saturday
       - start
       - sunday
@@ -243,7 +251,6 @@ units:
       - wednesday
       - week
       - when
-      - yesterday
 
   - unit: b1_u6
     note: >-

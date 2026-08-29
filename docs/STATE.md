@@ -298,6 +298,30 @@ empty, because they want frequency work this repo does not have.
 
 **Two readability-inflation bugs found while doing it** — see the traps.
 
+**`b1_u5` — time and the schedule** — authored 2026-08-29. 25 chunks, 6
+scenes, 2 frames, 2 missions, 2.1 MB. Rosa gives Miguel his hours; he reads
+them back and gets the Saturday start wrong; she corrects it. This is where
+Block 1 stops being about meeting people and becomes about the thing he came
+here to do.
+
+**Rosa is doing more work than the vocabulary is.** She is the authority
+figure, and a nervous beginner expects authority to be a threat. When Miguel
+gets his hours wrong she corrects the *fact* and not his English, does not
+apologise for him, and does not slow down theatrically. That is the whole
+reason she exists in the cast.
+
+`yesterday` was planned for this unit and **cut**: there is no grammatical way
+to use it without a past tense, and the past tense is Block 4. A word you
+cannot put in a sentence is not released, it is listed. `or` and `now` were
+added in its place, both earning it immediately.
+
+First unit to pass the audio gates on the first generation — no short scenes,
+no rate spread — because the ~85-token heuristic below was applied while
+writing rather than discovered afterwards.
+
+Five units, **127 chunks, 10 frames, 30 scenes**, all at 100% readability.
+About 30 days of content. **One unit left in Block 1.**
+
 **`b1_u4` — on the street** — authored 2026-08-29. 25 chunks, 6 scenes, 2
 frames, 2 missions, 2.3 MB. Miguel gets lost on the way to the café, is
 pointed, arrives — and in the last scene gives directions to **Carlos**, the
@@ -955,9 +979,11 @@ from a cookie is client-supplied data.
 
    **All three foundations are done, and `b1_u2`–`b1_u4` are written.** Each
    took one pass plus validator iteration, which is the whole argument for
-   having built them. **`b1_u5` is next** (time, days, routine — Rosa gives
-   Miguel his hours); its beat is in `STORY.md` and its legal vocabulary in
-   `vocab-schedule.yaml`. Two units to the end of Block 1.
+   having built them. **`b1_u6` is the last of Block 1** (wants and needs —
+   Miguel orders at Maria's counter alone, and it is the first unit whose
+   frames have an open filler class). After it, the 30-day exit criterion is
+   met and the next real work is a vocabulary schedule for Blocks 2–4, which
+   nothing in this repo can derive without frequency data.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person
