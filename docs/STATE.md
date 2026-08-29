@@ -16,6 +16,7 @@ Read it alongside, not instead of:
 |---|---|
 | `AGENTS.md` | this is Next 16 — read `node_modules/next/dist/docs/` before writing app code |
 | `docs/DEPLOY.md` | env vars, audio hosting, auth URLs — read before any deploy |
+| `docs/ROADMAP.md` | what to build next and why — ranked, with the two measured findings that drive the order |
 | `docs/CONTENT-BRIEF.md` | where content comes from: the sourcing research, its licences, and what was done with it |
 | `content/README.md` | the authoring pipeline, the 95% rule, the two kinds of audio |
 | `content/STORY.md` | the cast, the four block arcs, the beat each unit hits — read before writing a scene |
@@ -819,7 +820,8 @@ server-side, where it cannot inflate mastery.
 seeder, and a second phase in Speak. `b1_u1` has three. The trap this closes is
 worth remembering: for one commit the type existed and nothing could display
 it, which is exactly the `l1_support_level` mistake (written on every unit
-advance, read by nothing, still). **Wire a stage before authoring at scale.**
+advance, read by nothing — until it was finally wired on 2026-08-29). **Wire a
+stage before authoring at scale.**
 
 **macOS `say` silently substitutes the default voice** when a named voice is not
 downloaded. No error, plausible output. Block 1 shipped with `us_f_1`, `us_m_1`
