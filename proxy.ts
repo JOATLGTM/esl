@@ -36,6 +36,10 @@ const PUBLIC_PATHS = [
   // Public so it opens on any borrowed phone without an account. Delete with
   // the route.
   "/spike",
+  // The manifest and the service worker must load before anyone is signed in,
+  // or install-to-home-screen and the media cache never get a chance.
+  "/manifest.webmanifest",
+  "/sw.js",
   // The health check must answer from outside, with no account. Left out, it
   // 307s to /login -- and a redirect is not an HTTP failure, so the keepalive
   // workflow would report green forever while pinging a login page.

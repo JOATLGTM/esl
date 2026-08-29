@@ -5,6 +5,9 @@ import { QuestList, type QuestView } from "@/components/ui/quest-list";
 import { loadCurrentMission } from "@/lib/session/missions";
 import { hasPatternsToShow } from "@/lib/session/patterns-server";
 import { shouldOfferSupport } from "@/lib/session/l1-server";
+import { countPeopleSpokenTo } from "@/lib/session/missions-count";
+import { loadUnitAudioUrls } from "@/lib/session/offline-server";
+import { OfflineUnit } from "../pwa";
 import { SupportOffer } from "./support-offer";
 import { ensureDailyQuests } from "@/lib/session/rewards";
 import { curriculumStatus } from "@/lib/session/store";
@@ -50,6 +53,12 @@ export default async function HomePage() {
   // Only when there is something to offer. Asking a learner at full support
   // whether they want more would imply there was more, and there is not.
   const offerSupport = await shouldOfferSupport(profile.id, profile.l1_support_level);
+  // The scoreboard that measures the thing the product is for, and the
+  // unit's audio for the "save offline" offer.
+  const [peopleSpokenTo, unitAudio] = await Promise.all([
+    countPeopleSpokenTo(profile.id),
+    loadUnitAudioUrls(profile.current_unit),
+  ]);
 
   const quests: QuestView[] = (
     await ensureDailyQuests(profile.id, profile.timezone, profile.daily_goal_minutes)
@@ -79,6 +88,14 @@ export default async function HomePage() {
             )}
             {profile.total_xp > 0 && <span>{fill(es.home.xp, { count: profile.total_xp })}</span>}
           </div>
+        )}
+        {/* People, not points. Shown only once it is true, never as a zero. */}
+        {peopleSpokenTo > 0 && (
+          <p className="text-base font-medium text-ink">
+            {peopleSpokenTo === 1
+              ? es.home.peopleSpokenToOne
+              : fill(es.home.peopleSpokenTo, { count: peopleSpokenTo })}
+          </p>
         )}
       </header>
 
@@ -129,6 +146,8 @@ export default async function HomePage() {
       )}
 
       <QuestList quests={quests} />
+
+      <OfflineUnit urls={unitAudio} />
 
       <ButtonLink href="/frases" variant="quiet">
         {es.home.phrasebookCta}

@@ -98,7 +98,9 @@ learners**, not thirteen hundred — roughly 6× lower, and it is the limit that
 trips first.
 
 Check the current Hobby quotas before relying on either figure; both have moved
-before. The direction is what matters: **count requests, not megabytes.** A
+before. **The service worker changes this arithmetic in the learner's favour**:
+audio is cache-first, so a learner who has saved a unit costs zero edge
+requests for it afterwards, and the request ceiling is on *first* plays only. The direction is what matters: **count requests, not megabytes.** A
 learner who works through one unit pulls ~215 files — measured, now that six
 exist — so a real month of real use is far below a full-curriculum download
 either way.

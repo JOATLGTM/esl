@@ -218,7 +218,7 @@ vocabulary set.
 
 *Cost: ~1 day. Depends on: nothing.*
 
-### 9. Missions as the scoreboard
+### 9. ~~Missions as the scoreboard~~ — built 2026-08-29 (the count; "one line to say today" is not)
 
 Missions are the only component with real transfer and the least instrumented.
 Accumulate them: *"Has hablado inglés con 7 personas"* on `/home` is a stronger
@@ -232,7 +232,7 @@ with *one line to say to a human today*.
 
 ## Tier 5 — retention infrastructure
 
-### 10. PWA
+### 10. ~~PWA~~ — built 2026-08-29; PNG icons are a follow-up
 
 No manifest, no service worker. Add-to-home-screen plus caching the current
 unit's ~2.2 MB of Opus means it opens like an app, works on the bus, and costs

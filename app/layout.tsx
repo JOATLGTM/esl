@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { es } from "@/lib/copy/es";
 import "./globals.css";
+import { PwaRegister } from "./pwa";
 
 // One family. A learner on mobile data should not spend any of it on a second
 // typeface, and `swap` means text is readable before the font arrives.
@@ -33,7 +34,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   // page in Spanish. The whole interface is Spanish until the Block 6 taper.
   return (
     <html lang="es" className={`${inter.variable} h-full`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <PwaRegister />
+        {children}
+      </body>
     </html>
   );
 }

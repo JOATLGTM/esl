@@ -441,6 +441,27 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**Installable, with "save this unit" for offline** — built 2026-08-29,
+`docs/ROADMAP.md` #10. `app/manifest.ts` (start on `/home`, standalone, one
+SVG icon — PNG 192/512 maskable is the follow-up for older devices) and
+`public/sw.js`, registered from the root layout. The worker does exactly two
+things: cache-first for `/audio/`, `/images/` and `/_next/static/` — audio
+names are content hashes so a cached clip can never be stale, and day 2 of a
+unit then costs zero edge requests, the constraint `DEPLOY.md` says binds
+first — and a `precache` message that fetches a list of URLs into the cache.
+**Pages and data are never cached**: the session is server state, and a stale
+page would tell a learner the wrong thing with confidence. `/home` offers
+*"Guardar esta unidad para usarla sin internet"* — offered, never automatic,
+because ~3 MB is real money on a data plan and the decision to spend it on
+wifi is his. `/manifest.webmanifest` and `/sw.js` are in `PUBLIC_PATHS`.
+
+**Missions as the scoreboard** — built 2026-08-29, `docs/ROADMAP.md` #9.
+`/home` shows *"Has hablado inglés con N personas"* — reports counted, not
+successes, because a mission is never failed and someone who walked up to a
+stranger and got nothing back still spoke English to a person. Shown only once
+it is true, never as a zero. The other half of #9 — every session ending with
+one line to say to a human today — is **not** built.
+
 **The phrasebook** — built 2026-08-29, `docs/ROADMAP.md` #8. `/frases`: every
 chunk he has met, grouped by *situation* rather than grammar — "Si no
 entiendes" pinned first, then greetings, numbers, people, the street, work and

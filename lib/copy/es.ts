@@ -149,6 +149,14 @@ export const es = {
     },
   },
 
+  // Offline (ROADMAP #10). Offered, never automatic: the megabytes are his.
+  offline: {
+    save: "Guardar esta unidad para usarla sin internet",
+    saving: "Guardando…",
+    saved: "Listo. {count} pistas guardadas en este teléfono.",
+    unsupported: "Este navegador no puede guardar para usar sin internet.",
+  },
+
   // The phrasebook (ROADMAP #8). Headings are situations, not grammar, because
   // that is how he will look: "I'm at the counter", never "ordering".
   phrasebook: {
@@ -219,6 +227,10 @@ export const es = {
   },
 
   home: {
+    // The missions scoreboard (ROADMAP #9). Counts people, not points: this
+    // is the one number that measures the thing the product exists for.
+    peopleSpokenTo: "Has hablado inglés con {count} personas",
+    peopleSpokenToOne: "Has hablado inglés con 1 persona",
     phrasebookCta: "Mis frases",
     listeningCta: "Más historias para escuchar",
     settingsCta: "Ajustes",
