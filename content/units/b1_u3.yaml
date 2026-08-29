@@ -1,0 +1,581 @@
+# Block 1, Unit 3 -- family, people, and the first true thing Miguel says.
+#
+# The beat (content/STORY.md): Ana asks who is in the photo. He answers, and
+# then he says he misses them. Units 1 and 2 were transactions -- a greeting
+# returned, a form survived. This is the first time Miguel tells someone
+# something about himself that costs him anything to say.
+#
+# Design notes for whoever edits this next:
+#   * `I miss them` is the unit. Everything else is scaffolding to make that
+#     sentence sayable, and the frame f_0005 exists so it generalises rather
+#     than being one memorised string.
+#   * The third-person pronouns land here (he/she/they/him/her/them/his/their).
+#     Nothing before this unit could talk ABOUT a person, only TO one, which is
+#     why every earlier scene is two people facing each other.
+#   * Carlos gets his counterweight here. He has been the shortcut Miguel keeps
+#     refusing; in s_0016 he says his own family is here and he does not go
+#     back. He is not an obstacle, he is ten years ahead.
+
+unit_id: b1_u3
+block: 1
+order: 3
+title_es: "Mi familia"
+title_en: "My family"
+cefr: A0
+can_do_es: "Puedo hablar de mi familia y decir a quién extraño"
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0051
+    en: "Who is this?"
+    es: "¿Quién es este? / ¿Quién es esta?"
+    cefr: A0
+    example_en: "Who is this? Is this your sister?"
+    example_es: "¿Quién es esta? ¿Es tu hermana?"
+    tags: [question, family]
+    audio: [auto]
+
+  - id: c_0052
+    en: "This is my mother"
+    es: "Esta es mi mamá"
+    cefr: A0
+    example_en: "This is my mother. Her name is Elena."
+    example_es: "Esta es mi mamá. Se llama Elena."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0053
+    en: "This is my father"
+    es: "Este es mi papá"
+    cefr: A0
+    example_en: "This is my father, and this is my mother."
+    example_es: "Este es mi papá, y esta es mi mamá."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0054
+    en: "This is my sister"
+    es: "Esta es mi hermana"
+    cefr: A0
+    example_en: "This is my sister. She is nineteen."
+    example_es: "Esta es mi hermana. Tiene diecinueve años."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0055
+    en: "This is my brother"
+    es: "Este es mi hermano"
+    cefr: A0
+    example_en: "This is my brother. He is fifteen."
+    example_es: "Este es mi hermano. Tiene quince años."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0056
+    en: "They are my family"
+    es: "Ellos son mi familia"
+    cefr: A0
+    example_en: "They are my family. I love them."
+    example_es: "Ellos son mi familia. Los quiero."
+    tags: [family]
+    audio: [auto]
+
+  # The centre of the unit.
+  - id: c_0057
+    en: "I miss them"
+    es: "Los extraño"
+    cefr: A0
+    example_en: "I miss them. They are not here."
+    example_es: "Los extraño. No están aquí."
+    tags: [feeling, family]
+    audio: [auto]
+
+  - id: c_0058
+    en: "I miss my family"
+    es: "Extraño a mi familia"
+    cefr: A0
+    example_en: "I miss my family and my friends."
+    example_es: "Extraño a mi familia y a mis amigos."
+    tags: [feeling, family]
+    audio: [auto]
+
+  - id: c_0059
+    en: "Do you have a sister?"
+    es: "¿Tienes hermana?"
+    cefr: A0
+    example_en: "Do you have a sister, Miguel?"
+    example_es: "¿Tienes hermana, Miguel?"
+    tags: [question, family]
+    audio: [auto]
+
+  - id: c_0060
+    en: "I have two sisters"
+    es: "Tengo dos hermanas"
+    cefr: A0
+    example_en: "I have two sisters and a brother."
+    example_es: "Tengo dos hermanas y un hermano."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0061
+    en: "He is my friend"
+    es: "Él es mi amigo"
+    cefr: A0
+    example_en: "He is my friend. His name is Tom."
+    example_es: "Él es mi amigo. Se llama Tom."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0062
+    en: "She is my friend"
+    es: "Ella es mi amiga"
+    cefr: A0
+    example_en: "She is my friend. Her name is Ana."
+    example_es: "Ella es mi amiga. Se llama Ana."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0063
+    en: "We are friends"
+    es: "Somos amigos"
+    cefr: A0
+    example_en: "We are friends, and we are here."
+    example_es: "Somos amigos, y estamos aquí."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0064
+    en: "My family is not here"
+    es: "Mi familia no está aquí"
+    cefr: A0
+    example_en: "My family is not here, but I am fine."
+    example_es: "Mi familia no está aquí, pero estoy bien."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0065
+    en: "They are there"
+    es: "Están allá"
+    cefr: A0
+    example_en: "They are there, in Mexico."
+    example_es: "Están allá, en México."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0066
+    en: "Who are they?"
+    es: "¿Quiénes son?"
+    cefr: A0
+    example_en: "Who are they? Are they your family?"
+    example_es: "¿Quiénes son? ¿Son tu familia?"
+    tags: [question, people]
+    audio: [auto]
+
+  - id: c_0067
+    en: "This is a photo of my family"
+    es: "Esta es una foto de mi familia"
+    cefr: A0
+    example_en: "This is a photo of my family in Mexico."
+    example_es: "Esta es una foto de mi familia en México."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0068
+    en: "I have a little brother"
+    es: "Tengo un hermano menor"
+    cefr: A0
+    example_en: "I have a little brother. He is ten."
+    example_es: "Tengo un hermano menor. Tiene diez años."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0069
+    en: "Me too"
+    es: "Yo también"
+    cefr: A0
+    example_en: "I miss my family. Me too."
+    example_es: "Extraño a mi familia. Yo también."
+    tags: [answer]
+    audio: [auto]
+
+  - id: c_0070
+    en: "How many people?"
+    es: "¿Cuántas personas?"
+    cefr: A0
+    example_en: "How many people are in your family?"
+    example_es: "¿Cuántas personas hay en tu familia?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0071
+    en: "Her name is"
+    es: "Ella se llama"
+    cefr: A0
+    example_en: "Her name is Sofia. She is my sister."
+    example_es: "Ella se llama Sofía. Es mi hermana."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0072
+    en: "His name is"
+    es: "Él se llama"
+    cefr: A0
+    example_en: "His name is Carlos. He is my friend."
+    example_es: "Él se llama Carlos. Es mi amigo."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0073
+    en: "I love my family"
+    es: "Quiero mucho a mi familia"
+    cefr: A0
+    example_en: "I love my family. I miss them."
+    example_es: "Quiero mucho a mi familia. Los extraño."
+    tags: [feeling, family]
+    audio: [auto]
+
+  - id: c_0074
+    en: "My friends are with me"
+    es: "Mis amigos están conmigo"
+    cefr: A0
+    example_en: "My friends are with me here."
+    example_es: "Mis amigos están conmigo aquí."
+    tags: [people]
+    audio: [auto]
+
+  - id: c_0075
+    en: "My home is there"
+    es: "Mi casa está allá"
+    cefr: A0
+    example_en: "My home is there, and my family is there."
+    example_es: "Mi casa está allá, y mi familia está allá."
+    tags: [family]
+    audio: [auto]
+
+  # Carlos's household, and the two frames' fillers. A word released by
+  # content/vocab-schedule.yaml is *permitted*, not taught -- the 95% rule reads
+  # what chunks and examples actually put in front of the learner, and these two
+  # chunks are what make `wife`, `son`, `husband` and `daughter` real.
+  - id: c_0076
+    en: "This is my wife"
+    es: "Esta es mi esposa"
+    cefr: A0
+    example_en: "This is my wife, and this is my son."
+    example_es: "Esta es mi esposa, y este es mi hijo."
+    tags: [family]
+    audio: [auto]
+
+  - id: c_0077
+    en: "This is my husband"
+    es: "Este es mi esposo"
+    cefr: A0
+    example_en: "This is my husband, and this is my daughter."
+    example_es: "Este es mi esposo, y esta es mi hija."
+    tags: [family]
+    audio: [auto]
+
+# `I miss them` is the sentence this unit exists for, so it gets a frame: the
+# learner should be able to miss any of the people they have just learned to
+# name, not only the memorised string.
+frames:
+  - id: f_0005
+    pattern: "I miss my {NP}."
+    es_pattern: "Extraño a mi {NP}."
+    slot: NP
+    literal_fillers: ["mother", "father", "sister", "brother", "family", "friends", "home", "son"]
+    cefr: A0
+    tags: [feeling, family]
+
+  - id: f_0006
+    pattern: "He is my {NP}."
+    es_pattern: "Él es mi {NP}."
+    slot: NP
+    literal_fillers: ["brother", "father", "son", "friend", "husband"]
+    cefr: A0
+    tags: [people]
+
+scenes:
+  # One afternoon, and the emotional shape is: a question, an answer, a truth,
+  # someone else's truth, and then Miguel asking first.
+
+  - id: s_0013
+    title_es: "¿Quiénes son?"
+    character: ana
+    duration_target_s: 44
+    transcript: |
+      ANA: Good afternoon, Miguel. How are you?
+      MIGUEL: I am fine, thank you. And you?
+      ANA: I am fine. Miguel, who is this?
+      MIGUEL: This is a photo of my family in Mexico.
+      ANA: A photo! Who are they?
+      MIGUEL: This is my mother, and this is my father.
+      ANA: Your mother and your father. Okay.
+      MIGUEL: This is my sister. She is nineteen.
+      ANA: Nineteen! And who is this?
+      MIGUEL: This is my brother. He is fifteen.
+      ANA: Fifteen. How many people are in your family?
+      MIGUEL: One, two, three, four... and me. Five.
+    questions:
+      - q_es: "¿Cuántos hermanos tiene Miguel?"
+        options_es:
+          - "Uno"
+          - "Dos"
+          - "Tres"
+        answer: 1
+      - q_es: "¿Quién es mayor, la hermana o el hermano?"
+        options_es:
+          - "La hermana"
+          - "El hermano"
+          - "Tienen la misma edad"
+        answer: 0
+      - q_es: "¿Por qué Miguel cuenta en voz alta al final?"
+        options_es:
+          - "Porque no sabe contar"
+          - "Porque Ana no entiende"
+          - "Porque está sumando a su familia"
+        answer: 2
+
+  - id: s_0014
+    title_es: "Los extraño"
+    character: ana
+    duration_target_s: 48
+    transcript: |
+      ANA: Is your family here, Miguel?
+      MIGUEL: No. My family is not here.
+      ANA: They are in Mexico?
+      MIGUEL: Yes. They are there, in Mexico.
+      ANA: And you are here.
+      MIGUEL: Yes. I am here.
+      MIGUEL: Ana, I miss them.
+      ANA: I understand, Miguel.
+      MIGUEL: I miss my family. I miss my home.
+      ANA: I understand. My family is not here too.
+      MIGUEL: Your family?
+      ANA: They are not here. I miss them.
+      MIGUEL: Me too.
+      ANA: My mother is there. My father is there too.
+      MIGUEL: Your mother and your father.
+      ANA: Yes. They are in their home, and I am here.
+      MIGUEL: I understand. It is not fine, but I understand.
+      ANA: No, it is not fine. But we are here.
+    questions:
+      - q_es: "¿Qué le dice Miguel a Ana que no le había dicho a nadie?"
+        options_es:
+          - "Que extraña a su familia"
+          - "Su número de teléfono"
+          - "Cuántos años tiene"
+        answer: 0
+      - q_es: "¿Qué hace Ana cuando Miguel le dice eso?"
+        options_es:
+          - "Cambia de tema"
+          - "Le dice que le pasa lo mismo"
+          - "No contesta"
+        answer: 1
+      - q_es: "¿Por qué Miguel dice \"me too\" al final?"
+        options_es:
+          - "Porque él también tiene teléfono"
+          - "Porque él también es de México"
+          - "Porque él también extraña a los suyos"
+        answer: 2
+
+  - id: s_0015
+    title_es: "La hermana de Miguel"
+    character: tom
+    duration_target_s: 42
+    transcript: |
+      TOM: Hello, Miguel! How are you?
+      MIGUEL: I am fine, thank you, Tom. And you?
+      TOM: I am fine. Is this a photo?
+      MIGUEL: Yes. This is my sister. Her name is Sofia.
+      TOM: Sofia. How old is she?
+      MIGUEL: She is nineteen years old.
+      TOM: Nineteen. Do you have a brother too?
+      MIGUEL: Yes, I have a little brother. He is fifteen.
+      TOM: A little brother! I have two sisters.
+      MIGUEL: Two sisters! Are they here?
+      TOM: Yes, they are here. We are here.
+    questions:
+      - q_es: "¿Quién tiene más hermanos?"
+        options_es:
+          - "Miguel"
+          - "Tom"
+          - "Los dos tienen igual"
+        answer: 2
+      - q_es: "¿Qué diferencia hay entre la familia de Tom y la de Miguel?"
+        options_es:
+          - "La de Tom está aquí"
+          - "La de Tom es más grande"
+          - "Tom no tiene familia"
+        answer: 0
+      - q_es: "¿Miguel pregunta algo en esta escena?"
+        options_es:
+          - "No, solo contesta"
+          - "Sí, pregunta si están aquí"
+          - "Sí, pregunta la edad de Tom"
+        answer: 1
+
+  - id: s_0016
+    title_es: "Carlos lleva diez años"
+    character: carlos
+    duration_target_s: 46
+    transcript: |
+      CARLOS: Miguel! Good afternoon. How are you?
+      MIGUEL: I am fine, thank you. And you, Carlos?
+      CARLOS: I am fine. Is this your family?
+      MIGUEL: Yes. They are my family. I miss them.
+      CARLOS: I understand. My family is here.
+      MIGUEL: Here?
+      CARLOS: Yes. My wife is here, and my son is here.
+      MIGUEL: Your wife and your son!
+      CARLOS: His name is Diego. He is little. He is two.
+      MIGUEL: Two years old!
+      CARLOS: Miguel, we are here. We are your friends.
+      MIGUEL: Thank you, Carlos.
+    questions:
+      - q_es: "¿Quiénes están con Carlos aquí?"
+        options_es:
+          - "Sus padres"
+          - "Su esposa y su hijo"
+          - "Sus hermanas"
+        answer: 1
+      - q_es: "¿Qué le quiere decir Carlos a Miguel al final?"
+        options_es:
+          - "Que aquí también tiene gente suya"
+          - "Que debe volver a México"
+          - "Que su hijo se llama Miguel"
+        answer: 0
+      - q_es: "¿Cuántos años tiene Diego?"
+        options_es:
+          - "Diez"
+          - "Doce"
+          - "Dos"
+        answer: 2
+
+  - id: s_0017
+    title_es: "En el café, con Maria"
+    character: maria
+    duration_target_s: 44
+    transcript: |
+      MARIA: Good afternoon, Miguel! How are you?
+      MIGUEL: I am fine, thank you. And you, Maria?
+      MARIA: I am fine. Miguel, who is this? Your sister?
+      MIGUEL: Yes! Her name is Sofia. She is my sister.
+      MARIA: She is nice. And this?
+      MIGUEL: This is my mother, and this is my father.
+      MARIA: Your mother and your father. In Mexico?
+      MIGUEL: Yes. They are there. I miss them.
+      MARIA: I understand. My mother is there too.
+      MIGUEL: Do you miss her?
+      MARIA: Yes, Miguel. I miss her.
+      MIGUEL: Me too. I miss my mother.
+    questions:
+      - q_es: "¿A quién extraña Maria?"
+        options_es:
+          - "A su hermana"
+          - "A su madre"
+          - "A su hijo"
+        answer: 1
+      - q_es: "¿Qué hace Miguel aquí que no hizo con Ana ni con Tom?"
+        options_es:
+          - "Preguntarle a la otra persona si extraña a alguien"
+          - "Enseñar la foto"
+          - "Decir su edad"
+        answer: 0
+      - q_es: "¿Cómo termina la conversación?"
+        options_es:
+          - "Miguel se despide sin contestar"
+          - "Maria cambia de tema"
+          - "Los dos dicen que extrañan a alguien"
+        answer: 2
+
+  - id: s_0018
+    title_es: "Aquí también"
+    character: ana
+    duration_target_s: 44
+    transcript: |
+      ANA: Miguel! Good night.
+      MIGUEL: Good night, Ana.
+      ANA: How are you?
+      MIGUEL: I am fine. Ana, who is this?
+      ANA: This? He is my friend. His name is Tom.
+      MIGUEL: Tom is my friend too!
+      ANA: Yes! We are friends.
+      MIGUEL: Ana, my family is not here, but my friends are with me.
+      ANA: Yes, Miguel. We are here.
+      MIGUEL: Carlos and his son, and Tom, and you, and Maria.
+      ANA: We are here. Good night, Miguel.
+      MIGUEL: Good night, Ana. See you later.
+    questions:
+      - q_es: "¿Qué entiende Miguel al final de la unidad?"
+        options_es:
+          - "Que su familia va a venir"
+          - "Que aquí también tiene gente suya"
+          - "Que Tom es su hermano"
+        answer: 1
+      - q_es: "¿Quién pregunta primero por la persona de la foto?"
+        options_es:
+          - "Miguel"
+          - "Ana"
+          - "Nadie pregunta por la foto"
+        answer: 0
+      - q_es: "¿Por qué Miguel nombra a Carlos, a Tom, a Ana y a Maria?"
+        options_es:
+          - "Porque no recuerda sus nombres"
+          - "Porque son su familia en México"
+          - "Porque son la gente que tiene aquí"
+        answer: 2
+
+speaking_task:
+  mode: scripted
+  character: ana
+  scenario_es: "Alguien te pregunta por tu familia. Cuéntale quiénes son y di a quién extrañas."
+  scenario_en: "Someone asks about your family. Say who they are, and who you miss."
+  target_chunks: [c_0051, c_0052, c_0054, c_0057, c_0064, c_0065]
+  script:
+    - speaker: ai
+      en: "Hello, {name}! Is this a photo of your family?"
+      es: "¡Hola, {name}! ¿Es una foto de tu familia?"
+    - speaker: user
+      en: "Yes. This is my mother, and this is my father."
+      es: "Sí. Esta es mi mamá, y este es mi papá."
+    - speaker: ai
+      en: "And who is this?"
+      es: "¿Y quién es esta?"
+    - speaker: user
+      en: "This is my sister."
+      es: "Esta es mi hermana."
+    - speaker: ai
+      en: "Are they here, {name}?"
+      es: "¿Están aquí, {name}?"
+    - speaker: user
+      en: "No. My family is not here. They are there."
+      es: "No. Mi familia no está aquí. Están allá."
+    - speaker: ai
+      en: "I understand."
+      es: "Te entiendo."
+    - speaker: user
+      en: "I miss them."
+      es: "Los extraño."
+
+missions:
+  - id: m_0005
+    title_es: "Presenta a alguien"
+    instructions_es: >-
+      Enséñale a alguien una foto y di en inglés quién es: "This is my mother",
+      "He is my friend". Una frase por persona. No tienes que explicar nada más.
+    prep_chunk_ids: [c_0052, c_0061]
+    difficulty: 2
+    alternate_es: >-
+      Abre una foto en el teléfono y dilo en voz alta tú solo, una frase por
+      persona. Decirlo en voz alta es lo que cuenta, no que haya alguien.
+
+  - id: m_0006
+    title_es: "Di a quién extrañas"
+    instructions_es: >-
+      Dile a alguien, en inglés, "I miss my family" o "I miss my mother".
+      Es la frase más difícil de esta unidad y no es por el inglés.
+    prep_chunk_ids: [c_0057, c_0058]
+    difficulty: 2
+    alternate_es: >-
+      Mándale una nota de voz a alguien de tu familia diciéndolo en inglés, o
+      dilo en voz alta a solas. Ellos no tienen que entenderlo para que cuente.

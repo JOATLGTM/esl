@@ -137,28 +137,36 @@ units:
     note: >-
       Family and people. Ana asks who is in the photo. This unit carries the
       third-person pronouns, which unblocks every scene where someone is
-      talked about rather than talked to.
+      talked about rather than talked to. `them`, `of`, `but` and `his` were
+      added while authoring, on purpose: `I miss them` is the emotional centre
+      of the unit and the plan had not accounted for it. Editing this file is
+      what the mechanism is for -- the failure mode it prevents is authoring
+      around a gap silently.
     releases:
       - back
       - brother
+      - but
       - daughter
       - father
       - friend
       - he
       - her
       - him
+      - his
       - home
       - husband
       - little
       - love
       - miss
       - mother
+      - of
       - our
       - people
       - she
       - sister
       - son
       - their
+      - them
       - there
       - they
       - too

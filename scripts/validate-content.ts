@@ -535,9 +535,17 @@ function checkGeneratedDurations(bundle: ContentBundle) {
   if (manifest.provider === "silent") return;
 
   for (const unit of bundle.units) {
+    const missing: string[] = [];
     for (const scene of unit.scenes) {
       const actual = manifest.scenes[scene.id]?.durationMs;
-      if (actual === undefined) continue;
+      // A scene with no generated track used to be skipped in silence, so a
+      // unit whose audio run was interrupted validated clean and every
+      // duration check below simply did not happen. Found on 2026-08-28 when
+      // `b1_u3` passed with zero of its six scenes stitched.
+      if (actual === undefined) {
+        missing.push(scene.id);
+        continue;
+      }
       const actualS = actual / 1000;
       if (actualS < 30 || actualS > 90) {
         err(unit.unit_id, `${scene.id} generated audio is ${actualS.toFixed(0)}s; PRD F4 requires 30-90s`);
@@ -548,6 +556,14 @@ function checkGeneratedDurations(bundle: ContentBundle) {
           "adjust duration_target_s or the transcript length"
         );
       }
+    }
+
+    if (missing.length) {
+      gate(
+        unit.unit_id,
+        `${missing.length}/${unit.scenes.length} scene(s) have no generated audio`,
+        `${missing.join(", ")} — npm run content:audio`,
+      );
     }
   }
 }

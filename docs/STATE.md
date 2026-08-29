@@ -298,6 +298,24 @@ empty, because they want frequency work this repo does not have.
 
 **Two readability-inflation bugs found while doing it** — see the traps.
 
+**`b1_u3` — family and people** — authored 2026-08-28. 27 chunks, 6 scenes, 2
+frames, 2 missions, 2.1 MB. The beat is `I miss them`: units 1 and 2 were
+transactions — a greeting returned, a form survived — and this is the first
+time Miguel tells someone something that costs him to say. Everything else in
+the unit is scaffolding to make that sentence sayable, and `f_0005`
+(`I miss my {NP}`) exists so it generalises instead of being one memorised
+string.
+
+The third-person pronouns land here, and that is structural: nothing before
+this unit could talk *about* a person, only *to* one, which is why every
+earlier scene is two people facing each other. Carlos also gets his
+counterweight — he has been the shortcut Miguel keeps refusing, and in `s_0016`
+his own family is here and he is not going back. He is not an obstacle, he is
+ten years ahead.
+
+Three units, **77 chunks, 6 frames, 18 scenes, 115 known word types**. About
+eighteen days of content.
+
 **`b1_u2` — the second unit** — authored 2026-08-28, the first written against
 the foundations rather than from scratch. Numbers, age, and the yes/no answer;
 25 chunks, 6 scenes, 1 frame, 2 missions, 2.2 MB of audio. Miguel needs a
@@ -561,6 +579,21 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**A scene with no generated audio used to validate clean.**
+`checkGeneratedDurations` skipped any scene missing from the manifest, so an
+interrupted `content:audio` run left a unit that passed `content:validate` with
+a green tick and zero playable scenes — the duration checks simply did not
+happen. Found when `b1_u3` passed with **0 of 6** scenes stitched. There is now
+a `gate()` for it (warning while authoring, error at publish), matching how
+missing chunk audio is already handled. The general shape is one this project
+keeps meeting: **a check that skips missing data reports success for absence.**
+
+**Long audio runs must be foreground.** `npm run content:audio` on a new unit
+is a few minutes, and backgrounding it — `&`, `nohup`, or a background Bash
+call — got the process reaped partway through twice, once at 25 of 204 clips.
+The manifest is written only at the end, so a reaped run leaves no trace beyond
+missing scenes. Run it in the foreground with a raised timeout.
 
 **Words per minute is not a speaking rate.** It is a speaking rate divided by
 word length, and word length belongs to the *text*. Authoring `b1_u2` pushed
@@ -849,10 +882,10 @@ from a cookie is client-supplied data.
       still empty** and want frequency work this repo does not have.
    c. ~~**A story bible.**~~ Done — `content/STORY.md`.
 
-   **All three foundations are done, and `b1_u2` is written** — the first unit
-   authored against them. It took one pass plus validator iteration, which is
-   the whole argument for having built them. **`b1_u3` is next**; its beat and
-   its legal vocabulary are already waiting.
+   **All three foundations are done, and `b1_u2` and `b1_u3` are written.**
+   Each took one pass plus validator iteration, which is the whole argument for
+   having built them. **`b1_u4` is next** (places, and where things are); its
+   beat is in `STORY.md` and its legal vocabulary in `vocab-schedule.yaml`.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person
