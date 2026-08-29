@@ -158,7 +158,7 @@ speech — no reductions, no linking. That gap is real and TTS cannot close it.
 
 ## Tier 3 — meaning without Spanish
 
-### 6. ~~Images, narrowly~~ — slots built 2026-08-29; **no assets yet**, see `public/images/README.md`
+### 6. ~~Images, narrowly~~ — built 2026-08-29: 53 Noto Emoji pictograms + 6 portraits, 34 chunks and all 8 frames pictured
 
 **The taper has no terminus.** Every chunk's meaning is a Spanish string. At the
 least-supported level Meet withdraws the gloss and replaces it with *nothing*,

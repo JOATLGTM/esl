@@ -272,6 +272,15 @@ frames:
     es_pattern: "Soy de {PLACE}."
     slot: PLACE
     literal_fillers: ["Mexico", "Guatemala", "Honduras", "Colombia", "Peru", "Ecuador", "Venezuela", "Bolivia"]
+    filler_images:
+      "Mexico": /images/flag-mexico.svg
+      "Guatemala": /images/flag-guatemala.svg
+      "Honduras": /images/flag-honduras.svg
+      "Colombia": /images/flag-colombia.svg
+      "Peru": /images/flag-peru.svg
+      "Ecuador": /images/flag-ecuador.svg
+      "Venezuela": /images/flag-venezuela.svg
+      "Bolivia": /images/flag-bolivia.svg
     cefr: A0
     tags: [introductions]
 

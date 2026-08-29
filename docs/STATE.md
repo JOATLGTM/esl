@@ -493,11 +493,17 @@ which is the taper's missing terminus, the one thing it can withdraw the gloss
 *to* — the frame chooser shows a thumbnail per filler, and both players show a
 portrait beside the speaker's name.
 
-**Nothing is pictured yet, on purpose.** Sourcing pictograms is curation with a
-licence decision attached (ARASAAC is CC BY-NC-SA; Mulberry and OpenMoji are
-BY-SA), and it is not a thing to do from inside a build session. The slots
-exist so assets can land without a schema change or a migration; the rules
-are in `public/images/README.md`.
+**The pictures landed the same day.** 53 pictograms from **Noto Emoji** —
+chosen because its artwork is Apache 2.0 (flags public domain): attribution,
+no copyleft, no non-commercial clause, the cleanest licence of any set
+considered — fetched by `npm run content:images` from the map in
+`scripts/fetch-images.ts`, which is the whole editorial decision about what
+gets a picture. 34 chunks and all 8 frames are pictured; the repair chunks are
+not and never will be. Portraits are an initial in a per-character colour, one
+colour forever like the voice: a generated face of an immigrant is the
+stereotyping hazard the roadmap named, and an initial delivers recognition
+without inventing anyone's features. Attribution is in
+`public/images/LICENSE.md`; 59 SVGs, ~0.9 MB — Noto emoji are detailed, and each is one edge request, so the service worker caches them too.
 
 **The cast speaks at deliberately different rates, and the learner can change
 the speed** — built 2026-08-29, `docs/ROADMAP.md` #5. The gate used to hold the

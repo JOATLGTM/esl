@@ -19,5 +19,9 @@ Rules, all of which the validator enforces where it can:
 - Do not illustrate what cannot be pictured. "I don't understand" has no
   picture and must not be given a mascot.
 
-Nothing is here yet. The slots exist so the assets can be added as they are
-chosen, without a schema change or a migration.
+The set is **Noto Emoji** (Apache 2.0; flags public domain), fetched by
+`npm run content:images` from the map in `scripts/fetch-images.ts` — that map
+is the whole editorial decision about what gets a picture. Portraits are an
+initial in a per-character colour: a generated face of an immigrant is the
+stereotyping hazard named above, and an initial delivers recognition without
+inventing anyone's features. See `LICENSE.md` for attribution.

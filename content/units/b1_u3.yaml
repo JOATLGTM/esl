@@ -42,6 +42,7 @@ chunks:
     example_en: "This is my mother. Her name is Elena."
     example_es: "Esta es mi mamá. Se llama Elena."
     tags: [family]
+    image: /images/mother.svg
     audio: [auto]
 
   - id: c_0053
@@ -51,6 +52,7 @@ chunks:
     example_en: "This is my father, and this is my mother."
     example_es: "Este es mi papá, y esta es mi mamá."
     tags: [family]
+    image: /images/father.svg
     audio: [auto]
 
   - id: c_0054
@@ -60,6 +62,7 @@ chunks:
     example_en: "This is my sister. She is nineteen."
     example_es: "Esta es mi hermana. Tiene diecinueve años."
     tags: [family]
+    image: /images/sister.svg
     audio: [auto]
 
   - id: c_0055
@@ -69,6 +72,7 @@ chunks:
     example_en: "This is my brother. He is fifteen."
     example_es: "Este es mi hermano. Tiene quince años."
     tags: [family]
+    image: /images/brother.svg
     audio: [auto]
 
   - id: c_0056
@@ -78,6 +82,7 @@ chunks:
     example_en: "They are my family. Their home is in Mexico."
     example_es: "Ellos son mi familia. Su casa está en México."
     tags: [family]
+    image: /images/family.svg
     audio: [auto]
 
   # The centre of the unit.
@@ -178,6 +183,7 @@ chunks:
     example_en: "This is a photo of my family in Mexico."
     example_es: "Esta es una foto de mi familia en México."
     tags: [family]
+    image: /images/photo.svg
     audio: [auto]
 
   - id: c_0068
@@ -187,6 +193,7 @@ chunks:
     example_en: "I have a little brother. He is ten."
     example_es: "Tengo un hermano menor. Tiene diez años."
     tags: [family]
+    image: /images/brother.svg
     audio: [auto]
 
   - id: c_0069
@@ -263,6 +270,7 @@ chunks:
     example_en: "He has a phone, but I miss him."
     example_es: "Él tiene teléfono, pero lo extraño."
     tags: [people]
+    image: /images/phone.svg
     audio: [auto]
 
   # Carlos's household, and the two frames' fillers. A word released by
@@ -276,6 +284,7 @@ chunks:
     example_en: "This is my wife, and this is my son."
     example_es: "Esta es mi esposa, y este es mi hijo."
     tags: [family]
+    image: /images/wife.svg
     audio: [auto]
 
   - id: c_0077
@@ -285,6 +294,7 @@ chunks:
     example_en: "This is my husband, and this is my daughter."
     example_es: "Este es mi esposo, y esta es mi hija."
     tags: [family]
+    image: /images/husband.svg
     audio: [auto]
 
 # `I miss them` is the sentence this unit exists for, so it gets a frame: the
@@ -296,6 +306,15 @@ frames:
     es_pattern: "Extraño a mi {NP}."
     slot: NP
     literal_fillers: ["mother", "father", "sister", "brother", "family", "friends", "home", "son"]
+    filler_images:
+      "mother": /images/mother.svg
+      "father": /images/father.svg
+      "sister": /images/sister.svg
+      "brother": /images/brother.svg
+      "family": /images/family.svg
+      "friends": /images/friends.svg
+      "home": /images/home.svg
+      "son": /images/son.svg
     cefr: A0
     tags: [feeling, family]
 
@@ -304,6 +323,12 @@ frames:
     es_pattern: "Él es mi {NP}."
     slot: NP
     literal_fillers: ["brother", "father", "son", "friend", "husband"]
+    filler_images:
+      "brother": /images/brother.svg
+      "father": /images/father.svg
+      "son": /images/son.svg
+      "friend": /images/friend.svg
+      "husband": /images/husband.svg
     cefr: A0
     tags: [people]
 

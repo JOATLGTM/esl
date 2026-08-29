@@ -38,6 +38,7 @@ chunks:
     example_es: "Quisiera un café, por favor."
     accepts: ["I'd like a coffee"]
     tags: [ordering]
+    image: /images/coffee.svg
     audio: [auto]
 
   - id: c_0129
@@ -47,6 +48,7 @@ chunks:
     example_en: "I want water, please."
     example_es: "Quiero agua, por favor."
     tags: [ordering]
+    image: /images/water.svg
     audio: [auto]
 
   - id: c_0130
@@ -77,6 +79,7 @@ chunks:
     example_en: "Do you want tea or coffee?"
     example_es: "¿Quieres té o café?"
     tags: [question, ordering]
+    image: /images/tea.svg
     audio: [auto]
 
   - id: c_0133
@@ -86,6 +89,7 @@ chunks:
     example_en: "A coffee with milk, please."
     example_es: "Un café con leche, por favor."
     tags: [ordering]
+    image: /images/milk.svg
     audio: [auto]
 
   - id: c_0134
@@ -95,6 +99,7 @@ chunks:
     example_en: "I would like it without milk."
     example_es: "Lo quisiera sin leche."
     tags: [ordering]
+    image: /images/milk.svg
     audio: [auto]
 
   - id: c_0135
@@ -177,6 +182,7 @@ chunks:
     example_en: "A small coffee with milk, please."
     example_es: "Un café pequeño con leche, por favor."
     tags: [ordering]
+    image: /images/coffee.svg
     audio: [auto]
 
   - id: c_0144
@@ -186,6 +192,7 @@ chunks:
     example_en: "Some bread and some fruit, please."
     example_es: "Un poco de pan y un poco de fruta, por favor."
     tags: [ordering, food]
+    image: /images/bread.svg
     audio: [auto]
 
   - id: c_0145
@@ -213,6 +220,7 @@ chunks:
     example_en: "Do you have food here?"
     example_es: "¿Tienen comida aquí?"
     tags: [question, food]
+    image: /images/food.svg
     audio: [auto]
 
   - id: c_0148
@@ -270,6 +278,15 @@ frames:
     slot: NP
     literal_fillers:
       ["a coffee", "a tea", "water", "some bread", "a sandwich", "a salad", "some fruit", "some soup"]
+    filler_images:
+      "a coffee": /images/coffee.svg
+      "a tea": /images/tea.svg
+      "water": /images/water.svg
+      "some bread": /images/bread.svg
+      "a sandwich": /images/sandwich.svg
+      "a salad": /images/salad.svg
+      "some fruit": /images/fruit.svg
+      "some soup": /images/soup.svg
     cefr: A0
     tags: [ordering]
 
@@ -279,6 +296,14 @@ frames:
     slot: NP
     literal_fillers:
       ["food", "water", "milk", "bread", "fruit", "chocolate", "coffee"]
+    filler_images:
+      "food": /images/food.svg
+      "water": /images/water.svg
+      "milk": /images/milk.svg
+      "bread": /images/bread.svg
+      "fruit": /images/fruit.svg
+      "chocolate": /images/chocolate.svg
+      "coffee": /images/coffee.svg
     cefr: A0
     tags: [question, ordering]
 

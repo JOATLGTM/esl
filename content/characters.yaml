@@ -30,6 +30,7 @@ characters:
     # is allowed to struggle, ask for repetition, and get things wrong on the
     # audio. PRD 4.4 framing: being understood, never sounding native.
     speaks_english: learner
+    portrait: /images/portrait-miguel.svg
 
   - id: ana
     name: Ana
@@ -37,6 +38,7 @@ characters:
     role_es: "La vecina de Miguel. Paciente, repite las cosas sin que se lo pidas."
     role_en: "Miguel's neighbour. Patient; repeats things unasked."
     speaks_english: native
+    portrait: /images/portrait-ana.svg
 
   - id: carlos
     name: Carlos
@@ -44,6 +46,7 @@ characters:
     role_es: "Compañero de trabajo. Lleva diez años aquí y cambia entre los dos idiomas."
     role_en: "Coworker. Ten years in the country, switches between both languages."
     speaks_english: native
+    portrait: /images/portrait-carlos.svg
 
   - id: maria
     name: Maria
@@ -51,6 +54,7 @@ characters:
     role_es: "Lleva el café de la esquina. Habla rápido y con cariño."
     role_en: "Runs the café on the corner. Fast, warm."
     speaks_english: native
+    portrait: /images/portrait-maria.svg
 
   - id: rosa
     name: Rosa
@@ -58,6 +62,7 @@ characters:
     role_es: "La supervisora en el trabajo. Directa, clara, nunca cruel."
     role_en: "Supervisor at work. Direct, clear, never unkind."
     speaks_english: native
+    portrait: /images/portrait-rosa.svg
 
   - id: tom
     name: Tom
@@ -65,3 +70,4 @@ characters:
     role_es: "Amigo inglés. Su acento es distinto, y eso es parte de la lección."
     role_en: "English friend. His accent differs on purpose — that is part of the lesson."
     speaks_english: native
+    portrait: /images/portrait-tom.svg

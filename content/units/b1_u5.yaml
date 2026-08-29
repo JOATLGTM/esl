@@ -44,6 +44,7 @@ chunks:
     example_en: "It is eight o'clock in the morning."
     example_es: "Son las ocho de la mañana."
     tags: [time]
+    image: /images/clock-8.svg
     audio: [auto]
 
   - id: c_0105
@@ -53,6 +54,7 @@ chunks:
     example_en: "Monday, Tuesday, Wednesday, Thursday."
     example_es: "Lunes, martes, miércoles, jueves."
     tags: [days]
+    image: /images/calendar.svg
     audio: [auto]
 
   - id: c_0106
@@ -62,6 +64,7 @@ chunks:
     example_en: "Friday, Saturday, Sunday. That is the week."
     example_es: "Viernes, sábado, domingo. Esa es la semana."
     tags: [days]
+    image: /images/calendar.svg
     audio: [auto]
 
   - id: c_0107
@@ -98,6 +101,7 @@ chunks:
     example_en: "I start at eight in the morning."
     example_es: "Empiezo a las ocho de la mañana."
     tags: [work, time]
+    image: /images/clock-8.svg
     audio: [auto]
 
   - id: c_0111
@@ -107,6 +111,7 @@ chunks:
     example_en: "I finish at four in the afternoon."
     example_es: "Termino a las cuatro de la tarde."
     tags: [work, time]
+    image: /images/clock-4.svg
     audio: [auto]
 
   - id: c_0112
@@ -198,6 +203,7 @@ chunks:
     example_en: "I work until five o'clock."
     example_es: "Trabajo hasta las cinco."
     tags: [work, time]
+    image: /images/clock-5.svg
     audio: [auto]
 
   - id: c_0122
@@ -284,6 +290,15 @@ frames:
     literal_fillers:
       ["five o'clock", "six o'clock", "seven o'clock", "eight o'clock", "nine o'clock",
        "ten o'clock", "eleven o'clock", "twelve o'clock"]
+    filler_images:
+      "five o'clock": /images/clock-5.svg
+      "six o'clock": /images/clock-6.svg
+      "seven o'clock": /images/clock-7.svg
+      "eight o'clock": /images/clock-8.svg
+      "nine o'clock": /images/clock-9.svg
+      "ten o'clock": /images/clock-10.svg
+      "eleven o'clock": /images/clock-11.svg
+      "twelve o'clock": /images/clock-12.svg
     cefr: A0
     tags: [work, time]
 

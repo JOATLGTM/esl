@@ -77,6 +77,7 @@ chunks:
     example_en: "Do you have a phone, Miguel?"
     example_es: "¿Tienes teléfono, Miguel?"
     tags: [question]
+    image: /images/phone.svg
     audio: [auto]
 
   - id: c_0031
@@ -179,6 +180,7 @@ chunks:
     example_en: "I have a phone. It is here."
     example_es: "Tengo un teléfono. Está aquí."
     tags: [phone]
+    image: /images/phone.svg
     audio: [auto]
 
   - id: c_0042
@@ -188,6 +190,7 @@ chunks:
     example_en: "Is this your phone, Miguel?"
     example_es: "¿Es este tu teléfono, Miguel?"
     tags: [question]
+    image: /images/phone.svg
     audio: [auto]
 
   - id: c_0043
@@ -197,6 +200,7 @@ chunks:
     example_en: "It is an old phone, and it is fine."
     example_es: "Es un teléfono viejo, y está bien."
     tags: [describing]
+    image: /images/phone.svg
     audio: [auto]
 
   - id: c_0044

@@ -19,7 +19,8 @@
     "lint": "eslint",
     "start": "next start",
     "test": "tsx --test tests/*.test.ts",
-    "test:rls": "tsx --test tests/rls.test.ts"
+    "test:rls": "tsx --test tests/rls.test.ts",
+    "content:images": "tsx scripts/fetch-images.ts"
   },
   "dependencies": {
     "@huggingface/transformers": "^4.2.0",
