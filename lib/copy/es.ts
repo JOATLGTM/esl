@@ -292,6 +292,15 @@ export const es = {
       recordStart: "Grabar mi voz",
       recordStop: "Listo",
       recordOptional: "Grabar es opcional.",
+      // After a take: he hears himself before deciding to keep it. This is
+      // the one pronunciation intervention that works with no teacher, and
+      // the copy has to make re-recording feel free rather than corrective.
+      reviewTitle: "Escúchate",
+      reviewHint: "Así sonaste. Nadie más lo oye. Puedes guardarlo o grabar otra vez.",
+      reviewPlay: "Oír mi voz",
+      reviewPlaying: "Sonando…",
+      reviewKeep: "Guardar y seguir",
+      reviewAgain: "Grabar otra vez",
       // The mic can be denied, unsupported, or simply fail. All the same here.
       recordFailed: "No pudimos grabar, pero eso no importa. Sigue en voz alta.",
       done: "Lo hiciste. Hablaste en inglés.",

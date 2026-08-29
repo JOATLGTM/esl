@@ -441,6 +441,17 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**He can hear himself now** — built 2026-08-29, `docs/ROADMAP.md` #3. Until
+this, `MediaRecorder` captured a take and uploaded it straight to Storage, and
+nothing anywhere played it back — there was no `createObjectURL` in the app.
+The one pronunciation intervention that works without a teacher was being
+captured and thrown away. Now a take goes to a review screen first: the line
+he said, a play button, *"Así sonaste. Nadie más lo oye."*, and two choices —
+keep it (which is what uploads it) or record again. Re-recording replaces the
+take and is never framed as correcting a mistake. Object URLs are revoked
+when the take is replaced or the stage unmounts. `SpeakerIcon` moved to
+`components/ui/` because two stages now need it.
+
 **The formulation warm-up in Speak** — built 2026-08-29, `docs/ROADMAP.md` #1.
 Spanish on screen, a five-second clock, and the learner says the English
 *before* it appears; then the model clip plays and he compares. This is the

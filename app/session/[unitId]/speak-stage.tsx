@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { SpeakerIcon } from "@/components/ui/speaker-icon";
 import { es, fill } from "@/lib/copy/es";
 import type { SpeakTask } from "@/lib/session/speak";
 import { buildFrameDrill, type SessionFrame } from "@/lib/session/frame-drill";
@@ -97,6 +98,14 @@ export function SpeakStage({
   }, [phase, warm.revealed, warm.index, formulation]);
   const [recording, setRecording] = useState(false);
   const [recordError, setRecordError] = useState(false);
+  // The take he just made, held here instead of being uploaded on the spot.
+  // Until this existed the recording went straight to Storage and he never
+  // heard it -- the one pronunciation intervention that works without a
+  // teacher, captured and thrown away. `url` is an object URL, revoked below.
+  const [take, setTake] = useState<{ blob: Blob; url: string; durationS: number; said: string } | null>(null);
+  const [playingTake, setPlayingTake] = useState(false);
+  const takeAudioRef = useRef<HTMLAudioElement | null>(null);
+  const saidRef = useRef("");
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
   const startedAtRef = useRef(0);
@@ -110,6 +119,16 @@ export function SpeakStage({
     },
     [],
   );
+
+  // Object URLs are not garbage-collected; each take's is released when it is
+  // replaced or the stage goes away.
+  useEffect(() => {
+    const url = take?.url;
+    return () => {
+      if (url) URL.revokeObjectURL(url);
+      takeAudioRef.current?.pause();
+    };
+  }, [take]);
 
   const finish = useCallback(
     (blob: Blob | null, durationS: number) => {
@@ -142,7 +161,8 @@ export function SpeakStage({
   const line = task.script[index];
   const isLastLine = index === task.script.length - 1;
 
-  async function startRecording() {
+  async function startRecording(said: string) {
+    saidRef.current = said;
     if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) {
       setRecordError(true);
       return;
@@ -159,7 +179,14 @@ export function SpeakStage({
       recorder.onstop = () => {
         stream.getTracks().forEach((track) => track.stop());
         const blob = new Blob(chunksRef.current, { type: recorder.mimeType || "audio/webm" });
-        finish(blob, Math.round((Date.now() - startedAtRef.current) / 1000));
+        // Not finished yet: he gets to hear it first. `finish` runs when he
+        // chooses to keep it, from the review screen.
+        setTake({
+          blob,
+          url: URL.createObjectURL(blob),
+          durationS: Math.round((Date.now() - startedAtRef.current) / 1000),
+          said: saidRef.current,
+        });
       };
       recorder.start();
       setRecording(true);
@@ -186,6 +213,62 @@ export function SpeakStage({
       return;
     }
     setIndex((i) => i + 1);
+  }
+
+  if (take) {
+    const playTake = () => {
+      takeAudioRef.current?.pause();
+      const audio = new Audio(take.url);
+      takeAudioRef.current = audio;
+      audio.onended = () => setPlayingTake(false);
+      audio.onerror = () => setPlayingTake(false);
+      setPlayingTake(true);
+      audio.play().catch(() => setPlayingTake(false));
+    };
+    const again = () => {
+      takeAudioRef.current?.pause();
+      setPlayingTake(false);
+      setTake(null);
+    };
+
+    return (
+      <div className="flex flex-1 flex-col gap-6">
+        <div className="flex flex-1 flex-col justify-center gap-4">
+          <p className="text-base font-medium text-primary">{es.session.speak.reviewTitle}</p>
+          <p className="text-3xl font-bold text-balance text-ink">{take.said}</p>
+          <p className="text-base text-muted">{es.session.speak.reviewHint}</p>
+
+          <button
+            type="button"
+            onClick={playTake}
+            className="flex min-h-16 w-full items-center justify-center gap-3 rounded-2xl border-2 border-line bg-surface px-5 py-3 text-lg font-medium text-ink"
+          >
+            <SpeakerIcon active={playingTake} />
+            {playingTake ? es.session.speak.reviewPlaying : es.session.speak.reviewPlay}
+          </button>
+        </div>
+
+        <div className="flex flex-col gap-2">
+          {/* Keeping it is the primary action and is also what saves it; a take
+              he re-records is simply replaced, never judged. */}
+          <Button
+            type="button"
+            onClick={() => finish(take.blob, take.durationS)}
+            disabled={pending}
+          >
+            {pending ? es.common.loading : es.session.speak.reviewKeep}
+          </Button>
+          <button
+            type="button"
+            onClick={again}
+            disabled={pending}
+            className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
+          >
+            {es.session.speak.reviewAgain}
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (phase === "formulate" && formulation.length > 0) {
@@ -340,7 +423,7 @@ export function SpeakStage({
           {selected && !recordError && (
             <button
               type="button"
-              onClick={recording ? stopRecording : startRecording}
+              onClick={recording ? stopRecording : () => startRecording(selected.sentence)}
               disabled={pending}
               className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
             >
@@ -404,7 +487,7 @@ export function SpeakStage({
         {isLastLine && !drill && !recordError && (
           <button
             type="button"
-            onClick={recording ? stopRecording : startRecording}
+            onClick={recording ? stopRecording : () => startRecording(line.en)}
             disabled={pending}
             className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
           >

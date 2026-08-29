@@ -83,7 +83,7 @@ on a verified match. Opt-in, with a plain-Spanish consent line.
 *Cost: 2–4 days. Depends on: checking Android Chrome WASM support on a cheap
 phone first.*
 
-### 3. Let him hear himself
+### 3. ~~Let him hear himself~~ — built 2026-08-29
 
 `MediaRecorder` already captures the recording and uploads it to
 `user-recordings`. **Nothing ever plays it back** — there is no
