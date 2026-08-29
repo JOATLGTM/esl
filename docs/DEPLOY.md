@@ -79,23 +79,28 @@ git add public/audio
 
 | | |
 |---|---|
-| Block 1 Unit 1 today | 2.7 MB, 214 files |
-| Scripted audio at 24 units | ~65 MB, ~5,100 files |
+| Block 1 today (6 units, authored) | **16 MB, 1,287 files** |
+| Scripted audio at 24 units | ~64 MB, ~5,150 files |
 | Ear training, all 9 contrasts | ~13 MB, 2,700 files (9 × 25 pairs × 2 words × 6 speakers) |
-| **Full curriculum** | **~78 MB** |
+| **Full curriculum** | **~77 MB** |
 
-**Bandwidth is not the meter that binds.** ~78 MB against Vercel Hobby's
+The 24-unit row is now extrapolation from six real units rather than from one:
+Block 1 averages **2.2 MB and ~215 files per unit**, and the projection is that
+× 24. Later blocks have longer scenes, so treat it as a floor.
+
+**Bandwidth is not the meter that binds.** ~77 MB against Vercel Hobby's
 100 GB/month is ~1,300 learners each pulling the whole curriculum once — which
 looks like enormous headroom and is the wrong number to plan against. The
-curriculum is ~5,100 *files*, and each one is an edge request. Against Hobby's
+curriculum is ~5,150 *files*, and each one is an edge request. Against Hobby's
 request allowance, the ceiling is on the order of **a couple of hundred
 learners**, not thirteen hundred — roughly 6× lower, and it is the limit that
 trips first.
 
 Check the current Hobby quotas before relying on either figure; both have moved
 before. The direction is what matters: **count requests, not megabytes.** A
-learner who works through one unit pulls ~200 files, so a real month of real
-use is far below a full-curriculum download either way.
+learner who works through one unit pulls ~215 files — measured, now that six
+exist — so a real month of real use is far below a full-curriculum download
+either way.
 
 At one learner this is not a rounding error, it is free. Revisit when this
 carries tens of daily learners, and the answer then is R2 — zero egress fees

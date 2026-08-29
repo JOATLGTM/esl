@@ -133,20 +133,30 @@ not overfit to American vowels. He is a friend, not a difficulty.
 
 ---
 
-## Block 1, unit by unit
+## Block 1, unit by unit — **written**
 
-Unit 1 is authored. The other five are the next thing to write; the vocabulary
-each may use is in `content/vocab-schedule.yaml` and is currently empty for all
-of them, which is the other half of this job.
+All six are authored. The beats below are what actually shipped, so this table
+is a record rather than a plan; keep it accurate, because Blocks 2–4 will be
+written against the shape it sets.
 
 | Unit | Can-do | Beat |
 |---|---|---|
-| **b1_u1** *(done)* | Greet, give a name | Miguel arrives. Ana, the café, Carlos. He learns that a greeting returned costs nothing. |
-| **b1_u2** | Numbers, age, yes/no | A form he has to fill in — a phone number, an age. A small bureaucratic moment he survives without help. |
-| **b1_u3** | Family and people | Ana asks who is in the photo. He misses them, and saying so is the first true thing he manages in English. |
-| **b1_u4** | Places, where things are | He gets lost on the way to the café. Someone points. He arrives. |
-| **b1_u5** | Time, days, routine | Rosa gives him his hours. He has to read them back and gets one wrong. |
-| **b1_u6** | Wants and needs | He orders at Maria's counter, alone, and gets what he asked for. The block ends here on purpose. |
+| **b1_u1** | Greet, give a name | Miguel arrives. Ana, the café, Carlos. A greeting returned costs nothing. |
+| **b1_u2** | Numbers, age, yes/no | A form: a phone number, an age. Carlos offers to translate and is turned down — the first time Miguel chooses the harder path. |
+| **b1_u3** | Family and people | Ana asks who is in the photo. *I miss them* — the first thing he says that costs him. |
+| **b1_u4** | Places, where things are | He gets lost, is pointed, arrives — and then gives directions to Carlos. |
+| **b1_u5** | Time, days, routine | Rosa gives him his hours; he reads them back and gets Saturday wrong; she corrects the fact, not his English. |
+| **b1_u6** | Wants and needs | He orders at Maria's counter alone. Maria *waits* instead of rescuing him, and by the end he is asking her what she wants. |
 
-Unit 6 is the payoff for the whole block: the first thing Miguel does entirely
-alone, in a place the learner has watched him be silent in since unit 1.
+The block's arc, read straight down: **arrives → survives a form → says
+something true → finds his way → gets a job → asks for what he wants.** He
+refuses help in u2, u4 and u6, and each refusal costs him more than the last.
+
+## Blocks 2–4 — not yet written
+
+The arcs are above. What does not exist is the unit-by-unit beat sheet, and it
+should not be written before `content/vocab-schedule.yaml` covers those blocks:
+Block 1's beats were writable because A0 vocabulary is nearly forced by the
+can-do statements, and that stops being true at A1+. Beat first, then
+vocabulary, then scenes — in that order, or the beat asks for words the unit
+cannot legally use.

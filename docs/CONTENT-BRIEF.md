@@ -1,25 +1,41 @@
-# Content: the brief
+# Content: where it comes from
 
-**Written 2026-08-28.** The app is finished enough. The course is not: one unit
-of thirty-six, against a Phase 1 exit criterion of thirty consecutive days.
-`content/README.md` calls authoring ~70% of total effort and it is right.
+**Written 2026-08-28, updated 2026-08-29.** The app is finished. **Block 1 is
+finished too** — 6 units, 152 chunks, 12 frames, 36 scenes, about 36 days of
+content — so the Phase 1 exit criterion for volume is met. **18 units remain**,
+and `content/README.md` calls authoring ~70% of total effort.
 
-This file holds a prompt to hand to a fresh Claude session (or any capable
-researcher) to work out **where the remaining content comes from and how it gets
-authored**. It is written to be copy-pasted whole. Everything below the line is
-the prompt; the constraints in it are real and were read out of this repo, not
-assumed.
+This file has three parts, in the order they happened:
 
-Two things to know before using it:
+1. **The prompt** below the line, written to hand to a fresh Claude session or
+   any capable researcher. Copy-pasteable whole.
+2. **The answer, fact-checked** — what came back, what it got right, what it got
+   wrong about this repo.
+3. **Round 2** — what was actually done with it, and the one thing still
+   blocking. Also copy-pasteable.
 
-- **The question is throughput, not ideas.** Nobody is short of opinions about
-  what a beginner should learn. The bottleneck is producing ~1,600 chunks and
-  ~200 scenes that each satisfy a validator, in a fixed voice cast, in a
-  sequence where every unit may only use words already taught.
-- **The curriculum spine does not currently add up.** `content/curriculum.yaml`
-  targets 2,500 cumulative chunks by B1; the validator caps a unit at 45, and
-  36 × 45 = 1,620. At the density actually used in `b1_u1` (25/unit) it is ~900.
-  Resolving that is part of the job, not a footnote.
+**The finding that matters most, from six units of experience:** for A0 content,
+sourcing was never the bottleneck. `b1_u2`–`b1_u6` were authored from nothing
+external — no corpus, no licence, no dataset — at about one pass each. Phrases
+like *"I don't understand"* are not scarce and no corpus will surprise you about
+what a beginner needs to greet a neighbour. What was scarce was **knowing which
+words were legal**, and `content/vocab-schedule.yaml` fixed that.
+
+External sourcing matters for exactly two things now, and both are real:
+
+- **Blocks 2–4 vocabulary.** At A1+, "which 300 words next" is a frequency
+  question that should not be answered by taste. NGSL / NGSL-Spoken (CC BY-SA
+  4.0, commercial use permitted) is the source. Note the **ShareAlike** — a
+  derived wordlist inherits it. All 18 remaining units are blocked on this.
+- **Ear training.** 2,700 clips, human-recorded, non-negotiable: HVPT works
+  *because* talkers vary, so synthesising it produces a drill that looks right
+  and teaches much less. Volunteers (~2–3 hrs each, $0) or Lingua Libre
+  (CC BY-SA 4.0, already word-level citation form, so no forced alignment).
+
+The prompt below still describes the project as one unit of thirty-six, because
+that is what was true when it was sent and rewriting it would make the answer
+that follows read as a response to something it never saw. Treat it as a
+historical record; the current state is in the two sections after it.
 
 ---
 
@@ -249,10 +265,13 @@ whoever answered, so round 2 starts grounded instead of re-deriving the repo.
 >    they license a word the learner already has rather than putting a hole in
 >    the 95% rule.
 >
-> **No frames are authored into any unit yet, on purpose.** The session player
-> does not read them. Authoring 200 before a stage can display one would repeat a
-> mistake this project already made once (`l1_support_level`: written on every
-> unit advance, read by nothing, still).
+> **Since writing the above, frames went live and Block 1 was finished.** The
+> Speak stage displays them, `b1_u1`–`b1_u6` carry **12** of them, and the
+> `l1_support_level` column that had been written-and-never-read is now a
+> behaviour too. The leverage claim held: `I would like {NP}, please.` takes
+> anything on a counter, and almost everything on a counter is a Latinate
+> cognate our readability scorer already credits — one authored pattern, a
+> dozen sayable sentences.
 >
 > ### Where you were wrong about our repo
 >
@@ -289,28 +308,43 @@ whoever answered, so round 2 starts grounded instead of re-deriving the repo.
 >
 > ### What we need from you now
 >
-> Your §4 diagnosis — that the 95% rule is *discovered* at validation time rather
-> than being a design input — is the thing that actually blocks authoring. So,
-> concretely, in this order:
+> **Block 1 is finished** — 6 units, 152 chunks, 12 frames, 36 scenes, 202
+> distinct word types, every scene at 100% readability. Three of your five asks
+> are therefore closed: we wrote the story bible, we planned Block 1's
+> vocabulary, and the frame type is real and in use. Authoring a unit now costs
+> about one pass plus validator iteration.
 >
-> 1. **`content/vocab-schedule.yaml`.** Propose its shape and its content for
->    Block 1 (units 2–6): exactly which word types become legal in which unit,
->    derived from NGSL-Spoken frequency with function words first, ordered so the
->    scenes we need are writable. Unit 1's 25 chunks are the fixed starting
->    point. This is the single highest-leverage unbuilt thing we have.
-> 2. **A frame inventory.** Now that the type is real and validated, name the
->    ~200 patterns worth authoring across A0→A2, with the slot, the filler class,
->    and the unit each becomes legal in. Flag which of Unit 1's existing chunks
->    should be *converted* to frames.
-> 3. **The story bible** — six characters (Ana, Miguel, María, Carlos, Rosa,
->    Tom), four blocks, an arc per block with real stakes. Fixed voices, so the
->    cast cannot grow.
-> 4. **The licence follow-ups you flagged as open:** the PHRASE List's actual
->    status, VOA per-asset confirmation, and We Speak NYC's terms. If any is a
->    dead end, say so early — we would rather write than litigate.
-> 5. **The contrast enum.** Given a migration is required either way: what are
->    the final nine, and is `/æ/–/ɛ/` worth the change before 2,700 clips exist?
+> That leaves one thing genuinely blocking, and it is the one we cannot do from
+> inside this repo:
 >
+> 1. **A vocabulary release schedule for Blocks 2–4 (A1 → A2).** This is the
+>    whole ask now. Block 1's 202 word types were planned from first principles
+>    because A0 vocabulary is nearly forced by the can-do statements — "greet
+>    someone, say your name" does not leave much room for opinion. At A1+,
+>    "which 300 words next" is a real frequency question and answering it by
+>    taste would be exactly the mistake the schedule exists to prevent.
+>
+>    Concretely: for each of the 18 units, which word types become legal, in
+>    order, derived from NGSL-Spoken with function words first. Our format is
+>    one YAML list per unit; a word is released once, in the earliest unit
+>    allowed to use it. **Do not include cognates or proper nouns** — our
+>    scorer credits those already (254 curated pairs, 16 generative suffix
+>    rules, 37 proper nouns, 50 false friends excluded).
+>
+> 2. **Beat sheets for Blocks 2–4**, to sit alongside the schedule. Our
+>    experience is that the beat has to come *first* and the vocabulary second,
+>    or the beat asks for words the unit cannot legally use. The block arcs
+>    exist (to belong → to manage alone → to have a voice); the per-unit beats
+>    do not.
+>
+> 3. **The licence questions you flagged as open**, unchanged and still worth
+>    resolving before anyone leans on them: the PHRASE List's actual status,
+>    VOA per-asset confirmation, and We Speak NYC's terms.
+>
+> Deprioritised for now: the frame inventory. We would rather author frames
+> alongside each unit than plan 200 in advance — writing them one block ahead of
+> the units that use them is what keeps the fillers honest.
+
 > Constraints are unchanged: $0 at runtime, no API calls during a session,
 > content is YAML validated by `npm run content:validate`, ear training is human
 > recordings only. Assume build-time LLM authoring is available.

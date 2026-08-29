@@ -1,10 +1,14 @@
 # Where the project is
 
-**Last updated:** 2026-08-28 · **Read this before touching anything.**
+**Last updated:** 2026-08-29 · **Read this before touching anything.**
 
 Hablar — self-paced English for Spanish-speaking beginners, per the PRD (v2.1).
-Four build sessions done. This file exists so the next one does not have to
+Six build sessions done. This file exists so the next one does not have to
 re-derive what was decided or rediscover what bit us.
+
+**Where it stands in one line:** the app is finished, **Block 1 is finished**
+(6 units, ~36 days of content), and the next real work is a vocabulary schedule
+for Blocks 2–4, which needs frequency data this repo does not contain.
 
 Read it alongside, not instead of:
 
@@ -12,9 +16,10 @@ Read it alongside, not instead of:
 |---|---|
 | `AGENTS.md` | this is Next 16 — read `node_modules/next/dist/docs/` before writing app code |
 | `docs/DEPLOY.md` | env vars, audio hosting, auth URLs — read before any deploy |
-| `docs/CONTENT-BRIEF.md` | the brief for sourcing and authoring the other 35 units — the actual bottleneck |
+| `docs/CONTENT-BRIEF.md` | where content comes from: the sourcing research, its licences, and what was done with it |
 | `content/README.md` | the authoring pipeline, the 95% rule, the two kinds of audio |
-| `content/STORY.md` | the cast, the four block arcs, the beat each unit hits |
+| `content/STORY.md` | the cast, the four block arcs, the beat each unit hits — read before writing a scene |
+| `content/vocab-schedule.yaml` | which words become legal in which unit — read before authoring, not after |
 | `supabase/README.md` | schema, RLS, the connection layer |
 | `lib/copy/es.ts` | every Spanish string, with the house style at the top |
 
@@ -22,18 +27,20 @@ Read it alongside, not instead of:
 
 ## Start here
 
-Committed as `2d58679 first` — 86 files, everything through F1. Verified: no
-`.env.local` in history, only `.env.example` is tracked.
-
 ```bash
-npm run dev            # needs .env.local, already present locally
-npm test               # 66 tests, ~4s (hits the live database — see below)
-npm run content:validate
+npm run dev              # needs .env.local, already present locally
+npm test                 # 345 tests, ~30s (three suites hit the live database)
+npm run content:validate # schema, the 95% rule, the vocabulary schedule
+npm run content:publish-check   # the same, with warnings as errors
 ```
 
-`public/audio/` **is** tracked as of 2026-08-27 (214 files, 2.7 MB). It cannot
-be built on Vercel — `say` is macOS-only — so the repo is the only thing that
-carries sound to production. See `docs/DEPLOY.md`.
+`public/audio/` **is** tracked — 1,287 Opus files, 16 MB. It cannot be built on
+Vercel (Piper is a local binary and the voice models are ~1.1 GB, gitignored),
+so the repo is the only thing that carries sound to production. Regenerating
+needs the Piper setup in open item 4 below, and **must be run in the
+foreground** — see the traps.
+
+Verified: no `.env.local` in history, only `.env.example` is tracked.
 
 ---
 
@@ -45,7 +52,8 @@ Linked. Eight migrations applied. Content seeded. Auth config pushed.
 | Table | Rows |
 |---|---|
 | blocks / characters / speakers | 6 / 6 / 6 |
-| units / chunks / scenes | 1 / 25 / 6 |
+| units / chunks / frames | 6 / 152 / 12 |
+| scenes / dialogues / missions | 36 / 6 / 12 |
 | contrast_sets / minimal_pairs | 1 / 25 |
 
 `.env.local` exists and works. It is gitignored; `.env.example` documents it.
@@ -59,10 +67,17 @@ values in the dashboard. `docs/DEPLOY.md` covers the rest.
 
 ## What is built
 
-**Content pipeline (F9)** — complete, and it is the part with the most thought in
-it. YAML → schema validation → local TTS → `audio-manifest.json` → Supabase.
-`b1_u1` fully authored: 25 chunks, 6 scenes, one continuous story. 214 Opus
-files, 2.7 MB, 2.3 MB for the unit against an 8 MB budget.
+**Content pipeline (F9)** — complete, and it is the part with the most thought
+in it. YAML → schema validation → the vocabulary schedule → local Piper TTS →
+`audio-manifest.json` → Supabase. **Block 1 fully authored**: 6 units, 152
+chunks, 12 frames, 36 scenes, 12 missions. **1,287 Opus files, 16 MB**, ~2.2 MB
+per unit against an 8 MB per-unit budget.
+
+The validator is the arbiter and has earned it: it has caught a word that did
+not exist (`caf`, from an accent that truncated rather than separated), fillers
+pointing at chunks the learner had not met, released-but-untaught words riding
+the 5% budget, and a wrapped transcript line with no speaker. Every one of
+those would have shipped.
 
 **Database + RLS (Appendix A step 1)** — complete. Content is public-read with no
 write policy at all; learner data is owner-only. Proved live, not asserted.
@@ -439,26 +454,31 @@ still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it
 
 | Suite | n | Needs network |
 |---|---|---|
-| `content.test.ts` | 23 | no |
-| `audio-plan.test.ts` | 24 | no |
+| `content.test.ts` | 32 | no |
 | `session-stages.test.ts` | 26 | no |
-| `quiz.test.ts` | 9 | no |
-| `drill.test.ts` | 12 | no |
+| `audio-plan.test.ts` | 24 | no |
+| `session.test.ts` | 21 | **yes** |
+| `error-patterns.test.ts` | 19 | no |
+| `frames.test.ts` | 18 | no |
+| `speech-rate.test.ts` | 17 | no |
 | `progress.test.ts` | 17 | no |
-| `quests.test.ts` | 12 | no |
-| `achievements.test.ts` | 7 | no |
-| `error-patterns.test.ts` | 15 | no |
-| `shadowing.test.ts` | 8 | no |
-| `patterns.test.ts` | 9 | no |
-| `distractors.test.ts` | 13 | no |
-| `speech-rate.test.ts` | 14 | no |
-| `resilience.test.ts` | 11 | no |
 | `grade.test.ts` | 30 | no |
+| `distractors.test.ts` | 13 | no |
+| `frame-drill.test.ts` | 13 | no |
+| `drill.test.ts` | 12 | no |
+| `quests.test.ts` | 12 | no |
+| `resilience.test.ts` | 11 | no |
+| `l1.test.ts` | 11 | no |
+| `vocab-schedule.test.ts` | 10 | no |
+| `quiz.test.ts` | 9 | no |
+| `patterns.test.ts` | 9 | no |
+| `rls.test.ts` | 9 | **yes** |
+| `shadowing.test.ts` | 8 | no |
+| `achievements.test.ts` | 7 | no |
+| `onboarding.test.ts` | 6 | **yes** |
 | `transcript.test.ts` | 5 | no |
 | `no-paid-apis.test.ts` | 4 | no |
-| `rls.test.ts` | 9 | **yes** |
-| `onboarding.test.ts` | 6 | **yes** |
-| `session.test.ts` | 20 | **yes** |
+| `spoken-production.test.ts` | 2 | no |
 
 The last three create and delete real users. They run whenever `.env.local` has
 `RLS_TEST_ENABLED=1`, which is why `npm test` takes ~6s instead of 0.2s. **Never
@@ -1001,24 +1021,23 @@ from a cookie is client-supplied data.
    — the curriculum is ~5,100 files and each is an edge request, so requests
    bind roughly 6× sooner than megabytes do. `docs/DEPLOY.md` has the corrected
    maths.
-7. **Content: 1 unit of 24.** Block 1 needs 6. Authoring is ~70% of total
-   effort and it is now the only thing between this and a finished course.
+7. **Content: 6 units of 24 — Block 1 is complete.** Authoring is ~70% of total
+   effort and it is the only thing between this and a finished course.
    `docs/CONTENT-BRIEF.md` has the sourcing research, the licences, and the
    sequenced estimate: **~220–310 person-hours to a finished A2**, of which the
-   first 40–55 are foundations that make everything after them 2–3× faster.
+   first 40–55 were foundations that make everything after them 2–3× faster.
 
-   Two of the three foundations are done:
+   All three foundations are done:
 
-   a. ~~**Wire a stage to frames.**~~ Done 2026-08-28 — Speak displays them and
-      `b1_u1` has three.
-   b. ~~**Freeze a vocabulary release schedule.**~~ Done — Block 1 is planned
-      in full (176 word types, 41 → 176 across six units). **Blocks 2–4 are
-      still empty** and want frequency work this repo does not have.
-   c. ~~**A story bible.**~~ Done — `content/STORY.md`.
+   a. ~~**Wire a stage to frames.**~~ Done 2026-08-28 — Speak displays them,
+      and Block 1 carries 12.
+   b. ~~**Freeze a vocabulary release schedule.**~~ Done for Block 1 (202 word
+      types across six units). **Blocks 2–4 are still empty.**
+   c. ~~**A story bible.**~~ Done — `content/STORY.md`, now also carrying the
+      six Block 1 beats as written rather than as planned.
 
-   **All three foundations are done, and `b1_u2`–`b1_u4` are written.** Each
-   took one pass plus validator iteration, which is the whole argument for
-   having built them.
+   **Each of `b1_u2`–`b1_u6` took one pass plus validator iteration**, which is
+   the whole argument for having built the foundations first.
 
    **Block 1 is finished.** The next real work is a vocabulary schedule for
    **Blocks 2–4**, and it is the one thing here that cannot be derived from
@@ -1054,6 +1073,17 @@ from a cookie is client-supplied data.
    tapping a line seek to the right sentence) and **Retrieve** (does the card
    clip play when the answer is revealed). Both are a couple of minutes in a
    real browser.
+
+   **This got more urgent, not less.** There are now **36 scenes and 1,287
+   clips** riding on timings nobody has heard, and the audio pipeline has
+   shipped three separate bugs this week that only measurement caught — a
+   voice reading a filesystem path aloud, a rate gate measuring the wrong
+   thing, and a manifest keeping clips for deleted lines. Every one of them
+   produced well-formed files and a green pipeline. Ears are the only check
+   left that has not been run.
+
+   Also still unheard: the **frame step in Speak** and everything in
+   `b1_u2`–`b1_u6`.
 11. ~~`speaking_task` is authored but never seeded.~~ Resolved 2026-08-28: the
     unit's speaking task now seeds into `dialogues` and the stage is live. The
     task gained a `character` field, because `dialogues.character_id` is a
@@ -1085,33 +1115,46 @@ the first A1 unit.
 
 ### Next feature
 
-The daily loop is complete: all five stages are built and one learner can walk
-`/home` → Meet → Absorb → Retrieve → Speak → `/home` end to end. Ear is built
-and skipped until its recordings exist.
+The daily loop is complete and **Block 1 is authored**: a learner can walk
+`/home` → Meet → Absorb → Retrieve → Speak → `/home` for about 36 days before
+running out. Ear is built and skipped until its recordings exist.
 
-What Phase 1 still needs, roughly in order of what blocks the exit criterion:
+What Phase 1 still needs, in order of what actually blocks the exit criterion:
 
-1. **Hear the audio.** Nothing in any stage has been listened to (open item 9).
-   Cheapest and highest-value thing on this list.
-2. **Content: 1 unit of 36.** The loop works and runs out after a few days —
-   Block 1 needs 6 units. Decide the TTS engine first (open item 4); the answer
-   changes every file authored after it.
-3. **Ear-training recordings** (open item 5). Six people, fifty words each. The
-   stage is already written and will turn itself on.
-4. ~~**F8**~~ — done 2026-08-28. Verified end to end in a browser: a full
-   session moved XP 210 → 265 (4 stages × 10 + speaking × 15) and turned all
-   three quests to *Listo*. **Achievements are still unbuilt** — the
-   `achievements` table has no writer, and no achievement keys are defined.
-5. ~~**Unit progression.**~~ Done 2026-08-28. Verified end to end against a
-   throwaway second unit, and the end-of-curriculum state verified in a browser
-   with a learner who had finished everything: Meet drops out, the session runs
-   three stages, and `/home` explains itself.
+1. **Hear the audio.** Meet has been confirmed by ear; **Absorb and Retrieve
+   never have**, and the automation harness cannot load media at all (see the
+   traps). Two minutes in a real browser, and the cheapest item on this list by
+   a wide margin. 36 scenes now depend on it being right.
+2. **Ear-training recordings** (open item 5). Six people, fifty words each.
+   This is the only thing standing between `content:publish-check` and zero
+   errors, and the stage turns itself on the moment the files land.
+3. **A vocabulary schedule for Blocks 2–4** (open item 7b). The one piece of
+   work here that cannot be derived from this repo: Block 1's 202 word types
+   were planned from first principles because A0 vocabulary is close to forced
+   by the can-do statements, and that stops being true at A1+. NGSL /
+   NGSL-Spoken is the source. **All 18 remaining units are blocked on it**, and
+   guessing it by taste is precisely the mistake it exists to prevent.
+4. **Blocks 2–4 themselves.** 18 units, and per `docs/CONTENT-BRIEF.md` the
+   bulk of the remaining 220–310 person-hours.
+
+Two things that are *designed and unbuilt* rather than blocked, both small:
+`q_en` on scene questions (the taper reaches the material but never the
+interface, so levels 3 and 5 are identical in Absorb today), and an English
+chrome for `lib/copy/es.ts` at level 5.
+
+**Authoring a unit now costs one pass plus validator iteration.** The three
+foundations — story bible, vocabulary schedule, frame type — are what made that
+true, and the heuristics that cost real time to learn are in the traps:
+~85 tokens per scene, run audio in the foreground, `new:` in validator output
+is a gap rather than a pass.
 
 The seam for a new stage body is `SessionPlayer` in
 `app/session/[unitId]/session-player.tsx`.
 
 **Exit criterion for Phase 1:** 30 consecutive days of Block 1 with no dead end,
-and $0 runtime cost confirmed in the network tab.
+and $0 runtime cost confirmed in the network tab. **The content half is met**
+— 36 days exist. What is unverified is the 30 consecutive *days*, which only a
+real learner can produce, and the network tab, which nobody has opened.
 
 ---
 
