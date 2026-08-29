@@ -62,26 +62,50 @@ the clock is pressure, never a grade.
 
 ### 2. On-device speech recognition in Speak
 
-Whisper-tiny or -base through `transformers.js` on WASM/WebGPU: ~40–75 MB,
-cached once, no API key, no server inference. Genuinely $0 **and genuinely
-private** — the Web Speech API is also free and was rejected because Chrome
-round-trips audio to Google, which for this learner is disqualifying at any
-price.
+**Researched 2026-08-29 (web).** Four facts change how this gets built:
 
-Match against the **known target string**, never open transcription: far more
-forgiving and far more accurate. Never a pronunciation score, never a pass
-mark — only *"te escuchamos"* versus *"una vez más"*. A verified match emits
-`produce_spoken`, which `countsAsProduction` and the `learned_requires_production`
-CHECK are already waiting for.
+- **Chrome's on-device Web Speech API is desktop-only.** Chrome 139 shipped
+  `SpeechRecognition.available/install` and `processLocally`, which would have
+  been free, private and zero-download — but MDN's compat data records
+  `chrome_android: false` for all three, and the same for Samsung Internet,
+  WebView, Firefox Android and Safari iOS. On the archetype's phone the only
+  Web Speech API is the cloud one that ships audio to Google. Rejected stands.
+- **Do not depend on WebGPU.** ~78% of Chrome Android users have it, but
+  transformers.js has had Android-WebGPU corruption bugs, and on desktop its
+  own benchmark thread found WASM *faster* than WebGPU for whisper-base. Build
+  WASM-only, require SIMD, treat WebGPU as an accident if present.
+- **Moonshine-tiny beats whisper-tiny on every axis that matters here.**
+  27M params vs 39M; ~48% lower WER than whisper-tiny; ~5× faster on-device;
+  **27.7 MB at int8** against whisper-tiny.en's 40.6 MB. The English weights
+  and `@moonshine-ai/moonshine-js` are both MIT (the *Spanish* model carries a
+  community licence — irrelevant, only English is recognised). ONNX exports
+  exist at `onnx-community/moonshine-tiny-ONNX` for transformers.js.
+- **Phone latency is the unverified thing.** whisper.cpp's own WASM demo says
+  to use a desktop and quotes 2–3× *slower* than real time on a modern CPU;
+  for a four-second utterance that is 8–12 s of waiting, which is too long.
+  Moonshine's 5× claim would bring that to ~2 s. Nobody has measured this on a
+  cheap Android, and that measurement is the whole spike.
+
+**The build, revised.** Moonshine-tiny int8 via transformers.js on WASM,
+matched against the **known target string** — constrained matching, never open
+transcription, never a pronunciation score; only *"te escuchamos"* versus
+*"una vez más"*. A verified match emits `produce_spoken`, which
+`countsAsProduction` and the CHECK are already waiting for.
+
+The 28 MB download is real money on the archetype's data plan: **opt-in,
+offered once, on Wi-Fi if the Network Information API says so**, cached by the
+service worker (#10) once it exists. Until the model is present the stage runs
+exactly as it does today — self-report, no maturation.
 
 **`tests/spoken-production.test.ts` must be updated deliberately.** It fails
 the build if any file outside three named ones references `produce_spoken` —
 that landmine exists precisely so a self-report never matures a card. Add the
 recogniser's file to `ALLOWED` and extend the test to assert the emit is gated
-on a verified match. Opt-in, with a plain-Spanish consent line.
+on a verified match.
 
-*Cost: 2–4 days. Depends on: checking Android Chrome WASM support on a cheap
-phone first.*
+*Spike first (half a day): load Moonshine-tiny int8 on a cheap Android Chrome
+and time a four-second clip. Under ~3 s → build (2–3 days). Over → park it and
+put the hours into #4.*
 
 ### 3. ~~Let him hear himself~~ — built 2026-08-29
 
