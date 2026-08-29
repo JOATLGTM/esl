@@ -270,7 +270,8 @@ frames:
     es_pattern: "Empiezo a las {TIME}."
     slot: TIME
     literal_fillers:
-      ["six o'clock", "seven o'clock", "eight o'clock", "nine o'clock", "ten o'clock"]
+      ["five o'clock", "six o'clock", "seven o'clock", "eight o'clock", "nine o'clock",
+       "ten o'clock", "eleven o'clock", "twelve o'clock"]
     cefr: A0
     tags: [work, time]
 

@@ -34,6 +34,21 @@ export const ERROR_PATTERNS: ErrorPattern[] = [
     test: /\b(i|he|she|we|they|you)\s+(have|has)\s+\d+\s+years?\b/,
   },
   {
+    // The same `tener` rule as the age one, and the reason that one is not
+    // enough: Spanish uses *tener* for states English expresses with *be*, so
+    // one L1 rule generates a whole family of errors -- tengo hambre, tengo
+    // sed, tengo sueño, tengo frío. Reachable from b1_u6, which teaches
+    // "I am hungry" and "It is cold".
+    //
+    // `hunger`, `thirst` and `sleep` as bare nouns after have/has are
+    // unambiguous. `cold` and `hot` are NOT -- "I have cold water" and "I have
+    // hot coffee" are perfectly good English -- so those two only match at the
+    // end of the sentence, where no noun can follow them.
+    key: "have_state_for_be",
+    labelEs: "Estos estados usan «to be»: I am hungry, no I have hunger.",
+    test: /\b(i|he|she|we|they|you)\s+(?:have|has)\s+(?:(?:hunger|thirst|sleep)\b|(?:cold|hot)\s*[.!?]*$)/,
+  },
+  {
     // Spanish drops the subject pronoun; English cannot.
     key: "dropped_subject",
     labelEs: "En inglés el sujeto no se puede omitir: I am fine, no Am fine.",

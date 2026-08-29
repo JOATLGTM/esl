@@ -259,6 +259,7 @@ units:
       Maria's counter alone. The block ends here on purpose.
     releases:
       - any
+      - anything
       - big
       - bread
       - cold
@@ -269,6 +270,7 @@ units:
       - give
       - help
       - hot
+      - hungry
       - like
       - milk
       - more
@@ -276,8 +278,10 @@ units:
       - new
       - small
       - some
+      - something
       - take
       - tea
+      - thirsty
       - want
       - water
       - without

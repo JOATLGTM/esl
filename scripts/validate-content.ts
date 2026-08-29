@@ -55,11 +55,20 @@ const MIN_SPEAKERS_PER_CHUNK = 2;
  * Where a frame starts paying for itself.
  *
  * `MIN_FRAME_FILLERS` is the schema floor -- below it the thing is not a frame.
- * This is the higher bar the design actually rests on: one pattern and a dozen
- * fillers is a dozen sentences for the price of one authored item, and that
- * ratio is the reason the type exists.
+ * This is the bar the design rests on: one pattern and N fillers is N sentences
+ * for the price of one authored item, and that ratio is why the type exists.
+ *
+ * Was 8, lowered to 5 once Block 1 was finished, because 8 turned out to be
+ * aspirational rather than derived. **Some filler classes are closed.** A week
+ * has seven days, so `I work on {DAY}` can never reach eight however well it is
+ * authored; the male relatives an A0 learner has met number five. A threshold
+ * a correct frame cannot satisfy is not a standard, it is noise, and noise is
+ * what gets a check deleted.
+ *
+ * Five still catches the real failure -- a frame with three or four fillers,
+ * which is a handful of chunks wearing a pattern's clothes.
  */
-const RECOMMENDED_FRAME_FILLERS = 8;
+const RECOMMENDED_FRAME_FILLERS = 5;
 
 /**
  * `--publish` turns every "authored but not shippable yet" warning into an
@@ -226,10 +235,17 @@ function checkUnitStructure(unit: Unit, bundle: ContentBundle) {
       }
     }
 
-    // The escalation is the design: block 1 is a single word to a stranger, and
-    // a difficulty-5 phone call dropped into unit one is how a learner decides
-    // this product is not for them.
-    const ceiling = Math.min(5, unit.block + 1);
+    // The escalation is the design: a difficulty-5 phone call dropped into unit
+    // one is how a learner decides this product is not for them.
+    //
+    // Position within the block counts, not just the block. Unit 6 is six
+    // units of practice further along than unit 1, and ordering at a counter
+    // in English at the end of Block 1 is not the same ask as saying one word
+    // to a stranger at the start of it. The ceiling therefore rises once in
+    // the back half of a block. `difficulty` is shown to the learner and
+    // orders which mission is offered first, so understating it is not a safe
+    // default -- it mislabels the task.
+    const ceiling = Math.min(5, unit.block + (unit.order >= 4 ? 2 : 1));
     if (mission.difficulty > ceiling) {
       warn(
         where,

@@ -80,3 +80,35 @@ describe("the pattern config itself", () => {
     for (const p of ERROR_PATTERNS) assert.ok(p.labelEs.length > 10, `${p.key} has no explanation`);
   });
 });
+
+/**
+ * The `tener` family (added with b1_u6, which is where it becomes reachable).
+ *
+ * Spanish uses *tener* for states English expresses with *be*, so one L1 rule
+ * generates many errors: tengo hambre, tengo sed, tengo sueño, tengo frío.
+ * That is what makes it worth detecting -- and what makes it dangerous, since
+ * "I have cold water" is perfectly good English.
+ */
+describe("have + state instead of be", () => {
+  test("catches the bare-noun states", () => {
+    assert.equal(classifyError("I am hungry", "I have hunger"), "have_state_for_be");
+    assert.equal(classifyError("I am thirsty", "I have thirst"), "have_state_for_be");
+    assert.equal(classifyError("I am tired", "I have sleep"), "have_state_for_be");
+  });
+
+  test("catches cold and hot only at the end of a sentence", () => {
+    assert.equal(classifyError("I am cold", "I have cold"), "have_state_for_be");
+    assert.equal(classifyError("I am cold", "I have cold."), "have_state_for_be");
+  });
+
+  test("and never flags correct English that looks like it", () => {
+    // The whole reason cold/hot are end-anchored.
+    assert.equal(classifyError("I have cold water", "I have cold water"), null);
+    assert.equal(classifyError("I have hot coffee", "I have hot coffee"), null);
+    assert.equal(classifyError("I am hungry", "I am hungry"), null);
+  });
+
+  test("does not shadow the age pattern", () => {
+    assert.equal(classifyError("I am 20", "I have 20 years"), "have_years_for_age");
+  });
+});

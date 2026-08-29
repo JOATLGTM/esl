@@ -1,0 +1,589 @@
+# Block 1, Unit 6 -- asking for what you want, alone.
+#
+# The beat (content/STORY.md): Miguel orders at Maria's counter by himself and
+# gets what he asked for. The block ends here on purpose -- it is the first
+# thing he does entirely alone, in the place the learner has watched him be
+# silent in since unit 1.
+#
+# Design notes for whoever edits this next:
+#   * This is the unit the `frame` type was built for. `I would like {NP},
+#     please.` takes anything on a counter, and almost everything on a counter
+#     is a Latinate cognate the readability scorer already credits -- coffee,
+#     chocolate, soup, salad, sandwich, fruit. So one authored pattern plus a
+#     free filler class is a dozen sentences the learner can say and nobody
+#     had to write.
+#   * `I am hungry` is here to pre-empt an error, not just to name a feeling.
+#     Spanish uses *tener* for states English expresses with *be*, so `tengo
+#     hambre` becomes *"I have hunger" -- one L1 rule producing a whole family
+#     of mistakes. `have_state_for_be` in lib/content/error-patterns.ts catches
+#     it, and this is the unit that makes it reachable.
+#   * Miguel orders without Carlos, without Ana, and without being rescued when
+#     he hesitates. Maria waits. That is the scene.
+
+unit_id: b1_u6
+block: 1
+order: 6
+title_es: "Lo que quiero"
+title_en: "What I want"
+cefr: A0
+can_do_es: "Puedo pedir lo que quiero y decir si tengo hambre o sed"
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0128
+    en: "I would like a coffee"
+    es: "Quisiera un café"
+    cefr: A0
+    example_en: "I would like a coffee, please."
+    example_es: "Quisiera un café, por favor."
+    accepts: ["I'd like a coffee"]
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0129
+    en: "I want water"
+    es: "Quiero agua"
+    cefr: A0
+    example_en: "I want water, please."
+    example_es: "Quiero agua, por favor."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0130
+    en: "I am hungry"
+    es: "Tengo hambre"
+    cefr: A0
+    # NOT "I have hunger". See have_state_for_be in error-patterns.ts.
+    example_en: "I am hungry. I want food."
+    example_es: "Tengo hambre. Quiero comida."
+    accepts: ["I'm hungry"]
+    tags: [feeling, food]
+    audio: [auto]
+
+  - id: c_0131
+    en: "I am thirsty"
+    es: "Tengo sed"
+    cefr: A0
+    example_en: "I am thirsty. I want water."
+    example_es: "Tengo sed. Quiero agua."
+    accepts: ["I'm thirsty"]
+    tags: [feeling, food]
+    audio: [auto]
+
+  - id: c_0132
+    en: "Do you want tea?"
+    es: "¿Quieres té?"
+    cefr: A0
+    example_en: "Do you want tea or coffee?"
+    example_es: "¿Quieres té o café?"
+    tags: [question, ordering]
+    audio: [auto]
+
+  - id: c_0133
+    en: "With milk, please"
+    es: "Con leche, por favor"
+    cefr: A0
+    example_en: "A coffee with milk, please."
+    example_es: "Un café con leche, por favor."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0134
+    en: "Without milk"
+    es: "Sin leche"
+    cefr: A0
+    example_en: "I would like it without milk."
+    example_es: "Lo quisiera sin leche."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0135
+    en: "It is hot"
+    es: "Está caliente"
+    cefr: A0
+    example_en: "The coffee is hot. It is not cold."
+    example_es: "El café está caliente. No está frío."
+    tags: [describing]
+    audio: [auto]
+
+  - id: c_0136
+    en: "It is cold"
+    es: "Está frío"
+    cefr: A0
+    example_en: "The water is cold. It is not hot."
+    example_es: "El agua está fría. No está caliente."
+    tags: [describing]
+    audio: [auto]
+
+  - id: c_0137
+    en: "How much is it?"
+    es: "¿Cuánto es?"
+    cefr: A0
+    example_en: "How much is it, please?"
+    example_es: "¿Cuánto es, por favor?"
+    tags: [question, ordering]
+    audio: [auto]
+
+  - id: c_0138
+    en: "I like it"
+    es: "Me gusta"
+    cefr: A0
+    example_en: "I like it. It is good and it is hot."
+    example_es: "Me gusta. Está bueno y está caliente."
+    tags: [feeling]
+    audio: [auto]
+
+  - id: c_0139
+    en: "I do not like it"
+    es: "No me gusta"
+    cefr: A0
+    example_en: "I do not like it. It is cold."
+    example_es: "No me gusta. Está frío."
+    accepts: ["I don't like it"]
+    tags: [feeling]
+    audio: [auto]
+
+  - id: c_0140
+    en: "A little more, please"
+    es: "Un poco más, por favor"
+    cefr: A0
+    example_en: "A little more milk, please."
+    example_es: "Un poco más de leche, por favor."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0141
+    en: "Can you help me?"
+    es: "¿Me puede ayudar?"
+    cefr: A0
+    example_en: "Excuse me, can you help me?"
+    example_es: "Disculpe, ¿me puede ayudar?"
+    tags: [repair]
+    audio: [auto]
+
+  - id: c_0142
+    en: "Big or small?"
+    es: "¿Grande o pequeño?"
+    cefr: A0
+    example_en: "Big or small? I want a big one."
+    example_es: "¿Grande o pequeño? Quiero uno grande."
+    tags: [question, ordering]
+    audio: [auto]
+
+  - id: c_0143
+    en: "A small coffee"
+    es: "Un café pequeño"
+    cefr: A0
+    example_en: "A small coffee with milk, please."
+    example_es: "Un café pequeño con leche, por favor."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0144
+    en: "Some bread, please"
+    es: "Un poco de pan, por favor"
+    cefr: A0
+    example_en: "Some bread and some fruit, please."
+    example_es: "Un poco de pan y un poco de fruta, por favor."
+    tags: [ordering, food]
+    audio: [auto]
+
+  - id: c_0145
+    en: "I want to eat"
+    es: "Quiero comer"
+    cefr: A0
+    example_en: "I am hungry. I want to eat."
+    example_es: "Tengo hambre. Quiero comer."
+    tags: [food]
+    audio: [auto]
+
+  - id: c_0146
+    en: "I want to drink something"
+    es: "Quiero tomar algo"
+    cefr: A0
+    example_en: "I am thirsty. I want to drink water."
+    example_es: "Tengo sed. Quiero tomar agua."
+    tags: [food]
+    audio: [auto]
+
+  - id: c_0147
+    en: "Do you have food?"
+    es: "¿Tienen comida?"
+    cefr: A0
+    example_en: "Do you have food here?"
+    example_es: "¿Tienen comida aquí?"
+    tags: [question, food]
+    audio: [auto]
+
+  - id: c_0148
+    en: "Take it, please"
+    es: "Tómelo, por favor"
+    cefr: A0
+    example_en: "Here it is. Take it, please."
+    example_es: "Aquí está. Tómelo, por favor."
+    tags: [giving]
+    audio: [auto]
+
+  - id: c_0149
+    en: "Give me a moment"
+    es: "Deme un momento"
+    cefr: A0
+    example_en: "Give me a moment, please. I do not understand."
+    example_es: "Deme un momento, por favor. No entiendo."
+    tags: [repair]
+    audio: [auto]
+
+  - id: c_0150
+    en: "Is it good?"
+    es: "¿Está bueno?"
+    cefr: A0
+    example_en: "Is it good? Do you like it?"
+    example_es: "¿Está bueno? ¿Te gusta?"
+    tags: [question]
+    audio: [auto]
+
+  - id: c_0151
+    en: "It is for me"
+    es: "Es para mí"
+    cefr: A0
+    example_en: "The coffee is for me, and the tea is for Ana."
+    example_es: "El café es para mí, y el té es para Ana."
+    tags: [ordering]
+    audio: [auto]
+
+  - id: c_0152
+    en: "Anything you want"
+    es: "Lo que quieras"
+    cefr: A0
+    example_en: "Take any one you want."
+    example_es: "Toma el que quieras."
+    tags: [giving]
+    audio: [auto]
+
+# The unit the frame type was built for. Almost every filler is a Latinate
+# cognate the readability scorer credits for free, so one authored pattern buys
+# a dozen sayable sentences -- which is the entire argument for the type.
+frames:
+  - id: f_0011
+    pattern: "I would like {NP}, please."
+    es_pattern: "Quisiera {NP}, por favor."
+    slot: NP
+    literal_fillers:
+      ["a coffee", "a tea", "water", "some bread", "a sandwich", "a salad", "some fruit", "some soup"]
+    cefr: A0
+    tags: [ordering]
+
+  - id: f_0012
+    pattern: "Do you have {NP}?"
+    es_pattern: "¿Tienen {NP}?"
+    slot: NP
+    literal_fillers:
+      ["food", "water", "milk", "bread", "fruit", "chocolate", "coffee"]
+    cefr: A0
+    tags: [question, ordering]
+
+scenes:
+  # One morning, and Miguel does it alone. Carlos offers to come and is turned
+  # down in s_0031; Maria waits in s_0033 instead of rescuing him; and by
+  # s_0036 he is the one asking someone else what they want.
+
+  - id: s_0031
+    title_es: "Voy solo"
+    character: carlos
+    duration_target_s: 50
+    transcript: |
+      CARLOS: Good morning, Miguel. Are you okay?
+      MIGUEL: Good morning, Carlos. I am hungry.
+      CARLOS: You are hungry! The café is open. Come with me.
+      MIGUEL: No, thank you. I go.
+      CARLOS: You go? Without me?
+      MIGUEL: Yes. I want to eat, and I go.
+      CARLOS: What do you want to eat?
+      MIGUEL: Some bread. And a coffee. I am hungry.
+      CARLOS: A coffee! The coffee is good there.
+      MIGUEL: It is good. I want a small coffee with milk.
+      CARLOS: Okay! Do you want help?
+      MIGUEL: No, thank you. I have it.
+      CARLOS: Okay, Miguel. Maria is there every morning.
+      MIGUEL: Maria is there. Okay.
+      CARLOS: See you later!
+      MIGUEL: See you later, Carlos.
+    questions:
+      - q_es: "¿Qué le ofrece Carlos y Miguel rechaza?"
+        options_es:
+          - "Acompañarlo al café"
+          - "Comida de su casa"
+          - "Llevarlo en autobús"
+        answer: 0
+      - q_es: "¿Por qué Miguel quiere ir al café?"
+        options_es:
+          - "Para ver a Maria"
+          - "Porque tiene hambre"
+          - "Porque no trabaja hoy"
+        answer: 1
+      - q_es: "¿Cómo dice Miguel que no necesita ayuda?"
+        options_es:
+          - "No contesta"
+          - "Dice que está ocupado"
+          - "Dice que no, gracias, dos veces"
+        answer: 2
+
+  - id: s_0032
+    title_es: "Quisiera un café"
+    character: maria
+    duration_target_s: 50
+    transcript: |
+      MARIA: Good morning! How are you?
+      MIGUEL: Good morning, Maria. I am fine, thank you.
+      MARIA: What do you want?
+      MIGUEL: I would like a coffee, please.
+      MARIA: A coffee. Big or small?
+      MIGUEL: Give me a moment, please.
+      MARIA: Take your time, Miguel.
+      MIGUEL: A small coffee, please.
+      MARIA: A small coffee. With milk?
+      MIGUEL: With milk, please.
+      MARIA: With milk. And do you want food? Do you want some bread?
+      MIGUEL: Yes, please. Some bread, please.
+      MARIA: Some bread and a small coffee with milk.
+      MIGUEL: Yes! That is it.
+      MARIA: Do you want it hot?
+      MIGUEL: Yes, hot, please. I do not like it cold.
+      MARIA: Hot. Okay, one moment.
+      MIGUEL: Thank you, Maria.
+    questions:
+      - q_es: "¿Qué hace Maria cuando Miguel necesita pensar?"
+        options_es:
+          - "Espera"
+          - "Le contesta ella"
+          - "Le habla en español"
+        answer: 0
+      - q_es: "¿Qué pide Miguel exactamente?"
+        options_es:
+          - "Un café grande sin leche"
+          - "Un café pequeño con leche y pan"
+          - "Un té con leche"
+        answer: 1
+      - q_es: "¿Quién decide el tamaño del café?"
+        options_es:
+          - "Maria"
+          - "Nadie, viene de un tamaño"
+          - "Miguel"
+        answer: 2
+
+  - id: s_0033
+    title_es: "¿Cuánto es?"
+    character: maria
+    duration_target_s: 50
+    transcript: |
+      MARIA: Here it is, Miguel. Take it, please.
+      MIGUEL: Thank you. How much is it?
+      MARIA: It is four.
+      MIGUEL: Four. One moment, please.
+      MARIA: Take your time.
+      MIGUEL: One, two, three, four. Here it is.
+      MARIA: Thank you, Miguel!
+      MIGUEL: Is the coffee hot?
+      MARIA: Yes, it is hot. It is not cold.
+      MIGUEL: Good. I like it hot.
+      MARIA: Do you like the bread?
+      MIGUEL: I like it. It is good.
+      MARIA: Do you want a little more?
+      MIGUEL: No, thank you. It is good.
+      MIGUEL: Maria, do you have fruit?
+      MARIA: Today, no. Tomorrow.
+      MIGUEL: Tomorrow. Okay!
+      MARIA: Good! Come every morning, Miguel.
+    questions:
+      - q_es: "¿Qué hace Miguel para pagar?"
+        options_es:
+          - "Le da el teléfono a Maria"
+          - "Cuenta el dinero en voz alta"
+          - "Le pide ayuda a Maria"
+        answer: 1
+      - q_es: "¿Cómo le gusta el café a Miguel?"
+        options_es:
+          - "Caliente"
+          - "Frío"
+          - "No dice"
+        answer: 0
+      - q_es: "¿Qué le pregunta Maria al final?"
+        options_es:
+          - "Si quiere más café"
+          - "Cuánto tiene"
+          - "Si le gusta el pan"
+        answer: 2
+
+  - id: s_0034
+    title_es: "No me gusta"
+    character: tom
+    duration_target_s: 50
+    transcript: |
+      TOM: Miguel! Good morning. Are you here every morning?
+      MIGUEL: Good morning, Tom. Yes, every morning.
+      TOM: What do you have?
+      MIGUEL: A small coffee with milk, and some bread.
+      TOM: Do you like it?
+      MIGUEL: I like it. It is hot, and it is good.
+      TOM: I want a tea. I do not like coffee.
+      MIGUEL: You do not like coffee?
+      TOM: No. I do not like it. I like tea.
+      MIGUEL: Maria, a tea for Tom, please.
+      MARIA: A tea. With milk?
+      MIGUEL: Tom, do you want milk in the tea?
+      TOM: No, thank you. Without milk.
+      MIGUEL: Without milk, please, Maria.
+      TOM: Thank you, Miguel!
+      MIGUEL: It is for you. Take it, please.
+    questions:
+      - q_es: "¿Qué hace Miguel por Tom?"
+        options_es:
+          - "Le pide un té"
+          - "Le da su café"
+          - "Le presta dinero"
+        answer: 0
+      - q_es: "¿Por qué Tom no pide café?"
+        options_es:
+          - "Porque está frío"
+          - "Porque no le gusta"
+          - "Porque es caro"
+        answer: 1
+      - q_es: "¿Qué hace Miguel que no había hecho nunca en el café?"
+        options_es:
+          - "Saludar a Maria"
+          - "Pedir algo para él"
+          - "Pedir algo para otra persona"
+        answer: 2
+
+  - id: s_0035
+    title_es: "Ana tiene sed"
+    character: ana
+    duration_target_s: 46
+    transcript: |
+      ANA: Miguel! Good morning. Are you okay?
+      MIGUEL: Good morning, Ana. I am fine. Do you want a coffee?
+      ANA: No, thank you. I am thirsty. I want water.
+      MIGUEL: You are thirsty. Okay.
+      MIGUEL: Maria, do you have water?
+      MARIA: Yes! Here it is. It is cold.
+      MIGUEL: Ana, here it is. It is cold water.
+      ANA: Thank you, Miguel!
+      MIGUEL: Do you want food? Do you want some bread?
+      ANA: A little, please. I am not hungry.
+      MIGUEL: Some bread for Ana, please.
+      ANA: Thank you. You are here every morning!
+      MIGUEL: Every morning. It is my café.
+    questions:
+      - q_es: "¿Qué necesita Ana?"
+        options_es:
+          - "Comida, tiene hambre"
+          - "Un café caliente"
+          - "Agua, tiene sed"
+        answer: 2
+      - q_es: "¿Quién habla con Maria por Ana?"
+        options_es:
+          - "Miguel"
+          - "Ana misma"
+          - "Nadie"
+        answer: 0
+      - q_es: "¿Qué quiere decir Miguel con \"es mi café\"?"
+        options_es:
+          - "Que el café es de su propiedad"
+          - "Que ya es un lugar suyo"
+          - "Que le pagó a Maria"
+        answer: 1
+
+  - id: s_0036
+    title_es: "¿Qué quieres?"
+    character: maria
+    duration_target_s: 48
+    transcript: |
+      MARIA: Miguel, good morning! A small coffee with milk?
+      MIGUEL: Yes, please. And some bread.
+      MARIA: Some bread. Okay.
+      MIGUEL: Maria, do you have fruit?
+      MARIA: Fruit? Yes, I have fruit.
+      MIGUEL: I would like some fruit, please. It is for Ana.
+      MARIA: For Ana! Okay.
+      MIGUEL: Maria, are you hungry? Do you want some bread?
+      MARIA: Me? Thank you, Miguel! A little, please.
+      MIGUEL: Some bread for Maria, and it is for you.
+      MARIA: Thank you! You are here every morning, and you want a small coffee with milk.
+      MIGUEL: Every morning! I like it.
+      MARIA: See you tomorrow, Miguel.
+      MIGUEL: See you tomorrow, Maria.
+    questions:
+      - q_es: "¿Qué hace Miguel al final de la unidad?"
+        options_es:
+          - "Pide solo para él"
+          - "Le pregunta a Maria si quiere algo"
+          - "Se va sin pedir"
+        answer: 1
+      - q_es: "¿Maria tiene que preguntarle a Miguel qué quiere?"
+        options_es:
+          - "No, ya sabe lo que pide"
+          - "Sí, se lo pregunta cada vez"
+          - "Sí, porque cambia de pedido"
+        answer: 0
+      - q_es: "¿Para quién pide fruta Miguel?"
+        options_es:
+          - "Para él"
+          - "Para Maria"
+          - "Para Ana"
+        answer: 2
+
+speaking_task:
+  mode: scripted
+  character: maria
+  scenario_es: "Estás en un café y quieres pedir algo. Pídelo tú, sin ayuda."
+  scenario_en: "You are in a café and you want to order. Ask for it yourself."
+  target_chunks: [c_0128, c_0133, c_0137, c_0142, c_0143, c_0149]
+  script:
+    - speaker: ai
+      en: "Good morning! What do you want?"
+      es: "¡Buenos días! ¿Qué quieres?"
+    - speaker: user
+      en: "I would like a coffee, please."
+      es: "Quisiera un café, por favor."
+    - speaker: ai
+      en: "A coffee. Big or small?"
+      es: "Un café. ¿Grande o pequeño?"
+    - speaker: user
+      en: "Give me a moment, please. A small coffee."
+      es: "Deme un momento, por favor. Un café pequeño."
+    - speaker: ai
+      en: "A small coffee. With milk?"
+      es: "Un café pequeño. ¿Con leche?"
+    - speaker: user
+      en: "With milk, please."
+      es: "Con leche, por favor."
+    - speaker: ai
+      en: "Here it is. Take it, please."
+      es: "Aquí está. Tómelo, por favor."
+    - speaker: user
+      en: "Thank you. How much is it?"
+      es: "Gracias. ¿Cuánto es?"
+
+missions:
+  - id: m_0011
+    title_es: "Pide algo en inglés"
+    instructions_es: >-
+      Pide algo en un mostrador en inglés: "I would like a coffee, please".
+      Si te preguntan algo y no entiendes, di "Give me a moment, please".
+      Nadie se va a molestar. Es la frase que te da tiempo.
+    prep_chunk_ids: [c_0128, c_0149]
+    difficulty: 3
+    alternate_es: >-
+      Dilo en voz alta antes de entrar, tres veces, y luego pídelo en español.
+      La próxima vez ya lo tienes en la boca.
+
+  - id: m_0012
+    title_es: "Pide algo para otra persona"
+    instructions_es: >-
+      Pregúntale a alguien qué quiere y pídelo tú en inglés por esa persona.
+      Es la última misión del bloque y la más difícil: hablas por otro.
+    prep_chunk_ids: [c_0132, c_0151]
+    difficulty: 3
+    alternate_es: >-
+      Pregúntale a alguien en inglés "Do you want tea or coffee?" y prepáraselo
+      tú. Preguntar y entender la respuesta es la mitad que cuenta.

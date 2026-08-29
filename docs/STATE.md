@@ -298,6 +298,28 @@ empty, because they want frequency work this repo does not have.
 
 **Two readability-inflation bugs found while doing it** — see the traps.
 
+**BLOCK 1 IS COMPLETE** — 2026-08-29. Six units, **152 chunks, 12 frames, 36
+scenes, 12 missions, 202 known word types, 13 MB of audio**, every scene at
+100% readability with zero unknown tokens. About 36 days of content, which is
+the Phase 1 exit criterion for content volume.
+
+**`b1_u6` — what I want** — the last of them, and the unit the `frame` type was
+built for. `I would like {NP}, please.` takes anything on a counter, and almost
+everything on a counter is a Latinate cognate the scorer credits for free —
+coffee, chocolate, soup, salad, sandwich, fruit. One authored pattern plus a
+free filler class is a dozen sayable sentences nobody had to write.
+
+Miguel orders at Maria's counter alone. Carlos offers to come and is turned
+down; Maria *waits* when he hesitates instead of rescuing him; and by the last
+scene he is asking her what **she** wants. The block ends there on purpose.
+
+`I am hungry` is here to pre-empt an error, not to name a feeling. Spanish uses
+*tener* for states English expresses with *be*, so `tengo hambre` becomes
+*"I have hunger" — one L1 rule producing a family of mistakes. **A new error
+pattern, `have_state_for_be`, catches it**, and is careful: `hunger`, `thirst`
+and `sleep` match as bare nouns, but `cold` and `hot` only at the end of a
+sentence, because "I have cold water" is perfectly good English.
+
 **`b1_u5` — time and the schedule** — authored 2026-08-29. 25 chunks, 6
 scenes, 2 frames, 2 missions, 2.1 MB. Rosa gives Miguel his hours; he reads
 them back and gets the Saturday start wrong; she corrects it. This is where
@@ -413,7 +435,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 341, all passing.**
+**Tests — 345, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -650,6 +672,23 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**Some filler classes are closed, and a threshold they cannot reach is noise.**
+`RECOMMENDED_FRAME_FILLERS` was 8, which was aspiration rather than arithmetic:
+a week has seven days, so `I work on {DAY}` can never satisfy it however well
+it is authored, and the male relatives an A0 learner has met number five. It is
+now 5, which still catches the real failure (a three- or four-filler frame is a
+handful of chunks wearing a pattern's clothes). The general lesson is the same
+one the speech-rate gate taught: **a check that cannot be satisfied gets
+deleted, so fix the threshold before blaming the content** — but only after
+checking the content genuinely cannot do better. `f_0010` could hold more
+times, so it was extended rather than excused.
+
+**A wrapped transcript line has no speaker, and the parser is right to reject
+it.** YAML block scalars keep the continuation line, so
+`MARIA: ... every morning,\n  same thing.` parses as a second line whose
+speaker tag is empty — which fails cast validation with `"" is not in the
+cast`. Keep one turn per line, however long.
 
 **An accent truncated the word, and the content taught the truncation.**
 `tokenize("café")` returned `["caf"]` — the accented letter is not in `a-z`, so
@@ -979,11 +1018,16 @@ from a cookie is client-supplied data.
 
    **All three foundations are done, and `b1_u2`–`b1_u4` are written.** Each
    took one pass plus validator iteration, which is the whole argument for
-   having built them. **`b1_u6` is the last of Block 1** (wants and needs —
-   Miguel orders at Maria's counter alone, and it is the first unit whose
-   frames have an open filler class). After it, the 30-day exit criterion is
-   met and the next real work is a vocabulary schedule for Blocks 2–4, which
-   nothing in this repo can derive without frequency data.
+   having built them.
+
+   **Block 1 is finished.** The next real work is a vocabulary schedule for
+   **Blocks 2–4**, and it is the one thing here that cannot be derived from
+   this repo: Block 1's 202 word types were planned from first principles
+   because A0 vocabulary is close to forced by the can-do statements, and that
+   stops being true at A1+. NGSL / NGSL-Spoken (CC BY-SA 4.0, commercial use
+   permitted) is the source — and note the **ShareAlike**, which a derived
+   wordlist inherits. Until that exists, the remaining 18 units are blocked on
+   a decision nobody should make by taste.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person

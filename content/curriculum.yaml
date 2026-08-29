@@ -20,8 +20,11 @@ blocks:
   - block: 1
     title_es: "Primeros Sonidos"
     cefr: A0
-    chunk_target_cumulative: 150
-    frame_target_cumulative: 8
+    # Measured, not estimated. Block 1 is authored and cost 152 chunks and 12
+    # frames; the 150/8 written here during the A2 rescope predated any
+    # experience of authoring against it. Blocks 2-4 are still estimates.
+    chunk_target_cumulative: 155
+    frame_target_cumulative: 12
     can_do_es: "Puedo presentarme y responder preguntas básicas"
     l1_support_level: 1
     units:
@@ -30,7 +33,7 @@ blocks:
       - b1_u3
       - b1_u4
       - b1_u5
-      # b1_u2 .. b1_u6 to come -- numbers, yes/no questions, family, places, time
+      - b1_u6
 
   - block: 2
     title_es: "Mi Día"
