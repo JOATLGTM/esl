@@ -45,7 +45,7 @@ times, with 36 scenes riding on it. Two minutes.
 
 ## Tier 1 — close the speaking loop (no new content)
 
-### 1. A timed formulation step
+### 1. ~~A timed formulation step~~ — built 2026-08-29
 
 Between Retrieve and Speak, or as a card mode: Spanish prompt → 4–6 second
 countdown → the learner **says** the English from memory → the model clip plays

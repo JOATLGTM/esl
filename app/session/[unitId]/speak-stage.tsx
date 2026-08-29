@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { es, fill } from "@/lib/copy/es";
 import type { SpeakTask } from "@/lib/session/speak";
 import { buildFrameDrill, type SessionFrame } from "@/lib/session/frame-drill";
+import { FORMULATION_SECONDS, type FormulationPrompt } from "@/lib/session/formulate";
 
 /**
  * Stage 5, Speak (PRD 4.2 / 4.5): the learner says the lines out loud.
@@ -18,14 +19,19 @@ import { buildFrameDrill, type SessionFrame } from "@/lib/session/frame-drill";
  * "Ya lo dije" path is the primary one and the recorder is a side offer that
  * can fail silently without blocking anything.
  *
- * The stage runs in two phases. First the script, which is recall: the exact
- * line is on screen. Then, if the unit has a frame, the learner builds a
- * sentence of their own from a pattern -- the first thing in the whole product
- * that nobody wrote for them. The frame comes second on purpose: producing
- * something new is easier right after saying five things that worked.
+ * The stage runs in three phases. First a warm-up: Spanish on screen, a
+ * visible clock, and the learner says the English *before* it appears. That is
+ * formulation -- the message-to-form step -- and it is the one thing neither
+ * typed retrieval nor reading a line aloud ever asked for. The clock is
+ * pressure, never a grade: it runs out, the answer appears, nothing is written.
+ * Then the script, which is recall with the exact line on screen. Then, if the
+ * unit has a frame, the learner builds a sentence of their own -- the first
+ * thing in the whole product nobody wrote for them. That comes last on purpose:
+ * producing something new is easier right after saying things that worked.
  */
 export function SpeakStage({
   task,
+  formulation,
   frame,
   frameSeed,
   pending,
@@ -34,6 +40,8 @@ export function SpeakStage({
   onSpoke,
 }: {
   task: SpeakTask | null;
+  /** The warm-up hand: met phrases, Spanish first. Empty skips the phase. */
+  formulation: FormulationPrompt[];
   /** Null for every unit today -- no frames are authored yet. */
   frame: SessionFrame | null;
   /** Seeded on the session so a re-render cannot move the buttons. */
@@ -44,8 +52,49 @@ export function SpeakStage({
   onSpoke: (blob: Blob | null, durationS: number) => void;
 }) {
   const [index, setIndex] = useState(0);
-  const [phase, setPhase] = useState<"script" | "frame">("script");
+  const [phase, setPhase] = useState<"formulate" | "script" | "frame">(
+    formulation.length > 0 ? "formulate" : "script",
+  );
   const [chosen, setChosen] = useState<string | null>(null);
+  // The warm-up's own cursor: which prompt, whether the clock has started,
+  // whether the English is showing, and the seconds left. One object so that
+  // moving to the next prompt resets all of it in one render.
+  const [warm, setWarm] = useState({
+    index: 0,
+    started: false,
+    revealed: false,
+    left: FORMULATION_SECONDS,
+  });
+  const modelRef = useRef<HTMLAudioElement | null>(null);
+
+  // The countdown. Runs only while a prompt is live and unrevealed, and the
+  // reveal at zero happens here rather than in render so the clock cannot
+  // reveal twice. No Date.now() in render -- the compiler's purity rule.
+  useEffect(() => {
+    if (phase !== "formulate" || !warm.started || warm.revealed) return;
+    const tick = setInterval(() => {
+      setWarm((w) => {
+        if (w.revealed) return w;
+        if (w.left <= 1) return { ...w, left: 0, revealed: true };
+        return { ...w, left: w.left - 1 };
+      });
+    }, 1000);
+    return () => clearInterval(tick);
+  }, [phase, warm.started, warm.revealed]);
+
+  // Play the model clip the moment the English is revealed, however it was
+  // revealed -- the comparison is the point, and it should not need a tap.
+  useEffect(() => {
+    if (phase !== "formulate" || !warm.revealed) return;
+    const url = formulation[warm.index]?.audioUrl;
+    if (!url) return;
+    const audio = new Audio(url);
+    modelRef.current = audio;
+    audio.play().catch(() => {});
+    return () => {
+      audio.pause();
+    };
+  }, [phase, warm.revealed, warm.index, formulation]);
   const [recording, setRecording] = useState(false);
   const [recordError, setRecordError] = useState(false);
   const recorderRef = useRef<MediaRecorder | null>(null);
@@ -137,6 +186,96 @@ export function SpeakStage({
       return;
     }
     setIndex((i) => i + 1);
+  }
+
+  if (phase === "formulate" && formulation.length > 0) {
+    const prompt = formulation[warm.index];
+    const isLastPrompt = warm.index === formulation.length - 1;
+
+    const leave = () => {
+      modelRef.current?.pause();
+      setPhase("script");
+    };
+    const next = () => {
+      if (isLastPrompt) {
+        leave();
+        return;
+      }
+      setWarm({ index: warm.index + 1, started: true, revealed: false, left: FORMULATION_SECONDS });
+    };
+
+    if (!warm.started) {
+      return (
+        <div className="flex flex-1 flex-col gap-6">
+          <div className="flex flex-1 flex-col justify-center gap-3">
+            <h1 className="text-3xl font-bold text-ink">{es.session.stages.speak.title}</h1>
+            <p className="text-lg text-ink">{es.session.speak.formulateIntro}</p>
+            <p className="text-base text-muted">{es.session.speak.formulateClock}</p>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Button type="button" onClick={() => setWarm((w) => ({ ...w, started: true }))}>
+              {es.session.speak.formulateStart}
+            </Button>
+            {/* Skippable throughout. A warm-up someone is made to do is a test. */}
+            <button
+              type="button"
+              onClick={leave}
+              className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
+            >
+              {es.session.speak.formulateSkip}
+            </button>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex flex-1 flex-col gap-6">
+        <p className="text-base text-faint">
+          {fill(es.session.speak.counter, { position: warm.index + 1, total: formulation.length })}
+        </p>
+
+        <div className="flex flex-1 flex-col justify-center gap-4">
+          <p className="text-base text-muted">{es.session.speak.formulatePrompt}</p>
+          <p className="text-3xl font-bold text-balance text-ink">{prompt.es}</p>
+
+          {warm.revealed ? (
+            <>
+              <p className="text-base font-medium text-primary">{es.session.speak.formulateReveal}</p>
+              <p className="text-3xl font-bold text-balance text-ink">{prompt.en}</p>
+              {prompt.audioUrl && (
+                <p className="text-base text-faint">{es.session.speak.formulateCompare}</p>
+              )}
+            </>
+          ) : (
+            // The clock, as a number and nothing else: no red, no bar draining,
+            // no sound. It is there to be noticed, not to alarm.
+            <p aria-live="polite" className="text-6xl font-bold tabular-nums text-muted">
+              {warm.left}
+            </p>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          {warm.revealed ? (
+            <Button type="button" onClick={next} disabled={pending}>
+              {isLastPrompt ? es.session.continue : es.session.speak.formulateNext}
+            </Button>
+          ) : (
+            <Button type="button" onClick={() => setWarm((w) => ({ ...w, revealed: true }))}>
+              {es.session.speak.said}
+            </Button>
+          )}
+          <button
+            type="button"
+            onClick={leave}
+            className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
+          >
+            {es.session.speak.formulateSkip}
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (phase === "frame" && drill) {

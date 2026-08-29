@@ -264,6 +264,19 @@ export const es = {
     // microphone -- denying it must cost nothing at all (PRD F1).
     speak: {
       scenarioLabel: "La situación",
+      // The formulation step: Spanish on screen, a visible clock, and the
+      // learner says the English before it appears. The clock has to read as
+      // a game and never as an exam -- it runs out, the answer shows up, and
+      // nothing was lost. So the copy says out loud that it grades nothing.
+      formulateIntro: "Antes del guion, un calentamiento. Di estas frases en inglés.",
+      formulateClock: "Tienes cinco segundos. El reloj no califica nada.",
+      formulatePrompt: "¿Cómo se dice…?",
+      formulateReveal: "Se dice así:",
+      formulateCompare: "Escúchalo y compáralo con lo que dijiste.",
+      formulateNext: "Siguiente",
+      formulateStart: "Empezar",
+      counter: "Frase {position} de {total}",
+      formulateSkip: "Saltar el calentamiento",
       // The frame step: the first time the learner builds a sentence nobody
       // wrote for them. The copy has to make that feel like a small freedom
       // rather than a test, because it is the moment the course stops being a

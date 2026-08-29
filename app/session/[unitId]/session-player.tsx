@@ -15,6 +15,7 @@ import type { EarDrill } from "@/lib/session/ear";
 import type { ReviewCard } from "@/lib/session/retrieve";
 import type { SpeakTask } from "@/lib/session/speak";
 import type { SessionFrame } from "@/lib/session/frame-drill";
+import type { FormulationPrompt } from "@/lib/session/formulate";
 import { createClient } from "@/lib/supabase/client";
 import type { Stage } from "@/lib/session/stages";
 
@@ -49,6 +50,7 @@ export function SessionPlayer({
   reviewCards,
   speakTask,
   speakFrame,
+  formulation,
   offerGloss,
   earDrill,
 }: {
@@ -64,6 +66,7 @@ export function SessionPlayer({
   reviewCards: ReviewCard[];
   speakTask: SpeakTask | null;
   speakFrame: SessionFrame | null;
+  formulation: FormulationPrompt[];
   offerGloss: boolean;
   earDrill: EarDrill | null;
 }) {
@@ -176,6 +179,7 @@ export function SessionPlayer({
         <SpeakStage
           task={speakTask}
           frame={speakFrame}
+          formulation={formulation}
           frameSeed={sessionId}
           pending={pending}
           isFinal={isFinal}

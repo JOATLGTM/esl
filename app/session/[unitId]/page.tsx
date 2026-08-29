@@ -9,7 +9,7 @@ import { drillBudget } from "@/lib/session/drill";
 import { loadMeetChunks } from "@/lib/session/meet";
 import { loadEarDrill } from "@/lib/session/ear";
 import { loadDueCards, reviewBudget } from "@/lib/session/retrieve";
-import { loadSessionFrame, loadSpeakTask } from "@/lib/session/speak";
+import { loadFormulationSet, loadSessionFrame, loadSpeakTask } from "@/lib/session/speak";
 import { l1Support } from "@/lib/session/l1";
 import {
   availableStages,
@@ -88,6 +88,8 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
   // Null for every unit today: frames are a type nothing has been authored
   // against yet, and the stage renders the script alone when it is.
   const speakFrame = stage === "speak" ? await loadSessionFrame(profile.id, unit.id) : null;
+  // The warm-up at the front of Speak: met phrases, Spanish first, a clock.
+  const formulation = stage === "speak" ? await loadFormulationSet(profile.id, session.id) : [];
 
   const earDrill =
     stage === "ear"
@@ -103,6 +105,7 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
       offerGloss={support.offerGloss}
       speakTask={speakTask}
       speakFrame={speakFrame}
+      formulation={formulation}
       earDrill={earDrill}
       meetChunks={meetChunks}
       absorbScene={absorbScene}

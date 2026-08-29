@@ -2,6 +2,7 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { SpeakingMode } from "@/lib/supabase/types";
 import { pickFrameIndex, type FrameFiller, type SessionFrame } from "./frame-drill";
+import { pickFormulation, type FormulationPrompt } from "./formulate";
 
 /**
  * Stage 5, Speak (PRD 4.2 / 4.5 / F5): the learner says the phrases out loud.
@@ -186,4 +187,35 @@ export async function loadSessionFrame(
     slot: frame.slot,
     fillers,
   };
+}
+
+/**
+ * The formulation prompts for this session (`docs/ROADMAP.md` #1).
+ *
+ * Drawn from every chunk the learner has a card for -- met is the only
+ * qualification, because a prompt for a phrase never shown is a quiz on
+ * material the stage order exists to keep out. Seeded on the session so a
+ * refresh deals the same hand. Reads only; the step writes nothing.
+ */
+export async function loadFormulationSet(userId: string, seed: string): Promise<FormulationPrompt[]> {
+  const supabase = await createClient();
+
+  const { data: cards } = await supabase
+    .from("user_cards")
+    .select("chunk_id")
+    .eq("user_id", userId);
+  if (!cards?.length) return [];
+
+  const { data: chunks } = await supabase
+    .from("chunks")
+    .select("id, en_text, es_gloss, audio_urls")
+    .in("id", cards.map((c) => c.chunk_id));
+
+  const pool: FormulationPrompt[] = (chunks ?? []).map((c) => ({
+    chunkId: c.id,
+    es: c.es_gloss,
+    en: c.en_text,
+    audioUrl: ((c.audio_urls as { url: string }[] | null) ?? [])[0]?.url ?? null,
+  }));
+  return pickFormulation(pool, seed);
 }

@@ -441,6 +441,22 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**The formulation warm-up in Speak** — built 2026-08-29, `docs/ROADMAP.md` #1.
+Spanish on screen, a five-second clock, and the learner says the English
+*before* it appears; then the model clip plays and he compares. This is the
+first thing in the product that asks for **formulation** — the message-to-form
+step — which typed retrieval bypasses (no articulation) and scripted read-aloud
+bypasses (the English is already on screen). Five met phrases per session,
+seeded on the session, drawn from `user_cards` so nothing is ever asked that
+was never shown.
+
+**The clock is pressure, never a grade.** It runs out, the answer appears,
+and nothing is written anywhere — `tests/spoken-production.test.ts` still
+holds, so a self-report here cannot mature a card any more than it could in
+the script. Skippable at every screen, because a warm-up someone is made to do
+is a test. `lib/session/formulate.ts` is pure and tested; the loader is in
+`speak.ts`.
+
 **All five stages, progression, F8, F6, F11 and F12 are done.** The daily loop is
 complete, it no longer dead-ends, and it has a reason to come back tomorrow.
 
@@ -451,7 +467,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 345, all passing.**
+**Tests — 354, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
