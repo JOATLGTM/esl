@@ -32,6 +32,10 @@ const PUBLIC_PATHS = [
   "/signup",
   "/auth",
   "/pausa",
+  // Throwaway measurement page for the on-device ASR decision (ROADMAP #2).
+  // Public so it opens on any borrowed phone without an account. Delete with
+  // the route.
+  "/spike",
   // The health check must answer from outside, with no account. Left out, it
   // 307s to /login -- and a redirect is not an HTTP failure, so the keepalive
   // workflow would report green forever while pinging a login page.

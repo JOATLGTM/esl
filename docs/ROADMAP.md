@@ -103,9 +103,12 @@ that landmine exists precisely so a self-report never matures a card. Add the
 recogniser's file to `ALLOWED` and extend the test to assert the emit is gated
 on a verified match.
 
-*Spike first (half a day): load Moonshine-tiny int8 on a cheap Android Chrome
-and time a four-second clip. Under ~3 s → build (2–3 days). Over → park it and
-put the hours into #4.*
+**The spike exists: `/spike/asr`** (built 2026-08-29, public, throwaway).
+Open it on the cheapest Android you can borrow, tap *Load model*, tap *Record*,
+say the target sentence, tap *Copy results*. It reports `wasmSimd`,
+`deviceMemoryGB`, `downloadMB`, `loadMs`, `recogniseMs`, `realTimeFactor` and
+whether the transcript matched. **Under ~3 s `recogniseMs` → build (2–3 days).
+Over → park it and put the hours into #4.** Delete the route either way.
 
 ### 3. ~~Let him hear himself~~ — built 2026-08-29
 

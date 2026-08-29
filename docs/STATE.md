@@ -994,6 +994,11 @@ from a cookie is client-supplied data.
 
 ## Open, roughly in order
 
+0. **Run the ASR spike on a phone.** `/spike/asr` is live and public. One
+   number — `recogniseMs` on a cheap Android — decides whether on-device
+   speech recognition (`docs/ROADMAP.md` #2) gets built or parked. Half a
+   minute to run; nobody has the number yet. Delete the route afterwards.
+
 1. ~~Commit everything.~~ Done — `b267c88`.
 2. **Look at F1 in a browser.** Verified: routing, data, markup. Not verified:
    whether it *feels* right. Walk `/` → `/signup` → onboarding in a narrow
