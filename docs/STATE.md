@@ -298,6 +298,27 @@ empty, because they want frequency work this repo does not have.
 
 **Two readability-inflation bugs found while doing it** — see the traps.
 
+**`b1_u4` — on the street** — authored 2026-08-29. 25 chunks, 6 scenes, 2
+frames, 2 missions, 2.3 MB. Miguel gets lost on the way to the café, is
+pointed, arrives — and in the last scene gives directions to **Carlos**, the
+man who has spent three units offering to translate for him. That inversion is
+the unit.
+
+`I am lost` is the phrase it exists to hand someone: a repair strategy dressed
+as a location, because a learner who can say it converts being stranded into a
+conversation. Miguel also asks for a repeat twice and then says the directions
+back — repeating instructions to confirm them is a real strategy nobody
+teaches, and it is the only way an A0 learner survives directions at all.
+
+Notably the place nouns (café, park, bank, market, hospital, restaurant) are
+**not in the schedule**: they are Latinate cognates the scorer already credits.
+This is the one Block 1 unit where the cognate windfall pays, which is why a
+unit about places can spend its whole vocabulary budget on prepositions and
+verbs of motion.
+
+Four units, **102 chunks, 8 frames, 24 scenes, and every scene at 100%
+readability with zero unknown tokens.** About 24 days of content.
+
 **`b1_u3` — family and people** — authored 2026-08-28. 27 chunks, 6 scenes, 2
 frames, 2 missions, 2.1 MB. The beat is `I miss them`: units 1 and 2 were
 transactions — a greeting returned, a form survived — and this is the first
@@ -368,7 +389,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 338, all passing.**
+**Tests — 341, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|
@@ -605,6 +626,30 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**An accent truncated the word, and the content taught the truncation.**
+`tokenize("café")` returned `["caf"]` — the accented letter is not in `a-z`, so
+it *split* the word instead of being part of it. "caf" is not a word and not a
+cognate, so `café` was an unknown token everywhere. What hid it is the nastiest
+part: the chunk and the scene both produced "caf", so they **agreed with each
+other**, the 95% rule passed at 100%, and `b1_u4` was on course to ship a card
+teaching a nonsense string. `tokenize` now strips diacritics before splitting.
+Caught by the vocabulary schedule, which refused to release a word called
+"caf" — the first time that check earned its keep on something nobody had
+thought of.
+
+**A scene needs ~85+ tokens or it falls under the 30s floor.** Measured across
+four units: roughly **0.39s per token**, so 63 tokens is 25s and fails PRD F4,
+while 90 lands near 38s. Worth knowing before writing rather than after
+generating, because each round trip is a few minutes of Piper.
+
+**A released word is not a taught word, and the 5% budget will hide the
+difference.** `their` was released for `b1_u3`, used in a scene, and taught by
+no chunk — so it sailed through at 99% as an allowed unknown rather than
+failing. The schedule check only catches words a unit *teaches*; a word a scene
+merely *uses* is governed by the readability budget, which is designed to
+absorb exactly one or two of them. If a scene reports `new:` anything, that is
+a gap, not a pass.
 
 **A scene with no generated audio used to validate clean.**
 `checkGeneratedDurations` skipped any scene missing from the manifest, so an
@@ -908,10 +953,11 @@ from a cookie is client-supplied data.
       still empty** and want frequency work this repo does not have.
    c. ~~**A story bible.**~~ Done — `content/STORY.md`.
 
-   **All three foundations are done, and `b1_u2` and `b1_u3` are written.**
-   Each took one pass plus validator iteration, which is the whole argument for
-   having built them. **`b1_u4` is next** (places, and where things are); its
-   beat is in `STORY.md` and its legal vocabulary in `vocab-schedule.yaml`.
+   **All three foundations are done, and `b1_u2`–`b1_u4` are written.** Each
+   took one pass plus validator iteration, which is the whole argument for
+   having built them. **`b1_u5` is next** (time, days, routine — Rosa gives
+   Miguel his hours); its beat is in `STORY.md` and its legal vocabulary in
+   `vocab-schedule.yaml`. Two units to the end of Block 1.
 
    Then author. LLM-assisted drafting at *build* time is consistent with the
    $0 rule ($0 is about runtime) and is realistically the only way one person

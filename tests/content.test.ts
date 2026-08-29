@@ -217,3 +217,31 @@ describe("readability credit is not inflated", () => {
     assert.ok(morphologicalVariants("boxes").includes("box"));
   });
 });
+
+/**
+ * Accents truncated words, and the content then taught the truncation.
+ *
+ * `tokenize("café")` returned `["caf"]` -- the accented letter is not in
+ * `a-z`, so it split the word rather than being part of it. "caf" is not a
+ * word and not a cognate, so `café` was an unknown token everywhere. What hid
+ * it was that the *chunk* and the *scene* both produced "caf": they agreed
+ * with each other, the 95% rule passed at 100%, and unit 4 was on course to
+ * ship a card teaching a nonsense string. The vocabulary schedule is what
+ * caught it, by refusing to release a word called "caf".
+ */
+describe("diacritics do not truncate words", () => {
+  test("an accented English word tokenizes to its plain form", () => {
+    assert.deepEqual(tokenize("café"), ["cafe"]);
+    assert.deepEqual(tokenize("naïve"), ["naive"]);
+    assert.deepEqual(tokenize("résumé"), ["resume"]);
+  });
+
+  test("so the accented and unaccented spellings are the same token", () => {
+    assert.deepEqual(tokenize("Where is the café?"), tokenize("Where is the cafe?"));
+  });
+
+  test("and the cognate credit reaches it", () => {
+    // `cafe` is curated; before the fix `caf` matched nothing at all.
+    assert.equal(isCognate(tokenize("café")[0]), true);
+  });
+});

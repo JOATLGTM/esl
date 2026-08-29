@@ -4398,16 +4398,6 @@
       "durationMs": 1318,
       "bytes": 5942
     },
-    "c676eb61af345a18": {
-      "url": "/audio/example/c676eb61af345a18.opus",
-      "kind": "example",
-      "text": "They are my family. I love them.",
-      "voiceId": "us_m_2",
-      "ownerId": "c_0056",
-      "unitId": "b1_u3",
-      "durationMs": 2143,
-      "bytes": 8394
-    },
     "0a3d955b5d9b68f0": {
       "url": "/audio/chunk/0a3d955b5d9b68f0.opus",
       "kind": "chunk",
@@ -6197,6 +6187,2146 @@
       "unitId": "b1_u3",
       "durationMs": 2805,
       "bytes": 11455
+    },
+    "2ea31ba686510cea": {
+      "url": "/audio/example/2ea31ba686510cea.opus",
+      "kind": "example",
+      "text": "They are my family. Their home is in Mexico.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0056",
+      "unitId": "b1_u3",
+      "durationMs": 3455,
+      "bytes": 13788
+    },
+    "288fafee7e067356": {
+      "url": "/audio/chunk/288fafee7e067356.opus",
+      "kind": "chunk",
+      "text": "Where is the café?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0078",
+      "unitId": "b1_u4",
+      "durationMs": 1086,
+      "bytes": 4534
+    },
+    "92ee5d0effed4ec3": {
+      "url": "/audio/chunk/92ee5d0effed4ec3.opus",
+      "kind": "chunk",
+      "text": "Where is the café?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0078",
+      "unitId": "b1_u4",
+      "durationMs": 1098,
+      "bytes": 4661
+    },
+    "a4fb927d8eca08eb": {
+      "url": "/audio/chunk/a4fb927d8eca08eb.opus",
+      "kind": "chunk",
+      "text": "Where is the café?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0078",
+      "unitId": "b1_u4",
+      "durationMs": 1121,
+      "bytes": 4659
+    },
+    "e2eedaa4ff90eee2": {
+      "url": "/audio/chunk/e2eedaa4ff90eee2.opus",
+      "kind": "chunk",
+      "text": "Where is the café?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0078",
+      "unitId": "b1_u4",
+      "durationMs": 1342,
+      "bytes": 5556
+    },
+    "f8ee918bac2cdf4a": {
+      "url": "/audio/example/f8ee918bac2cdf4a.opus",
+      "kind": "example",
+      "text": "Excuse me, where is the café?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0078",
+      "unitId": "b1_u4",
+      "durationMs": 2270,
+      "bytes": 8662
+    },
+    "47495aedf32b579c": {
+      "url": "/audio/chunk/47495aedf32b579c.opus",
+      "kind": "chunk",
+      "text": "I am lost",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0079",
+      "unitId": "b1_u4",
+      "durationMs": 819,
+      "bytes": 3407
+    },
+    "0c096155a1c48c8f": {
+      "url": "/audio/chunk/0c096155a1c48c8f.opus",
+      "kind": "chunk",
+      "text": "I am lost",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0079",
+      "unitId": "b1_u4",
+      "durationMs": 970,
+      "bytes": 4087
+    },
+    "19ead85f60667475": {
+      "url": "/audio/chunk/19ead85f60667475.opus",
+      "kind": "chunk",
+      "text": "I am lost",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0079",
+      "unitId": "b1_u4",
+      "durationMs": 1144,
+      "bytes": 4841
+    },
+    "75faa3bbc500a9ff": {
+      "url": "/audio/chunk/75faa3bbc500a9ff.opus",
+      "kind": "chunk",
+      "text": "I am lost",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0079",
+      "unitId": "b1_u4",
+      "durationMs": 1063,
+      "bytes": 4868
+    },
+    "e23a907b92db09c6": {
+      "url": "/audio/example/e23a907b92db09c6.opus",
+      "kind": "example",
+      "text": "I am lost. Where is the store?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0079",
+      "unitId": "b1_u4",
+      "durationMs": 2247,
+      "bytes": 8930
+    },
+    "26f1c9cc7b3cf05d": {
+      "url": "/audio/chunk/26f1c9cc7b3cf05d.opus",
+      "kind": "chunk",
+      "text": "Go straight",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0080",
+      "unitId": "b1_u4",
+      "durationMs": 773,
+      "bytes": 3206
+    },
+    "5799c849ae538797": {
+      "url": "/audio/chunk/5799c849ae538797.opus",
+      "kind": "chunk",
+      "text": "Go straight",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0080",
+      "unitId": "b1_u4",
+      "durationMs": 1005,
+      "bytes": 4313
+    },
+    "11999a41a2bfa52d": {
+      "url": "/audio/chunk/11999a41a2bfa52d.opus",
+      "kind": "chunk",
+      "text": "Go straight",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0080",
+      "unitId": "b1_u4",
+      "durationMs": 993,
+      "bytes": 4084
+    },
+    "eff506183aafa009": {
+      "url": "/audio/chunk/eff506183aafa009.opus",
+      "kind": "chunk",
+      "text": "Go straight",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0080",
+      "unitId": "b1_u4",
+      "durationMs": 935,
+      "bytes": 3938
+    },
+    "148dda23b31c20ba": {
+      "url": "/audio/example/148dda23b31c20ba.opus",
+      "kind": "example",
+      "text": "Go straight, and it is on the corner.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0080",
+      "unitId": "b1_u4",
+      "durationMs": 2212,
+      "bytes": 8906
+    },
+    "aaa0ca6b399567b9": {
+      "url": "/audio/chunk/aaa0ca6b399567b9.opus",
+      "kind": "chunk",
+      "text": "Turn left",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0081",
+      "unitId": "b1_u4",
+      "durationMs": 773,
+      "bytes": 3222
+    },
+    "1d7a7e21eb4cad90": {
+      "url": "/audio/chunk/1d7a7e21eb4cad90.opus",
+      "kind": "chunk",
+      "text": "Turn left",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0081",
+      "unitId": "b1_u4",
+      "durationMs": 877,
+      "bytes": 3647
+    },
+    "1677c3e1a1e361a4": {
+      "url": "/audio/chunk/1677c3e1a1e361a4.opus",
+      "kind": "chunk",
+      "text": "Turn left",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0081",
+      "unitId": "b1_u4",
+      "durationMs": 1040,
+      "bytes": 4274
+    },
+    "9cc3be763457ac1c": {
+      "url": "/audio/chunk/9cc3be763457ac1c.opus",
+      "kind": "chunk",
+      "text": "Turn left",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0081",
+      "unitId": "b1_u4",
+      "durationMs": 889,
+      "bytes": 3772
+    },
+    "631fac8618406b46": {
+      "url": "/audio/example/631fac8618406b46.opus",
+      "kind": "example",
+      "text": "Turn left at the store.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0081",
+      "unitId": "b1_u4",
+      "durationMs": 1539,
+      "bytes": 6283
+    },
+    "f1c77cf69a0ce83c": {
+      "url": "/audio/chunk/f1c77cf69a0ce83c.opus",
+      "kind": "chunk",
+      "text": "Turn right",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0082",
+      "unitId": "b1_u4",
+      "durationMs": 715,
+      "bytes": 2907
+    },
+    "41ea255978aeb3e8": {
+      "url": "/audio/chunk/41ea255978aeb3e8.opus",
+      "kind": "chunk",
+      "text": "Turn right",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0082",
+      "unitId": "b1_u4",
+      "durationMs": 761,
+      "bytes": 3315
+    },
+    "9a86f4defc102266": {
+      "url": "/audio/chunk/9a86f4defc102266.opus",
+      "kind": "chunk",
+      "text": "Turn right",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0082",
+      "unitId": "b1_u4",
+      "durationMs": 1237,
+      "bytes": 4964
+    },
+    "705292ad741a3323": {
+      "url": "/audio/chunk/705292ad741a3323.opus",
+      "kind": "chunk",
+      "text": "Turn right",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0082",
+      "unitId": "b1_u4",
+      "durationMs": 924,
+      "bytes": 3934
+    },
+    "ba9a05242e53898e": {
+      "url": "/audio/example/ba9a05242e53898e.opus",
+      "kind": "example",
+      "text": "Turn right, and go straight.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0082",
+      "unitId": "b1_u4",
+      "durationMs": 2120,
+      "bytes": 7776
+    },
+    "1b6312ff6aeaa09d": {
+      "url": "/audio/chunk/1b6312ff6aeaa09d.opus",
+      "kind": "chunk",
+      "text": "It is near here",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0083",
+      "unitId": "b1_u4",
+      "durationMs": 982,
+      "bytes": 4131
+    },
+    "8b630020597fbceb": {
+      "url": "/audio/chunk/8b630020597fbceb.opus",
+      "kind": "chunk",
+      "text": "It is near here",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0083",
+      "unitId": "b1_u4",
+      "durationMs": 901,
+      "bytes": 3880
+    },
+    "8191e7f8a845c7d3": {
+      "url": "/audio/chunk/8191e7f8a845c7d3.opus",
+      "kind": "chunk",
+      "text": "It is near here",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0083",
+      "unitId": "b1_u4",
+      "durationMs": 1051,
+      "bytes": 4387
+    },
+    "149e1bfb9c3511d5": {
+      "url": "/audio/chunk/149e1bfb9c3511d5.opus",
+      "kind": "chunk",
+      "text": "It is near here",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0083",
+      "unitId": "b1_u4",
+      "durationMs": 1133,
+      "bytes": 4809
+    },
+    "3e91cbae3a21c935": {
+      "url": "/audio/example/3e91cbae3a21c935.opus",
+      "kind": "example",
+      "text": "It is near here. It is not far.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0083",
+      "unitId": "b1_u4",
+      "durationMs": 2270,
+      "bytes": 9084
+    },
+    "47347373bd3527de": {
+      "url": "/audio/chunk/47347373bd3527de.opus",
+      "kind": "chunk",
+      "text": "It is far",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0084",
+      "unitId": "b1_u4",
+      "durationMs": 831,
+      "bytes": 3408
+    },
+    "5bc460be23e9154d": {
+      "url": "/audio/chunk/5bc460be23e9154d.opus",
+      "kind": "chunk",
+      "text": "It is far",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0084",
+      "unitId": "b1_u4",
+      "durationMs": 796,
+      "bytes": 3343
+    },
+    "955923aad87802e7": {
+      "url": "/audio/chunk/955923aad87802e7.opus",
+      "kind": "chunk",
+      "text": "It is far",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0084",
+      "unitId": "b1_u4",
+      "durationMs": 1109,
+      "bytes": 4627
+    },
+    "371ce40b239cfcc2": {
+      "url": "/audio/chunk/371ce40b239cfcc2.opus",
+      "kind": "chunk",
+      "text": "It is far",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0084",
+      "unitId": "b1_u4",
+      "durationMs": 1063,
+      "bytes": 4536
+    },
+    "d0c0be34e9897430": {
+      "url": "/audio/example/d0c0be34e9897430.opus",
+      "kind": "example",
+      "text": "It is far. It is not near here.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0084",
+      "unitId": "b1_u4",
+      "durationMs": 2201,
+      "bytes": 8818
+    },
+    "c7d1a1c59846fe42": {
+      "url": "/audio/chunk/c7d1a1c59846fe42.opus",
+      "kind": "chunk",
+      "text": "Is it far?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0085",
+      "unitId": "b1_u4",
+      "durationMs": 773,
+      "bytes": 3183
+    },
+    "b46b5bef6a8613a3": {
+      "url": "/audio/chunk/b46b5bef6a8613a3.opus",
+      "kind": "chunk",
+      "text": "Is it far?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0085",
+      "unitId": "b1_u4",
+      "durationMs": 808,
+      "bytes": 3423
+    },
+    "362f09ac66bdb95f": {
+      "url": "/audio/chunk/362f09ac66bdb95f.opus",
+      "kind": "chunk",
+      "text": "Is it far?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0085",
+      "unitId": "b1_u4",
+      "durationMs": 924,
+      "bytes": 3851
+    },
+    "6683a902f4adf677": {
+      "url": "/audio/chunk/6683a902f4adf677.opus",
+      "kind": "chunk",
+      "text": "Is it far?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0085",
+      "unitId": "b1_u4",
+      "durationMs": 959,
+      "bytes": 4097
+    },
+    "b800e2d2978364b7": {
+      "url": "/audio/example/b800e2d2978364b7.opus",
+      "kind": "example",
+      "text": "Is it far? Is it near here?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0085",
+      "unitId": "b1_u4",
+      "durationMs": 2131,
+      "bytes": 8537
+    },
+    "80088d5e354f5f44": {
+      "url": "/audio/chunk/80088d5e354f5f44.opus",
+      "kind": "chunk",
+      "text": "It is on this street",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0086",
+      "unitId": "b1_u4",
+      "durationMs": 1109,
+      "bytes": 4714
+    },
+    "99519365278d2c99": {
+      "url": "/audio/chunk/99519365278d2c99.opus",
+      "kind": "chunk",
+      "text": "It is on this street",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0086",
+      "unitId": "b1_u4",
+      "durationMs": 1272,
+      "bytes": 5320
+    },
+    "3737b4a5cf1ee1f6": {
+      "url": "/audio/chunk/3737b4a5cf1ee1f6.opus",
+      "kind": "chunk",
+      "text": "It is on this street",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0086",
+      "unitId": "b1_u4",
+      "durationMs": 1435,
+      "bytes": 5948
+    },
+    "dad46ab9ebabc337": {
+      "url": "/audio/chunk/dad46ab9ebabc337.opus",
+      "kind": "chunk",
+      "text": "It is on this street",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0086",
+      "unitId": "b1_u4",
+      "durationMs": 1377,
+      "bytes": 5811
+    },
+    "29b9bf2e93a3d7e1": {
+      "url": "/audio/example/29b9bf2e93a3d7e1.opus",
+      "kind": "example",
+      "text": "It is on this street, near the park.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0086",
+      "unitId": "b1_u4",
+      "durationMs": 2178,
+      "bytes": 8389
+    },
+    "6a616d3b2e079a7d": {
+      "url": "/audio/chunk/6a616d3b2e079a7d.opus",
+      "kind": "chunk",
+      "text": "It is on the corner",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0087",
+      "unitId": "b1_u4",
+      "durationMs": 1109,
+      "bytes": 4698
+    },
+    "6c38d548c38760ab": {
+      "url": "/audio/chunk/6c38d548c38760ab.opus",
+      "kind": "chunk",
+      "text": "It is on the corner",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0087",
+      "unitId": "b1_u4",
+      "durationMs": 1133,
+      "bytes": 4857
+    },
+    "7000bbb34912444f": {
+      "url": "/audio/chunk/7000bbb34912444f.opus",
+      "kind": "chunk",
+      "text": "It is on the corner",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0087",
+      "unitId": "b1_u4",
+      "durationMs": 1028,
+      "bytes": 4293
+    },
+    "4c38302693e9fe7a": {
+      "url": "/audio/chunk/4c38302693e9fe7a.opus",
+      "kind": "chunk",
+      "text": "It is on the corner",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0087",
+      "unitId": "b1_u4",
+      "durationMs": 1260,
+      "bytes": 5479
+    },
+    "2079a898871ef1b8": {
+      "url": "/audio/example/2079a898871ef1b8.opus",
+      "kind": "example",
+      "text": "It is on the corner of this street.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0087",
+      "unitId": "b1_u4",
+      "durationMs": 2050,
+      "bytes": 8205
+    },
+    "02b6affce110d7e2": {
+      "url": "/audio/chunk/02b6affce110d7e2.opus",
+      "kind": "chunk",
+      "text": "It is next to the store",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0088",
+      "unitId": "b1_u4",
+      "durationMs": 1469,
+      "bytes": 6070
+    },
+    "81a36f04e01883fd": {
+      "url": "/audio/chunk/81a36f04e01883fd.opus",
+      "kind": "chunk",
+      "text": "It is next to the store",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0088",
+      "unitId": "b1_u4",
+      "durationMs": 1353,
+      "bytes": 5787
+    },
+    "cb5ec80d17179d53": {
+      "url": "/audio/chunk/cb5ec80d17179d53.opus",
+      "kind": "chunk",
+      "text": "It is next to the store",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0088",
+      "unitId": "b1_u4",
+      "durationMs": 1400,
+      "bytes": 5872
+    },
+    "1f05e20cdf4d585a": {
+      "url": "/audio/chunk/1f05e20cdf4d585a.opus",
+      "kind": "chunk",
+      "text": "It is next to the store",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0088",
+      "unitId": "b1_u4",
+      "durationMs": 1713,
+      "bytes": 7273
+    },
+    "fe12e0d7d4b79ab3": {
+      "url": "/audio/example/fe12e0d7d4b79ab3.opus",
+      "kind": "example",
+      "text": "It is next to the store, on this side.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0088",
+      "unitId": "b1_u4",
+      "durationMs": 2363,
+      "bytes": 9232
+    },
+    "933e50a8a45cbb62": {
+      "url": "/audio/chunk/933e50a8a45cbb62.opus",
+      "kind": "chunk",
+      "text": "It is across from the park",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0089",
+      "unitId": "b1_u4",
+      "durationMs": 1493,
+      "bytes": 6253
+    },
+    "1365c96f0c09a471": {
+      "url": "/audio/chunk/1365c96f0c09a471.opus",
+      "kind": "chunk",
+      "text": "It is across from the park",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0089",
+      "unitId": "b1_u4",
+      "durationMs": 1516,
+      "bytes": 6377
+    },
+    "575ffade7ce7e544": {
+      "url": "/audio/chunk/575ffade7ce7e544.opus",
+      "kind": "chunk",
+      "text": "It is across from the park",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0089",
+      "unitId": "b1_u4",
+      "durationMs": 1551,
+      "bytes": 6485
+    },
+    "6a199ee49f57cc6d": {
+      "url": "/audio/chunk/6a199ee49f57cc6d.opus",
+      "kind": "chunk",
+      "text": "It is across from the park",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0089",
+      "unitId": "b1_u4",
+      "durationMs": 1899,
+      "bytes": 7891
+    },
+    "bada091a8d039248": {
+      "url": "/audio/example/bada091a8d039248.opus",
+      "kind": "example",
+      "text": "It is across from the park, near the bank.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0089",
+      "unitId": "b1_u4",
+      "durationMs": 2596,
+      "bytes": 10238
+    },
+    "297555efab864caa": {
+      "url": "/audio/chunk/297555efab864caa.opus",
+      "kind": "chunk",
+      "text": "The first street",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0090",
+      "unitId": "b1_u4",
+      "durationMs": 1028,
+      "bytes": 4289
+    },
+    "97958691290a7bdb": {
+      "url": "/audio/chunk/97958691290a7bdb.opus",
+      "kind": "chunk",
+      "text": "The first street",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0090",
+      "unitId": "b1_u4",
+      "durationMs": 1086,
+      "bytes": 4609
+    },
+    "8fe73e362c7940fb": {
+      "url": "/audio/chunk/8fe73e362c7940fb.opus",
+      "kind": "chunk",
+      "text": "The first street",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0090",
+      "unitId": "b1_u4",
+      "durationMs": 1249,
+      "bytes": 5100
+    },
+    "dc9ac02d7baf1dd6": {
+      "url": "/audio/chunk/dc9ac02d7baf1dd6.opus",
+      "kind": "chunk",
+      "text": "The first street",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0090",
+      "unitId": "b1_u4",
+      "durationMs": 1284,
+      "bytes": 5426
+    },
+    "5dcbbf17a71f7fd8": {
+      "url": "/audio/example/5dcbbf17a71f7fd8.opus",
+      "kind": "example",
+      "text": "The first street, and turn left.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0090",
+      "unitId": "b1_u4",
+      "durationMs": 1980,
+      "bytes": 8031
+    },
+    "ca9ad18c8a4d68aa": {
+      "url": "/audio/chunk/ca9ad18c8a4d68aa.opus",
+      "kind": "chunk",
+      "text": "Come with me",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0091",
+      "unitId": "b1_u4",
+      "durationMs": 761,
+      "bytes": 3306
+    },
+    "a82d978c1a23ce03": {
+      "url": "/audio/chunk/a82d978c1a23ce03.opus",
+      "kind": "chunk",
+      "text": "Come with me",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0091",
+      "unitId": "b1_u4",
+      "durationMs": 784,
+      "bytes": 3395
+    },
+    "11ec679cf7d5d6f1": {
+      "url": "/audio/chunk/11ec679cf7d5d6f1.opus",
+      "kind": "chunk",
+      "text": "Come with me",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0091",
+      "unitId": "b1_u4",
+      "durationMs": 854,
+      "bytes": 3630
+    },
+    "3337465ead5d3b2a": {
+      "url": "/audio/chunk/3337465ead5d3b2a.opus",
+      "kind": "chunk",
+      "text": "Come with me",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0091",
+      "unitId": "b1_u4",
+      "durationMs": 901,
+      "bytes": 3829
+    },
+    "d128b6a979a99624": {
+      "url": "/audio/example/d128b6a979a99624.opus",
+      "kind": "example",
+      "text": "Come with me. It is near here.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0091",
+      "unitId": "b1_u4",
+      "durationMs": 1969,
+      "bytes": 7665
+    },
+    "3157d95a36df7ccf": {
+      "url": "/audio/chunk/3157d95a36df7ccf.opus",
+      "kind": "chunk",
+      "text": "Where is the bus stop?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0092",
+      "unitId": "b1_u4",
+      "durationMs": 1260,
+      "bytes": 5244
+    },
+    "052c6bf49cc2f78f": {
+      "url": "/audio/chunk/052c6bf49cc2f78f.opus",
+      "kind": "chunk",
+      "text": "Where is the bus stop?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0092",
+      "unitId": "b1_u4",
+      "durationMs": 1423,
+      "bytes": 5935
+    },
+    "54d83d9bf0092db1": {
+      "url": "/audio/chunk/54d83d9bf0092db1.opus",
+      "kind": "chunk",
+      "text": "Where is the bus stop?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0092",
+      "unitId": "b1_u4",
+      "durationMs": 1226,
+      "bytes": 5128
+    },
+    "8822f5b041eeecfd": {
+      "url": "/audio/chunk/8822f5b041eeecfd.opus",
+      "kind": "chunk",
+      "text": "Where is the bus stop?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0092",
+      "unitId": "b1_u4",
+      "durationMs": 1411,
+      "bytes": 5777
+    },
+    "b245a61b4b76e586": {
+      "url": "/audio/example/b245a61b4b76e586.opus",
+      "kind": "example",
+      "text": "Where is the bus stop, please?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0092",
+      "unitId": "b1_u4",
+      "durationMs": 1992,
+      "bytes": 7576
+    },
+    "952b3916a9d4e26d": {
+      "url": "/audio/chunk/952b3916a9d4e26d.opus",
+      "kind": "chunk",
+      "text": "The store is closed",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0093",
+      "unitId": "b1_u4",
+      "durationMs": 1260,
+      "bytes": 5287
+    },
+    "847d33cee7dce564": {
+      "url": "/audio/chunk/847d33cee7dce564.opus",
+      "kind": "chunk",
+      "text": "The store is closed",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0093",
+      "unitId": "b1_u4",
+      "durationMs": 1446,
+      "bytes": 6168
+    },
+    "75ad1c732e68348d": {
+      "url": "/audio/chunk/75ad1c732e68348d.opus",
+      "kind": "chunk",
+      "text": "The store is closed",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0093",
+      "unitId": "b1_u4",
+      "durationMs": 1318,
+      "bytes": 5490
+    },
+    "d093e5711eed8650": {
+      "url": "/audio/chunk/d093e5711eed8650.opus",
+      "kind": "chunk",
+      "text": "The store is closed",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0093",
+      "unitId": "b1_u4",
+      "durationMs": 1435,
+      "bytes": 6056
+    },
+    "6afe6fd3c68fa327": {
+      "url": "/audio/example/6afe6fd3c68fa327.opus",
+      "kind": "example",
+      "text": "The store is closed. It is not open.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0093",
+      "unitId": "b1_u4",
+      "durationMs": 2654,
+      "bytes": 10688
+    },
+    "c374c5fe5fa6c1a0": {
+      "url": "/audio/chunk/c374c5fe5fa6c1a0.opus",
+      "kind": "chunk",
+      "text": "The café is open",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0094",
+      "unitId": "b1_u4",
+      "durationMs": 1307,
+      "bytes": 5481
+    },
+    "8f0003d77d4a27fc": {
+      "url": "/audio/chunk/8f0003d77d4a27fc.opus",
+      "kind": "chunk",
+      "text": "The café is open",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0094",
+      "unitId": "b1_u4",
+      "durationMs": 1551,
+      "bytes": 6452
+    },
+    "eae16d95c077471e": {
+      "url": "/audio/chunk/eae16d95c077471e.opus",
+      "kind": "chunk",
+      "text": "The café is open",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0094",
+      "unitId": "b1_u4",
+      "durationMs": 1353,
+      "bytes": 5652
+    },
+    "608a8d38983240cc": {
+      "url": "/audio/chunk/608a8d38983240cc.opus",
+      "kind": "chunk",
+      "text": "The café is open",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0094",
+      "unitId": "b1_u4",
+      "durationMs": 1377,
+      "bytes": 5740
+    },
+    "b268a79fdd96d6f5": {
+      "url": "/audio/example/b268a79fdd96d6f5.opus",
+      "kind": "example",
+      "text": "The café is open. Come with me.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0094",
+      "unitId": "b1_u4",
+      "durationMs": 2166,
+      "bytes": 8625
+    },
+    "cfa8eeb01ee081c2": {
+      "url": "/audio/chunk/cfa8eeb01ee081c2.opus",
+      "kind": "chunk",
+      "text": "Go up this street",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0095",
+      "unitId": "b1_u4",
+      "durationMs": 1202,
+      "bytes": 4977
+    },
+    "0ea625c3c920fa72": {
+      "url": "/audio/chunk/0ea625c3c920fa72.opus",
+      "kind": "chunk",
+      "text": "Go up this street",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0095",
+      "unitId": "b1_u4",
+      "durationMs": 924,
+      "bytes": 3948
+    },
+    "3bbdf74ef099422a": {
+      "url": "/audio/chunk/3bbdf74ef099422a.opus",
+      "kind": "chunk",
+      "text": "Go up this street",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0095",
+      "unitId": "b1_u4",
+      "durationMs": 1330,
+      "bytes": 5550
+    },
+    "a6b11bb81c09b847": {
+      "url": "/audio/chunk/a6b11bb81c09b847.opus",
+      "kind": "chunk",
+      "text": "Go up this street",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0095",
+      "unitId": "b1_u4",
+      "durationMs": 1330,
+      "bytes": 5594
+    },
+    "9fe399320daf9d13": {
+      "url": "/audio/example/9fe399320daf9d13.opus",
+      "kind": "example",
+      "text": "Go up this street to the corner.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0095",
+      "unitId": "b1_u4",
+      "durationMs": 1667,
+      "bytes": 6868
+    },
+    "3dbf13f3e0d3d069": {
+      "url": "/audio/chunk/3dbf13f3e0d3d069.opus",
+      "kind": "chunk",
+      "text": "Go down this street",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0096",
+      "unitId": "b1_u4",
+      "durationMs": 1272,
+      "bytes": 5252
+    },
+    "130222da949d939a": {
+      "url": "/audio/chunk/130222da949d939a.opus",
+      "kind": "chunk",
+      "text": "Go down this street",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0096",
+      "unitId": "b1_u4",
+      "durationMs": 1075,
+      "bytes": 4795
+    },
+    "8cd3c2f27c6a4a4f": {
+      "url": "/audio/chunk/8cd3c2f27c6a4a4f.opus",
+      "kind": "chunk",
+      "text": "Go down this street",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0096",
+      "unitId": "b1_u4",
+      "durationMs": 1295,
+      "bytes": 5402
+    },
+    "ed7583de03f31d02": {
+      "url": "/audio/chunk/ed7583de03f31d02.opus",
+      "kind": "chunk",
+      "text": "Go down this street",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0096",
+      "unitId": "b1_u4",
+      "durationMs": 1493,
+      "bytes": 6222
+    },
+    "8737b5d7c9d89d83": {
+      "url": "/audio/example/8737b5d7c9d89d83.opus",
+      "kind": "example",
+      "text": "Go down this street, and turn right.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0096",
+      "unitId": "b1_u4",
+      "durationMs": 2062,
+      "bytes": 8233
+    },
+    "25e1422fef0f11e2": {
+      "url": "/audio/chunk/25e1422fef0f11e2.opus",
+      "kind": "chunk",
+      "text": "Where is your house?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0097",
+      "unitId": "b1_u4",
+      "durationMs": 1214,
+      "bytes": 5024
+    },
+    "2c207373f469385e": {
+      "url": "/audio/chunk/2c207373f469385e.opus",
+      "kind": "chunk",
+      "text": "Where is your house?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0097",
+      "unitId": "b1_u4",
+      "durationMs": 1272,
+      "bytes": 5345
+    },
+    "5c482045102c6601": {
+      "url": "/audio/chunk/5c482045102c6601.opus",
+      "kind": "chunk",
+      "text": "Where is your house?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0097",
+      "unitId": "b1_u4",
+      "durationMs": 1051,
+      "bytes": 4379
+    },
+    "7315a5005f14bb44": {
+      "url": "/audio/chunk/7315a5005f14bb44.opus",
+      "kind": "chunk",
+      "text": "Where is your house?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0097",
+      "unitId": "b1_u4",
+      "durationMs": 1237,
+      "bytes": 5124
+    },
+    "a41c106515d08666": {
+      "url": "/audio/example/a41c106515d08666.opus",
+      "kind": "example",
+      "text": "Where is your house, Miguel?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0097",
+      "unitId": "b1_u4",
+      "durationMs": 1922,
+      "bytes": 7385
+    },
+    "a6e2b568b5aba878": {
+      "url": "/audio/chunk/a6e2b568b5aba878.opus",
+      "kind": "chunk",
+      "text": "It is that building",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0098",
+      "unitId": "b1_u4",
+      "durationMs": 1063,
+      "bytes": 4517
+    },
+    "cf9aeeb5a55cb3bf": {
+      "url": "/audio/chunk/cf9aeeb5a55cb3bf.opus",
+      "kind": "chunk",
+      "text": "It is that building",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0098",
+      "unitId": "b1_u4",
+      "durationMs": 1144,
+      "bytes": 4844
+    },
+    "ea6ecb953a570130": {
+      "url": "/audio/chunk/ea6ecb953a570130.opus",
+      "kind": "chunk",
+      "text": "It is that building",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0098",
+      "unitId": "b1_u4",
+      "durationMs": 1168,
+      "bytes": 4851
+    },
+    "bf1f60d980e7251d": {
+      "url": "/audio/chunk/bf1f60d980e7251d.opus",
+      "kind": "chunk",
+      "text": "It is that building",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0098",
+      "unitId": "b1_u4",
+      "durationMs": 1318,
+      "bytes": 5632
+    },
+    "deea1c1c1dd2638a": {
+      "url": "/audio/example/deea1c1c1dd2638a.opus",
+      "kind": "example",
+      "text": "It is that building, next to the park.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0098",
+      "unitId": "b1_u4",
+      "durationMs": 2479,
+      "bytes": 9524
+    },
+    "d9c36f99d3675a28": {
+      "url": "/audio/chunk/d9c36f99d3675a28.opus",
+      "kind": "chunk",
+      "text": "Where do you work?",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0099",
+      "unitId": "b1_u4",
+      "durationMs": 1121,
+      "bytes": 4664
+    },
+    "00a8cf0a0345c092": {
+      "url": "/audio/chunk/00a8cf0a0345c092.opus",
+      "kind": "chunk",
+      "text": "Where do you work?",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0099",
+      "unitId": "b1_u4",
+      "durationMs": 901,
+      "bytes": 4280
+    },
+    "386853b457a2a755": {
+      "url": "/audio/chunk/386853b457a2a755.opus",
+      "kind": "chunk",
+      "text": "Where do you work?",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0099",
+      "unitId": "b1_u4",
+      "durationMs": 912,
+      "bytes": 3831
+    },
+    "df95d068c7aa350b": {
+      "url": "/audio/chunk/df95d068c7aa350b.opus",
+      "kind": "chunk",
+      "text": "Where do you work?",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0099",
+      "unitId": "b1_u4",
+      "durationMs": 1098,
+      "bytes": 4627
+    },
+    "8c1baa4d2b4e89cc": {
+      "url": "/audio/example/8c1baa4d2b4e89cc.opus",
+      "kind": "example",
+      "text": "Where do you work, Carlos?",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0099",
+      "unitId": "b1_u4",
+      "durationMs": 1713,
+      "bytes": 6795
+    },
+    "bec99d9319f5209b": {
+      "url": "/audio/chunk/bec99d9319f5209b.opus",
+      "kind": "chunk",
+      "text": "I work here",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0100",
+      "unitId": "b1_u4",
+      "durationMs": 947,
+      "bytes": 3921
+    },
+    "810705b1c2914377": {
+      "url": "/audio/chunk/810705b1c2914377.opus",
+      "kind": "chunk",
+      "text": "I work here",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0100",
+      "unitId": "b1_u4",
+      "durationMs": 877,
+      "bytes": 3729
+    },
+    "3e977e24557867a6": {
+      "url": "/audio/chunk/3e977e24557867a6.opus",
+      "kind": "chunk",
+      "text": "I work here",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0100",
+      "unitId": "b1_u4",
+      "durationMs": 947,
+      "bytes": 3894
+    },
+    "d32066c7b2c8bd1e": {
+      "url": "/audio/chunk/d32066c7b2c8bd1e.opus",
+      "kind": "chunk",
+      "text": "I work here",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0100",
+      "unitId": "b1_u4",
+      "durationMs": 1017,
+      "bytes": 4344
+    },
+    "71557ed791372e26": {
+      "url": "/audio/example/71557ed791372e26.opus",
+      "kind": "example",
+      "text": "I work here, in this building.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0100",
+      "unitId": "b1_u4",
+      "durationMs": 1899,
+      "bytes": 7484
+    },
+    "4b9a421c14d6ab2d": {
+      "url": "/audio/chunk/4b9a421c14d6ab2d.opus",
+      "kind": "chunk",
+      "text": "It is one block from here",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0101",
+      "unitId": "b1_u4",
+      "durationMs": 1458,
+      "bytes": 6074
+    },
+    "9b5322e6af15c5f0": {
+      "url": "/audio/chunk/9b5322e6af15c5f0.opus",
+      "kind": "chunk",
+      "text": "It is one block from here",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0101",
+      "unitId": "b1_u4",
+      "durationMs": 1562,
+      "bytes": 6692
+    },
+    "58c92d85a6ae7a23": {
+      "url": "/audio/chunk/58c92d85a6ae7a23.opus",
+      "kind": "chunk",
+      "text": "It is one block from here",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0101",
+      "unitId": "b1_u4",
+      "durationMs": 1632,
+      "bytes": 6857
+    },
+    "9ea1534cfcbdc81d": {
+      "url": "/audio/chunk/9ea1534cfcbdc81d.opus",
+      "kind": "chunk",
+      "text": "It is one block from here",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0101",
+      "unitId": "b1_u4",
+      "durationMs": 1841,
+      "bytes": 7678
+    },
+    "2f7bd55daf3291d9": {
+      "url": "/audio/example/2f7bd55daf3291d9.opus",
+      "kind": "example",
+      "text": "It is one block from here, on the left.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0101",
+      "unitId": "b1_u4",
+      "durationMs": 2375,
+      "bytes": 9513
+    },
+    "e7c1d751f0fd1b10": {
+      "url": "/audio/chunk/e7c1d751f0fd1b10.opus",
+      "kind": "chunk",
+      "text": "Thank you, I understand",
+      "voiceId": "us_f_1",
+      "ownerId": "c_0102",
+      "unitId": "b1_u4",
+      "durationMs": 1644,
+      "bytes": 6800
+    },
+    "99011b62ae38debe": {
+      "url": "/audio/chunk/99011b62ae38debe.opus",
+      "kind": "chunk",
+      "text": "Thank you, I understand",
+      "voiceId": "us_m_1",
+      "ownerId": "c_0102",
+      "unitId": "b1_u4",
+      "durationMs": 1818,
+      "bytes": 7500
+    },
+    "d985980b49eb303d": {
+      "url": "/audio/chunk/d985980b49eb303d.opus",
+      "kind": "chunk",
+      "text": "Thank you, I understand",
+      "voiceId": "us_f_2",
+      "ownerId": "c_0102",
+      "unitId": "b1_u4",
+      "durationMs": 1632,
+      "bytes": 6773
+    },
+    "c89594f8593f68e6": {
+      "url": "/audio/chunk/c89594f8593f68e6.opus",
+      "kind": "chunk",
+      "text": "Thank you, I understand",
+      "voiceId": "uk_m_1",
+      "ownerId": "c_0102",
+      "unitId": "b1_u4",
+      "durationMs": 1922,
+      "bytes": 8009
+    },
+    "954f988dfedefcdb": {
+      "url": "/audio/example/954f988dfedefcdb.opus",
+      "kind": "example",
+      "text": "Thank you, I understand. It is near here.",
+      "voiceId": "us_m_2",
+      "ownerId": "c_0102",
+      "unitId": "b1_u4",
+      "durationMs": 2700,
+      "bytes": 10687
+    },
+    "7bcb3cdc0c4d35fa": {
+      "url": "/audio/scene_line/7bcb3cdc0c4d35fa.opus",
+      "kind": "scene_line",
+      "text": "Ana, good morning.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1365,
+      "bytes": 6216
+    },
+    "9e7def87ee23428e": {
+      "url": "/audio/scene_line/9e7def87ee23428e.opus",
+      "kind": "scene_line",
+      "text": "Good morning, Miguel. How are you?",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2189,
+      "bytes": 9046
+    },
+    "3ba57c872b998e43": {
+      "url": "/audio/scene_line/3ba57c872b998e43.opus",
+      "kind": "scene_line",
+      "text": "I am fine, thank you. Ana, where is the café?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 3815,
+      "bytes": 14808
+    },
+    "17fc3815dd9fd60e": {
+      "url": "/audio/scene_line/17fc3815dd9fd60e.opus",
+      "kind": "scene_line",
+      "text": "The café? It is near here. It is not far.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2967,
+      "bytes": 12075
+    },
+    "af58a1666d3239aa": {
+      "url": "/audio/scene_line/af58a1666d3239aa.opus",
+      "kind": "scene_line",
+      "text": "No, it is near. Go down this street.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2433,
+      "bytes": 10110
+    },
+    "f12d378003217569": {
+      "url": "/audio/scene_line/f12d378003217569.opus",
+      "kind": "scene_line",
+      "text": "Go down this street. Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1655,
+      "bytes": 6783
+    },
+    "9f57b0fa22e6c3ff": {
+      "url": "/audio/scene_line/9f57b0fa22e6c3ff.opus",
+      "kind": "scene_line",
+      "text": "And turn right at the store.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1551,
+      "bytes": 6448
+    },
+    "ec48ea0969765472": {
+      "url": "/audio/scene_line/ec48ea0969765472.opus",
+      "kind": "scene_line",
+      "text": "Turn right at the store.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1353,
+      "bytes": 5743
+    },
+    "bb32509bec109613": {
+      "url": "/audio/scene_line/bb32509bec109613.opus",
+      "kind": "scene_line",
+      "text": "Yes! It is on the corner.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1794,
+      "bytes": 7387
+    },
+    "d0d7cbfc6e0e39fd": {
+      "url": "/audio/scene_line/d0d7cbfc6e0e39fd.opus",
+      "kind": "scene_line",
+      "text": "It is on the corner. Thank you, Ana.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2445,
+      "bytes": 10041
+    },
+    "2ddbbdc2c76e6a0c": {
+      "url": "/audio/scene_line/2ddbbdc2c76e6a0c.opus",
+      "kind": "scene_line",
+      "text": "See you later, Miguel!",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1527,
+      "bytes": 6363
+    },
+    "a3c605d793e0092f": {
+      "url": "/audio/scene_line/a3c605d793e0092f.opus",
+      "kind": "scene_line",
+      "text": "Excuse me... Tom?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 1249,
+      "bytes": 5289
+    },
+    "f1a9c620538d0752": {
+      "url": "/audio/scene_line/f1a9c620538d0752.opus",
+      "kind": "scene_line",
+      "text": "Miguel! Hello. How are you?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 2259,
+      "bytes": 9394
+    },
+    "c3fcf89e29662cf1": {
+      "url": "/audio/scene_line/c3fcf89e29662cf1.opus",
+      "kind": "scene_line",
+      "text": "Tom, I am lost.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 1516,
+      "bytes": 6137
+    },
+    "0950b2cf2d9289d3": {
+      "url": "/audio/scene_line/0950b2cf2d9289d3.opus",
+      "kind": "scene_line",
+      "text": "You are lost? Okay. Where do you go?",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 2851,
+      "bytes": 11714
+    },
+    "a9f29dba1befa99b": {
+      "url": "/audio/scene_line/a9f29dba1befa99b.opus",
+      "kind": "scene_line",
+      "text": "The café. Where is the café?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 1992,
+      "bytes": 8112
+    },
+    "dbfc2ed7e6067eff": {
+      "url": "/audio/scene_line/dbfc2ed7e6067eff.opus",
+      "kind": "scene_line",
+      "text": "The café. It is not on this street.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 2886,
+      "bytes": 11793
+    },
+    "d6c109d35ef3d9fd": {
+      "url": "/audio/scene_line/d6c109d35ef3d9fd.opus",
+      "kind": "scene_line",
+      "text": "No. Go up this street to the corner.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 3188,
+      "bytes": 13305
+    },
+    "b8e60123046e5ae1": {
+      "url": "/audio/scene_line/b8e60123046e5ae1.opus",
+      "kind": "scene_line",
+      "text": "Excuse me, can you repeat that?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 1945,
+      "bytes": 7798
+    },
+    "2bbc1c1aee49514c": {
+      "url": "/audio/scene_line/2bbc1c1aee49514c.opus",
+      "kind": "scene_line",
+      "text": "Go up this street. To the corner.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 2421,
+      "bytes": 10046
+    },
+    "edb53477c2d98ceb": {
+      "url": "/audio/scene_line/edb53477c2d98ceb.opus",
+      "kind": "scene_line",
+      "text": "And it is across from the park.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 2212,
+      "bytes": 9261
+    },
+    "367c95ab44e99769": {
+      "url": "/audio/scene_line/367c95ab44e99769.opus",
+      "kind": "scene_line",
+      "text": "Across from the park?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 1295,
+      "bytes": 5441
+    },
+    "2a95fdd648d8fba8": {
+      "url": "/audio/scene_line/2a95fdd648d8fba8.opus",
+      "kind": "scene_line",
+      "text": "Yes. The park is on this street. Go up, and it is across from the park.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 5568,
+      "bytes": 22663
+    },
+    "025c1b6eff8c20e7": {
+      "url": "/audio/scene_line/025c1b6eff8c20e7.opus",
+      "kind": "scene_line",
+      "text": "One moment, please. Can you repeat the street?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 2491,
+      "bytes": 11351
+    },
+    "7ca144f7152de659": {
+      "url": "/audio/scene_line/7ca144f7152de659.opus",
+      "kind": "scene_line",
+      "text": "This street. Go up this street.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 2654,
+      "bytes": 10874
+    },
+    "8ae12dec7ac5c276": {
+      "url": "/audio/scene_line/8ae12dec7ac5c276.opus",
+      "kind": "scene_line",
+      "text": "This street. Up. And the park?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 1922,
+      "bytes": 8021
+    },
+    "0ceb274c72af7416": {
+      "url": "/audio/scene_line/0ceb274c72af7416.opus",
+      "kind": "scene_line",
+      "text": "The park is near the bank. It is one block from here.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 3722,
+      "bytes": 15971
+    },
+    "5f98a104b15feac1": {
+      "url": "/audio/scene_line/5f98a104b15feac1.opus",
+      "kind": "scene_line",
+      "text": "One block. Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 1504,
+      "bytes": 6325
+    },
+    "5ca9039feb1451fc": {
+      "url": "/audio/scene_line/5ca9039feb1451fc.opus",
+      "kind": "scene_line",
+      "text": "And the café is across from the park.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 2479,
+      "bytes": 10275
+    },
+    "2ca91df0790a55cf": {
+      "url": "/audio/scene_line/2ca91df0790a55cf.opus",
+      "kind": "scene_line",
+      "text": "The café is across from the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 2329,
+      "bytes": 9472
+    },
+    "a4d601fe0b7d63d2": {
+      "url": "/audio/scene_line/a4d601fe0b7d63d2.opus",
+      "kind": "scene_line",
+      "text": "Yes! Miguel, you understand.",
+      "voiceId": "uk_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 2839,
+      "bytes": 11668
+    },
+    "75fc84146f21724a": {
+      "url": "/audio/scene_line/75fc84146f21724a.opus",
+      "kind": "scene_line",
+      "text": "Thank you, I understand.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0021",
+      "unitId": "b1_u4",
+      "durationMs": 1632,
+      "bytes": 6737
+    },
+    "acc4a3d5f829a650": {
+      "url": "/audio/scene_line/acc4a3d5f829a650.opus",
+      "kind": "scene_line",
+      "text": "Miguel! Good afternoon!",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1725,
+      "bytes": 7098
+    },
+    "e2a5327132d52717": {
+      "url": "/audio/scene_line/e2a5327132d52717.opus",
+      "kind": "scene_line",
+      "text": "Good afternoon, Maria.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1098,
+      "bytes": 5345
+    },
+    "853efe7edc0530c0": {
+      "url": "/audio/scene_line/853efe7edc0530c0.opus",
+      "kind": "scene_line",
+      "text": "I am fine, thank you. I am here!",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2479,
+      "bytes": 9900
+    },
+    "dd3955c5e80e9cb3": {
+      "url": "/audio/scene_line/dd3955c5e80e9cb3.opus",
+      "kind": "scene_line",
+      "text": "Yes, you are here. Is it far, your house?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2990,
+      "bytes": 12006
+    },
+    "3639caf4bc083386": {
+      "url": "/audio/scene_line/3639caf4bc083386.opus",
+      "kind": "scene_line",
+      "text": "It is far. But I am here.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1585,
+      "bytes": 6541
+    },
+    "e0ecc5a3f5ed7bf6": {
+      "url": "/audio/scene_line/e0ecc5a3f5ed7bf6.opus",
+      "kind": "scene_line",
+      "text": "Miguel, the store is closed.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1957,
+      "bytes": 8086
+    },
+    "a245c8e2845e0b6c": {
+      "url": "/audio/scene_line/a245c8e2845e0b6c.opus",
+      "kind": "scene_line",
+      "text": "The store is closed?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1469,
+      "bytes": 6189
+    },
+    "ed8be7bae2d31043": {
+      "url": "/audio/scene_line/ed8be7bae2d31043.opus",
+      "kind": "scene_line",
+      "text": "Yes. But the café is open. The café is open in the afternoon.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 3768,
+      "bytes": 15407
+    },
+    "4c74c26aee8866a8": {
+      "url": "/audio/scene_line/4c74c26aee8866a8.opus",
+      "kind": "scene_line",
+      "text": "The café is open. Okay!",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2038,
+      "bytes": 8772
+    },
+    "e6b8bee5324c38c9": {
+      "url": "/audio/scene_line/e6b8bee5324c38c9.opus",
+      "kind": "scene_line",
+      "text": "Miguel! You are here.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1655,
+      "bytes": 6335
+    },
+    "392ae77944c2af26": {
+      "url": "/audio/scene_line/392ae77944c2af26.opus",
+      "kind": "scene_line",
+      "text": "Hello, Carlos. Yes, I am here.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2909,
+      "bytes": 11629
+    },
+    "eaa2494407622ed2": {
+      "url": "/audio/scene_line/eaa2494407622ed2.opus",
+      "kind": "scene_line",
+      "text": "Miguel, where is your house?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1806,
+      "bytes": 7073
+    },
+    "504a2437a6c31098": {
+      "url": "/audio/scene_line/504a2437a6c31098.opus",
+      "kind": "scene_line",
+      "text": "It is far. It is that building, near the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2921,
+      "bytes": 11976
+    },
+    "008cc18beafdc24e": {
+      "url": "/audio/scene_line/008cc18beafdc24e.opus",
+      "kind": "scene_line",
+      "text": "Near the park! I work near the park.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2131,
+      "bytes": 8414
+    },
+    "c4dde8119b5918af": {
+      "url": "/audio/scene_line/c4dde8119b5918af.opus",
+      "kind": "scene_line",
+      "text": "Where do you work, Carlos?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1702,
+      "bytes": 7534
+    },
+    "9a3aa259f8d90151": {
+      "url": "/audio/scene_line/9a3aa259f8d90151.opus",
+      "kind": "scene_line",
+      "text": "I work in that building, on the corner.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2062,
+      "bytes": 8330
+    },
+    "a88fddfdb13a248c": {
+      "url": "/audio/scene_line/a88fddfdb13a248c.opus",
+      "kind": "scene_line",
+      "text": "On the corner of this street?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1330,
+      "bytes": 5664
+    },
+    "754a50da05e8f068": {
+      "url": "/audio/scene_line/754a50da05e8f068.opus",
+      "kind": "scene_line",
+      "text": "Yes. It is one block from here.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2259,
+      "bytes": 8892
+    },
+    "f9fcef365009cb7a": {
+      "url": "/audio/scene_line/f9fcef365009cb7a.opus",
+      "kind": "scene_line",
+      "text": "One block. It is near.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1562,
+      "bytes": 7718
+    },
+    "89434ac0bf7fd024": {
+      "url": "/audio/scene_line/89434ac0bf7fd024.opus",
+      "kind": "scene_line",
+      "text": "It is near. We are next to the park, you and me.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 3060,
+      "bytes": 11666
+    },
+    "2e18230165dfe176": {
+      "url": "/audio/scene_line/2e18230165dfe176.opus",
+      "kind": "scene_line",
+      "text": "Miguel, where is the bus stop?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2062,
+      "bytes": 7800
+    },
+    "78e4b124b27b9156": {
+      "url": "/audio/scene_line/78e4b124b27b9156.opus",
+      "kind": "scene_line",
+      "text": "The bus stop?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1028,
+      "bytes": 4269
+    },
+    "3b279b238765c1bc": {
+      "url": "/audio/scene_line/3b279b238765c1bc.opus",
+      "kind": "scene_line",
+      "text": "Yes. I do not understand this street.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2479,
+      "bytes": 9783
+    },
+    "53077821b58bab71": {
+      "url": "/audio/scene_line/53077821b58bab71.opus",
+      "kind": "scene_line",
+      "text": "One moment. Go down this street, to the corner.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2630,
+      "bytes": 12143
+    },
+    "b9ce03c1d3066501": {
+      "url": "/audio/scene_line/b9ce03c1d3066501.opus",
+      "kind": "scene_line",
+      "text": "Go down this street.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1226,
+      "bytes": 5466
+    },
+    "6c2021bec34fffde": {
+      "url": "/audio/scene_line/6c2021bec34fffde.opus",
+      "kind": "scene_line",
+      "text": "Yes. And turn left at the store.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2120,
+      "bytes": 8913
+    },
+    "f93145aea9a998ce": {
+      "url": "/audio/scene_line/f93145aea9a998ce.opus",
+      "kind": "scene_line",
+      "text": "Turn left at the store. Is it far?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2445,
+      "bytes": 10808
+    },
+    "98e71d55b51c919c": {
+      "url": "/audio/scene_line/98e71d55b51c919c.opus",
+      "kind": "scene_line",
+      "text": "No, it is near here. It is one block.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2503,
+      "bytes": 10322
+    },
+    "929e0153d0f14497": {
+      "url": "/audio/scene_line/929e0153d0f14497.opus",
+      "kind": "scene_line",
+      "text": "One block. Okay!",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1725,
+      "bytes": 6371
+    },
+    "312d4c9778ee771f": {
+      "url": "/audio/scene_line/312d4c9778ee771f.opus",
+      "kind": "scene_line",
+      "text": "It is across from the market. Come with me.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2445,
+      "bytes": 10221
+    },
+    "60c5ce266b373a33": {
+      "url": "/audio/scene_line/60c5ce266b373a33.opus",
+      "kind": "scene_line",
+      "text": "Thank you, Miguel!",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1295,
+      "bytes": 4781
+    },
+    "8e5e93361e34f8bd": {
+      "url": "/audio/scene_line/8e5e93361e34f8bd.opus",
+      "kind": "scene_line",
+      "text": "You are welcome, Carlos.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1713,
+      "bytes": 7577
+    },
+    "dbf1ac01695f30f4": {
+      "url": "/audio/scene_line/dbf1ac01695f30f4.opus",
+      "kind": "scene_line",
+      "text": "The café is open in the afternoon.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2062,
+      "bytes": 8571
+    },
+    "f5c3834ffa7c46ac": {
+      "url": "/audio/scene_line/f5c3834ffa7c46ac.opus",
+      "kind": "scene_line",
+      "text": "Okay. And where is the bus stop?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1853,
+      "bytes": 8607
+    },
+    "7752c2aa7cffb8b2": {
+      "url": "/audio/scene_line/7752c2aa7cffb8b2.opus",
+      "kind": "scene_line",
+      "text": "The bus stop? It is near the park.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2247,
+      "bytes": 9909
+    },
+    "13af0bfc0a11af97": {
+      "url": "/audio/scene_line/13af0bfc0a11af97.opus",
+      "kind": "scene_line",
+      "text": "Near the park. Is it far?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 1771,
+      "bytes": 7349
+    },
+    "385fb053bc03f183": {
+      "url": "/audio/scene_line/385fb053bc03f183.opus",
+      "kind": "scene_line",
+      "text": "No, it is one block from here.",
+      "voiceId": "us_f_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2015,
+      "bytes": 8320
+    },
+    "23d4827c64b4626d": {
+      "url": "/audio/scene_line/23d4827c64b4626d.opus",
+      "kind": "scene_line",
+      "text": "One block. Thank you, Ana.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0019",
+      "unitId": "b1_u4",
+      "durationMs": 2015,
+      "bytes": 10152
+    },
+    "99a18e856bb02830": {
+      "url": "/audio/scene_line/99a18e856bb02830.opus",
+      "kind": "scene_line",
+      "text": "Miguel, where is your house?",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1516,
+      "bytes": 6146
+    },
+    "64ed7bf2235581b7": {
+      "url": "/audio/scene_line/64ed7bf2235581b7.opus",
+      "kind": "scene_line",
+      "text": "It is that building, near the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2317,
+      "bytes": 9412
+    },
+    "f3640392e4d11222": {
+      "url": "/audio/scene_line/f3640392e4d11222.opus",
+      "kind": "scene_line",
+      "text": "Near the park! It is far.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2085,
+      "bytes": 8556
+    },
+    "8a8aa2f912bb8d28": {
+      "url": "/audio/scene_line/8a8aa2f912bb8d28.opus",
+      "kind": "scene_line",
+      "text": "It is far. But I understand this street.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 2456,
+      "bytes": 10084
+    },
+    "e7e42d7e8cf2107f": {
+      "url": "/audio/scene_line/e7e42d7e8cf2107f.opus",
+      "kind": "scene_line",
+      "text": "You understand this street!",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1678,
+      "bytes": 6994
+    },
+    "5a27720359fc6538": {
+      "url": "/audio/scene_line/5a27720359fc6538.opus",
+      "kind": "scene_line",
+      "text": "Go up this street, and it is across from the park.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 3164,
+      "bytes": 13077
+    },
+    "6eb4c29653c320ce": {
+      "url": "/audio/scene_line/6eb4c29653c320ce.opus",
+      "kind": "scene_line",
+      "text": "Yes! Come in, Miguel.",
+      "voiceId": "us_f_2",
+      "ownerId": "s_0022",
+      "unitId": "b1_u4",
+      "durationMs": 1539,
+      "bytes": 6230
+    },
+    "271cb6266d746baa": {
+      "url": "/audio/scene_line/271cb6266d746baa.opus",
+      "kind": "scene_line",
+      "text": "Carlos, is the store next to the park?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2503,
+      "bytes": 10334
+    },
+    "0f207a1bfb078878": {
+      "url": "/audio/scene_line/0f207a1bfb078878.opus",
+      "kind": "scene_line",
+      "text": "No. The store is on the corner, across from the bank.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 3269,
+      "bytes": 13173
+    },
+    "f6279e8def771ad1": {
+      "url": "/audio/scene_line/f6279e8def771ad1.opus",
+      "kind": "scene_line",
+      "text": "Across from the bank. Okay.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 1945,
+      "bytes": 8037
+    },
+    "8d9077329caa2cc3": {
+      "url": "/audio/scene_line/8d9077329caa2cc3.opus",
+      "kind": "scene_line",
+      "text": "And it is closed. But the café is open.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2770,
+      "bytes": 11191
+    },
+    "cc6d90d1d24686a1": {
+      "url": "/audio/scene_line/cc6d90d1d24686a1.opus",
+      "kind": "scene_line",
+      "text": "The café is open. I am here!",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0023",
+      "unitId": "b1_u4",
+      "durationMs": 2538,
+      "bytes": 10304
+    },
+    "461e0e6673ee4f07": {
+      "url": "/audio/scene_line/461e0e6673ee4f07.opus",
+      "kind": "scene_line",
+      "text": "Across from the market?",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1469,
+      "bytes": 5963
+    },
+    "a1aeb828c51fb2ca": {
+      "url": "/audio/scene_line/a1aeb828c51fb2ca.opus",
+      "kind": "scene_line",
+      "text": "Yes. Go down this street, turn left, and it is across from the market.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 4453,
+      "bytes": 18158
+    },
+    "c6d5649820ce933a": {
+      "url": "/audio/scene_line/c6d5649820ce933a.opus",
+      "kind": "scene_line",
+      "text": "Go down, turn left, across from the market.",
+      "voiceId": "us_m_2",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 2886,
+      "bytes": 11338
+    },
+    "759d9e5bbc25a26d": {
+      "url": "/audio/scene_line/759d9e5bbc25a26d.opus",
+      "kind": "scene_line",
+      "text": "Yes! You understand.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0024",
+      "unitId": "b1_u4",
+      "durationMs": 1585,
+      "bytes": 6613
+    },
+    "b1e3382f2ee54dee": {
+      "url": "/audio/scene_line/b1e3382f2ee54dee.opus",
+      "kind": "scene_line",
+      "text": "The café is not on this street?",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 1713,
+      "bytes": 7046
+    },
+    "e10255b600ee5a36": {
+      "url": "/audio/scene_line/e10255b600ee5a36.opus",
+      "kind": "scene_line",
+      "text": "Go up this street, to the corner. Okay, I understand.",
+      "voiceId": "us_m_1",
+      "ownerId": "s_0020",
+      "unitId": "b1_u4",
+      "durationMs": 3199,
+      "bytes": 13035
     }
   },
   "scenes": {
@@ -7909,15 +10039,603 @@
           "en": "Good night, Ana. See you later."
         }
       ]
+    },
+    "s_0019": {
+      "url": "/audio/scene/1df46992d0c37d4d.opus",
+      "unitId": "b1_u4",
+      "durationMs": 43122,
+      "bytes": 167460,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1365,
+          "character": "miguel",
+          "en": "Ana, good morning."
+        },
+        {
+          "start_ms": 1785,
+          "end_ms": 3974,
+          "character": "ana",
+          "en": "Good morning, Miguel. How are you?"
+        },
+        {
+          "start_ms": 4394,
+          "end_ms": 8209,
+          "character": "miguel",
+          "en": "I am fine, thank you. Ana, where is the café?"
+        },
+        {
+          "start_ms": 8629,
+          "end_ms": 11596,
+          "character": "ana",
+          "en": "The café? It is near here. It is not far."
+        },
+        {
+          "start_ms": 12016,
+          "end_ms": 12824,
+          "character": "miguel",
+          "en": "Is it far?"
+        },
+        {
+          "start_ms": 13244,
+          "end_ms": 15677,
+          "character": "ana",
+          "en": "No, it is near. Go down this street."
+        },
+        {
+          "start_ms": 16097,
+          "end_ms": 17752,
+          "character": "miguel",
+          "en": "Go down this street. Okay."
+        },
+        {
+          "start_ms": 18172,
+          "end_ms": 19723,
+          "character": "ana",
+          "en": "And turn right at the store."
+        },
+        {
+          "start_ms": 20143,
+          "end_ms": 21496,
+          "character": "miguel",
+          "en": "Turn right at the store."
+        },
+        {
+          "start_ms": 21916,
+          "end_ms": 23710,
+          "character": "ana",
+          "en": "Yes! It is on the corner."
+        },
+        {
+          "start_ms": 24130,
+          "end_ms": 26575,
+          "character": "miguel",
+          "en": "It is on the corner. Thank you, Ana."
+        },
+        {
+          "start_ms": 26995,
+          "end_ms": 29057,
+          "character": "ana",
+          "en": "The café is open in the afternoon."
+        },
+        {
+          "start_ms": 29477,
+          "end_ms": 31330,
+          "character": "miguel",
+          "en": "Okay. And where is the bus stop?"
+        },
+        {
+          "start_ms": 31750,
+          "end_ms": 33997,
+          "character": "ana",
+          "en": "The bus stop? It is near the park."
+        },
+        {
+          "start_ms": 34417,
+          "end_ms": 36188,
+          "character": "miguel",
+          "en": "Near the park. Is it far?"
+        },
+        {
+          "start_ms": 36608,
+          "end_ms": 38623,
+          "character": "ana",
+          "en": "No, it is one block from here."
+        },
+        {
+          "start_ms": 39043,
+          "end_ms": 41058,
+          "character": "miguel",
+          "en": "One block. Thank you, Ana."
+        },
+        {
+          "start_ms": 41478,
+          "end_ms": 43005,
+          "character": "ana",
+          "en": "See you later, Miguel!"
+        }
+      ]
+    },
+    "s_0020": {
+      "url": "/audio/scene/fd7bc0c8c58e65fd.opus",
+      "unitId": "b1_u4",
+      "durationMs": 32129,
+      "bytes": 124046,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1249,
+          "character": "miguel",
+          "en": "Excuse me... Tom?"
+        },
+        {
+          "start_ms": 1669,
+          "end_ms": 3928,
+          "character": "tom",
+          "en": "Miguel! Hello. How are you?"
+        },
+        {
+          "start_ms": 4348,
+          "end_ms": 5864,
+          "character": "miguel",
+          "en": "Tom, I am lost."
+        },
+        {
+          "start_ms": 6284,
+          "end_ms": 9135,
+          "character": "tom",
+          "en": "You are lost? Okay. Where do you go?"
+        },
+        {
+          "start_ms": 9555,
+          "end_ms": 11547,
+          "character": "miguel",
+          "en": "The café. Where is the café?"
+        },
+        {
+          "start_ms": 11967,
+          "end_ms": 14853,
+          "character": "tom",
+          "en": "The café. It is not on this street."
+        },
+        {
+          "start_ms": 15273,
+          "end_ms": 16986,
+          "character": "miguel",
+          "en": "The café is not on this street?"
+        },
+        {
+          "start_ms": 17406,
+          "end_ms": 20594,
+          "character": "tom",
+          "en": "No. Go up this street to the corner."
+        },
+        {
+          "start_ms": 21014,
+          "end_ms": 22959,
+          "character": "miguel",
+          "en": "Excuse me, can you repeat that?"
+        },
+        {
+          "start_ms": 23379,
+          "end_ms": 25800,
+          "character": "tom",
+          "en": "Go up this street. To the corner."
+        },
+        {
+          "start_ms": 26220,
+          "end_ms": 29419,
+          "character": "miguel",
+          "en": "Go up this street, to the corner. Okay, I understand."
+        },
+        {
+          "start_ms": 29839,
+          "end_ms": 32051,
+          "character": "tom",
+          "en": "And it is across from the park."
+        }
+      ]
+    },
+    "s_0021": {
+      "url": "/audio/scene/73ef7855bf33acf6.opus",
+      "unitId": "b1_u4",
+      "durationMs": 32706,
+      "bytes": 131140,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1295,
+          "character": "miguel",
+          "en": "Across from the park?"
+        },
+        {
+          "start_ms": 1715,
+          "end_ms": 7283,
+          "character": "tom",
+          "en": "Yes. The park is on this street. Go up, and it is across from the park."
+        },
+        {
+          "start_ms": 7703,
+          "end_ms": 10194,
+          "character": "miguel",
+          "en": "One moment, please. Can you repeat the street?"
+        },
+        {
+          "start_ms": 10614,
+          "end_ms": 13268,
+          "character": "tom",
+          "en": "This street. Go up this street."
+        },
+        {
+          "start_ms": 13688,
+          "end_ms": 15610,
+          "character": "miguel",
+          "en": "This street. Up. And the park?"
+        },
+        {
+          "start_ms": 16030,
+          "end_ms": 19752,
+          "character": "tom",
+          "en": "The park is near the bank. It is one block from here."
+        },
+        {
+          "start_ms": 20172,
+          "end_ms": 21676,
+          "character": "miguel",
+          "en": "One block. Okay."
+        },
+        {
+          "start_ms": 22096,
+          "end_ms": 24575,
+          "character": "tom",
+          "en": "And the café is across from the park."
+        },
+        {
+          "start_ms": 24995,
+          "end_ms": 27324,
+          "character": "miguel",
+          "en": "The café is across from the park."
+        },
+        {
+          "start_ms": 27744,
+          "end_ms": 30583,
+          "character": "tom",
+          "en": "Yes! Miguel, you understand."
+        },
+        {
+          "start_ms": 31003,
+          "end_ms": 32635,
+          "character": "miguel",
+          "en": "Thank you, I understand."
+        }
+      ]
+    },
+    "s_0022": {
+      "url": "/audio/scene/9d484945411283ed.opus",
+      "unitId": "b1_u4",
+      "durationMs": 41562,
+      "bytes": 160219,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1725,
+          "character": "maria",
+          "en": "Miguel! Good afternoon!"
+        },
+        {
+          "start_ms": 2145,
+          "end_ms": 3243,
+          "character": "miguel",
+          "en": "Good afternoon, Maria."
+        },
+        {
+          "start_ms": 3663,
+          "end_ms": 4529,
+          "character": "maria",
+          "en": "How are you?"
+        },
+        {
+          "start_ms": 4949,
+          "end_ms": 7428,
+          "character": "miguel",
+          "en": "I am fine, thank you. I am here!"
+        },
+        {
+          "start_ms": 7848,
+          "end_ms": 10838,
+          "character": "maria",
+          "en": "Yes, you are here. Is it far, your house?"
+        },
+        {
+          "start_ms": 11258,
+          "end_ms": 12843,
+          "character": "miguel",
+          "en": "It is far. But I am here."
+        },
+        {
+          "start_ms": 13263,
+          "end_ms": 15220,
+          "character": "maria",
+          "en": "Miguel, the store is closed."
+        },
+        {
+          "start_ms": 15640,
+          "end_ms": 17109,
+          "character": "miguel",
+          "en": "The store is closed?"
+        },
+        {
+          "start_ms": 17529,
+          "end_ms": 21297,
+          "character": "maria",
+          "en": "Yes. But the café is open. The café is open in the afternoon."
+        },
+        {
+          "start_ms": 21717,
+          "end_ms": 23755,
+          "character": "miguel",
+          "en": "The café is open. Okay!"
+        },
+        {
+          "start_ms": 24175,
+          "end_ms": 25691,
+          "character": "maria",
+          "en": "Miguel, where is your house?"
+        },
+        {
+          "start_ms": 26111,
+          "end_ms": 28428,
+          "character": "miguel",
+          "en": "It is that building, near the park."
+        },
+        {
+          "start_ms": 28848,
+          "end_ms": 30933,
+          "character": "maria",
+          "en": "Near the park! It is far."
+        },
+        {
+          "start_ms": 31353,
+          "end_ms": 33809,
+          "character": "miguel",
+          "en": "It is far. But I understand this street."
+        },
+        {
+          "start_ms": 34229,
+          "end_ms": 35907,
+          "character": "maria",
+          "en": "You understand this street!"
+        },
+        {
+          "start_ms": 36327,
+          "end_ms": 39491,
+          "character": "miguel",
+          "en": "Go up this street, and it is across from the park."
+        },
+        {
+          "start_ms": 39911,
+          "end_ms": 41450,
+          "character": "maria",
+          "en": "Yes! Come in, Miguel."
+        }
+      ]
+    },
+    "s_0023": {
+      "url": "/audio/scene/4998ae3707ed5896.opus",
+      "unitId": "b1_u4",
+      "durationMs": 42824,
+      "bytes": 165035,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 1655,
+          "character": "carlos",
+          "en": "Miguel! You are here."
+        },
+        {
+          "start_ms": 2075,
+          "end_ms": 4984,
+          "character": "miguel",
+          "en": "Hello, Carlos. Yes, I am here."
+        },
+        {
+          "start_ms": 5404,
+          "end_ms": 7210,
+          "character": "carlos",
+          "en": "Miguel, where is your house?"
+        },
+        {
+          "start_ms": 7630,
+          "end_ms": 10551,
+          "character": "miguel",
+          "en": "It is far. It is that building, near the park."
+        },
+        {
+          "start_ms": 10971,
+          "end_ms": 13102,
+          "character": "carlos",
+          "en": "Near the park! I work near the park."
+        },
+        {
+          "start_ms": 13522,
+          "end_ms": 15224,
+          "character": "miguel",
+          "en": "Where do you work, Carlos?"
+        },
+        {
+          "start_ms": 15644,
+          "end_ms": 17706,
+          "character": "carlos",
+          "en": "I work in that building, on the corner."
+        },
+        {
+          "start_ms": 18126,
+          "end_ms": 19456,
+          "character": "miguel",
+          "en": "On the corner of this street?"
+        },
+        {
+          "start_ms": 19876,
+          "end_ms": 22135,
+          "character": "carlos",
+          "en": "Yes. It is one block from here."
+        },
+        {
+          "start_ms": 22555,
+          "end_ms": 24117,
+          "character": "miguel",
+          "en": "One block. It is near."
+        },
+        {
+          "start_ms": 24537,
+          "end_ms": 27597,
+          "character": "carlos",
+          "en": "It is near. We are next to the park, you and me."
+        },
+        {
+          "start_ms": 28017,
+          "end_ms": 30520,
+          "character": "miguel",
+          "en": "Carlos, is the store next to the park?"
+        },
+        {
+          "start_ms": 30940,
+          "end_ms": 34209,
+          "character": "carlos",
+          "en": "No. The store is on the corner, across from the bank."
+        },
+        {
+          "start_ms": 34629,
+          "end_ms": 36574,
+          "character": "miguel",
+          "en": "Across from the bank. Okay."
+        },
+        {
+          "start_ms": 36994,
+          "end_ms": 39764,
+          "character": "carlos",
+          "en": "And it is closed. But the café is open."
+        },
+        {
+          "start_ms": 40184,
+          "end_ms": 42722,
+          "character": "miguel",
+          "en": "The café is open. I am here!"
+        }
+      ]
+    },
+    "s_0024": {
+      "url": "/audio/scene/284d7d1fd027f50b.opus",
+      "unitId": "b1_u4",
+      "durationMs": 40468,
+      "bytes": 152612,
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 2062,
+          "character": "carlos",
+          "en": "Miguel, where is the bus stop?"
+        },
+        {
+          "start_ms": 2482,
+          "end_ms": 3510,
+          "character": "miguel",
+          "en": "The bus stop?"
+        },
+        {
+          "start_ms": 3930,
+          "end_ms": 6409,
+          "character": "carlos",
+          "en": "Yes. I do not understand this street."
+        },
+        {
+          "start_ms": 6829,
+          "end_ms": 9459,
+          "character": "miguel",
+          "en": "One moment. Go down this street, to the corner."
+        },
+        {
+          "start_ms": 9879,
+          "end_ms": 11105,
+          "character": "carlos",
+          "en": "Go down this street."
+        },
+        {
+          "start_ms": 11525,
+          "end_ms": 13645,
+          "character": "miguel",
+          "en": "Yes. And turn left at the store."
+        },
+        {
+          "start_ms": 14065,
+          "end_ms": 16510,
+          "character": "carlos",
+          "en": "Turn left at the store. Is it far?"
+        },
+        {
+          "start_ms": 16930,
+          "end_ms": 19433,
+          "character": "miguel",
+          "en": "No, it is near here. It is one block."
+        },
+        {
+          "start_ms": 19853,
+          "end_ms": 21578,
+          "character": "carlos",
+          "en": "One block. Okay!"
+        },
+        {
+          "start_ms": 21998,
+          "end_ms": 24443,
+          "character": "miguel",
+          "en": "It is across from the market. Come with me."
+        },
+        {
+          "start_ms": 24863,
+          "end_ms": 26332,
+          "character": "carlos",
+          "en": "Across from the market?"
+        },
+        {
+          "start_ms": 26752,
+          "end_ms": 31205,
+          "character": "miguel",
+          "en": "Yes. Go down this street, turn left, and it is across from the market."
+        },
+        {
+          "start_ms": 31625,
+          "end_ms": 34511,
+          "character": "carlos",
+          "en": "Go down, turn left, across from the market."
+        },
+        {
+          "start_ms": 34931,
+          "end_ms": 36516,
+          "character": "miguel",
+          "en": "Yes! You understand."
+        },
+        {
+          "start_ms": 36936,
+          "end_ms": 38231,
+          "character": "carlos",
+          "en": "Thank you, Miguel!"
+        },
+        {
+          "start_ms": 38651,
+          "end_ms": 40364,
+          "character": "miguel",
+          "en": "You are welcome, Carlos."
+        }
+      ]
     }
   },
   "recordings": {},
   "voiceProbes": {
-    "us_f_1": "dafe1e8c6f5f0204",
-    "us_m_1": "b64edd3160e8fdeb",
-    "us_m_2": "fe0686aec2dabb10",
-    "us_f_2": "3bec2fbbed8c9b46",
-    "us_f_3": "f51fd5de4d5478a9",
-    "uk_m_1": "d47c652b930447bc"
+    "us_f_1": "56abccb9334cd070",
+    "us_m_1": "881df29d47ab083e",
+    "us_m_2": "57b26fdd51abf87d",
+    "us_f_2": "7b9fbb82eb8cccf7",
+    "us_f_3": "894ebaa27054800f",
+    "uk_m_1": "11d52c3d5b42e3b9"
   }
 }

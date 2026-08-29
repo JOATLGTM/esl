@@ -280,7 +280,7 @@ scenes:
   - id: s_0019
     title_es: "¿Dónde está el café?"
     character: ana
-    duration_target_s: 44
+    duration_target_s: 50
     transcript: |
       MIGUEL: Ana, good morning.
       ANA: Good morning, Miguel. How are you?
@@ -293,6 +293,12 @@ scenes:
       MIGUEL: Turn right at the store.
       ANA: Yes! It is on the corner.
       MIGUEL: It is on the corner. Thank you, Ana.
+      ANA: The café is open in the afternoon.
+      MIGUEL: Okay. And where is the bus stop?
+      ANA: The bus stop? It is near the park.
+      MIGUEL: Near the park. Is it far?
+      ANA: No, it is one block from here.
+      MIGUEL: One block. Thank you, Ana.
       ANA: See you later, Miguel!
     questions:
       - q_es: "¿Qué hace Miguel después de cada indicación?"
@@ -325,11 +331,11 @@ scenes:
       TOM: You are lost? Okay. Where do you go?
       MIGUEL: The café. Where is the café?
       TOM: The café. It is not on this street.
-      MIGUEL: It is not on this street?
+      MIGUEL: The café is not on this street?
       TOM: No. Go up this street to the corner.
       MIGUEL: Excuse me, can you repeat that?
       TOM: Go up this street. To the corner.
-      MIGUEL: Go up this street, to the corner. Okay.
+      MIGUEL: Go up this street, to the corner. Okay, I understand.
       TOM: And it is across from the park.
     questions:
       - q_es: "¿Qué hizo mal Miguel antes de esta escena?"
@@ -390,7 +396,7 @@ scenes:
   - id: s_0022
     title_es: "En el café, por fin"
     character: maria
-    duration_target_s: 44
+    duration_target_s: 50
     transcript: |
       MARIA: Miguel! Good afternoon!
       MIGUEL: Good afternoon, Maria.
@@ -402,7 +408,13 @@ scenes:
       MIGUEL: The store is closed?
       MARIA: Yes. But the café is open. The café is open in the afternoon.
       MIGUEL: The café is open. Okay!
-      MARIA: Come in, Miguel.
+      MARIA: Miguel, where is your house?
+      MIGUEL: It is that building, near the park.
+      MARIA: Near the park! It is far.
+      MIGUEL: It is far. But I understand this street.
+      MARIA: You understand this street!
+      MIGUEL: Go up this street, and it is across from the park.
+      MARIA: Yes! Come in, Miguel.
     questions:
       - q_es: "¿Cómo llega Miguel al café?"
         options_es:
@@ -426,7 +438,7 @@ scenes:
   - id: s_0023
     title_es: "¿Dónde trabajas?"
     character: carlos
-    duration_target_s: 44
+    duration_target_s: 50
     transcript: |
       CARLOS: Miguel! You are here.
       MIGUEL: Hello, Carlos. Yes, I am here.
@@ -439,6 +451,11 @@ scenes:
       CARLOS: Yes. It is one block from here.
       MIGUEL: One block. It is near.
       CARLOS: It is near. We are next to the park, you and me.
+      MIGUEL: Carlos, is the store next to the park?
+      CARLOS: No. The store is on the corner, across from the bank.
+      MIGUEL: Across from the bank. Okay.
+      CARLOS: And it is closed. But the café is open.
+      MIGUEL: The café is open. I am here!
     questions:
       - q_es: "¿Qué descubren Carlos y Miguel?"
         options_es:
@@ -462,7 +479,7 @@ scenes:
   - id: s_0024
     title_es: "Carlos está perdido"
     character: carlos
-    duration_target_s: 46
+    duration_target_s: 50
     transcript: |
       CARLOS: Miguel, where is the bus stop?
       MIGUEL: The bus stop?
@@ -474,6 +491,10 @@ scenes:
       MIGUEL: No, it is near here. It is one block.
       CARLOS: One block. Okay!
       MIGUEL: It is across from the market. Come with me.
+      CARLOS: Across from the market?
+      MIGUEL: Yes. Go down this street, turn left, and it is across from the market.
+      CARLOS: Go down, turn left, across from the market.
+      MIGUEL: Yes! You understand.
       CARLOS: Thank you, Miguel!
       MIGUEL: You are welcome, Carlos.
     questions:
