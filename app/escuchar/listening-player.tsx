@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SpeakerIcon } from "@/components/ui/speaker-icon";
+import { SpeedControl, type Speed } from "@/components/ui/speed-control";
 import { es } from "@/lib/copy/es";
 import { activeLineAt } from "@/lib/session/transcript";
 import type { ListeningTrack } from "@/lib/session/listening";
@@ -13,20 +14,17 @@ import type { ListeningTrack } from "@/lib/session/listening";
  * line from the authored timings -- with two differences that follow from what
  * a library is for:
  *
- *   - **A speed control.** 0.8x for the day he is tired, 1.25x for the day he
- *     is not. `playbackRate` with `preservesPitch` is free and the one thing
- *     the roadmap's "Maria at real speed" can honestly promise today.
+ *   - **A speed control** (`components/ui/speed-control.tsx`), shared with
+ *     Absorb.
  *   - **Nothing after it.** No questions, no shadowing, no advance. It ends
  *     and he picks another one or leaves.
  */
-const SPEEDS = [0.8, 1, 1.25] as const;
-
 export function ListeningPlayer({ track }: { track: ListeningTrack }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const stopAtRef = useRef<number | null>(null);
   const [playing, setPlaying] = useState(false);
   const [elapsedMs, setElapsedMs] = useState(0);
-  const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
+  const [speed, setSpeed] = useState<Speed>(1);
 
   useEffect(() => {
     if (!track.audioUrl) return;
@@ -92,21 +90,7 @@ export function ListeningPlayer({ track }: { track: ListeningTrack }) {
             {playing ? es.listening.pause : es.listening.play}
           </span>
         </Button>
-        <div className="flex items-center gap-1" role="group" aria-label={es.listening.speed}>
-          {SPEEDS.map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setSpeed(s)}
-              aria-pressed={speed === s}
-              className={`min-h-11 rounded-full px-3 text-base font-medium ${
-                speed === s ? "bg-primary-soft text-ink" : "text-muted"
-              }`}
-            >
-              {s}×
-            </button>
-          ))}
-        </div>
+        <SpeedControl value={speed} onChange={setSpeed} />
       </div>
 
       {!track.audioUrl && <p className="text-base text-faint">{es.listening.noAudio}</p>}

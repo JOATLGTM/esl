@@ -98,7 +98,18 @@ export type AudioPlan = {
  * Cache key. The text actually sent to the engine participates, so editing a
  * pronunciation override regenerates exactly the clips containing that word.
  */
-export function clipHash(synthText: string, voiceId: string, provider: string): string {
+/**
+ * The identity of a clip: everything that changes its bytes.
+ *
+ * The effective `length_scale` (natural_wpm / rate_wpm) is in here because it
+ * was not, and that was a cache bug waiting for the first roster edit. Either
+ * number changes every clip the voice speaks, and a hash that ignored them
+ * reported all of those clips as cached: edit the roster, run the pipeline,
+ * get a green "0 to generate" and the old audio. Found twice on the same day
+ * while giving the cast deliberate rates (ROADMAP #5) -- first for `rate_wpm`,
+ * then again for the `natural_wpm` re-calibration that followed.
+ */
+export function clipHash(synthText: string, voiceId: string, provider: string, lengthScale?: number): string {
   return crypto
     .createHash("sha256")
     .update(
@@ -106,6 +117,7 @@ export function clipHash(synthText: string, voiceId: string, provider: string): 
         AUDIO_PIPELINE_VERSION,
         provider,
         voiceId,
+        lengthScale === undefined ? null : Number(lengthScale.toFixed(3)),
         synthText.trim(),
         AUDIO_FORMAT.codec,
         AUDIO_FORMAT.bitrate,
@@ -201,7 +213,9 @@ export function buildAudioPlan(
     extra: Partial<ClipSpec> = {}
   ): ClipSpec => {
     const synthText = spell(text.trim(), provider);
-    const hash = clipHash(synthText, voiceId, provider);
+    const v = byId.get(voiceId);
+    const scale = v?.natural_wpm && v?.rate_wpm ? v.natural_wpm / v.rate_wpm : undefined;
+    const hash = clipHash(synthText, voiceId, provider, scale);
     return {
       hash,
       kind,

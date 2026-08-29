@@ -79,14 +79,15 @@ git add public/audio
 
 | | |
 |---|---|
-| Block 1 today (6 units, authored) | **16 MB, 1,287 files** |
-| Scripted audio at 24 units | ~64 MB, ~5,150 files |
+| Block 1 today (6 units + 12 listening tracks) | **22 MB, 1,463 files** |
+| Scripted audio at 24 units | ~75 MB, ~5,850 files |
 | Ear training, all 9 contrasts | ~13 MB, 2,700 files (9 × 25 pairs × 2 words × 6 speakers) |
-| **Full curriculum** | **~77 MB** |
+| **Full curriculum** | **~88 MB** |
 
 The 24-unit row is now extrapolation from six real units rather than from one:
-Block 1 averages **2.2 MB and ~215 files per unit**, and the projection is that
-× 24. Later blocks have longer scenes, so treat it as a floor.
+Block 1 averages **3.1 MB and ~240 files per unit** with two listening tracks
+each, and the projection is that × 24. The listening library is meant to grow
+to 10–20 minutes a unit, so treat it as a floor.
 
 **Bandwidth is not the meter that binds.** ~77 MB against Vercel Hobby's
 100 GB/month is ~1,300 learners each pulling the whole curriculum once — which

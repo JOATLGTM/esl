@@ -66,14 +66,32 @@ primary_accent: "US (General American)"
 # broad on purpose, so near-identical voices still separate.
 probe_text: "The sheep on the ship asked for a big blue cup of coffee, thanks."
 
+# Rates are DELIBERATELY different per character (ROADMAP #5). The gate used to
+# hold the whole cast within 1.10x of each other, which is less variable than
+# real speech -- it optimised toward the thing that hurts perceptual
+# robustness. So: Ana slowest (patient, repeats things unasked), Miguel slow
+# (the learner's counterpart), Rosa clear, Tom mid, Carlos brisk, and Maria
+# fastest, because STORY.md wrote her as "where the learner meets real speed".
+# Spread is 180/140 = 1.29x; MAX_SCENE_SPREAD is 1.3 to match.
+#
+# natural_wpm was re-calibrated on 2026-08-29 after the first render at these
+# rates, because length_scale is not linear far from a voice's calibration
+# point: Ana (declared 140) came out at 158, Carlos (165) at 182.
+#
+# THE FORMULA, because it was got backwards once and cost a full regeneration:
+#   length_scale = natural_wpm / rate_wpm      (scale > 1 is SLOWER)
+#   natural_wpm' = measured_wpm x (natural_wpm / rate_wpm)
+# i.e. what the model produced, times the scale it was rendered at, is its
+# real pace at scale 1.0. Lowering natural_wpm makes a voice FASTER.
+# Re-measure whenever a rate or a model changes; the gate will say if not.
 voices:
   - id: us_f_1
     accent: "US (General American)"
     gender: female
     native: true
-    rate_wpm: 155
+    rate_wpm: 140
     # Measured at length_scale 1.0 via `npm run content:spike`.
-    natural_wpm: 119
+    natural_wpm: 134
     provider_voice:
       macos: "Samantha"
       piper: "en_US-amy-medium"
@@ -82,9 +100,9 @@ voices:
     accent: "US (General American)"
     gender: male
     native: true
-    rate_wpm: 155
+    rate_wpm: 145
     # Measured at length_scale 1.0 via `npm run content:spike`.
-    natural_wpm: 205
+    natural_wpm: 232
     provider_voice:
       # NOT "Alex" -- Alex is not installed by default on current macOS and
       # `say` substitutes Samantha without saying so. Eddy is really present.
@@ -95,9 +113,9 @@ voices:
     accent: "US (General American)"
     gender: male
     native: true
-    rate_wpm: 150
+    rate_wpm: 165
     # Measured at length_scale 1.0 via `npm run content:spike`.
-    natural_wpm: 163
+    natural_wpm: 180
     provider_voice:
       macos: "Reed (English (US))"
       piper: "en_US-joe-medium"
@@ -106,7 +124,7 @@ voices:
     accent: "US (General American)"
     gender: female
     native: true
-    rate_wpm: 160
+    rate_wpm: 180
     # Measured at length_scale 1.0 via `npm run content:spike`.
     natural_wpm: 150
     provider_voice:
@@ -119,7 +137,7 @@ voices:
     native: true
     rate_wpm: 150
     # Measured at length_scale 1.0 via `npm run content:spike`.
-    natural_wpm: 160
+    natural_wpm: 183
     provider_voice:
       macos: "Sandy (English (US))"
       piper: "en_US-lessac-medium"
@@ -130,7 +148,7 @@ voices:
     native: true
     rate_wpm: 155
     # Measured at length_scale 1.0 via `npm run content:spike`.
-    natural_wpm: 156
+    natural_wpm: 153
     provider_voice:
       macos: "Daniel"
       piper: "en_GB-alan-medium"

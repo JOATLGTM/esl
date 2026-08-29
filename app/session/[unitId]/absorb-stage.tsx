@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { recordShadowing } from "../actions";
 import { Button } from "@/components/ui/button";
+import { SpeedControl, type Speed } from "@/components/ui/speed-control";
 import { es, fill } from "@/lib/copy/es";
 import type { AbsorbScene } from "@/lib/session/absorb";
 import {
@@ -48,6 +49,7 @@ export function AbsorbStage({
   const [quiz, setQuiz] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [choice, setChoice] = useState<number | null>(null);
+  const [speed, setSpeed] = useState<Speed>(1);
   // Shadowing (PRD F11) runs after the questions, on material the learner has
   // just proved they understood.
   const [shadowStage, setShadowStage] = useState<ShadowStage | null>(null);
@@ -91,6 +93,15 @@ export function AbsorbStage({
       audio.removeEventListener("error", onPause);
     };
   }, [scene.audioUrl]);
+
+  // Applied whenever it changes, including mid-line. Pitch is preserved so a
+  // slower Maria is still Maria and not a different, lower voice.
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.preservesPitch = true;
+    audio.playbackRate = speed;
+  }, [speed, scene.audioUrl]);
 
   const playFrom = useCallback((startMs: number, stopMs: number | null) => {
     const audio = audioRef.current;
@@ -282,13 +293,16 @@ export function AbsorbStage({
 
       {scene.audioUrl ? (
         <>
-          <Button type="button" variant="secondary" onClick={toggleScene}>
-            {playing
-              ? es.session.absorb.stop
-              : heard
-                ? es.session.absorb.playAgain
-                : es.session.absorb.play}
-          </Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <Button type="button" variant="secondary" onClick={toggleScene}>
+              {playing
+                ? es.session.absorb.stop
+                : heard
+                  ? es.session.absorb.playAgain
+                  : es.session.absorb.play}
+            </Button>
+            <SpeedControl value={speed} onChange={setSpeed} />
+          </div>
           <p className="text-base text-faint">{es.session.absorb.tapHint}</p>
         </>
       ) : (

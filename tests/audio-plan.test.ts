@@ -24,6 +24,11 @@ describe("clip hashing", () => {
     assert.notEqual(base, clipHash("Hello there", "us_f_1", "macos"));
     assert.notEqual(base, clipHash("Hello", "us_m_1", "macos"));
     assert.notEqual(base, clipHash("Hello", "us_f_1", "piper"));
+    // The effective length_scale changes the bytes; leaving it out of the
+    // hash made every clip look cached after a roster edit.
+    assert.notEqual(clipHash("Hello", "us_f_1", "piper", 0.85), clipHash("Hello", "us_f_1", "piper", 1.25));
+    // But float noise must not: the same scale to three decimals is the same clip.
+    assert.equal(clipHash("Hello", "us_f_1", "piper", 0.85), clipHash("Hello", "us_f_1", "piper", 0.8501));
   });
 
   test("ignores surrounding whitespace so reflowing YAML costs nothing", () => {

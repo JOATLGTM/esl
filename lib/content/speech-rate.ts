@@ -80,7 +80,15 @@ export const DECLARED_TOLERANCE = 0.2;
  * has no way to know the difference is an artefact rather than something about
  * the character.
  */
-export const MAX_SCENE_SPREAD = 1.25;
+export const MAX_SCENE_SPREAD = 1.45;
+// Was 1.25, then 1.3. Raised when the roster was given deliberate
+// per-character rates (Miguel 145, Maria 180 -- 1.24x on purpose). A cast that
+// all speak within 10% of each other is tidier than real people and worse
+// practice. The measured spread inside one scene runs ~15% wider than the
+// declared one, because a scene samples a few lines per voice and a line with
+// a list in it ("five, one, two, nine, eight") is mostly pauses. 1.45 is the
+// declared 1.24 plus that noise; it still catches the failure this gate was
+// built for, where an engine ignores the roster and one voice runs off alone.
 
 /**
  * Typical syllables per word in the English this course teaches.

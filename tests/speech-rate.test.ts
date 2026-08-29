@@ -88,11 +88,13 @@ describe("the gate", () => {
   });
 
   test("catches two characters at different speeds in one conversation", () => {
-    // Ana at 132 answering Miguel at 98 — the learner has no way to know the
-    // difference is an artefact rather than something about the character.
+    // Ana at 180 answering Miguel at 120 -- both inside the band, so only the
+    // scene check can fire -- and the learner has no way to know a 1.5x gap is
+    // an artefact rather than something about the character. (The original
+    // case was 132 vs 98, from macOS `say`; 98 now trips the floor first.)
     const clips = [
-      clip("ana", 132), clip("ana", 130), clip("ana", 134),
-      clip("miguel", 98), clip("miguel", 96), clip("miguel", 100),
+      clip("ana", 180), clip("ana", 178), clip("ana", 182),
+      clip("miguel", 120), clip("miguel", 118), clip("miguel", 122),
     ];
     const problems = rateProblems(clips, new Map());
     assert.ok(problems.some((p) => p.where === "scene:s_0001" && /faster than/.test(p.message)));
@@ -133,11 +135,11 @@ describe("not accusing anyone on thin evidence", () => {
     // whose overall rate was within 5% of target. The voice-level check already
     // refused to accuse on fewer than three samples; the scene-level one did not.
     // Both rates sit inside the band, so the only check that could fire is the
-    // scene spread — 175/130 is 1.35x, well over the 1.25x limit.
+    // scene spread — 180/120 is 1.5x, over the limit, with both inside the band.
     const clips: RateClip[] = [
-      clip("fast", 175, 8), clip("fast", 175, 8), clip("fast", 175, 8),
+      clip("fast", 180, 8), clip("fast", 180, 8), clip("fast", 180, 8),
       // Only two samples: not enough to say anything about this voice here.
-      clip("slow", 130, 8), clip("slow", 130, 8),
+      clip("slow", 120, 8), clip("slow", 120, 8),
     ];
     assert.ok(MIN_SCENE_SAMPLES > 2);
     assert.deepEqual(measureSceneSpreads(clips), []);
@@ -146,8 +148,8 @@ describe("not accusing anyone on thin evidence", () => {
 
   test("but does compare once the evidence is there", () => {
     const clips: RateClip[] = [
-      clip("fast", 175, 8), clip("fast", 175, 8), clip("fast", 175, 8),
-      clip("slow", 130, 8), clip("slow", 130, 8), clip("slow", 130, 8),
+      clip("fast", 180, 8), clip("fast", 180, 8), clip("fast", 180, 8),
+      clip("slow", 120, 8), clip("slow", 120, 8), clip("slow", 120, 8),
     ];
     const [spread] = measureSceneSpreads(clips);
     assert.ok(spread && spread.ratio > MAX_SCENE_SPREAD);

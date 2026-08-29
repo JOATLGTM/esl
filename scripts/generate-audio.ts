@@ -393,11 +393,34 @@ async function main() {
   let clips = plan.clips;
   if (only) clips = clips.filter((c) => c.kind === only);
 
+  // A clip already on disk under its content hash is finished work, whether or
+  // not the manifest knows about it. The manifest used to be written only at
+  // the very end, so a run killed at clip 612 of 644 left 612 correct files
+  // and a manifest that said none existed -- and the next run synthesised all
+  // of them again. Adopting them costs one ffprobe each.
+  let adopted = 0;
   const todo = clips.filter((c) => {
     if (force) return true;
     const existing = manifest.clips[c.hash];
-    return !existing || !fs.existsSync(path.join(OUT_DIR, existing.url.replace(/^\/audio\//, "")));
+    if (existing && fs.existsSync(path.join(OUT_DIR, existing.url.replace(/^\/audio\//, "")))) return false;
+    const onDisk = path.join(OUT_DIR, c.relPath);
+    if (!existing && fs.existsSync(onDisk)) {
+      manifest.clips[c.hash] = {
+        url: `/audio/${c.relPath}`,
+        kind: c.kind,
+        text: c.text,
+        voiceId: c.voiceId,
+        ownerId: c.ownerId,
+        unitId: c.unitId,
+        durationMs: ffprobeDurationMs(onDisk),
+        bytes: fs.statSync(onDisk).size,
+      };
+      adopted++;
+      return false;
+    }
+    return true;
   });
+  if (adopted) console.log(`    adopted ${adopted} clip(s) already on disk from an interrupted run`);
 
   const chars = todo.reduce((n, c) => n + c.text.length, 0);
   // Every engine is local and free. The only budget worth reporting is time.
@@ -455,6 +478,11 @@ async function main() {
     done++;
     if (done % 25 === 0 || done === todo.length) {
       process.stdout.write(`\r    generated ${done}/${todo.length}`);
+    }
+    // Checkpoint, so a killed run keeps its bookkeeping and not just its files.
+    if (done % 50 === 0) {
+      fs.mkdirSync(path.dirname(MANIFEST), { recursive: true });
+      fs.writeFileSync(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
     }
   });
   if (todo.length) process.stdout.write("\n");

@@ -140,7 +140,7 @@ magnitude the best hours-per-authoring-hour available.
 *Cost: schema + stage ~2 days; then ~1–2 hours of authoring per unit. Depends
 on: nothing — but write it against Block 1 before writing Block 2.*
 
-### 5. Speech rate that varies, and a speed control
+### 5. ~~Speech rate that varies, and a speed control~~ — built 2026-08-29
 
 The rate gate homogenised the cast to a **1.10× spread**, which is *less*
 variable than real speech — the project optimised toward the thing that hurts

@@ -441,6 +441,24 @@ A learner revealing the gloss on most of their cards is offered a step back
 toward more Spanish — offered, never applied, never framed as a problem, and
 never shown at full support where there is nothing to offer.
 
+**The cast speaks at deliberately different rates, and the learner can change
+the speed** — built 2026-08-29, `docs/ROADMAP.md` #5. The gate used to hold the
+whole cast within 1.10× of each other, which is tidier than real people and
+worse practice. Now Ana is slowest (140, patient), Miguel slow (145, the
+learner's counterpart), Rosa 150, Tom 155, Carlos 165, Maria 180 — *"where the
+learner meets real speed"*, as `STORY.md` wrote her. Measured: every voice
+within 5% of declared, cast spread 1.24×. Both players — Absorb and the
+library — carry a 0.8× / 1× / 1.25× control (`components/ui/speed-control.tsx`),
+`playbackRate` with pitch preserved.
+
+**This cost three full regenerations of ~1,400 clips, and each one taught
+something now in the traps:** the clip hash ignored the rate, so the first
+roster edit produced a green "0 to generate" and the old audio; the
+calibration correction was applied backwards once (`length_scale = natural /
+rate` — *lowering* `natural_wpm` makes a voice faster); and a run killed at
+clip 612 of 644 lost all 612 because the manifest was only written at the end.
+The pipeline now adopts on-disk clips and checkpoints every 50.
+
 **The listening library** — built 2026-08-29, `docs/ROADMAP.md` #4. A new
 content type, `content/listening/<unit>.yaml`: connected speech in the cast's
 voices made **entirely of words the unit has already released**. It is gated
@@ -753,6 +771,36 @@ content under generated noise.
 ---
 
 ## Traps — things that cost time once already
+
+**The clip hash must include everything that changes the bytes.** It had the
+text, the voice and the provider, and not the rate — so editing `rate_wpm`
+produced a green "0 to generate (1414 cached)" and the old audio. Fixed by
+hashing the effective `length_scale`; then found again the same afternoon when
+`natural_wpm` changed and the hash still had only `rate_wpm`. The rule: hash
+the *derived* parameter the engine actually receives, not the inputs you
+happen to remember.
+
+**`length_scale = natural_wpm / rate_wpm`, and scale > 1 is slower.** So to
+correct a voice that renders too fast you *raise* `natural_wpm`:
+`natural' = measured × (natural / rate)`. It was applied the other way once —
+Ana went from 158 wpm to 177 against a declared 140 — and cost a full
+regeneration. The formula is now in `voices.yaml` next to the numbers.
+
+**A killed audio run used to lose its bookkeeping.** The manifest was written
+once, at the end; a run killed at clip 612 of 644 left 612 correct files on
+disk and a manifest that said none existed, and the next run synthesised all
+of them again. `generate-audio.ts` now adopts any clip already on disk under
+its content hash (one `ffprobe` each) and checkpoints the manifest every 50
+clips. Long runs are still foreground — `--only=chunk|example|scene_line`
+splits them under the 10-minute limit — but a timeout now costs at most 50
+clips.
+
+**The per-scene rate gate bounds noise around *authored* variation now, not
+uniformity.** `MAX_SCENE_SPREAD` went 1.25 → 1.45 when the cast was given
+deliberate rates: a scene samples a few lines per voice, and a line that is a
+list (`five, one, two, nine, eight`) is mostly pauses, so in-scene spreads run
+~15% wider than the declared 1.24×. The gate still catches an engine that
+ignores the roster; it no longer flattens the cast.
 
 **Some filler classes are closed, and a threshold they cannot reach is noise.**
 `RECOMMENDED_FRAME_FILLERS` was 8, which was aspiration rather than arithmetic:
