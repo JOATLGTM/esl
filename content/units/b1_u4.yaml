@@ -1,0 +1,553 @@
+# Block 1, Unit 4 -- places, and getting somewhere on your own.
+#
+# The beat (content/STORY.md): Miguel gets lost on the way to the cafe.
+# Someone points. He arrives. And in the last scene he gives directions to
+# Carlos -- the man who has spent three units offering to translate for him.
+#
+# Design notes for whoever edits this next:
+#   * The place nouns are almost all Latinate cognates (cafe, park, bank,
+#     market, hospital, restaurant) and are deliberately NOT in
+#     vocab-schedule.yaml. The readability scorer credits them already, and
+#     this is the one unit in Block 1 where the cognate windfall pays -- which
+#     is why a unit about places can afford to spend its whole vocabulary
+#     budget on prepositions and verbs of motion instead.
+#   * `I am lost` is the phrase the unit exists to give someone. It is a repair
+#     strategy dressed as a location: a learner who can say it converts being
+#     stranded into a conversation.
+#   * Miguel asks Tom to repeat, twice, and then says the directions back.
+#     Repeating instructions to confirm them is a real strategy and nobody
+#     teaches it; it is also the only way an A0 learner survives directions.
+
+unit_id: b1_u4
+block: 1
+order: 4
+title_es: "En la calle"
+title_en: "On the street"
+cefr: A0
+can_do_es: "Puedo preguntar dónde está un lugar y entender la respuesta"
+target_contrast: ee_ih
+
+chunks:
+  - id: c_0078
+    en: "Where is the café?"
+    es: "¿Dónde está el café?"
+    cefr: A0
+    example_en: "Excuse me, where is the café?"
+    example_es: "Disculpe, ¿dónde está el café?"
+    tags: [question, places]
+    audio: [auto]
+
+  - id: c_0079
+    en: "I am lost"
+    es: "Estoy perdido"
+    cefr: A0
+    example_en: "I am lost. Where is the store?"
+    example_es: "Estoy perdido. ¿Dónde está la tienda?"
+    accepts: ["I'm lost"]
+    tags: [repair, places]
+    audio: [auto]
+
+  - id: c_0080
+    en: "Go straight"
+    es: "Sigue derecho"
+    cefr: A0
+    example_en: "Go straight, and it is on the corner."
+    example_es: "Sigue derecho, y está en la esquina."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0081
+    en: "Turn left"
+    es: "Da vuelta a la izquierda"
+    cefr: A0
+    example_en: "Turn left at the store."
+    example_es: "Da vuelta a la izquierda en la tienda."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0082
+    en: "Turn right"
+    es: "Da vuelta a la derecha"
+    cefr: A0
+    example_en: "Turn right, and go straight."
+    example_es: "Da vuelta a la derecha, y sigue derecho."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0083
+    en: "It is near here"
+    es: "Está cerca de aquí"
+    cefr: A0
+    example_en: "It is near here. It is not far."
+    example_es: "Está cerca de aquí. No está lejos."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0084
+    en: "It is far"
+    es: "Está lejos"
+    cefr: A0
+    example_en: "It is far. It is not near here."
+    example_es: "Está lejos. No está cerca de aquí."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0085
+    en: "Is it far?"
+    es: "¿Está lejos?"
+    cefr: A0
+    example_en: "Is it far? Is it near here?"
+    example_es: "¿Está lejos? ¿Está cerca de aquí?"
+    tags: [question, places]
+    audio: [auto]
+
+  - id: c_0086
+    en: "It is on this street"
+    es: "Está en esta calle"
+    cefr: A0
+    example_en: "It is on this street, near the park."
+    example_es: "Está en esta calle, cerca del parque."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0087
+    en: "It is on the corner"
+    es: "Está en la esquina"
+    cefr: A0
+    example_en: "It is on the corner of this street."
+    example_es: "Está en la esquina de esta calle."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0088
+    en: "It is next to the store"
+    es: "Está al lado de la tienda"
+    cefr: A0
+    example_en: "It is next to the store, on this side."
+    example_es: "Está al lado de la tienda, de este lado."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0089
+    en: "It is across from the park"
+    es: "Está enfrente del parque"
+    cefr: A0
+    example_en: "It is across from the park, near the bank."
+    example_es: "Está enfrente del parque, cerca del banco."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0090
+    en: "The first street"
+    es: "La primera calle"
+    cefr: A0
+    example_en: "The first street, and turn left."
+    example_es: "La primera calle, y da vuelta a la izquierda."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0091
+    en: "Come with me"
+    es: "Ven conmigo"
+    cefr: A0
+    example_en: "Come with me. It is near here."
+    example_es: "Ven conmigo. Está cerca de aquí."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0092
+    en: "Where is the bus stop?"
+    es: "¿Dónde está la parada del autobús?"
+    cefr: A0
+    example_en: "Where is the bus stop, please?"
+    example_es: "¿Dónde está la parada del autobús, por favor?"
+    tags: [question, places]
+    audio: [auto]
+
+  - id: c_0093
+    en: "The store is closed"
+    es: "La tienda está cerrada"
+    cefr: A0
+    example_en: "The store is closed. It is not open."
+    example_es: "La tienda está cerrada. No está abierta."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0094
+    en: "The café is open"
+    es: "El café está abierto"
+    cefr: A0
+    example_en: "The café is open. Come with me."
+    example_es: "El café está abierto. Ven conmigo."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0095
+    en: "Go up this street"
+    es: "Sube por esta calle"
+    cefr: A0
+    example_en: "Go up this street to the corner."
+    example_es: "Sube por esta calle hasta la esquina."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0096
+    en: "Go down this street"
+    es: "Baja por esta calle"
+    cefr: A0
+    example_en: "Go down this street, and turn right."
+    example_es: "Baja por esta calle, y da vuelta a la derecha."
+    tags: [directions]
+    audio: [auto]
+
+  - id: c_0097
+    en: "Where is your house?"
+    es: "¿Dónde está tu casa?"
+    cefr: A0
+    example_en: "Where is your house, Miguel?"
+    example_es: "¿Dónde está tu casa, Miguel?"
+    tags: [question, places]
+    audio: [auto]
+
+  - id: c_0098
+    en: "It is that building"
+    es: "Es ese edificio"
+    cefr: A0
+    example_en: "It is that building, next to the park."
+    example_es: "Es ese edificio, al lado del parque."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0099
+    en: "Where do you work?"
+    es: "¿Dónde trabajas?"
+    cefr: A0
+    example_en: "Where do you work, Carlos?"
+    example_es: "¿Dónde trabajas, Carlos?"
+    tags: [question, work]
+    audio: [auto]
+
+  - id: c_0100
+    en: "I work here"
+    es: "Trabajo aquí"
+    cefr: A0
+    example_en: "I work here, in this building."
+    example_es: "Trabajo aquí, en este edificio."
+    tags: [work]
+    audio: [auto]
+
+  - id: c_0101
+    en: "It is one block from here"
+    es: "Está a una cuadra de aquí"
+    cefr: A0
+    example_en: "It is one block from here, on the left."
+    example_es: "Está a una cuadra de aquí, a la izquierda."
+    tags: [places]
+    audio: [auto]
+
+  - id: c_0102
+    en: "Thank you, I understand"
+    es: "Gracias, entiendo"
+    cefr: A0
+    example_en: "Thank you, I understand. It is near here."
+    example_es: "Gracias, entiendo. Está cerca de aquí."
+    tags: [courtesy, repair]
+    audio: [auto]
+
+# Both frames take place nouns, which are cognates rather than taught chunks --
+# so the fillers are literal, and the readability scorer is what licenses them.
+frames:
+  - id: f_0007
+    pattern: "Where is the {NP}?"
+    es_pattern: "¿Dónde está el {NP}?"
+    slot: NP
+    literal_fillers: ["café", "store", "park", "bank", "market", "hospital", "restaurant", "building"]
+    cefr: A0
+    tags: [question, places]
+
+  - id: f_0008
+    pattern: "It is next to the {NP}."
+    es_pattern: "Está al lado del {NP}."
+    slot: NP
+    literal_fillers: ["café", "store", "park", "bank", "market", "hospital"]
+    cefr: A0
+    tags: [places]
+
+scenes:
+  # One afternoon: Miguel sets out, gets lost, is pointed, arrives -- and then
+  # points someone else. The last scene is the whole unit's argument.
+
+  - id: s_0019
+    title_es: "¿Dónde está el café?"
+    character: ana
+    duration_target_s: 44
+    transcript: |
+      MIGUEL: Ana, good morning.
+      ANA: Good morning, Miguel. How are you?
+      MIGUEL: I am fine, thank you. Ana, where is the café?
+      ANA: The café? It is near here. It is not far.
+      MIGUEL: Is it far?
+      ANA: No, it is near. Go down this street.
+      MIGUEL: Go down this street. Okay.
+      ANA: And turn right at the store.
+      MIGUEL: Turn right at the store.
+      ANA: Yes! It is on the corner.
+      MIGUEL: It is on the corner. Thank you, Ana.
+      ANA: See you later, Miguel!
+    questions:
+      - q_es: "¿Qué hace Miguel después de cada indicación?"
+        options_es:
+          - "La repite"
+          - "Pregunta otra cosa"
+          - "No dice nada"
+        answer: 0
+      - q_es: "¿El café está lejos?"
+        options_es:
+          - "Sí, muy lejos"
+          - "No, está cerca"
+          - "Ana no lo sabe"
+        answer: 1
+      - q_es: "¿Dónde tiene que dar vuelta Miguel?"
+        options_es:
+          - "En el parque"
+          - "En la esquina"
+          - "En la tienda"
+        answer: 2
+
+  - id: s_0020
+    title_es: "Estoy perdido"
+    character: tom
+    duration_target_s: 44
+    transcript: |
+      MIGUEL: Excuse me... Tom?
+      TOM: Miguel! Hello. How are you?
+      MIGUEL: Tom, I am lost.
+      TOM: You are lost? Okay. Where do you go?
+      MIGUEL: The café. Where is the café?
+      TOM: The café. It is not on this street.
+      MIGUEL: It is not on this street?
+      TOM: No. Go up this street to the corner.
+      MIGUEL: Excuse me, can you repeat that?
+      TOM: Go up this street. To the corner.
+      MIGUEL: Go up this street, to the corner. Okay.
+      TOM: And it is across from the park.
+    questions:
+      - q_es: "¿Qué hizo mal Miguel antes de esta escena?"
+        options_es:
+          - "Fue por la calle equivocada"
+          - "Olvidó el nombre del café"
+          - "Llegó tarde"
+        answer: 0
+      - q_es: "¿Qué hace Miguel cuando no alcanza a entender?"
+        options_es:
+          - "Se va"
+          - "Pide que se lo repitan"
+          - "Dice que sí sin entender"
+        answer: 1
+      - q_es: "¿Cómo reacciona Tom al ver que Miguel está perdido?"
+        options_es:
+          - "Se ríe de él"
+          - "Le dice que no puede ayudarlo"
+          - "Le da las indicaciones sin más"
+        answer: 2
+
+  - id: s_0021
+    title_es: "Otra vez, por favor"
+    character: tom
+    duration_target_s: 46
+    transcript: |
+      MIGUEL: Across from the park?
+      TOM: Yes. The park is on this street. Go up, and it is across from the park.
+      MIGUEL: One moment, please. Can you repeat the street?
+      TOM: This street. Go up this street.
+      MIGUEL: This street. Up. And the park?
+      TOM: The park is near the bank. It is one block from here.
+      MIGUEL: One block. Okay.
+      TOM: And the café is across from the park.
+      MIGUEL: The café is across from the park.
+      TOM: Yes! Miguel, you understand.
+      MIGUEL: Thank you, I understand.
+    questions:
+      - q_es: "¿Cuántas veces pide Miguel que le repitan algo?"
+        options_es:
+          - "Ninguna"
+          - "Una"
+          - "Dos"
+        answer: 2
+      - q_es: "¿Qué está cerca del parque?"
+        options_es:
+          - "El banco"
+          - "La casa de Tom"
+          - "La parada del autobús"
+        answer: 0
+      - q_es: "¿Por qué Tom le dice \"you understand\"?"
+        options_es:
+          - "Porque Miguel se va sin decir nada"
+          - "Porque Miguel repitió bien las indicaciones"
+          - "Porque Miguel habla como Tom"
+        answer: 1
+
+  - id: s_0022
+    title_es: "En el café, por fin"
+    character: maria
+    duration_target_s: 44
+    transcript: |
+      MARIA: Miguel! Good afternoon!
+      MIGUEL: Good afternoon, Maria.
+      MARIA: How are you?
+      MIGUEL: I am fine, thank you. I am here!
+      MARIA: Yes, you are here. Is it far, your house?
+      MIGUEL: It is far. But I am here.
+      MARIA: Miguel, the store is closed.
+      MIGUEL: The store is closed?
+      MARIA: Yes. But the café is open. The café is open in the afternoon.
+      MIGUEL: The café is open. Okay!
+      MARIA: Come in, Miguel.
+    questions:
+      - q_es: "¿Cómo llega Miguel al café?"
+        options_es:
+          - "Alguien lo trae"
+          - "Llega él solo, después de perderse"
+          - "No llega"
+        answer: 1
+      - q_es: "¿Qué está cerrado?"
+        options_es:
+          - "La tienda"
+          - "El café"
+          - "El banco"
+        answer: 0
+      - q_es: "¿Por qué dice Miguel \"but I am here\"?"
+        options_es:
+          - "Porque el café está cerca"
+          - "Porque Maria no lo esperaba"
+          - "Porque llegó aunque le costó"
+        answer: 2
+
+  - id: s_0023
+    title_es: "¿Dónde trabajas?"
+    character: carlos
+    duration_target_s: 44
+    transcript: |
+      CARLOS: Miguel! You are here.
+      MIGUEL: Hello, Carlos. Yes, I am here.
+      CARLOS: Miguel, where is your house?
+      MIGUEL: It is far. It is that building, near the park.
+      CARLOS: Near the park! I work near the park.
+      MIGUEL: Where do you work, Carlos?
+      CARLOS: I work in that building, on the corner.
+      MIGUEL: On the corner of this street?
+      CARLOS: Yes. It is one block from here.
+      MIGUEL: One block. It is near.
+      CARLOS: It is near. We are next to the park, you and me.
+    questions:
+      - q_es: "¿Qué descubren Carlos y Miguel?"
+        options_es:
+          - "Que trabajan juntos"
+          - "Que viven en la misma casa"
+          - "Que están cerca el uno del otro"
+        answer: 2
+      - q_es: "¿Dónde trabaja Carlos?"
+        options_es:
+          - "En un edificio en la esquina"
+          - "En el café"
+          - "En la tienda"
+        answer: 0
+      - q_es: "¿Quién pregunta primero por el trabajo del otro?"
+        options_es:
+          - "Carlos"
+          - "Miguel"
+          - "Nadie pregunta"
+        answer: 1
+
+  - id: s_0024
+    title_es: "Carlos está perdido"
+    character: carlos
+    duration_target_s: 46
+    transcript: |
+      CARLOS: Miguel, where is the bus stop?
+      MIGUEL: The bus stop?
+      CARLOS: Yes. I do not understand this street.
+      MIGUEL: One moment. Go down this street, to the corner.
+      CARLOS: Go down this street.
+      MIGUEL: Yes. And turn left at the store.
+      CARLOS: Turn left at the store. Is it far?
+      MIGUEL: No, it is near here. It is one block.
+      CARLOS: One block. Okay!
+      MIGUEL: It is across from the market. Come with me.
+      CARLOS: Thank you, Miguel!
+      MIGUEL: You are welcome, Carlos.
+    questions:
+      - q_es: "¿Qué cambió entre la primera escena y esta?"
+        options_es:
+          - "Ahora Miguel da las indicaciones"
+          - "Ahora Miguel está perdido otra vez"
+          - "Ahora Carlos habla español"
+        answer: 0
+      - q_es: "¿Qué le ofrece Miguel a Carlos al final?"
+        options_es:
+          - "Su teléfono"
+          - "Acompañarlo"
+          - "Un café"
+        answer: 1
+      - q_es: "¿Miguel duda al dar las indicaciones?"
+        options_es:
+          - "Sí, no sabe la calle"
+          - "Sí, se equivoca dos veces"
+          - "No, solo pide un momento y sigue"
+        answer: 2
+
+speaking_task:
+  mode: scripted
+  character: tom
+  scenario_es: "Estás perdido en la calle. Pide ayuda y entiende la respuesta."
+  scenario_en: "You are lost on the street. Ask for help and understand the answer."
+  target_chunks: [c_0078, c_0079, c_0080, c_0082, c_0085, c_0102]
+  script:
+    - speaker: ai
+      en: "Hello! Are you okay?"
+      es: "¡Hola! ¿Estás bien?"
+    - speaker: user
+      en: "Excuse me. I am lost."
+      es: "Disculpe. Estoy perdido."
+    - speaker: ai
+      en: "Okay. Where do you go?"
+      es: "Está bien. ¿A dónde vas?"
+    - speaker: user
+      en: "Where is the café?"
+      es: "¿Dónde está el café?"
+    - speaker: ai
+      en: "Go straight, and turn right at the store."
+      es: "Sigue derecho, y da vuelta a la derecha en la tienda."
+    - speaker: user
+      en: "Go straight, and turn right. Is it far?"
+      es: "Sigo derecho, y doy vuelta a la derecha. ¿Está lejos?"
+    - speaker: ai
+      en: "No, it is near here. It is one block."
+      es: "No, está cerca de aquí. Está a una cuadra."
+    - speaker: user
+      en: "Thank you, I understand."
+      es: "Gracias, entiendo."
+
+missions:
+  - id: m_0007
+    title_es: "Pregunta dónde está algo"
+    instructions_es: >-
+      Pregúntale a alguien en inglés dónde está un lugar: "Where is the bank?".
+      No importa si ya sabes dónde está. Lo que se practica es preguntar.
+    prep_chunk_ids: [c_0078, c_0092]
+    difficulty: 2
+    alternate_es: >-
+      Búscalo en un mapa del teléfono y di la pregunta en voz alta antes de
+      buscar. Preguntar en voz alta es la parte que cuesta.
+
+  - id: m_0008
+    title_es: "Di que estás perdido"
+    instructions_es: >-
+      Di "I am lost" en voz alta a alguien. Es la frase que convierte estar
+      perdido en una conversación, y por eso vale la pena tenerla lista antes
+      de necesitarla.
+    prep_chunk_ids: [c_0079]
+    difficulty: 2
+    alternate_es: >-
+      Dilo en voz alta tres veces, hoy, antes de salir. Que salga sin pensarlo
+      es justo lo que hace falta el día que pase de verdad.

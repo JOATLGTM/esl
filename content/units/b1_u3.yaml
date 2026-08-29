@@ -75,8 +75,8 @@ chunks:
     en: "They are my family"
     es: "Ellos son mi familia"
     cefr: A0
-    example_en: "They are my family. I love them."
-    example_es: "Ellos son mi familia. Los quiero."
+    example_en: "They are my family. Their home is in Mexico."
+    example_es: "Ellos son mi familia. Su casa está en México."
     tags: [family]
     audio: [auto]
 

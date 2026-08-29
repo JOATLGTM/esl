@@ -75,7 +75,15 @@ export function tokenize(text: string): string[] {
   const out: string[] = [];
   const raw = text
     .toLowerCase()
-    .replace(/[‘’]/g, "'")
+    .replace(/[\u2018\u2019]/g, "'")
+    // Strip diacritics before splitting on non-letters, or an accent does not
+    // separate a word -- it TRUNCATES it. `café` split to `caf`, which is not
+    // a word, is not a cognate, and was then taught as one: the chunk and the
+    // scene both produced the same broken token, so they agreed with each
+    // other and the 95% rule passed at 100%. English keeps a handful of these
+    // (café, naïve, résumé) and every one of them was silently mangled.
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
     .split(/[^a-z']+/);
 
   for (const piece of raw) {

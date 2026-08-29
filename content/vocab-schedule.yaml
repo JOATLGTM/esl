@@ -179,7 +179,12 @@ units:
   - unit: b1_u4
     note: >-
       Places and where things are. Miguel gets lost on the way to the cafe.
-      Prepositions of place, and the first verbs of motion.
+      Prepositions of place, and the first verbs of motion. `lost` was added
+      while authoring -- "I am lost" is the phrase the unit exists to give
+      someone. The place nouns themselves (cafe, park, bank, market, hospital,
+      restaurant) are NOT here: they are Latinate cognates the readability
+      scorer already credits, which is the one place the cognate windfall
+      arrives early rather than at B1.
     releases:
       - across
       - at
@@ -194,6 +199,7 @@ units:
       - go
       - house
       - left
+      - lost
       - near
       - next
       - on
