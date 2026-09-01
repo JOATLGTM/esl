@@ -103,8 +103,8 @@ export async function loadAbsorbScene(
       // once they do not. Both halves must come from the same language -- a
       // Spanish question over English options is worse than either -- so this
       // switches only when the scene authored a complete English version, and
-      // otherwise serves whatever exists. No unit has `q_en` yet, which is why
-      // this changes nothing today and will change on its own when one does.
+      // otherwise serves whatever exists. Every Block 1 scene carries `q_en`
+      // as of 2026-08-29, so this switch is live behaviour.
       const english = !spanishQuestions && q.q_en && q.options_en?.length;
       return shuffleQuestion(`${seed}:${scene.id}:${i}`, {
         prompt: (english ? q.q_en : q.q_es ?? q.q_en) ?? "",

@@ -39,22 +39,45 @@ export type FormulationPrompt = {
 };
 
 /**
- * How long he gets. Long enough to actually retrieve, short enough to be
- * pressure rather than a pause. The archetype's real-world gap is about four
- * seconds; this sits just above it on purpose, because a clock a nervous
- * beginner can never beat is a clock he stops trying against.
+ * How long he gets, per round. Long enough to actually retrieve, short enough
+ * to be pressure rather than a pause. The archetype's real-world gap is about
+ * four seconds; round one sits just above it on purpose, because a clock a
+ * nervous beginner can never beat is a clock he stops trying against. The
+ * later rounds shrink it, 4/3/2-style: the material is the same, only the
+ * time gets tighter.
  */
-export const FORMULATION_SECONDS = 5;
+export const ROUND_SECONDS = [5, 4, 3] as const;
+export const FORMULATION_ROUNDS = ROUND_SECONDS.length;
+export const FORMULATION_SECONDS = ROUND_SECONDS[0];
+
+/**
+ * How many sessions one hand is held before rotating.
+ *
+ * The warm-up originally dealt a fresh hand every session, seeded on the
+ * session id -- which is the one variant of this drill the evidence says does
+ * not stick. De Jong & Perfetti (2011) ran 4/3/2 with same-topic and
+ * new-topic groups: both got faster during training, and only the
+ * same-content repeaters kept the gain at posttest. Repetition of the same
+ * material is the active ingredient, so a hand now holds for three sessions
+ * and repeats three times inside each one.
+ */
+export const FORMULATION_HOLD_SESSIONS = 3;
+
+/** The seed for the current hand: stable within a hold, new after it. */
+export function formulationSeed(completedSessions: number): string {
+  return `hand-${Math.floor(Math.max(0, completedSessions) / FORMULATION_HOLD_SESSIONS)}`;
+}
 
 /** How many per session. Enough to warm up, not enough to feel like a test. */
 export const FORMULATION_COUNT = 5;
 
 /**
- * Which met chunks to prompt this session.
+ * Which met chunks to prompt.
  *
- * Seeded on the session, for the same reason everything else is: a refresh
- * mid-step must not deal a different hand. Walks the pool from a seeded offset
- * rather than shuffling it, so the selection is stable and cheap.
+ * Seeded on the *hand* (see `formulationSeed`), not the session: the same
+ * five phrases come back for three sessions running, because repeating the
+ * same material is what the drill's evidence base actually supports. A
+ * refresh mid-step deals the same hand for the same reason.
  *
  * Chunks with audio come first so the comparison has something to play, but
  * a chunk without a clip is still a real prompt -- the pipeline may simply not
@@ -65,7 +88,12 @@ export function pickFormulation(
   seed: string,
   count = FORMULATION_COUNT,
 ): FormulationPrompt[] {
-  const usable = pool.filter((p) => p.es.trim() && p.en.trim());
+  // Sorted before picking: the pool arrives from a database query whose order
+  // is not guaranteed, and a hand that must repeat across sessions has to be
+  // a function of the seed alone.
+  const usable = [...pool]
+    .filter((p) => p.es.trim() && p.en.trim())
+    .sort((a, b) => a.chunkId.localeCompare(b.chunkId));
   if (usable.length === 0 || count <= 0) return [];
 
   let h = 0x811c9dc5;

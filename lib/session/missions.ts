@@ -108,11 +108,18 @@ export async function recordMissionReport(
     .maybeSingle();
   if (!mission) return;
 
-  await supabase.from("mission_reports").insert({
-    user_id: userId,
-    mission_id: missionId,
-    difficulty_felt: difficultyFelt,
-    was_understood: wasUnderstood,
-    attempted: true,
-  });
+  // One report per (user, mission), enforced by `mission_reports_once`: the
+  // count on /home is presented as people spoken to, and a double-tap must
+  // file nothing rather than inflate it. ignoreDuplicates so the second tap
+  // also fails nothing.
+  await supabase.from("mission_reports").upsert(
+    {
+      user_id: userId,
+      mission_id: missionId,
+      difficulty_felt: difficultyFelt,
+      was_understood: wasUnderstood,
+      attempted: true,
+    },
+    { onConflict: "user_id,mission_id", ignoreDuplicates: true },
+  );
 }

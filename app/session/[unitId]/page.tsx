@@ -89,7 +89,7 @@ export default async function SessionPage({ params }: PageProps<"/session/[unitI
   // against yet, and the stage renders the script alone when it is.
   const speakFrame = stage === "speak" ? await loadSessionFrame(profile.id, unit.id) : null;
   // The warm-up at the front of Speak: met phrases, Spanish first, a clock.
-  const formulation = stage === "speak" ? await loadFormulationSet(profile.id, session.id) : [];
+  const formulation = stage === "speak" ? await loadFormulationSet(profile.id) : [];
 
   const earDrill =
     stage === "ear"

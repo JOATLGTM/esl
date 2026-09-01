@@ -2,7 +2,7 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { SpeakingMode } from "@/lib/supabase/types";
 import { pickFrameIndex, type FrameFiller, type SessionFrame } from "./frame-drill";
-import { pickFormulation, type FormulationPrompt } from "./formulate";
+import { formulationSeed, pickFormulation, type FormulationPrompt } from "./formulate";
 
 /**
  * Stage 5, Speak (PRD 4.2 / 4.5 / F5): the learner says the phrases out loud.
@@ -198,14 +198,21 @@ export async function loadSessionFrame(
  * material the stage order exists to keep out. Seeded on the session so a
  * refresh deals the same hand. Reads only; the step writes nothing.
  */
-export async function loadFormulationSet(userId: string, seed: string): Promise<FormulationPrompt[]> {
+export async function loadFormulationSet(userId: string): Promise<FormulationPrompt[]> {
   const supabase = await createClient();
 
-  const { data: cards } = await supabase
-    .from("user_cards")
-    .select("chunk_id")
-    .eq("user_id", userId);
+  const [{ data: cards }, { count: completed }] = await Promise.all([
+    supabase.from("user_cards").select("chunk_id").eq("user_id", userId),
+    // Total finished sessions, across units: the hand rotates on this, so the
+    // same five phrases hold for FORMULATION_HOLD_SESSIONS sessions running.
+    supabase
+      .from("sessions")
+      .select("id", { count: "exact", head: true })
+      .eq("user_id", userId)
+      .not("completed_at", "is", null),
+  ]);
   if (!cards?.length) return [];
+  const seed = formulationSeed(completed ?? 0);
 
   const { data: chunks } = await supabase
     .from("chunks")

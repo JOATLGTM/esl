@@ -18,6 +18,24 @@ describe("l1Support", () => {
     assert.equal(s.spanishQuestions, true);
   });
 
+  test("every offered choice is behaviourally distinct", () => {
+    // The middle radio was once a placebo: levels 1 and 3 behaved identically
+    // while /ajustes offered exactly [1, 3, 5]. A learner who changes a
+    // setting and sees nothing change concludes the product is fake.
+    const seen = new Set(
+      [1, 3, 5].map((level) => {
+        const s = l1Support(level);
+        return `${s.offerGloss}:${s.spanishQuestions}`;
+      }),
+    );
+    assert.equal(seen.size, 3);
+  });
+
+  test("the middle level delivers what its copy promises: English questions", () => {
+    assert.equal(l1Support(3).spanishQuestions, false);
+    assert.equal(l1Support(3).offerGloss, true);
+  });
+
   test("the least supported level withdraws the gloss offer", () => {
     const s = l1Support(5);
     assert.equal(s.offerGloss, false);

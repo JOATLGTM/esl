@@ -40,8 +40,8 @@ export type L1Support = {
    * Comprehension questions are asked in Spanish where the content has both.
    *
    * Falls back to whatever the scene actually authored, so turning this off
-   * cannot blank a question: today no unit has `q_en`, and levels 3 and 5 are
-   * therefore identical in Absorb until one does.
+   * cannot blank a question. Every Block 1 scene now carries `q_en`, so this
+   * is live behaviour, not a placeholder.
    */
   spanishQuestions: boolean;
 };
@@ -55,7 +55,12 @@ export function l1Support(level: number): L1Support {
   return {
     level: clamped,
     offerGloss: clamped < MAX_L1_LEVEL,
-    spanishQuestions: clamped <= 3,
+    // Below 3, not "3 and below": the middle choice in /ajustes is level 3 and
+    // its copy promises "preguntas en inglés cuando las haya". With <= 3 the
+    // middle level behaved exactly like the first -- a placebo radio, found by
+    // the 2026-08-31 review -- and a setting that does nothing is worse than
+    // no setting for a learner deciding whether the product is real.
+    spanishQuestions: clamped < 3,
   };
 }
 

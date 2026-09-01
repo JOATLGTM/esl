@@ -97,7 +97,11 @@ export const es = {
 
     motivation: {
       title: "¿Para qué quieres el inglés?",
-      body: "Así elegimos las conversaciones que vas a practicar.",
+      // True today. The old line promised the answer would pick his
+      // conversations; nothing read it. A promise on screen two that the
+      // product does not keep is exactly the wrong first impression for a
+      // learner deciding whether this thing is real.
+      body: "Para conocerte. El curso empieza igual para todos, y esto nos ayuda a mejorarlo.",
       options: {
         work: { label: "Para el trabajo", hint: "Entrevistas, compañeros, clientes" },
         travel: { label: "Para viajar", hint: "Aeropuertos, hoteles, direcciones" },
@@ -328,6 +332,9 @@ export const es = {
       formulateNext: "Siguiente",
       formulateStart: "Empezar",
       counter: "Frase {position} de {total}",
+      // Three rounds of the same five phrases, each a second faster. Framed as
+      // "otra vez, más rápido" -- a game, never a retest.
+      roundCounter: "Ronda {round} de {total}",
       formulateSkip: "Saltar el calentamiento",
       // The frame step: the first time the learner builds a sentence nobody
       // wrote for them. The copy has to make that feel like a small freedom

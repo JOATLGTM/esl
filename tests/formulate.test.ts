@@ -3,7 +3,11 @@ import { test, describe } from "node:test";
 
 import {
   FORMULATION_COUNT,
+  FORMULATION_HOLD_SESSIONS,
+  FORMULATION_ROUNDS,
   FORMULATION_SECONDS,
+  ROUND_SECONDS,
+  formulationSeed,
   pickFormulation,
   type FormulationPrompt,
 } from "../lib/session/formulate";
@@ -69,5 +73,37 @@ describe("pickFormulation", () => {
 
   test("the clock sits just above the archetype's four-second gap", () => {
     assert.ok(FORMULATION_SECONDS >= 4 && FORMULATION_SECONDS <= 8);
+  });
+
+  test("the pool's arrival order cannot change the hand", () => {
+    // The pool comes from a database query with no guaranteed order, and a
+    // hand that must repeat across sessions has to be a function of the seed
+    // alone.
+    const reversed = [...pool].reverse();
+    assert.deepEqual(pickFormulation(pool, "hand-2"), pickFormulation(reversed, "hand-2"));
+  });
+});
+
+describe("the hand repeats, by design", () => {
+  test("the seed holds for three sessions, then rotates", () => {
+    // De Jong & Perfetti (2011): only same-content repeaters kept the 4/3/2
+    // gain at posttest. A fresh hand every session is the variant that does
+    // not stick -- which is exactly what this shipped as, seeded on the
+    // session id, before the 2026-08-31 review caught it.
+    assert.equal(formulationSeed(0), formulationSeed(FORMULATION_HOLD_SESSIONS - 1));
+    assert.notEqual(formulationSeed(0), formulationSeed(FORMULATION_HOLD_SESSIONS));
+    assert.equal(FORMULATION_HOLD_SESSIONS, 3);
+  });
+
+  test("rounds shrink the clock and never below the sayable floor", () => {
+    assert.equal(FORMULATION_ROUNDS, ROUND_SECONDS.length);
+    for (let i = 1; i < ROUND_SECONDS.length; i++) {
+      assert.ok(ROUND_SECONDS[i] < ROUND_SECONDS[i - 1], "each round is tighter");
+    }
+    assert.ok(ROUND_SECONDS[ROUND_SECONDS.length - 1] >= 3, "a clock nobody can beat teaches giving up");
+  });
+
+  test("a negative session count still yields a stable first hand", () => {
+    assert.equal(formulationSeed(-5), formulationSeed(0));
   });
 });

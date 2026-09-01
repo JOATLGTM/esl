@@ -6,7 +6,7 @@ import { SpeakerIcon } from "@/components/ui/speaker-icon";
 import { es, fill } from "@/lib/copy/es";
 import type { SpeakTask } from "@/lib/session/speak";
 import { buildFrameDrill, type SessionFrame } from "@/lib/session/frame-drill";
-import { FORMULATION_SECONDS, type FormulationPrompt } from "@/lib/session/formulate";
+import { FORMULATION_ROUNDS, ROUND_SECONDS, type FormulationPrompt } from "@/lib/session/formulate";
 
 /**
  * Stage 5, Speak (PRD 4.2 / 4.5): the learner says the lines out loud.
@@ -57,14 +57,23 @@ export function SpeakStage({
     formulation.length > 0 ? "formulate" : "script",
   );
   const [chosen, setChosen] = useState<string | null>(null);
-  // The warm-up's own cursor: which prompt, whether the clock has started,
-  // whether the English is showing, and the seconds left. One object so that
-  // moving to the next prompt resets all of it in one render.
-  const [warm, setWarm] = useState({
+  // The warm-up's own cursor: which round, which prompt, whether the clock
+  // has started, whether the English is showing, and the seconds left. One
+  // object so that moving on resets all of it in one render. The same five
+  // prompts run three rounds with a shrinking clock -- repetition of the same
+  // material is the drill's active ingredient, not variety.
+  const [warm, setWarm] = useState<{
+    round: number;
+    index: number;
+    started: boolean;
+    revealed: boolean;
+    left: number;
+  }>({
+    round: 0,
     index: 0,
     started: false,
     revealed: false,
-    left: FORMULATION_SECONDS,
+    left: ROUND_SECONDS[0],
   });
   const modelRef = useRef<HTMLAudioElement | null>(null);
 
@@ -280,11 +289,28 @@ export function SpeakStage({
       setPhase("script");
     };
     const next = () => {
-      if (isLastPrompt) {
-        leave();
+      if (!isLastPrompt) {
+        setWarm({
+          round: warm.round,
+          index: warm.index + 1,
+          started: true,
+          revealed: false,
+          left: ROUND_SECONDS[warm.round],
+        });
         return;
       }
-      setWarm({ index: warm.index + 1, started: true, revealed: false, left: FORMULATION_SECONDS });
+      // Same hand again, tighter clock. The last round ends the phase.
+      if (warm.round + 1 < FORMULATION_ROUNDS) {
+        setWarm({
+          round: warm.round + 1,
+          index: 0,
+          started: true,
+          revealed: false,
+          left: ROUND_SECONDS[warm.round + 1],
+        });
+        return;
+      }
+      leave();
     };
 
     if (!warm.started) {
@@ -316,6 +342,8 @@ export function SpeakStage({
       <div className="flex flex-1 flex-col gap-6">
         <p className="text-base text-faint">
           {fill(es.session.speak.counter, { position: warm.index + 1, total: formulation.length })}
+          {" · "}
+          {fill(es.session.speak.roundCounter, { round: warm.round + 1, total: FORMULATION_ROUNDS })}
         </p>
 
         <div className="flex flex-1 flex-col justify-center gap-4">
