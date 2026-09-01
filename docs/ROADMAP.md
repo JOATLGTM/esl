@@ -1,5 +1,9 @@
 # What to build next, and why
 
+> **v2 (2026-08-31) is at the bottom** — a second five-member review, run after
+> items 1, 3–10 shipped, with every claim re-verified against the repo. It
+> supersedes the ordering below where they disagree.
+
 **Written 2026-08-29**, from a five-member review of the project at the end of
 Block 1. `docs/STATE.md` says where things stand; this says what comes after,
 in order, with the reasoning attached so the order can be argued with rather
@@ -302,3 +306,100 @@ loop nobody has completed is the highest-variance way to spend the next year.
 
 Learner test → Tier 1 (1, 3, then 2) → Tier 2 item 4 against Block 1 →
 phrasebook → images → PWA → the rest as the learner's failures dictate.
+
+
+---
+
+# v2 — the second review (2026-08-31)
+
+Five members, blind peer review, every load-bearing claim re-measured against
+the repo by the reviewers. Aggregate ranking of the members:
+rigorist > red-teamer > generalist > pragmatist > first-principles.
+
+## What did not survive scrutiny — including things built last week
+
+- **The headline promise is unfalsifiable.** The landing page says *"Hablas
+  desde la primera sesión"* and nothing in the product can tell whether the
+  learner ever opened his mouth. He can tap silently through 36 sessions and
+  be congratulated.
+- **The taper's middle option was a placebo.** `l1Support` made levels 1 and 3
+  behaviourally identical while `/ajustes` offered exactly 1/3/5 — and the
+  copy for the middle option promised English questions it did not deliver.
+- **The missions scoreboard was a tap count.** No unique constraint on
+  `(user_id, mission_id)`, so re-filing a mission incremented *"Has hablado
+  inglés con N personas"* — a number `/home` presents as a fact about the
+  world.
+- **The formulation warm-up dealt different prompts every session.** Seeded on
+  the session id. De Jong & Perfetti (2011): both same-topic and new-topic
+  4/3/2 groups improve during training; **only the same-content repeaters keep
+  the gain at posttest**. The active ingredient is repetition of the same
+  material, and the warm-up shipped the variant that does not stick.
+- **The input dose is 44.3 minutes of unique English for the whole block** —
+  ~74 seconds a day. The listening library is at 2.07 min/unit against its own
+  10–20 target.
+- **The speaking partner is typography.** `ClipKind` has no dialogue kind; in
+  the one stage where the learner rehearses a real exchange, Maria's question
+  is silent text and he reads his answer off the screen.
+- **Onboarding promises** *"Así elegimos las conversaciones que vas a
+  practicar"* and nothing reads `motivation`.
+- **The recording review plays only his own take** — self-comparison against a
+  model is the intervention; playback alone is not.
+- **The shadowing pass shows the text through all three stages**, against the
+  documented protocol (script off for the shadow pass).
+- **~45% of `public/audio` (798 files) is served to nobody** — stitching
+  intermediates plus 154 example clips with no consumer.
+- Stale comments: two files still said "no unit has `q_en`" after 108 English
+  questions were authored.
+
+## Evidence corrections to this file's own v1
+
+- **HVPT: two talkers are enough at this level.** The 2025 meta-analysis finds
+  talker count has *no* significant effect for lower-proficiency learners, and
+  the closest analogue (five-vowel L1, /i/–/ɪ/) found a single-talker group
+  learned *more*. Blocked-by-talker beats interleaved for low-aptitude
+  learners. So: **two talkers × 25 pairs = 100 clips = one afternoon**, which
+  is also the only thing `publish-check` still fails on. Before recording:
+  add a **duration-matching validator rule** — Spanish listeners cue /i/–/ɪ/
+  on length alone, so an unmatched drill can be passed on duration while
+  teaching nothing spectral. And note the probe-hash guard proves *bytes*
+  differ, not that a human hears two voices (perceived-similarity is what
+  matters, and only ears can check it).
+- **ASR (#2): constrained matching does not need an open-vocabulary model.**
+  Matching against a known target is keyword spotting, and KWS models run an
+  order of magnitude smaller than Moonshine's 28 MB. If the phone spike is
+  slow, try a KWS model before parking the feature.
+- **Word stress over segmentals:** prosodic training transfers to spontaneous
+  speech; segmental training improves read-aloud only. Raises #12, cuts
+  against spending the recording budget on segmental contrasts.
+- **The 95% rule should stop citing reading research**: listening's measured
+  threshold is lower (90–95%), and Absorb is assisted. Keep the rule as
+  authoring discipline; drop the borrowed justification.
+
+## v2 order
+
+| # | Item | Cost | Status |
+|---|---|---|---|
+| 0 | **One learner, two weeks.** v1 opened with this; 29 commits of features followed. That is the pattern to break. | two coffees | **open** |
+| 1 | Formulation warm-up repeats the *same* hand (3 rounds in-session, held ~3 sessions) | ~2 h | |
+| 2 | Model clip beside his take on the recording review | ~1 h | |
+| 3 | Voice the speaking partner (`speak_line` clips); withhold his line until he answers | ~½ day | |
+| 4 | Integrity: taper middle level real, missions counter unique, `motivation` copy honest, stale comments | ~½ day | |
+| 5 | Ear training: 2 talkers, 100 clips, duration-matching rule first | one afternoon + 2 humans | |
+| 6 | Listening library to target (10–20 min/unit) | 1–2 h/unit | |
+| 7 | Dictation review mode (audio → type; grader exists) | ~1 day | |
+| 8 | Hide shadow-pass text | ~1 h | |
+| 9 | `/cognados` — teach the cognate rules the scorer already credits | ~½ day | |
+| 10 | Receptive deck: ~60 things said *to* him (*"Cash or card?"*) | authoring | |
+| 11 | Word-stress drill | ~2 days | |
+| 12 | ASR, gated on the spike; try KWS if Moonshine is slow | 2–3 days | |
+
+**Steals confirmed by research:** VOA Learning English (verified public
+domain, commercial reuse w/ attribution) as a third `/escuchar` shelf; We
+Speak NYC's lesson-one clarification set (add `How do you spell {NP}?` and
+`What does {NP} mean?` — both frames); CASAS competencies to drive Blocks 2–4
+can-dos; a question posed *before* the scene; USA Learns' unscored self-check
+at unit end; a 3-minute session path; a pausable timer instead of skip-only.
+
+**Still refused:** leagues, hearts, pronunciation scores, runtime AI partner,
+community corrections, deleting typed Retrieve (only writer that can satisfy
+the mastery CHECK), Blocks 2–4 before a learner finishes Block 1 twice.
