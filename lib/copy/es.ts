@@ -346,6 +346,13 @@ export const es = {
       yourTurn: "Te toca. Dilo en voz alta:",
       theirTurn: "{name} dice:",
       said: "Ya lo dije",
+      // The inversion: his line arrives as Spanish first. Producing the
+      // English is the exercise; reading it off the screen is the fallback,
+      // one tap away and never a failure.
+      revealLine: "Ver la frase en inglés",
+      hearModel: "Oír cómo suena",
+      hearAgain: "Oír otra vez",
+      reviewModel: "Oír el modelo",
       recordHint: "Nadie te está calificando. Nadie más lo escucha.",
       recording: "Grabando…",
       recordStart: "Grabar mi voz",

@@ -380,10 +380,10 @@ rigorist > red-teamer > generalist > pragmatist > first-principles.
 | # | Item | Cost | Status |
 |---|---|---|---|
 | 0 | **One learner, two weeks.** v1 opened with this; 29 commits of features followed. That is the pattern to break. | two coffees | **open** |
-| 1 | Formulation warm-up repeats the *same* hand (3 rounds in-session, held ~3 sessions) | ~2 h | |
-| 2 | Model clip beside his take on the recording review | ~1 h | |
-| 3 | Voice the speaking partner (`speak_line` clips); withhold his line until he answers | ~½ day | |
-| 4 | Integrity: taper middle level real, missions counter unique, `motivation` copy honest, stale comments | ~½ day | |
+| 1 | Formulation warm-up repeats the *same* hand (3 rounds in-session, held ~3 sessions) | ~2 h | **done 2026-08-31** |
+| 2 | Model clip beside his take on the recording review | ~1 h | **done 2026-08-31** |
+| 3 | Voice the speaking partner (`speak_line` clips); withhold his line until he answers | ~½ day | **done 2026-08-31** |
+| 4 | Integrity: taper middle level real, missions counter unique, `motivation` copy honest, stale comments | ~½ day | **done 2026-08-31** |
 | 5 | Ear training: 2 talkers, 100 clips, duration-matching rule first | one afternoon + 2 humans | |
 | 6 | Listening library to target (10–20 min/unit) | 1–2 h/unit | |
 | 7 | Dictation review mode (audio → type; grader exists) | ~1 day | |

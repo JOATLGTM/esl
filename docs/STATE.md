@@ -523,6 +523,30 @@ rate` — *lowering* `natural_wpm` makes a voice faster); and a run killed at
 clip 612 of 644 lost all 612 because the manifest was only written at the end.
 The pipeline now adopts on-disk clips and checkpoints every 50.
 
+**The council's v2 fixes (2026-08-31)** — see `docs/ROADMAP.md` v2. Four
+things built last week did not survive a second review, and are now fixed:
+
+- **The warm-up repeats the same hand.** It dealt five fresh prompts every
+  session — the one variant of 4/3/2 the evidence says does not stick. Now a
+  hand holds for three sessions and runs three rounds per session with a
+  shrinking clock (5/4/3 s), and the pool is sorted so query order cannot
+  change a hand that must repeat.
+- **The taper's middle level is real.** Levels 1 and 3 were behaviourally
+  identical while `/ajustes` offered exactly 1/3/5; `spanishQuestions` now
+  flips below 3, matching what the middle option's copy always promised, and
+  a test asserts all three choices are distinct.
+- **The missions counter counts people, not taps.** `mission_reports_once`
+  (unique on user+mission) in the database, `ignoreDuplicates` on the write.
+- **The speaking partner speaks.** New `speak_line` clips: ai turns in the
+  task character's voice, the learner's own lines modelled by the
+  learner-counterpart's voice ({name} lines stay text). The user's turn is
+  **withheld**: he sees the Spanish, tries to say the English, and reveals it
+  with one tap that is never framed as failure — producing rehearses the
+  counter, reading rehearses reading. The recording review now offers the
+  model beside his take, which is the actual self-comparison intervention.
+- Onboarding's `motivation` copy tells the truth now; two stale `q_en`
+  comments corrected.
+
 **The listening library** — built 2026-08-29, `docs/ROADMAP.md` #4. A new
 content type, `content/listening/<unit>.yaml`: connected speech in the cast's
 voices made **entirely of words the unit has already released**. It is gated

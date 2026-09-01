@@ -35,6 +35,7 @@ type Manifest = {
   provider: string;
   clips: Record<string, {
     url: string; kind: string; text: string; voiceId: string; ownerId: string; durationMs: number;
+    lineIndex?: number;
   }>;
   scenes: Record<string, {
     url: string; unitId: string; durationMs: number;
@@ -262,6 +263,12 @@ async function main() {
    * read once and walked entirely client-side, so the core loop keeps working
    * offline and no turn costs a round trip (PRD F10).
    */
+  const speakLineAudio = new Map<string, string>();
+  for (const clip of Object.values(manifest.clips)) {
+    if (clip.kind !== "speak_line" || clip.lineIndex === undefined) continue;
+    speakLineAudio.set(`${clip.ownerId}:${clip.lineIndex}`, clip.url);
+  }
+
   const dialogues = bundle.units.map((u) => ({
     id: `${u.unit_id}_speaking`,
     unit_id: u.unit_id,
@@ -271,7 +278,11 @@ async function main() {
     mode: u.speaking_task.mode,
     nodes: {
       target_chunks: u.speaking_task.target_chunks,
-      script: u.speaking_task.script ?? [],
+      // Each line carries its clip when one exists ({name} lines never do).
+      script: (u.speaking_task.script ?? []).map((line, i) => ({
+        ...line,
+        audio_url: speakLineAudio.get(`${u.unit_id}_speaking:${i}`) ?? null,
+      })),
     },
   }));
 

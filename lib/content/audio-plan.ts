@@ -39,7 +39,7 @@ export type Voice = VoiceType;
 export type { VoiceRoster };
 export { loadVoiceRoster };
 
-export type ClipKind = "chunk" | "example" | "scene_line";
+export type ClipKind = "chunk" | "example" | "scene_line" | "speak_line";
 
 export type ClipSpec = {
   /** Stable content hash -- the cache key and the filename. */
@@ -263,6 +263,30 @@ export function buildAudioPlan(
         lines,
         trackHash,
         relPath: `scene/${trackHash}.${AUDIO_FORMAT.ext}`,
+      });
+    }
+
+    // The speaking task's lines (ROADMAP v2 #3). Until these existed, the one
+    // stage where the learner rehearses a real exchange had a silent partner:
+    // Maria asked "Big or small?" as typography. AI turns are voiced by the
+    // task's character; the learner's own lines are voiced by the cast's
+    // learner-counterpart, so the model he compares himself against hesitates
+    // like he does. Lines containing {name} are skipped -- the clip would say
+    // the wrong name to everyone.
+    {
+      const task = unit.speaking_task;
+      const learner = [...bundle.cast.values()].find((c) => c.speaks_english === "learner");
+      (task.script ?? []).forEach((line, index) => {
+        if (line.en.includes("{name}")) return;
+        const speakerId = line.speaker === "ai" ? task.character : learner?.id;
+        if (!speakerId) return;
+        const voiceId = voiceForCharacter(speakerId, `${unit.unit_id} speaking line ${index + 1}`);
+        push(
+          clip("speak_line", line.en, voiceId, `${unit.unit_id}_speaking`, {
+            unitId: unit.unit_id,
+            lineIndex: index,
+          }),
+        );
       });
     }
 

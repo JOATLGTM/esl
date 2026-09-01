@@ -56,6 +56,7 @@ type ManifestClip = {
   unitId?: string;
   durationMs: number;
   bytes: number;
+  lineIndex?: number;
 };
 
 /** A human-read minimal-pair word (PRD 8.1B). Not generated -- ingested. */
@@ -412,6 +413,7 @@ async function main() {
         voiceId: c.voiceId,
         ownerId: c.ownerId,
         unitId: c.unitId,
+        lineIndex: c.lineIndex,
         durationMs: ffprobeDurationMs(onDisk),
         bytes: fs.statSync(onDisk).size,
       };
@@ -469,6 +471,7 @@ async function main() {
         voiceId: spec.voiceId,
         ownerId: spec.ownerId,
         unitId: spec.unitId,
+        lineIndex: spec.lineIndex,
         durationMs: ffprobeDurationMs(outFile),
         bytes: fs.statSync(outFile).size,
       };

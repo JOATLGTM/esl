@@ -21,6 +21,8 @@ export type SpeakLine = {
   speaker: "ai" | "user";
   en: string;
   es?: string;
+  /** The line's clip: the character's voice for ai turns, the learner-counterpart's for user turns. */
+  audioUrl: string | null;
 };
 
 export type SpeakTask = {
@@ -34,7 +36,8 @@ export type SpeakTask = {
   targetChunks: string[];
 };
 
-type Nodes = { script?: SpeakLine[]; target_chunks?: string[] };
+type NodeLine = { speaker: "ai" | "user"; en: string; es?: string; audio_url?: string | null };
+type Nodes = { script?: NodeLine[]; target_chunks?: string[] };
 
 /** The unit's speaking task, or null if none is authored yet. */
 export async function loadSpeakTask(unitId: string, learnerName?: string): Promise<SpeakTask | null> {
@@ -64,6 +67,7 @@ export async function loadSpeakTask(unitId: string, learnerName?: string): Promi
       speaker: line.speaker,
       en: fillName(line.en, learnerName),
       es: line.es ? fillName(line.es, learnerName) : undefined,
+      audioUrl: line.audio_url ?? null,
     })),
     targetChunks: nodes.target_chunks ?? [],
   };

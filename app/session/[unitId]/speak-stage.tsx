@@ -111,10 +111,14 @@ export function SpeakStage({
   // Until this existed the recording went straight to Storage and he never
   // heard it -- the one pronunciation intervention that works without a
   // teacher, captured and thrown away. `url` is an object URL, revoked below.
-  const [take, setTake] = useState<{ blob: Blob; url: string; durationS: number; said: string } | null>(null);
+  const [take, setTake] = useState<{ blob: Blob; url: string; durationS: number; said: string; modelUrl: string | null } | null>(null);
   const [playingTake, setPlayingTake] = useState(false);
   const takeAudioRef = useRef<HTMLAudioElement | null>(null);
   const saidRef = useRef("");
+  const modelUrlRef = useRef<string | null>(null);
+  // His line stays hidden until he has tried to say it from the Spanish.
+  const [lineRevealed, setLineRevealed] = useState(false);
+  const lineAudioRef = useRef<HTMLAudioElement | null>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
   const startedAtRef = useRef(0);
@@ -147,6 +151,20 @@ export function SpeakStage({
     [onSpoke, onAdvance],
   );
 
+  // The partner speaks (ROADMAP v2 #3): an ai turn's clip plays on arrival,
+  // replayable by button; {name} lines have no clip and stay text. Above the
+  // early return because hooks must be unconditional, and with no setState --
+  // `lineRevealed` is reset in the event handlers that change the turn.
+  useEffect(() => {
+    if (phase !== "script") return;
+    const current = task?.script[index];
+    if (!current || current.speaker !== "ai" || !current.audioUrl) return;
+    const audio = new Audio(current.audioUrl);
+    lineAudioRef.current = audio;
+    audio.play().catch(() => {});
+    return () => audio.pause();
+  }, [phase, index, task]);
+
   // Before the early return: hooks must not be conditional, and this is one.
   const drill = useMemo(
     () => (frame ? buildFrameDrill(frame, frameSeed) : null),
@@ -170,8 +188,9 @@ export function SpeakStage({
   const line = task.script[index];
   const isLastLine = index === task.script.length - 1;
 
-  async function startRecording(said: string) {
+  async function startRecording(said: string, modelUrl: string | null = null) {
     saidRef.current = said;
+    modelUrlRef.current = modelUrl;
     if (typeof navigator === "undefined" || !navigator.mediaDevices?.getUserMedia) {
       setRecordError(true);
       return;
@@ -195,6 +214,7 @@ export function SpeakStage({
           url: URL.createObjectURL(blob),
           durationS: Math.round((Date.now() - startedAtRef.current) / 1000),
           said: saidRef.current,
+          modelUrl: modelUrlRef.current,
         });
       };
       recorder.start();
@@ -212,6 +232,8 @@ export function SpeakStage({
   }
 
   function advanceLine() {
+    lineAudioRef.current?.pause();
+    setLineRevealed(false);
     if (isLastLine) {
       // The frame is the last thing, so the recording offer moves with it.
       if (drill) {
@@ -255,6 +277,24 @@ export function SpeakStage({
             <SpeakerIcon active={playingTake} />
             {playingTake ? es.session.speak.reviewPlaying : es.session.speak.reviewPlay}
           </button>
+          {/* The comparison is the intervention (ROADMAP v2 #2): his take next
+              to the model, in the learner-counterpart's voice, never scored. */}
+          {take.modelUrl && (
+            <button
+              type="button"
+              onClick={() => {
+                takeAudioRef.current?.pause();
+                setPlayingTake(false);
+                const a = new Audio(take.modelUrl!);
+                takeAudioRef.current = a;
+                a.play().catch(() => {});
+              }}
+              className="flex min-h-16 w-full items-center justify-center gap-3 rounded-2xl border-2 border-line bg-surface px-5 py-3 text-lg font-medium text-muted"
+            >
+              <SpeakerIcon active={false} />
+              {es.session.speak.reviewModel}
+            </button>
+          )}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -286,6 +326,7 @@ export function SpeakStage({
 
     const leave = () => {
       modelRef.current?.pause();
+      setLineRevealed(false);
       setPhase("script");
     };
     const next = () => {
@@ -483,16 +524,63 @@ export function SpeakStage({
             <p className="text-base text-muted">
               {fill(es.session.speak.theirTurn, { name: task.characterName })}
             </p>
-            {/* No audio: the speaking-task script is not in the audio pipeline
-                yet, so their half is read rather than heard. */}
             <p className="text-3xl font-bold text-balance text-ink">{line.en}</p>
             {line.es && <p className="text-lg text-muted">{line.es}</p>}
+            {line.audioUrl && (
+              <button
+                type="button"
+                onClick={() => {
+                  lineAudioRef.current?.pause();
+                  const a = new Audio(line.audioUrl!);
+                  lineAudioRef.current = a;
+                  a.play().catch(() => {});
+                }}
+                className="flex min-h-11 items-center gap-2 self-start text-base font-medium text-muted underline underline-offset-4"
+              >
+                <SpeakerIcon active={false} />
+                {es.session.speak.hearAgain}
+              </button>
+            )}
           </>
         ) : (
           <>
             <p className="text-base font-medium text-primary">{es.session.speak.yourTurn}</p>
-            <p className="text-3xl font-bold text-balance text-ink">{line.en}</p>
-            {line.es && <p className="text-lg text-muted">{line.es}</p>}
+            {/* The inversion (ROADMAP v2 #3): his line is withheld until he has
+                tried to formulate it from the Spanish. Reading an answer off
+                the screen rehearses reading; producing it rehearses the
+                counter. The reveal is one tap and never framed as failure. */}
+            {lineRevealed || !line.es ? (
+              <>
+                <p className="text-3xl font-bold text-balance text-ink">{line.en}</p>
+                {line.es && <p className="text-lg text-muted">{line.es}</p>}
+                {line.audioUrl && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      lineAudioRef.current?.pause();
+                      const a = new Audio(line.audioUrl!);
+                      lineAudioRef.current = a;
+                      a.play().catch(() => {});
+                    }}
+                    className="flex min-h-11 items-center gap-2 self-start text-base font-medium text-muted underline underline-offset-4"
+                  >
+                    <SpeakerIcon active={false} />
+                    {es.session.speak.hearModel}
+                  </button>
+                )}
+              </>
+            ) : (
+              <>
+                <p className="text-3xl font-bold text-balance text-ink">{line.es}</p>
+                <button
+                  type="button"
+                  onClick={() => setLineRevealed(true)}
+                  className="min-h-11 self-start text-base font-medium text-primary underline underline-offset-4"
+                >
+                  {es.session.speak.revealLine}
+                </button>
+              </>
+            )}
             <p className="text-base text-faint">{es.session.speak.recordHint}</p>
           </>
         )}
@@ -519,7 +607,7 @@ export function SpeakStage({
         {isLastLine && !drill && !recordError && (
           <button
             type="button"
-            onClick={recording ? stopRecording : () => startRecording(line.en)}
+            onClick={recording ? stopRecording : () => startRecording(line.en, line.audioUrl)}
             disabled={pending}
             className="min-h-11 text-base font-medium text-muted underline underline-offset-4"
           >
