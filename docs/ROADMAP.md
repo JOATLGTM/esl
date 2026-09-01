@@ -386,8 +386,8 @@ rigorist > red-teamer > generalist > pragmatist > first-principles.
 | 4 | Integrity: taper middle level real, missions counter unique, `motivation` copy honest, stale comments | ~½ day | **done 2026-08-31** |
 | 5 | Ear training: 2 talkers, 100 clips, duration-matching rule first | one afternoon + 2 humans | |
 | 6 | Listening library to target (10–20 min/unit) | 1–2 h/unit | |
-| 7 | Dictation review mode (audio → type; grader exists) | ~1 day | |
-| 8 | Hide shadow-pass text | ~1 h | |
+| 7 | Dictation review mode (audio → type; grader exists) | ~1 day | **done 2026-08-31** |
+| 8 | Hide shadow-pass text | ~1 h | **done 2026-08-31** |
 | 9 | `/cognados` — teach the cognate rules the scorer already credits | ~½ day | |
 | 10 | Receptive deck: ~60 things said *to* him (*"Cash or card?"*) | authoring | |
 | 11 | Word-stress drill | ~2 days | |

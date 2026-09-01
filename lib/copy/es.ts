@@ -379,6 +379,10 @@ export const es = {
       counter: "Tarjeta {position} de {total}",
       recognizePrompt: "¿Qué significa?",
       producePrompt: "¿Cómo se dice en inglés?",
+      // Dictation: the clip is the whole prompt. "Escríbelo" and not
+      // "escríbelo bien" -- the grader is as lenient here as everywhere.
+      dictationPrompt: "Escucha y escribe lo que oíste:",
+      dictationPlay: "Escuchar",
       inputLabel: "Escríbelo en inglés",
       check: "Revisar",
       skip: "No me acuerdo",
@@ -421,6 +425,7 @@ export const es = {
       shadowListen: "Escucha la frase.",
       shadowRepeat: "Ahora repítela en el silencio, después del audio.",
       shadowShadow: "Ahora dila al mismo tiempo que la voz. Vas a tropezar; eso es normal.",
+      shadowNoScript: "Esta vez sin leer. Solo tu oído y tu voz.",
       shadowPlay: "Escuchar",
       shadowDone: "Listo",
       shadowSkip: "Saltar esta parte",

@@ -1,0 +1,13 @@
+-- Dictation (docs/ROADMAP.md v2 #7): listen to a known phrase and type it.
+--
+-- The one exercise that forces bottom-up parsing of connected speech -- word
+-- boundaries, weak forms, contractions -- which is precisely the failure mode
+-- of a syllable-timed L1 processing a stress-timed language, and which nothing
+-- else in the loop touches: Absorb keeps the transcript on screen, so the
+-- learner never has to segment anything by ear.
+--
+-- A new enum value rather than a new table: a dictation is a review, written
+-- per card like every other review. It does NOT count as production --
+-- countsAsProduction() only accepts produce_* modes -- so it can never mature
+-- a card; it is a listening check on material already learned.
+alter type review_mode add value if not exists 'dictation';

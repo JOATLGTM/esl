@@ -168,7 +168,15 @@ export function AbsorbStage({
         <div className="flex flex-1 flex-col justify-center gap-5">
           <h1 className="text-2xl font-bold text-ink">{es.session.absorb.shadowTitle}</h1>
           <p className="text-lg text-muted">{instruction}</p>
-          <p className="text-3xl font-bold text-balance text-ink">{shadowSegment.en}</p>
+          {/* Script off for the shadow pass, on for listen and repeat. The
+              documented sequence (Hamada) turns the text off precisely when
+              the learner shadows: reading divides attention between sounds
+              and letters, and the pass exists to train the sounds. */}
+          {shadowStage === "shadow" ? (
+            <p className="text-xl text-muted">{es.session.absorb.shadowNoScript}</p>
+          ) : (
+            <p className="text-3xl font-bold text-balance text-ink">{shadowSegment.en}</p>
+          )}
 
           <Button
             type="button"

@@ -133,6 +133,39 @@ export function RetrieveStage({
               })}
             </ul>
           </>
+        ) : card.mode === "dictation" ? (
+          <>
+            {/* Dictation (ROADMAP v2 #7): the prompt is the clip, nothing
+                else. No English, no Spanish -- segmenting the stream by ear is
+                the whole exercise, and it is only ever asked of a card the
+                learner has already mastered. */}
+            <p className="text-base text-muted">{es.session.retrieve.dictationPrompt}</p>
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => card.audioUrl && play(card.audioUrl)}
+            >
+              {es.session.retrieve.dictationPlay}
+            </Button>
+            <input
+              ref={inputRef}
+              type="text"
+              value={typed}
+              disabled={answered}
+              onChange={(e) => setTyped(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !answered && typed.trim()) {
+                  settle(gradeTypedAnswer(card.en, typed, card.accepts));
+                }
+              }}
+              aria-label={es.session.retrieve.inputLabel}
+              autoCapitalize="off"
+              autoCorrect="off"
+              autoComplete="off"
+              spellCheck={false}
+              className="min-h-14 w-full rounded-2xl border-2 border-line bg-surface px-5 text-xl text-ink outline-none focus:border-primary disabled:opacity-70"
+            />
+          </>
         ) : (
           <>
             <p className="text-base text-muted">{es.session.retrieve.producePrompt}</p>
@@ -188,7 +221,7 @@ export function RetrieveStage({
                 : es.session.continue
               : es.session.retrieve.next}
         </Button>
-      ) : card.mode === "produce_typed" ? (
+      ) : card.mode === "produce_typed" || card.mode === "dictation" ? (
         <div className="flex flex-col gap-2">
           <Button
             type="button"

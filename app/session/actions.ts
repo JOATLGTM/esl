@@ -80,7 +80,7 @@ export type AdvanceInput = z.input<typeof advance>;
  */
 const review = z.object({
   chunkId: z.string().min(1).max(64),
-  mode: z.enum(["recognize", "produce_typed", "produce_spoken"]),
+  mode: z.enum(["recognize", "produce_typed", "produce_spoken", "dictation"]),
   outcome: z.enum(["correct", "close", "wrong"]),
   /**
    * What the learner actually typed, for error-pattern detection (PRD F6).

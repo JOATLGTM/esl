@@ -1076,7 +1076,11 @@ export type Database = {
         | "h_r"
         | "stress_intonation"
       motivation: "work" | "travel" | "family" | "study" | "other"
-      review_mode: "recognize" | "produce_typed" | "produce_spoken"
+      review_mode:
+        | "recognize"
+        | "produce_typed"
+        | "produce_spoken"
+        | "dictation"
       session_stage: "ear" | "meet" | "absorb" | "retrieve" | "speak"
       shadowing_stage: "listen" | "repeat" | "shadow"
       speaking_mode: "scripted" | "guided" | "open_response"
@@ -1224,7 +1228,12 @@ export const Constants = {
         "stress_intonation",
       ],
       motivation: ["work", "travel", "family", "study", "other"],
-      review_mode: ["recognize", "produce_typed", "produce_spoken"],
+      review_mode: [
+        "recognize",
+        "produce_typed",
+        "produce_spoken",
+        "dictation",
+      ],
       session_stage: ["ear", "meet", "absorb", "retrieve", "speak"],
       shadowing_stage: ["listen", "repeat", "shadow"],
       speaking_mode: ["scripted", "guided", "open_response"],

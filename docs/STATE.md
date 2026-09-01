@@ -523,6 +523,25 @@ rate` — *lowering* `natural_wpm` makes a voice faster); and a run killed at
 clip 612 of 644 lost all 612 because the manifest was only written at the end.
 The pipeline now adopts on-disk clips and checkpoints every 50.
 
+**Dictation, and the shadow pass without its script** — built 2026-08-31,
+`docs/ROADMAP.md` v2 #7–#8.
+
+A **learned card with audio now comes back as dictation**: the clip is the
+whole prompt — no English, no Spanish — and the learner types what he heard,
+graded by the same lenient grader. It is the one exercise that forces
+bottom-up parsing of connected speech, which nothing else in the loop touches
+because Absorb keeps the transcript on screen. Deliberately **learned cards
+only**: dictation cannot mature a card (`countsAsProduction` refuses it), so
+earlier in the ladder it would burn reviews; on mastered material it is a
+listening check on phrases he already owns. The ladder is now pure and tested
+(`lib/session/review-mode.ts`) — it lived inside the server-only loader
+before, untestable. `review_mode` gained the enum value by migration.
+
+The **shadowing pass hides the text**: script on for listen and repeat, off
+for shadow, per the documented sequence — reading divides attention between
+sounds and letters, and the pass exists to train the sounds. The screen says
+*"Esta vez sin leer. Solo tu oído y tu voz."*
+
 **The council's v2 fixes (2026-08-31)** — see `docs/ROADMAP.md` v2. Four
 things built last week did not survive a second review, and are now fixed:
 
@@ -617,7 +636,7 @@ A one-off welcome modal lived in the root layout for a day and was removed on
 The root layout is the only place that reaches every entry state. Some browsers
 still hold a stale `hablar:welcome-seen` key in `localStorage`; nothing reads it.
 
-**Tests — 363, all passing.**
+**Tests — 374, all passing.**
 
 | Suite | n | Needs network |
 |---|---|---|

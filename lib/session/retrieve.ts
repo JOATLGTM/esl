@@ -1,6 +1,7 @@
 import "server-only";
 import { createEmptyCard, fsrs, type Card, type Grade } from "ts-fsrs";
 import { buildOptions, canBuildRecognition } from "./distractors";
+import { modeFor } from "./review-mode";
 import { cardStateFor, countsAsProduction, ratingFor, type TypedOutcome } from "./grade";
 import { createClient } from "@/lib/supabase/server";
 import type { ChunkAudio, ReviewMode, Tables } from "@/lib/supabase/types";
@@ -52,18 +53,6 @@ export function reviewBudget(dailyGoalMinutes: number): number {
     default:
       return 15;
   }
-}
-
-/**
- * Which mode a card is due in.
- *
- * The first sight of a card is recognition — it was met minutes ago and asking
- * a beginner to reproduce it cold is how you teach them they are bad at this.
- * Everything after that is production, because recognition passes do not count
- * toward mastery and a card that is only ever recognised never matures.
- */
-export function modeFor(card: Pick<Tables<"user_cards">, "reps">): ReviewMode {
-  return card.reps === 0 ? "recognize" : "produce_typed";
 }
 
 /** The FSRS half of a `user_cards` row, in the library's own shape. */
@@ -143,12 +132,15 @@ export async function loadDueCards(
     const chunk = byId.get(card.chunk_id);
     if (!chunk) return [];
 
+    const audioUrl = ((chunk.audio_urls as ChunkAudio[] | null) ?? [])[i % 2]?.url ?? null;
+
     // A card with no gloss that can be told apart from its own is not a
     // multiple choice; ask it as production instead of offering one button.
+    const ladder = modeFor(card, audioUrl !== null);
     const mode =
-      modeFor(card) === "recognize" && canBuildRecognition(chunk.es_gloss, glossPool)
-        ? "recognize"
-        : "produce_typed";
+      ladder === "recognize" && !canBuildRecognition(chunk.es_gloss, glossPool)
+        ? "produce_typed"
+        : ladder;
 
     const options =
       mode === "recognize"
@@ -163,7 +155,7 @@ export async function loadDueCards(
         exampleEn: chunk.example_en,
         // Alternating voices across the queue, so a review session is not one
         // talker for twelve cards.
-        audioUrl: ((chunk.audio_urls as ChunkAudio[] | null) ?? [])[i % 2]?.url ?? null,
+        audioUrl,
         accepts: (chunk.accepts as string[] | null) ?? [],
         mode,
         options: options.values,
